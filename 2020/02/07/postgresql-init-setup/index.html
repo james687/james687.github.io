@@ -18,14 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>彙整 | James&#39; Blog</title>
+  <title>PostgreSQL local docker 開發的初始 setup | James&#39; Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/archives/index.html">
+  <meta name="description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password {password}; create">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL local docker 開發的初始 setup">
+<meta property="og:url" content="https://james687.github.io/2020/02/07/postgresql-init-setup/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password {password}; create">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-02-07T02:44:37.000Z">
+<meta property="article:modified_time" content="2020-02-07T03:00:54.164Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="postgresql">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="James&#39; Blog" type="application/atom+xml">
@@ -79,59 +85,63 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/02/07/postgresql-init-setup/" class="archive-article-date">
-  <time datetime="2020-02-07T02:44:37.000Z" itemprop="datePublished">2月 7</time>
+        <section id="main"><article id="post-postgresql-init-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/07/postgresql-init-setup/" class="article-date">
+  <time datetime="2020-02-07T02:44:37.000Z" itemprop="datePublished">2020-02-07</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/07/postgresql-init-setup/">PostgreSQL local docker 開發的初始 setup</a>
+    <h1 class="article-title" itemprop="name">
+      PostgreSQL local docker 開發的初始 setup
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/02/06/pipenv-intro/" class="archive-article-date">
-  <time datetime="2020-02-06T10:35:33.000Z" itemprop="datePublished">2月 6</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
-    </h1>
-  
+        <p>為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：</p>
+<ol>
+<li><code>docker exec -it {db-container-name} psql -U postgres</code><ul>
+<li>以預設 user <code>postgres</code> 連進 DB</li>
+</ul>
+</li>
+<li><code>create user {username} with password {password};</code></li>
+<li><code>create database with owner {username};</code></li>
+<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
+</ol>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://james687.github.io/2020/02/07/postgresql-init-setup/" data-id="ck6bl237m0000xapp4cul8luk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/02/06/pipenv-intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用 pipenv 管理 requirements 搭配 docker-compose local 開發</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
