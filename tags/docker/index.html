@@ -209,7 +209,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 472 個字)
+                    3 分鐘 閱讀文 (大約 519 個字)
                 </span>
                 
                 
@@ -250,6 +250,16 @@
 </ul>
 </li>
 <li>接著就可以在 Dockerfile 裡直接用這個 requirements.txt 啦</li>
+</ol>
+</li>
+<li>如果要開新的 Django project:<ol>
+<li><code>cd {你想要 project 資料夾放的位置}</code></li>
+<li><code>mkdir {project-name}; cd {project-name}</code></li>
+<li><code>pipenv install Django</code></li>
+<li><code>pipenv run django-admin startproject {project-name} .</code><ul>
+<li><code>.</code>: 要把 <code>manage.py</code> 放在當前資料夾</li>
+</ul>
+</li>
 </ol>
 </li>
 <li>之後假如要把 requirements.txt 裡所有的 top-level 套件都更新的話:<ol>
@@ -349,7 +359,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -398,7 +408,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
+        <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
     </div>
 </div>
     
@@ -483,6 +493,13 @@
                 標籤
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/django/">
+                        <span class="tag">django</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
@@ -606,6 +623,13 @@
                 標籤
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/django/">
+                        <span class="tag">django</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
