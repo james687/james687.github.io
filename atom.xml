@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2020-02-07T09:36:30.566Z</updated>
+  <updated>2020-02-11T07:15:33.255Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://james687.github.io/2020/02/07/postgresql-init-setup/"/>
     <id>https://james687.github.io/2020/02/07/postgresql-init-setup/</id>
     <published>2020-02-07T02:44:37.000Z</published>
-    <updated>2020-02-07T09:36:30.566Z</updated>
+    <updated>2020-02-11T07:15:33.255Z</updated>
     
-    <content type="html"><![CDATA[<p>為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：</p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password {password};</code></li><li><code>create database with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：</p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol>]]></content>
     
     <summary type="html">
     

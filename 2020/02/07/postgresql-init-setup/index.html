@@ -10,16 +10,16 @@
 <title>PostgreSQL local docker 開發的初始 setup - James&#39; Blog</title>
 
 
-    <meta name="description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password {password}; create">
+    <meta name="description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password &#39;{password}&amp;#3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PostgreSQL local docker 開發的初始 setup">
 <meta property="og:url" content="https://james687.github.io/2020/02/07/postgresql-init-setup/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password {password}; create">
+<meta property="og:description" content="為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：  docker exec -it {db-container-name} psql -U postgres 以預設 user postgres 連進 DB   create user {username} with password &#39;{password}&amp;#3">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-02-07T02:44:37.000Z">
-<meta property="article:modified_time" content="2020-02-07T09:36:30.566Z">
+<meta property="article:modified_time" content="2020-02-11T07:15:33.255Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="postgresql">
@@ -168,7 +168,7 @@
 <li>以預設 user <code>postgres</code> 連進 DB</li>
 </ul>
 </li>
-<li><code>create user {username} with password {password};</code></li>
+<li><code>create user {username} with password &#39;{password}&#39;;</code></li>
 <li><code>create database with owner {username};</code></li>
 <li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
 </ol>
