@@ -199,7 +199,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 319 個字)
+                    3 分鐘 閱讀文 (大約 472 個字)
                 </span>
                 
                 
@@ -223,6 +223,14 @@
 </li>
 <li><code>cd</code> 到專案資料夾</li>
 <li><code>pipenv install {target-package}</code><ul>
+<li>假如原本沒有 virtual environment，pipenv 會先幫你產生一個基於這個資料夾的 virtual environment<ul>
+<li>假如上層資料夾有 Pipfile，pipenv 會直接用那個 Pipfile 的 virtual environment，不會產生新的<ul>
+<li>這是因為 pipenv 的虛擬環境是 project base 的，所以你可以在一個 Django project 裡的任何一個資料夾執行 pipenv 都可以用到這個 project 的虛擬環境</li>
+<li>而且正常情況下不會有 Django project 裡還有 Django project 的情況，所以不需要在上層已有 Pipfile 的情況下，又在目前資料夾產生 Pipfile</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>這邊不要指定版號，pipenv 就會安裝最新版</li>
 <li>pipenv 會產生 Pipfile 和 Pipfile.lock, 後者有記錄這個 package 和 sub-packages 的固定版號</li>
 </ul>
