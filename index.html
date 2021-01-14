@@ -167,7 +167,7 @@
 <li><p><code>vi ~/.ssh/config</code></p>
 <ul>
 <li><p>舉例：加上如下</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   Host GitHub</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line">IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host GitHub</span><br><span class="line"> HostName github.com</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line"> IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p>
