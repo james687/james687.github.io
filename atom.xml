@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2020-02-29T07:50:49.065Z</updated>
+  <updated>2021-01-14T05:10:28.120Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>簡單統整 JWT 相對於傳統 Session 驗證的好處</title>
+    <link href="https://james687.github.io/2021/01/14/jwt-digest/"/>
+    <id>https://james687.github.io/2021/01/14/jwt-digest/</id>
+    <published>2021-01-14T05:11:05.000Z</published>
+    <updated>2021-01-14T05:10:28.120Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Server 不用存 Session</li><li>只有在 Client 拿新 JWT 時才需要跟 DB 溝通<ul><li>Clent 拿的時機：JWT 到期或第一次拿</li><li>為何不需跟 DB 溝通？<ul><li>因為 JWT 裡已有所需資訊</li><li>但假如業務需求需要另外取敏感資訊的話還是需要碰 DB</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;Server 不用存 Session&lt;/li&gt;
+&lt;li&gt;只有在 Client 拿新 JWT 時才需要跟 DB 溝通&lt;ul&gt;
+&lt;li&gt;Clent 拿的時機：JWT 到期或第一次拿&lt;/li&gt;
+&lt;li&gt;為何不需跟 DB 溝通？&lt;ul&gt;
+&lt;li&gt;因為 JWT 裡已有所需
+      
+    
+    </summary>
+    
+    
+      <category term="Authentication" scheme="https://james687.github.io/categories/Authentication/"/>
+    
+    
+      <category term="jwt" scheme="https://james687.github.io/tags/jwt/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL local docker 開發的初始 setup</title>
