@@ -134,6 +134,71 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    幾秒 閱讀文 (大約 104 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/01/14/add-ssh-steps/">在 Mac 加入 ssh key 的步驟</a>
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li><p><code>ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;</code></p>
+<ul>
+<li>預設路徑假如已有相同檔案，記得指定新的<strong>完整</strong>路徑</li>
+<li>如檔名不用預設的，下面 <code>id_ed25519</code> 自行替換成自己的檔名</li>
+</ul>
+</li>
+<li><p><code>vi ~/.ssh/config</code></p>
+<ul>
+<li><p>舉例：加上如下</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   Host GitHub</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line">IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p>
+</li>
+<li><p><code>pbcopy &lt; ~/.ssh/id_ed25519.pub</code></p>
+</li>
+<li><p>貼到所使用的服務網站的相對應設定頁面</p>
+</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-01-14T05:11:05.000Z">2021-01-14</time>
                 
                 <div class="level-item">
@@ -386,7 +451,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -438,7 +503,7 @@
                 <span class="level-item">Authentication</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Database/">
@@ -479,6 +544,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/01/14/add-ssh-steps/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在 Mac 加入 ssh key 的步驟">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time></div>
+                    <a href="/2021/01/14/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -554,7 +638,7 @@
                     <span class="level-item">一月 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -649,6 +733,25 @@
         
         <article class="media">
             
+            <a href="/2021/01/14/add-ssh-steps/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在 Mac 加入 ssh key 的步驟">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time></div>
+                    <a href="/2021/01/14/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/01/14/jwt-digest/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="簡單統整 JWT 相對於傳統 Session 驗證的好處">
@@ -721,7 +824,7 @@
                     <span class="level-item">一月 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
