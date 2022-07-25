@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2021/1 - James&#39; Blog</title>
+<title>分類: Algorithm - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/archives/2021/01/index.html">
+<meta property="og:url" content="https://james687.github.io/categories/Algorithm/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
@@ -126,56 +126,70 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        一月 2021
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time>
-                        <a href="/2021/01/14/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2021-01-14T05:11:05.000Z">2021-01-14</time>
-                        <a href="/2021/01/14/jwt-digest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">簡單統整 JWT 相對於傳統 Session 驗證的好處</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分類</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Algorithm</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 386 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2022/07/25/why-dict-o1/">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</a>
+            
+        </h1>
+        <div class="content">
+            <p>如果去 google，大部分查到的都會說因為 Python 會把 key 經過 hash function 運算，得到一個 dict 真正內部在使用的 key，從而找到對應的 value。而一個好的 hash function 它的運算所需時間是不會隨著 n 增加而變大的，所以 dict 的 get item operation 時間複雜度為 O(1) 。</p>
+<p>不過我的疑惑是，經過 hash function 運算得到 key 之後，由這個 key 去找到 value 的時間複雜度是 O(1) 嗎？除非這個也是 O(1) 才能說整個 get item operation 是 O(1) 。</p>
+<p>後來再多翻了一些說明，終於看到一兩個回答可以解釋這個疑惑。可以想像成今天我們有一個 array，我們只要知道 index 就可以知道要去哪裡找到對應的 value ( 因此是 O(1) )，經由 hash function 算出來的 key 就好像 array 的 index 一樣，只要看到這個 key 就知道要去哪裡找對應的 value，不會受 n 大小的影響，所以是 O(1)</p>
+<p>另一個比較生活化的例子：hash function 算出來的 key，就好像你在圖書館要找書時用的索引，看到索引你就會知道書在哪一區、哪個櫃子裡，即使你需要照著圖書館的索引指示找一下才能找到，但這個過程所花的時間，跟圖書館有多少書沒有關係。</p>
+<p>References:</p>
+<ul>
+<li><a href="https://qr.ae/pvMCpM">https://qr.ae/pvMCpM</a></li>
+<li><a href="https://qr.ae/pvMCIv">https://qr.ae/pvMCIv</a></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>

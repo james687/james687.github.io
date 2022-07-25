@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</title>
+      <link href="/2022/07/25/why-dict-o1/"/>
+      <url>/2022/07/25/why-dict-o1/</url>
+      
+        <content type="html"><![CDATA[<p>如果去 google，大部分查到的都會說因為 Python 會把 key 經過 hash function 運算，得到一個 dict 真正內部在使用的 key，從而找到對應的 value。而一個好的 hash function 它的運算所需時間是不會隨著 n 增加而變大的，所以 dict 的 get item operation 時間複雜度為 O(1) 。</p><p>不過我的疑惑是，經過 hash function 運算得到 key 之後，由這個 key 去找到 value 的時間複雜度是 O(1) 嗎？除非這個也是 O(1) 才能說整個 get item operation 是 O(1) 。</p><p>後來再多翻了一些說明，終於看到一兩個回答可以解釋這個疑惑。可以想像成今天我們有一個 array，我們只要知道 index 就可以知道要去哪裡找到對應的 value ( 因此是 O(1) )，經由 hash function 算出來的 key 就好像 array 的 index 一樣，只要看到這個 key 就知道要去哪裡找對應的 value，不會受 n 大小的影響，所以是 O(1)</p><p>另一個比較生活化的例子：hash function 算出來的 key，就好像你在圖書館要找書時用的索引，看到索引你就會知道書在哪一區、哪個櫃子裡，即使你需要照著圖書館的索引指示找一下才能找到，但這個過程所花的時間，跟圖書館有多少書沒有關係。</p><p>References:</p><ul><li><a href="https://qr.ae/pvMCpM">https://qr.ae/pvMCpM</a></li><li><a href="https://qr.ae/pvMCIv">https://qr.ae/pvMCIv</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在 Mac 加入 ssh key 的步驟</title>
       <link href="/2021/01/14/add-ssh-steps/"/>
       <url>/2021/01/14/add-ssh-steps/</url>
@@ -64,9 +89,9 @@
       
         <tags>
             
-            <tag> postgresql </tag>
-            
             <tag> docker </tag>
+            
+            <tag> postgresql </tag>
             
         </tags>
       
@@ -91,11 +116,11 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> python </tag>
             
             <tag> pipenv </tag>
+            
+            <tag> docker </tag>
             
             <tag> django </tag>
             
