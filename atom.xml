@@ -103,8 +103,8 @@
   
   <entry>
     <title>PostgreSQL/MySQL local docker 開發的初始 setup</title>
-    <link href="https://james687.github.io/2020/02/07/postgresql-init-setup/"/>
-    <id>https://james687.github.io/2020/02/07/postgresql-init-setup/</id>
+    <link href="https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/"/>
+    <id>https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/</id>
     <published>2020-02-07T02:44:37.000Z</published>
     <updated>2022-09-01T04:09:33.050Z</updated>
     
@@ -126,9 +126,9 @@
       <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
     
     
-      <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
-    
       <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+    
+      <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
     
       <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
@@ -157,11 +157,11 @@
       <category term="Package Management" scheme="https://james687.github.io/categories/Package-Management/"/>
     
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
     
       <category term="pipenv" scheme="https://james687.github.io/tags/pipenv/"/>
+    
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="django" scheme="https://james687.github.io/tags/django/"/>
     
