@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: pipenv - James&#39; Blog</title>
+<title>標籤: mysql - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/tags/pipenv/index.html">
+<meta property="og:url" content="https://james687.github.io/tags/mysql/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
@@ -131,7 +131,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">pipenv</a></li>
+            <li class="is-active"><a href="#" aria-current="page">mysql</a></li>
         </ul>
         </nav>
     </div>
@@ -144,17 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
+                <time class="level-item has-text-grey" datetime="2020-02-07T02:44:37.000Z">2020-02-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Package-Management/">Package Management</a>
+                <a class="has-link-grey -link" href="/categories/Database/">Database</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 520 個字)
+                    1 分鐘 閱讀文 (大約 152 個字)
                 </span>
                 
                 
@@ -163,25 +163,39 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
+                <a class="has-link-black-ter" href="/2020/02/07/postgresql-init-setup/">PostgreSQL/MySQL local docker 開發的初始 setup</a>
             
         </h1>
         <div class="content">
-            <ul>
-<li>Local 開發是跑在 Docker 的虛擬環境裡，所以 Pipenv 產生的虛擬環境只是用來裝套件產生 Pipfile.lock 而已</li>
-<li>用 pipenv 就不用自己寫 requirements.txt，不但可以自動安裝最新版的套件，而且可以很輕鬆的固定住對應 sub-packages 的版本</li>
-<li>想一次更新所有套件也很容易</li>
-<li>步驟：(以裝一個 package 為例)
+            <p>container run 起來之後：<br><strong>PostgreSQL:</strong></p>
+<ol>
+<li><code>docker exec -it {db-container-name} psql -U postgres</code><ul>
+<li>以預設 user <code>postgres</code> 連進 DB</li>
+</ul>
+</li>
+<li><code>create user {username} with password &#39;{password}&#39;;</code></li>
+<li><code>create database {database_name} with owner {username};</code></li>
+<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
+</ol>
+<ul>
+<li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li>
+</ul>
+<p><strong>MySQL: (以 5.7 為例)</strong></p>
+<ol>
+<li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li>
+<li>docker exec -it {db-container-name} mysql -p<ul>
+<li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li>
+</ul>
+</li>
+<li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul>
+<li>Use <code>localhost</code> due to working on the machine with MySQL.</li>
+</ul>
+</li>
+<li><code>create database {database_name};</code></li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/06/pipenv-intro/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>

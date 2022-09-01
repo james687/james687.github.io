@@ -102,21 +102,22 @@
   </entry>
   
   <entry>
-    <title>PostgreSQL local docker 開發的初始 setup</title>
+    <title>PostgreSQL/MySQL local docker 開發的初始 setup</title>
     <link href="https://james687.github.io/2020/02/07/postgresql-init-setup/"/>
     <id>https://james687.github.io/2020/02/07/postgresql-init-setup/</id>
     <published>2020-02-07T02:44:37.000Z</published>
-    <updated>2020-02-29T07:50:49.065Z</updated>
+    <updated>2022-09-01T04:09:33.050Z</updated>
     
-    <content type="html"><![CDATA[<p>為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：</p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database {database_name} with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol><ul><li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>container run 起來之後：<br><strong>PostgreSQL:</strong></p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database {database_name} with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol><ul><li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li></ul><p><strong>MySQL: (以 5.7 為例)</strong></p><ol><li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li><li>docker exec -it {db-container-name} mysql -p<ul><li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li></ul></li><li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul><li>Use <code>localhost</code> due to working on the machine with MySQL.</li></ul></li><li><code>create database {database_name};</code></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;為了讓 web framework 可以跟你的 DB 連線，在你的 PostgreSQL container run 起來之後：&lt;/p&gt;
+        &lt;p&gt;container run 起來之後：&lt;br&gt;&lt;strong&gt;PostgreSQL:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;docker exec -it {db-container-name} psql -U postgres&lt;
+&lt;li&gt;&lt;code&gt;docker exec -it {db-container-name} psql -U postgres&lt;/code&gt;&lt;ul&gt;
+&lt;l
       
     
     </summary>
@@ -125,9 +126,11 @@
       <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
     
     
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+    
       <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+      <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
   </entry>
   
@@ -154,11 +157,11 @@
       <category term="Package Management" scheme="https://james687.github.io/categories/Package-Management/"/>
     
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
     
       <category term="pipenv" scheme="https://james687.github.io/tags/pipenv/"/>
+    
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="django" scheme="https://james687.github.io/tags/django/"/>
     
