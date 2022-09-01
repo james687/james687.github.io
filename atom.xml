@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2022-07-25T08:55:40.467Z</updated>
+  <updated>2022-09-01T04:17:56.117Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL/MySQL local docker 開發的初始 setup</title>
+    <link href="https://james687.github.io/2022/09/01/postgresql-mysql-init-setup/"/>
+    <id>https://james687.github.io/2022/09/01/postgresql-mysql-init-setup/</id>
+    <published>2022-09-01T02:44:37.000Z</published>
+    <updated>2022-09-01T04:17:56.117Z</updated>
+    
+    <content type="html"><![CDATA[<p>container run 起來之後：<br><strong>PostgreSQL:</strong></p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database {database_name} with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol><ul><li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li></ul><p><strong>MySQL: (以 5.7 為例)</strong></p><ol><li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li><li>docker exec -it {db-container-name} mysql -p<ul><li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li></ul></li><li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul><li>Use <code>localhost</code> due to working on the machine with MySQL.</li></ul></li><li><code>create database {database_name};</code></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;container run 起來之後：&lt;br&gt;&lt;strong&gt;PostgreSQL:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it {db-container-name} psql -U postgres&lt;/code&gt;&lt;ul&gt;
+&lt;l
+      
+    
+    </summary>
+    
+    
+      <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
+    
+    
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+    
+      <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
+    
+      <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</title>
@@ -98,39 +131,6 @@
     
     
       <category term="jwt" scheme="https://james687.github.io/tags/jwt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL/MySQL local docker 開發的初始 setup</title>
-    <link href="https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/"/>
-    <id>https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/</id>
-    <published>2020-02-07T02:44:37.000Z</published>
-    <updated>2022-09-01T04:09:33.050Z</updated>
-    
-    <content type="html"><![CDATA[<p>container run 起來之後：<br><strong>PostgreSQL:</strong></p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database {database_name} with owner {username};</code></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol><ul><li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li></ul><p><strong>MySQL: (以 5.7 為例)</strong></p><ol><li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li><li>docker exec -it {db-container-name} mysql -p<ul><li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li></ul></li><li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul><li>Use <code>localhost</code> due to working on the machine with MySQL.</li></ul></li><li><code>create database {database_name};</code></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;container run 起來之後：&lt;br&gt;&lt;strong&gt;PostgreSQL:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;docker exec -it {db-container-name} psql -U postgres&lt;/code&gt;&lt;ul&gt;
-&lt;l
-      
-    
-    </summary>
-    
-    
-      <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
-    
-    
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
-      <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
-    
-      <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
   </entry>
   
