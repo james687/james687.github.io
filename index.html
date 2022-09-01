@@ -134,77 +134,6 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2022-09-01T02:44:37.000Z">2022-09-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Database/">Database</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分鐘 閱讀文 (大約 152 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2022/09/01/postgresql-mysql-init-setup/">PostgreSQL/MySQL local docker 開發的初始 setup</a>
-            
-        </h1>
-        <div class="content">
-            <p>container run 起來之後：<br><strong>PostgreSQL:</strong></p>
-<ol>
-<li><code>docker exec -it {db-container-name} psql -U postgres</code><ul>
-<li>以預設 user <code>postgres</code> 連進 DB</li>
-</ul>
-</li>
-<li><code>create user {username} with password &#39;{password}&#39;;</code></li>
-<li><code>create database {database_name} with owner {username};</code></li>
-<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
-</ol>
-<ul>
-<li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li>
-</ul>
-<p><strong>MySQL: (以 5.7 為例)</strong></p>
-<ol>
-<li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li>
-<li>docker exec -it {db-container-name} mysql -p<ul>
-<li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li>
-</ul>
-</li>
-<li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul>
-<li>Use <code>localhost</code> due to working on the machine with MySQL.</li>
-</ul>
-</li>
-<li><code>create database {database_name};</code></li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time>
                 
                 <div class="level-item">
@@ -360,6 +289,77 @@
 </li>
 <li><a href="https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E7%AD%86%E8%A8%98-%E9%80%8F%E9%81%8E-jwt-%E5%AF%A6%E4%BD%9C%E9%A9%97%E8%AD%89%E6%A9%9F%E5%88%B6-2e64d72594f8">參考</a></li>
 </ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-07T02:44:37.000Z">2020-02-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Database/">Database</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 152 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/07/postgresql-mysql-init-setup/">PostgreSQL/MySQL local docker 開發的初始 setup</a>
+            
+        </h1>
+        <div class="content">
+            <p>container run 起來之後：<br><strong>PostgreSQL:</strong></p>
+<ol>
+<li><code>docker exec -it {db-container-name} psql -U postgres</code><ul>
+<li>以預設 user <code>postgres</code> 連進 DB</li>
+</ul>
+</li>
+<li><code>create user {username} with password &#39;{password}&#39;;</code></li>
+<li><code>create database {database_name} with owner {username};</code></li>
+<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
+</ol>
+<ul>
+<li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li>
+</ul>
+<p><strong>MySQL: (以 5.7 為例)</strong></p>
+<ol>
+<li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li>
+<li>docker exec -it {db-container-name} mysql -p<ul>
+<li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li>
+</ul>
+</li>
+<li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul>
+<li>Use <code>localhost</code> due to working on the machine with MySQL.</li>
+</ul>
+</li>
+<li><code>create database {database_name};</code></li>
+</ol>
 
         </div>
         
@@ -581,25 +581,6 @@
         
         <article class="media">
             
-            <a href="/2022/09/01/postgresql-mysql-init-setup/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PostgreSQL/MySQL local docker 開發的初始 setup">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-09-01T02:44:37.000Z">2022-09-01</time></div>
-                    <a href="/2022/09/01/postgresql-mysql-init-setup/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL/MySQL local docker 開發的初始 setup</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Database/">Database</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2022/07/25/why-dict-o1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？">
@@ -657,6 +638,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/postgresql-mysql-init-setup/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PostgreSQL/MySQL local docker 開發的初始 setup">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T02:44:37.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/postgresql-mysql-init-setup/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL/MySQL local docker 開發的初始 setup</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Database/">Database</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/06/pipenv-intro/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="用 pipenv 管理 requirements 搭配 docker-compose local 開發">
@@ -686,17 +686,6 @@
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2022/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2022</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2022/07/">
                 <span class="level-start">
                     <span class="level-item">七月 2022</span>
@@ -724,7 +713,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -815,25 +804,6 @@
         
         <article class="media">
             
-            <a href="/2022/09/01/postgresql-mysql-init-setup/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PostgreSQL/MySQL local docker 開發的初始 setup">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-09-01T02:44:37.000Z">2022-09-01</time></div>
-                    <a href="/2022/09/01/postgresql-mysql-init-setup/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL/MySQL local docker 開發的初始 setup</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Database/">Database</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2022/07/25/why-dict-o1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？">
@@ -891,6 +861,25 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/postgresql-mysql-init-setup/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="PostgreSQL/MySQL local docker 開發的初始 setup">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T02:44:37.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/postgresql-mysql-init-setup/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PostgreSQL/MySQL local docker 開發的初始 setup</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Database/">Database</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/06/pipenv-intro/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="用 pipenv 管理 requirements 搭配 docker-compose local 開發">
@@ -920,17 +909,6 @@
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2022/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2022</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2022/07/">
                 <span class="level-start">
                     <span class="level-item">七月 2022</span>
@@ -958,7 +936,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
