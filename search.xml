@@ -108,9 +108,9 @@
       
         <tags>
             
-            <tag> postgresql </tag>
-            
             <tag> docker </tag>
+            
+            <tag> postgresql </tag>
             
             <tag> mysql </tag>
             
@@ -137,11 +137,11 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> python </tag>
             
             <tag> pipenv </tag>
+            
+            <tag> docker </tag>
             
             <tag> django </tag>
             
