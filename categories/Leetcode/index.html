@@ -7,19 +7,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>在 Mac 加入 ssh key 的步驟 - James&#39; Blog</title>
+<title>分類: Leetcode - James&#39; Blog</title>
 
 
-    <meta name="description" content="ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;  預設路徑假如已有相同檔案，記得指定新的完整路徑 如檔名不用預設的，下面 id_ed25519 自行替換成自己的檔名   vi ~&#x2F;.ssh&#x2F;config  舉例：加上如下   1234Host GitHub HostName github.com IdentityFile ~&#x2F;.ssh&amp;#">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在 Mac 加入 ssh key 的步驟">
-<meta property="og:url" content="https://james687.github.io/2021/01/14/add-ssh-steps/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="James&#39; Blog">
+<meta property="og:url" content="https://james687.github.io/categories/Leetcode/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;  預設路徑假如已有相同檔案，記得指定新的完整路徑 如檔名不用預設的，下面 id_ed25519 自行替換成自己的檔名   vi ~&#x2F;.ssh&#x2F;config  舉例：加上如下   1234Host GitHub HostName github.com IdentityFile ~&#x2F;.ssh&amp;#">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2021-01-14T08:31:44.000Z">
-<meta property="article:modified_time" content="2021-01-14T08:47:59.876Z">
 <meta property="article:author" content="James Ho">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
@@ -89,7 +85,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="在 Mac 加入 ssh key 的步驟" height="28">
+                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
             
             </a>
         </div>
@@ -130,24 +126,36 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分類</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Leetcode</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time>
+                <time class="level-item has-text-grey" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    幾秒 閱讀文 (大約 104 個字)
+                    2 分鐘 閱讀文 (大約 280 個字)
                 </span>
                 
                 
@@ -156,30 +164,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                在 Mac 加入 ssh key 的步驟
+                <a class="has-link-black-ter" href="/2022/12/05/3-sum/">3Sum note</a>
             
         </h1>
         <div class="content">
-            <ol>
-<li><p><code>ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;</code></p>
+            <p><a href="https://leetcode.com/problems/3sum/description/">題目</a><br>思路：</p>
 <ul>
-<li>預設路徑假如已有相同檔案，記得指定新的<strong>完整</strong>路徑</li>
-<li>如檔名不用預設的，下面 <code>id_ed25519</code> 自行替換成自己的檔名</li>
+<li>用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result</li>
+<li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li>
 </ul>
-</li>
-<li><p><code>vi ~/.ssh/config</code></p>
-<ul>
-<li><p>舉例：加上如下</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host GitHub</span><br><span class="line"> HostName github.com</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line"> IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p>
-</li>
-<li><p><code>pbcopy &lt; ~/.ssh/id_ed25519.pub</code></p>
-</li>
-<li><p>貼到所使用的服務網站的相對應設定頁面</p>
-</li>
-</ol>
+<p>Python3 solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def threeSum(self, nums):</span><br><span class="line">    result &#x3D; []</span><br><span class="line">    nums.sort()</span><br><span class="line">    for left in range(len(nums) - 2):  # 右邊須留兩個空位給另兩個指標</span><br><span class="line">        if left &gt; 0 and nums[left] &#x3D;&#x3D; nums[left - 1]:  # 排除重複的 result，left 必須 &gt; 0 才會有前一個</span><br><span class="line">            continue                                   # - 假如 nums[left] 是一樣的，最後找到的 result 也會是一樣的，所以要排除掉</span><br><span class="line">        mid &#x3D; left + 1</span><br><span class="line">        right &#x3D; len(nums) - 1</span><br><span class="line">        while mid &lt; right:  # 設定有效範圍，在此範圍內尋找符合的 mid, right</span><br><span class="line">            t_sum &#x3D; nums[left] + nums[mid] + nums[right]</span><br><span class="line">            if t_sum &lt; 0:</span><br><span class="line">                mid +&#x3D; 1  # 此時必須讓 t_sum 變大，所以將 mid 往右移</span><br><span class="line">            elif t_sum &gt; 0:</span><br><span class="line">                right -&#x3D; 1  # 此時必須讓 t_sum 變小，所以將 right 往左移</span><br><span class="line">            else:</span><br><span class="line">                result.append([nums[left], nums[mid], nums[right]])</span><br><span class="line">                while mid &lt; right and nums[mid] &#x3D;&#x3D; nums[mid + 1]:  # 跳過 mid 重複的部分</span><br><span class="line">                    mid +&#x3D; 1</span><br><span class="line">                while mid &lt; right and nums[right] &#x3D;&#x3D; nums[right - 1]:  # 跳過 right 重複的部分</span><br><span class="line">                    right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">                # 正常的移動 mid, right，尋找下一個符合的 result</span><br><span class="line">                mid +&#x3D; 1</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -192,52 +187,9 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2022/07/25/why-dict-o1/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/14/jwt-digest/">
-                <span class="level-item">簡單統整 JWT 相對於傳統 Session 驗證的好處</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">評論</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'https://james687.github.io/2021/01/14/add-ssh-steps/';
-        this.page.identifier = '2021/01/14/add-ssh-steps/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
 </div>
                 
 
@@ -856,7 +808,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="在 Mac 加入 ssh key 的步驟" height="28">
+                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
