@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 531 個字)
+                    4 分鐘 閱讀文 (大約 550 個字)
                 </span>
                 
                 
@@ -189,6 +189,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure>
 
 <p>更詳細解說可參考<a href="https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/">此篇文章</a></p>
+<p>延伸：Binary search medium 題目 - <a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>
 
         </div>
         
