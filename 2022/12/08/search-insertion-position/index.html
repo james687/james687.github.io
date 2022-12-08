@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2022-12-08T05:21:23.000Z">
-<meta property="article:modified_time" content="2022-12-08T06:01:52.118Z">
+<meta property="article:modified_time" content="2022-12-08T06:04:51.104Z">
 <meta property="article:author" content="James Ho">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
@@ -173,21 +173,16 @@
 <li><p>迴圈寫完後，回來 check while condition，看看 while 把 left &amp; right 收斂到最後幾個的時候，經過以下的操作會不會有無窮迴圈</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. left &#x3D; mid + 1</span><br><span class="line">2. right &#x3D; mid</span><br></pre></td></tr></table></figure>
 <ol>
-<li><p>剩最後三個：此時 mid 會是中間那個，上面兩種操作都有助於收斂範圍</p>
-</li>
-<li><p>剩最後兩個：此時 mid == left，上面兩種操作一樣可以收斂範圍</p>
-</li>
-<li><p>剩最後一個：此時 left == mid == right，以目前的 while 條件設定，會因為不符而跳出，所以跳出迴圈後的情況就是這個</p>
-<ul>
+<li>剩最後三個：此時 mid 會是中間那個，上面兩種操作都有助於收斂範圍</li>
+<li>剩最後兩個：此時 mid == left，上面兩種操作一樣可以收斂範圍</li>
+<li>剩最後一個：此時 left == mid == right，以目前的 while 條件設定，會因為不符而跳出，所以跳出迴圈後的情況就是這個<ul>
 <li>如果 while 條件為 <code>left &lt;= right</code>，則 <code>right = mid</code> 這個操作會造成無窮迴圈，因此不能設定為 <code>&lt;=</code></li>
 </ul>
-<p>=&gt; 確認不會造成無窮迴圈，所以此 while 條件設定是正確的</p>
 </li>
 </ol>
 </li>
-<li><p>Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p>
-</li>
 </ol>
+<p>=&gt; 確認不會造成無窮迴圈，所以此 while 條件設定是正確的<br>4. Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p>
 <p>Python3 solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure>
 
