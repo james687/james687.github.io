@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Add Two Numbers note</title>
+      <link href="/2023/02/03/add-two-numbers/"/>
+      <url>/2023/02/03/add-two-numbers/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/add-two-numbers/description/">題目</a><br>思路：</p><ol><li>既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。</li><li>迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作</li><li>迴圈內算出的當下位數的答案 <code>digit_sum % 10</code> 的 node 為何是指定給 <code>curr.next</code> 而非 <code>curr</code>?<ul><li>因為迴圈結束前 <code>curr</code> 必須指向下一個 node，也就是 <code>curr.next</code>，以下分兩種情況解釋：<ul><li>答案放在 <code>curr</code> 身上：必須創造一個空的 node 來當 <code>curr.next</code>，而假如這次的迴圈已經是最後一次了，此 linked list 的尾巴就會多一個空的 node</li><li>答案放在 <code>curr.next</code> 身上：迴圈結束前 <code>curr</code> 指向 <code>curr.next</code> 繼續下一次的操作，假如此次已是最後一次迴圈，也不會多出空的 node 在 linked list 末端，只會在開頭多出一個沒用到的 dummy_head 而已，因此最後回傳答案時是回傳 <code>dummy_head.next</code></li></ul></li></ul></li></ol><p>Python3 solution</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    carry &#x3D; 0  # 位數相加後除以 10 得到的商</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 保留最前面的指標，到時候才有辦法回傳答案</span><br><span class="line">    curr &#x3D; dummy_head        # 不能只用 &#96;curr&#96;，因為 &#96;curr&#96; 所指的 node 必須一直變</span><br><span class="line">    while l1 or l2 or carry:  # 可以繼續加的條件</span><br><span class="line">        v1 &#x3D; l1 and l1.val or 0</span><br><span class="line">        v2 &#x3D; l2 and l2.val or 0</span><br><span class="line">        digit_sum &#x3D; v1 + v2 + carry</span><br><span class="line">        carry &#x3D; digit_sum &#x2F;&#x2F; 10</span><br><span class="line">        curr.next &#x3D; ListNode(digit_sum % 10)</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">        l1 &#x3D; l1 and l1.next</span><br><span class="line">        l2 &#x3D; l2 and l2.next</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Search Insert Position note</title>
       <link href="/2022/12/08/search-insert-position/"/>
       <url>/2022/12/08/search-insert-position/</url>
@@ -127,9 +146,9 @@
       
         <tags>
             
-            <tag> postgresql </tag>
-            
             <tag> docker </tag>
+            
+            <tag> postgresql </tag>
             
             <tag> mysql </tag>
             
@@ -156,11 +175,11 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> python </tag>
             
             <tag> pipenv </tag>
+            
+            <tag> docker </tag>
             
             <tag> django </tag>
             
