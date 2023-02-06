@@ -215,7 +215,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 550 個字)
+                    4 分鐘 閱讀文 (大約 629 個字)
                 </span>
                 
                 
@@ -254,13 +254,19 @@
 </ol>
 </li>
 <li><p>Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p>
+<ul>
+<li>為何跳出 while 後的情況不會是 <code>left &gt; right</code>?<ul>
+<li>要讓 <code>left &gt; right</code>，必須執行到 <code>left = mid + 1</code>，而且此時 <code>left</code> 和 <code>right</code> 都必須等於 <code>mid</code>，而如果已經是這個情況，就不會再進到迴圈裡，而是已經跳出了</li>
+</ul>
+</li>
+</ul>
 </li>
 </ol>
 <p>Python3 solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure>
 
 <p>更詳細解說可參考<a href="https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/">此篇文章</a></p>
-<p>延伸：Binary search medium 題目 - <a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>
+<p>類似題：<a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a><br>延伸題：<a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>
 
         </div>
         
@@ -397,7 +403,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            7
+                            8
                         </p>
                     </a>
                 </div>
@@ -470,7 +476,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+        <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
     </div>
 </div>
     
@@ -656,6 +662,13 @@
                 標籤
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Binary-Search/">
+                        <span class="tag">Binary Search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/django/">
@@ -901,6 +914,13 @@
                 標籤
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Binary-Search/">
+                        <span class="tag">Binary Search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/django/">
