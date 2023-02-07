@@ -175,7 +175,7 @@
 </ul>
 </li>
 <li><p>設定 while 可以繼續檢查的條件</p>
-<ol start="3">
+<ol>
 <li><p>while 裡要做的是：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if curr.val &#x3D;&#x3D; curr.next.val:</span><br><span class="line">    curr.next &#x3D; curr.next.next  # 假如 val 跟下一個一樣，就把 next 接到下下個</span><br><span class="line">curr &#x3D; curr.next  # 把指標移到下一個 node，以便下次的檢查</span><br></pre></td></tr></table></figure>
 <ul>
@@ -190,10 +190,9 @@
 <li>所以條件要再多一個：必須有 <code>curr</code></li>
 </ul>
 </li>
+<li><p>結論：條件為 <code>curr and curr.next</code></p>
+</li>
 </ol>
-<ul>
-<li>結論：條件為 <code>curr and curr.next</code></li>
-</ul>
 </li>
 <li><p>檢查一下 edge case：假如有連續三個或以上一樣的有沒有辦法 handle？</p>
 <ul>
