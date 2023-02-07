@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-02-07T08:21:23.000Z">
-<meta property="article:modified_time" content="2023-02-07T09:07:03.423Z">
+<meta property="article:modified_time" content="2023-02-07T09:27:30.943Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="linked list">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 506 個字)
+                    3 分鐘 閱讀文 (大約 504 個字)
                 </span>
                 
                 
@@ -189,7 +189,7 @@
 <li>結論：條件為 <code>curr and curr.next</code></li>
 </ul>
 </li>
-<li><p>檢查一下目前的寫法，假如有連續三個一樣的有沒有辦法 handle</p>
+<li><p>檢查一下 edge case：假如有連續三個一樣的有沒有辦法 handle？</p>
 <ul>
 <li>答案是無法，因為在 while 裡只要指標 <code>curr</code> 一移動就無法再回頭了，在此情況下第一個 node 會接到第三個 node，然後從第三個 node 開始往下檢查，如此還是會出現連續兩個一樣的</li>
 <li>所以指標移動到 <code>curr.next</code> 之前，一定要確保 <code>curr.val != curr.next.val</code></li>
