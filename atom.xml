@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-02-03T07:54:41.590Z</updated>
+  <updated>2023-02-07T09:07:03.423Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Add Two Numbers note</title>
+    <title>Remove Duplicates from Sorted List</title>
+    <link href="https://james687.github.io/2023/02/07/remove-duplicates-from-sorted-list/"/>
+    <id>https://james687.github.io/2023/02/07/remove-duplicates-from-sorted-list/</id>
+    <published>2023-02-07T08:21:23.000Z</published>
+    <updated>2023-02-07T09:07:03.423Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p><ol><li><p>既然是 Linked List，我們可以宣告一個指標指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p><ul><li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li></ul></li><li><p>設定 while 可以繼續檢查的條件</p><ol start="3"><li><p>while 裡要做的是：</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if curr.val &#x3D;&#x3D; curr.next.val:</span><br><span class="line">    curr.next &#x3D; curr.next.next  # 假如 val 跟下一個一樣，就把 next 接到下下個</span><br><span class="line">curr &#x3D; curr.next  # 把指標移到下一個 node，以便下次的檢查</span><br></pre></td></tr></table></figure><ul><li>有時需要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</li></ul></li><li><p>確定了必須有 <code>curr.next</code></p></li><li><p>因為我們會移動 <code>curr</code> 指標，<code>curr</code> 有沒有可能是 <code>None</code>?</p><ul><li>假如 <code>curr.next.next</code> 是 <code>None</code>，<code>curr</code> 就會是 <code>None</code></li><li>所以條件要再多一個：必須有 <code>curr</code></li></ul></li></ol><ul><li>結論：條件為 <code>curr and curr.next</code></li></ul></li><li><p>檢查一下目前的寫法，假如有連續三個一樣的有沒有辦法 handle</p><ul><li>答案是無法，因為在 while 裡只要指標 <code>curr</code> 一移動就無法再回頭了，在此情況下第一個 node 會接到第三個 node，然後從第三個 node 開始往下檢查，如此還是會出現連續兩個一樣的</li><li>所以指標移動到 <code>curr.next</code> 之前，一定要確保 <code>curr.val != curr.next.val</code></li><li>=&gt; 把上面的 <code>if</code> 改成 <code>while</code>，只要 <code>curr.val</code> 還等於 <code>curr.next.val</code> 就繼續做<ul><li>此時 <code>curr.next</code> 有可能會變成 <code>None</code>，所以 while 的條件也要稍微修一下</li></ul></li></ul></li></ol><p>Python3 solution:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, next&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.next &#x3D; next</span><br><span class="line">def deleteDuplicates(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    curr &#x3D; head  # 等一下可以在 while 迴圈中移動的指標</span><br><span class="line">    while curr and curr.next:</span><br><span class="line">        while curr.val &#x3D;&#x3D; (curr.next and curr.next.val):</span><br><span class="line">            curr.next &#x3D; curr.next.next</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;既然是 Linked List，我們可
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="linked list" scheme="https://james687.github.io/tags/linked-list/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Add Two Numbers</title>
     <link href="https://james687.github.io/2023/02/03/add-two-numbers/"/>
     <id>https://james687.github.io/2023/02/03/add-two-numbers/</id>
     <published>2023-02-03T07:54:07.000Z</published>
-    <updated>2023-02-03T07:54:41.590Z</updated>
+    <updated>2023-02-07T09:07:32.738Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/add-two-numbers/description/">題目</a><br>思路：</p><ol><li>既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。</li><li>迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作</li><li>迴圈內算出的當下位數的答案 <code>digit_sum % 10</code> 的 node 為何是指定給 <code>curr.next</code> 而非 <code>curr</code>?<ul><li>因為迴圈結束前 <code>curr</code> 必須指向下一個 node，也就是 <code>curr.next</code>，以下分兩種情況解釋：<ul><li>答案放在 <code>curr</code> 身上：必須創造一個空的 node 來當 <code>curr.next</code>，而假如這次的迴圈已經是最後一次了，此 linked list 的尾巴就會多一個空的 node</li><li>答案放在 <code>curr.next</code> 身上：迴圈結束前 <code>curr</code> 指向 <code>curr.next</code> 繼續下一次的操作，假如此次已是最後一次迴圈，也不會多出空的 node 在 linked list 末端，只會在開頭多出一個沒用到的 dummy_head 而已，因此最後回傳答案時是回傳 <code>dummy_head.next</code></li></ul></li></ul></li></ol><p>Python3 solution</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    carry &#x3D; 0  # 位數相加後除以 10 得到的商</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 保留最前面的指標，到時候才有辦法回傳答案</span><br><span class="line">    curr &#x3D; dummy_head        # 不能只用 &#96;curr&#96;，因為 &#96;curr&#96; 所指的 node 必須一直變</span><br><span class="line">    while l1 or l2 or carry:  # 可以繼續加的條件</span><br><span class="line">        v1 &#x3D; l1 and l1.val or 0</span><br><span class="line">        v2 &#x3D; l2 and l2.val or 0</span><br><span class="line">        digit_sum &#x3D; v1 + v2 + carry</span><br><span class="line">        carry &#x3D; digit_sum &#x2F;&#x2F; 10</span><br><span class="line">        curr.next &#x3D; ListNode(digit_sum % 10)</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">        l1 &#x3D; l1 and l1.next</span><br><span class="line">        l2 &#x3D; l2 and l2.next</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -43,11 +71,11 @@
   </entry>
   
   <entry>
-    <title>Search Insert Position note</title>
+    <title>Search Insert Position</title>
     <link href="https://james687.github.io/2022/12/08/search-insert-position/"/>
     <id>https://james687.github.io/2022/12/08/search-insert-position/</id>
     <published>2022-12-08T05:21:23.000Z</published>
-    <updated>2023-02-06T10:13:52.676Z</updated>
+    <updated>2023-02-07T09:07:43.552Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p><ol><li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]</p></li><li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p><ul><li>此時會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？判斷依據為在迴圈裡變更完 left or right 之後，<strong>不能造成無窮迴圈</strong></li><li>但此時還沒寫迴圈內容，所以可以先直觀的設定一個，譬如 <code>&lt;</code>，等寫完迴圈內容再來驗證是否適合</li></ul></li><li><p>迴圈寫完後，回來 check while condition，看看 while 把 left &amp; right 收斂到最後幾個的時候，經過以下的操作會不會有無窮迴圈</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. left &#x3D; mid + 1</span><br><span class="line">2. right &#x3D; mid</span><br></pre></td></tr></table></figure><ol><li><p>剩最後三個：此時 mid 會是中間那個，上面兩種操作都有助於收斂範圍</p></li><li><p>剩最後兩個：此時 mid == left，上面兩種操作一樣可以收斂範圍</p></li><li><p>剩最後一個：此時 left == mid == right，以目前的 while 條件設定，會因為不符而跳出，所以跳出迴圈後的情況就是這個</p><ul><li>如果 while 條件為 <code>left &lt;= right</code>，則 <code>right = mid</code> 這個操作會造成無窮迴圈，因此不能設定為 <code>&lt;=</code></li></ul><p>=&gt; 確認不會造成無窮迴圈，所以此 while 條件設定是正確的</p></li></ol></li><li><p>Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p><ul><li>為何跳出 while 後的情況不會是 <code>left &gt; right</code>?<ul><li>要讓 <code>left &gt; right</code>，必須執行到 <code>left = mid + 1</code>，而且此時 <code>left</code> 和 <code>right</code> 都必須等於 <code>mid</code>，而如果已經是這個情況，就不會再進到迴圈裡，而是已經跳出了</li></ul></li></ul></li></ol><p>Python3 solution:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure><p>更詳細解說可參考<a href="https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/">此篇文章</a></p><p>類似題：<a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a><br>延伸題：<a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>]]></content>
     
@@ -69,11 +97,11 @@
   </entry>
   
   <entry>
-    <title>3Sum note</title>
+    <title>3Sum</title>
     <link href="https://james687.github.io/2022/12/05/3-sum/"/>
     <id>https://james687.github.io/2022/12/05/3-sum/</id>
     <published>2022-12-05T08:51:05.000Z</published>
-    <updated>2022-12-05T09:11:14.881Z</updated>
+    <updated>2023-02-07T09:07:24.125Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/3sum/description/">題目</a><br>思路：</p><ul><li>用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result</li><li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li></ul><p>Python3 solution</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def threeSum(self, nums):</span><br><span class="line">    result &#x3D; []</span><br><span class="line">    nums.sort()</span><br><span class="line">    for left in range(len(nums) - 2):  # 右邊須留兩個空位給另兩個指標</span><br><span class="line">        if left &gt; 0 and nums[left] &#x3D;&#x3D; nums[left - 1]:  # 排除重複的 result，left 必須 &gt; 0 才會有前一個</span><br><span class="line">            continue                                   # - 假如 nums[left] 是一樣的，最後找到的 result 也會是一樣的，所以要排除掉</span><br><span class="line">        mid &#x3D; left + 1</span><br><span class="line">        right &#x3D; len(nums) - 1</span><br><span class="line">        while mid &lt; right:  # 設定有效範圍，在此範圍內尋找符合的 mid, right</span><br><span class="line">            t_sum &#x3D; nums[left] + nums[mid] + nums[right]</span><br><span class="line">            if t_sum &lt; 0:</span><br><span class="line">                mid +&#x3D; 1  # 此時必須讓 t_sum 變大，所以將 mid 往右移</span><br><span class="line">            elif t_sum &gt; 0:</span><br><span class="line">                right -&#x3D; 1  # 此時必須讓 t_sum 變小，所以將 right 往左移</span><br><span class="line">            else:</span><br><span class="line">                result.append([nums[left], nums[mid], nums[right]])</span><br><span class="line">                while mid &lt; right and nums[mid] &#x3D;&#x3D; nums[mid + 1]:  # 跳過 mid 重複的部分</span><br><span class="line">                    mid +&#x3D; 1</span><br><span class="line">                while mid &lt; right and nums[right] &#x3D;&#x3D; nums[right - 1]:  # 跳過 right 重複的部分</span><br><span class="line">                    right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">                # 正常的移動 mid, right，尋找下一個符合的 result</span><br><span class="line">                mid +&#x3D; 1</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -205,9 +233,9 @@
       <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
     
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
       <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
+    
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
@@ -236,11 +264,11 @@
       <category term="Package Management" scheme="https://james687.github.io/categories/Package-Management/"/>
     
     
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+    
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
     
       <category term="pipenv" scheme="https://james687.github.io/tags/pipenv/"/>
-    
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="django" scheme="https://james687.github.io/tags/django/"/>
     

@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Search Insert Position - James&#39; Blog</title>
+<title>Remove Duplicates from Sorted List - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到  設定左右兩個指標作為可能答案範圍：[left, right]  while left &lt; right: 設定 binary search 可繼續執行的條件  此時會想，要用 &lt; or &lt;&#x3D; 呢？判斷依據為在迴圈裡變更完 left or right 之">
+    <meta name="description" content="題目思路：  既然是 Linked List，我們可以宣告一個指標指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)  不能直接用 head 來移動，因為到時候回傳答案的時候需要回傳這個 head   設定 while 可以繼續檢查的條件  while 裡要做的是：  123if curr.val &#x3D;&#x3D; curr.next.v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Search Insert Position">
-<meta property="og:url" content="https://james687.github.io/2022/12/08/search-insert-position/index.html">
+<meta property="og:title" content="Remove Duplicates from Sorted List">
+<meta property="og:url" content="https://james687.github.io/2023/02/07/remove-duplicates-from-sorted-list/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到  設定左右兩個指標作為可能答案範圍：[left, right]  while left &lt; right: 設定 binary search 可繼續執行的條件  此時會想，要用 &lt; or &lt;&#x3D; 呢？判斷依據為在迴圈裡變更完 left or right 之">
+<meta property="og:description" content="題目思路：  既然是 Linked List，我們可以宣告一個指標指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)  不能直接用 head 來移動，因為到時候回傳答案的時候需要回傳這個 head   設定 while 可以繼續檢查的條件  while 裡要做的是：  123if curr.val &#x3D;&#x3D; curr.next.v">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2022-12-08T05:21:23.000Z">
-<meta property="article:modified_time" content="2023-02-07T09:07:43.552Z">
+<meta property="article:published_time" content="2023-02-07T08:21:23.000Z">
+<meta property="article:modified_time" content="2023-02-07T09:07:03.423Z">
 <meta property="article:author" content="James Ho">
-<meta property="article:tag" content="binary search">
+<meta property="article:tag" content="linked list">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Search Insert Position" height="28">
+                <img src="/images/logo.svg" alt="Remove Duplicates from Sorted List" height="28">
             
             </a>
         </div>
@@ -138,7 +138,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
+                <time class="level-item has-text-grey" datetime="2023-02-07T08:21:23.000Z">2023-02-07</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 629 個字)
+                    3 分鐘 閱讀文 (大約 506 個字)
                 </span>
                 
                 
@@ -157,57 +157,58 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Search Insert Position
+                Remove Duplicates from Sorted List
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p>
+            <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p>
 <ol>
-<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]</p>
-</li>
-<li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p>
+<li><p>既然是 Linked List，我們可以宣告一個指標指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p>
 <ul>
-<li>此時會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？判斷依據為在迴圈裡變更完 left or right 之後，<strong>不能造成無窮迴圈</strong></li>
-<li>但此時還沒寫迴圈內容，所以可以先直觀的設定一個，譬如 <code>&lt;</code>，等寫完迴圈內容再來驗證是否適合</li>
+<li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li>
 </ul>
 </li>
-<li><p>迴圈寫完後，回來 check while condition，看看 while 把 left &amp; right 收斂到最後幾個的時候，經過以下的操作會不會有無窮迴圈</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. left &#x3D; mid + 1</span><br><span class="line">2. right &#x3D; mid</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>剩最後三個：此時 mid 會是中間那個，上面兩種操作都有助於收斂範圍</p>
-</li>
-<li><p>剩最後兩個：此時 mid == left，上面兩種操作一樣可以收斂範圍</p>
-</li>
-<li><p>剩最後一個：此時 left == mid == right，以目前的 while 條件設定，會因為不符而跳出，所以跳出迴圈後的情況就是這個</p>
+<li><p>設定 while 可以繼續檢查的條件</p>
+<ol start="3">
+<li><p>while 裡要做的是：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if curr.val &#x3D;&#x3D; curr.next.val:</span><br><span class="line">    curr.next &#x3D; curr.next.next  # 假如 val 跟下一個一樣，就把 next 接到下下個</span><br><span class="line">curr &#x3D; curr.next  # 把指標移到下一個 node，以便下次的檢查</span><br></pre></td></tr></table></figure>
 <ul>
-<li>如果 while 條件為 <code>left &lt;= right</code>，則 <code>right = mid</code> 這個操作會造成無窮迴圈，因此不能設定為 <code>&lt;=</code></li>
+<li>有時需要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</li>
 </ul>
-<p>=&gt; 確認不會造成無窮迴圈，所以此 while 條件設定是正確的</p>
+</li>
+<li><p>確定了必須有 <code>curr.next</code></p>
+</li>
+<li><p>因為我們會移動 <code>curr</code> 指標，<code>curr</code> 有沒有可能是 <code>None</code>?</p>
+<ul>
+<li>假如 <code>curr.next.next</code> 是 <code>None</code>，<code>curr</code> 就會是 <code>None</code></li>
+<li>所以條件要再多一個：必須有 <code>curr</code></li>
+</ul>
 </li>
 </ol>
-</li>
-<li><p>Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p>
 <ul>
-<li>為何跳出 while 後的情況不會是 <code>left &gt; right</code>?<ul>
-<li>要讓 <code>left &gt; right</code>，必須執行到 <code>left = mid + 1</code>，而且此時 <code>left</code> 和 <code>right</code> 都必須等於 <code>mid</code>，而如果已經是這個情況，就不會再進到迴圈裡，而是已經跳出了</li>
+<li>結論：條件為 <code>curr and curr.next</code></li>
+</ul>
+</li>
+<li><p>檢查一下目前的寫法，假如有連續三個一樣的有沒有辦法 handle</p>
+<ul>
+<li>答案是無法，因為在 while 裡只要指標 <code>curr</code> 一移動就無法再回頭了，在此情況下第一個 node 會接到第三個 node，然後從第三個 node 開始往下檢查，如此還是會出現連續兩個一樣的</li>
+<li>所以指標移動到 <code>curr.next</code> 之前，一定要確保 <code>curr.val != curr.next.val</code></li>
+<li>=&gt; 把上面的 <code>if</code> 改成 <code>while</code>，只要 <code>curr.val</code> 還等於 <code>curr.next.val</code> 就繼續做<ul>
+<li>此時 <code>curr.next</code> 有可能會變成 <code>None</code>，所以 while 的條件也要稍微修一下</li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
 <p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure>
-
-<p>更詳細解說可參考<a href="https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/">此篇文章</a></p>
-<p>類似題：<a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a><br>延伸題：<a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, next&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.next &#x3D; next</span><br><span class="line">def deleteDuplicates(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    curr &#x3D; head  # 等一下可以在 while 迴圈中移動的指標</span><br><span class="line">    while curr and curr.next:</span><br><span class="line">        while curr.val &#x3D;&#x3D; (curr.next and curr.next.val):</span><br><span class="line">            curr.next &#x3D; curr.next.next</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/binary-search/" rel="tag">binary search</a>
+                    <a class="has-link-grey -link" href="/tags/linked-list/" rel="tag">linked list</a>
                 </div>
             </div>
         </div>
@@ -224,17 +225,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2023/02/03/add-two-numbers/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Add Two Numbers</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2022/12/05/3-sum/">
-                <span class="level-item">3Sum</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2023/02/03/add-two-numbers/">
+                <span class="level-item">Add Two Numbers</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -250,8 +244,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://james687.github.io/2022/12/08/search-insert-position/';
-        this.page.identifier = '2022/12/08/search-insert-position/';
+        this.page.url = 'https://james687.github.io/2023/02/07/remove-duplicates-from-sorted-list/';
+        this.page.identifier = '2023/02/07/remove-duplicates-from-sorted-list/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -935,7 +929,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Search Insert Position" height="28">
+                    <img src="/images/logo.svg" alt="Remove Duplicates from Sorted List" height="28">
                 
                 </a>
                 <p class="is-size-7">

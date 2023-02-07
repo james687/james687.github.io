@@ -145,6 +145,91 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-07T08:21:23.000Z">2023-02-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 506 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/02/07/remove-duplicates-from-sorted-list/">Remove Duplicates from Sorted List</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p>
+<ol>
+<li><p>既然是 Linked List，我們可以宣告一個指標指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p>
+<ul>
+<li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li>
+</ul>
+</li>
+<li><p>設定 while 可以繼續檢查的條件</p>
+<ol start="3">
+<li><p>while 裡要做的是：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if curr.val &#x3D;&#x3D; curr.next.val:</span><br><span class="line">    curr.next &#x3D; curr.next.next  # 假如 val 跟下一個一樣，就把 next 接到下下個</span><br><span class="line">curr &#x3D; curr.next  # 把指標移到下一個 node，以便下次的檢查</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有時需要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</li>
+</ul>
+</li>
+<li><p>確定了必須有 <code>curr.next</code></p>
+</li>
+<li><p>因為我們會移動 <code>curr</code> 指標，<code>curr</code> 有沒有可能是 <code>None</code>?</p>
+<ul>
+<li>假如 <code>curr.next.next</code> 是 <code>None</code>，<code>curr</code> 就會是 <code>None</code></li>
+<li>所以條件要再多一個：必須有 <code>curr</code></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>結論：條件為 <code>curr and curr.next</code></li>
+</ul>
+</li>
+<li><p>檢查一下目前的寫法，假如有連續三個一樣的有沒有辦法 handle</p>
+<ul>
+<li>答案是無法，因為在 while 裡只要指標 <code>curr</code> 一移動就無法再回頭了，在此情況下第一個 node 會接到第三個 node，然後從第三個 node 開始往下檢查，如此還是會出現連續兩個一樣的</li>
+<li>所以指標移動到 <code>curr.next</code> 之前，一定要確保 <code>curr.val != curr.next.val</code></li>
+<li>=&gt; 把上面的 <code>if</code> 改成 <code>while</code>，只要 <code>curr.val</code> 還等於 <code>curr.next.val</code> 就繼續做<ul>
+<li>此時 <code>curr.next</code> 有可能會變成 <code>None</code>，所以 while 的條件也要稍微修一下</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, next&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.next &#x3D; next</span><br><span class="line">def deleteDuplicates(self, head: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    curr &#x3D; head  # 等一下可以在 while 迴圈中移動的指標</span><br><span class="line">    while curr and curr.next:</span><br><span class="line">        while curr.val &#x3D;&#x3D; (curr.next and curr.next.val):</span><br><span class="line">            curr.next &#x3D; curr.next.next</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time>
                 
                 <div class="level-item">
@@ -164,7 +249,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2023/02/03/add-two-numbers/">Add Two Numbers note</a>
+                <a class="has-link-black-ter" href="/2023/02/03/add-two-numbers/">Add Two Numbers</a>
             
         </h1>
         <div class="content">
@@ -224,7 +309,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2022/12/08/search-insert-position/">Search Insert Position note</a>
+                <a class="has-link-black-ter" href="/2022/12/08/search-insert-position/">Search Insert Position</a>
             
         </h1>
         <div class="content">
@@ -308,7 +393,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2022/12/05/3-sum/">3Sum note</a>
+                <a class="has-link-black-ter" href="/2022/12/05/3-sum/">3Sum</a>
             
         </h1>
         <div class="content">
@@ -379,7 +464,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -403,7 +488,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -455,7 +540,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -476,7 +561,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+        <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 10px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
     </div>
 </div>
     
@@ -491,16 +576,35 @@
         
         <article class="media">
             
+            <a href="/2023/02/07/remove-duplicates-from-sorted-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Remove Duplicates from Sorted List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-07T08:21:23.000Z">2023-02-07</time></div>
+                    <a href="/2023/02/07/remove-duplicates-from-sorted-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Remove Duplicates from Sorted List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/02/03/add-two-numbers/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Add Two Numbers note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Add Two Numbers">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time></div>
-                    <a href="/2023/02/03/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Add Two Numbers note</a>
+                    <a href="/2023/02/03/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Add Two Numbers</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -512,14 +616,14 @@
             
             <a href="/2022/12/08/search-insert-position/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time></div>
-                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position note</a>
+                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -531,14 +635,14 @@
             
             <a href="/2022/12/05/3-sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time></div>
-                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum note</a>
+                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -565,25 +669,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/14/add-ssh-steps/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在 Mac 加入 ssh key 的步驟">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -601,7 +686,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -687,6 +772,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/jwt/">
                         <span class="tag">jwt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linked-list/">
+                        <span class="tag">linked list</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -743,16 +835,35 @@
         
         <article class="media">
             
+            <a href="/2023/02/07/remove-duplicates-from-sorted-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Remove Duplicates from Sorted List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-07T08:21:23.000Z">2023-02-07</time></div>
+                    <a href="/2023/02/07/remove-duplicates-from-sorted-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Remove Duplicates from Sorted List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/02/03/add-two-numbers/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Add Two Numbers note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Add Two Numbers">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time></div>
-                    <a href="/2023/02/03/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Add Two Numbers note</a>
+                    <a href="/2023/02/03/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Add Two Numbers</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -764,14 +875,14 @@
             
             <a href="/2022/12/08/search-insert-position/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time></div>
-                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position note</a>
+                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -783,14 +894,14 @@
             
             <a href="/2022/12/05/3-sum/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum note">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time></div>
-                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum note</a>
+                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -817,25 +928,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/14/add-ssh-steps/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在 Mac 加入 ssh key 的步驟">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Authentication/">Authentication</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -853,7 +945,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -939,6 +1031,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/jwt/">
                         <span class="tag">jwt</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/linked-list/">
+                        <span class="tag">linked list</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
