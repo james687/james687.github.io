@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-02-03T07:54:07.000Z">
-<meta property="article:modified_time" content="2023-02-09T04:27:28.691Z">
+<meta property="article:modified_time" content="2023-02-09T05:13:06.073Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="linked list">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 481 個字)
+                    3 分鐘 閱讀文 (大約 485 個字)
                 </span>
                 
                 
@@ -175,7 +175,7 @@
 </li>
 </ol>
 <p>Python3 solution</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    carry &#x3D; 0  # 位數相加後除以 10 得到的商</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 保留最前面的指標，到時候才有辦法回傳答案</span><br><span class="line">    curr &#x3D; dummy_head        # 不能只用 &#96;curr&#96;，因為 &#96;curr&#96; 所指的 node 必須一直變</span><br><span class="line">    while l1 or l2 or carry:  # 可以繼續加的條件</span><br><span class="line">        v1 &#x3D; l1 and l1.val or 0</span><br><span class="line">        v2 &#x3D; l2 and l2.val or 0</span><br><span class="line">        digit_sum &#x3D; v1 + v2 + carry</span><br><span class="line">        carry &#x3D; digit_sum &#x2F;&#x2F; 10</span><br><span class="line">        curr.next &#x3D; ListNode(digit_sum % 10)</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">        l1 &#x3D; l1 and l1.next</span><br><span class="line">        l2 &#x3D; l2 and l2.next</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    carry &#x3D; 0  # 位數相加後除以 10 得到的商</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 用 dummy_head 保留最前面的指標，到時候才有辦法回傳答案</span><br><span class="line">    curr &#x3D; dummy_head        # 不能只用 &#96;curr &#x3D; ListNode()&#96;，因為 &#96;curr&#96; 所指的 node 必須一直變</span><br><span class="line">    while l1 or l2 or carry:  # 可以繼續加的條件</span><br><span class="line">        v1 &#x3D; l1 and l1.val or 0</span><br><span class="line">        v2 &#x3D; l2 and l2.val or 0</span><br><span class="line">        digit_sum &#x3D; v1 + v2 + carry</span><br><span class="line">        carry &#x3D; digit_sum &#x2F;&#x2F; 10</span><br><span class="line">        curr.next &#x3D; ListNode(digit_sum % 10)</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">        l1 &#x3D; l1 and l1.next</span><br><span class="line">        l2 &#x3D; l2 and l2.next</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>
 
         </div>
         
