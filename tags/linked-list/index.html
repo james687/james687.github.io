@@ -144,6 +144,66 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 263 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/02/09/merge-two-sorted-lists/">Merge Two Sorted Lists</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">題目</a><br>思路：</p>
+<ol>
+<li><p>因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來</p>
+</li>
+<li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p>
+</li>
+<li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if l1.val &gt; l2.val:</span><br><span class="line">    curr.next &#x3D; l2</span><br><span class="line">    l2 &#x3D; l2.next</span><br><span class="line">else:</span><br><span class="line">    curr.next &#x3D; l1</span><br><span class="line">    l1 &#x3D; l1.next</span><br></pre></td></tr></table></figure></li>
+<li><p>post processing: 跳出迴圈後的情形是 <code>l1</code>, <code>l2</code> 其中有一個是 <code>None</code> 或兩個都是 <code>None</code>，此時就把目標 linked list 接上那個不是 <code>None</code> 的即可</p>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">        dummy_head &#x3D; ListNode()  # 需有一個 dummy_head 可以在最後回傳答案時使用</span><br><span class="line">        curr &#x3D; dummy_head  # 也要有個 curr 可以在每次迴圈中跟著移動</span><br><span class="line">        while l1 and l2:</span><br><span class="line">            if l1.val &gt; l2.val:</span><br><span class="line">                curr.next &#x3D; l2</span><br><span class="line">                l2 &#x3D; l2.next</span><br><span class="line">            else:</span><br><span class="line">                curr.next &#x3D; l1</span><br><span class="line">                l1 &#x3D; l1.next</span><br><span class="line">            curr &#x3D; curr.next</span><br><span class="line">        curr.next &#x3D; l1 or l2  # post processing</span><br><span class="line">        return dummy_head.next</span><br></pre></td></tr></table></figure>
+
+<p>P.S. 有些思路跟 <a href="https://james687.github.io/2023/02/03/add-two-numbers/">Add Two Numbers</a> 重複，這篇就不多寫了</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time>
                 
                 <div class="level-item">
@@ -322,7 +382,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
@@ -398,7 +458,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -419,7 +479,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 20px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -431,6 +491,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/02/09/merge-two-sorted-lists/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Sorted Lists">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time></div>
+                    <a href="/2023/02/09/merge-two-sorted-lists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Sorted Lists</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -508,25 +587,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/07/25/why-dict-o1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time></div>
-                    <a href="/2022/07/25/why-dict-o1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -544,7 +604,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -644,7 +704,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linked-list/">
                         <span class="tag">linked list</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -714,6 +774,25 @@
         
         <article class="media">
             
+            <a href="/2023/02/09/merge-two-sorted-lists/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Sorted Lists">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time></div>
+                    <a href="/2023/02/09/merge-two-sorted-lists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Sorted Lists</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/02/09/remove-duplicates-from-sorted-list/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Remove Duplicates from Sorted List">
@@ -788,25 +867,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/07/25/why-dict-o1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time></div>
-                    <a href="/2022/07/25/why-dict-o1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -824,7 +884,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -924,7 +984,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/linked-list/">
                         <span class="tag">linked list</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
