@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: pipenv - James&#39; Blog</title>
+<title>標籤: sorting - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/tags/pipenv/index.html">
+<meta property="og:url" content="https://james687.github.io/tags/sorting/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
@@ -131,7 +131,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">pipenv</a></li>
+            <li class="is-active"><a href="#" aria-current="page">sorting</a></li>
         </ul>
         </nav>
     </div>
@@ -144,17 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
+                <time class="level-item has-text-grey" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Package-Management/">Package Management</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 520 個字)
+                    2 分鐘 閱讀文 (大約 281 個字)
                 </span>
                 
                 
@@ -163,25 +163,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
+                <a class="has-link-black-ter" href="/2022/12/05/3-sum/">3Sum</a>
             
         </h1>
         <div class="content">
-            <ul>
-<li>Local 開發是跑在 Docker 的虛擬環境裡，所以 Pipenv 產生的虛擬環境只是用來裝套件產生 Pipfile.lock 而已</li>
-<li>用 pipenv 就不用自己寫 requirements.txt，不但可以自動安裝最新版的套件，而且可以很輕鬆的固定住對應 sub-packages 的版本</li>
-<li>想一次更新所有套件也很容易</li>
-<li>步驟：(以裝一個 package 為例)
+            <p><a href="https://leetcode.com/problems/3sum/description/">題目</a><br>思路：</p>
+<ul>
+<li>用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result</li>
+<li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li>
+</ul>
+<p>Python3 solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def threeSum(self, nums):</span><br><span class="line">    result &#x3D; []</span><br><span class="line">    nums.sort()</span><br><span class="line">    for left in range(len(nums) - 2):  # 右邊須留兩個空位給另兩個指標</span><br><span class="line">        if left &gt; 0 and nums[left] &#x3D;&#x3D; nums[left - 1]:  # 排除重複的 result，left 必須 &gt; 0 才會有前一個</span><br><span class="line">            continue                                   # - 假如 nums[left] 是一樣的，最後找到的 result 也會是一樣的，所以要排除掉</span><br><span class="line">        mid &#x3D; left + 1</span><br><span class="line">        right &#x3D; len(nums) - 1</span><br><span class="line">        while mid &lt; right:  # 設定有效範圍，在此範圍內尋找符合的 mid, right</span><br><span class="line">            t_sum &#x3D; nums[left] + nums[mid] + nums[right]</span><br><span class="line">            if t_sum &lt; 0:</span><br><span class="line">                mid +&#x3D; 1  # 此時必須讓 t_sum 變大，所以將 mid 往右移</span><br><span class="line">            elif t_sum &gt; 0:</span><br><span class="line">                right -&#x3D; 1  # 此時必須讓 t_sum 變小，所以將 right 往左移</span><br><span class="line">            else:</span><br><span class="line">                result.append([nums[left], nums[mid], nums[right]])</span><br><span class="line">                while mid &lt; right and nums[mid] &#x3D;&#x3D; nums[mid + 1]:  # 跳過 mid 重複的部分</span><br><span class="line">                    mid +&#x3D; 1</span><br><span class="line">                while mid &lt; right and nums[right] &#x3D;&#x3D; nums[right - 1]:  # 跳過 right 重複的部分</span><br><span class="line">                    right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">                # 正常的移動 mid, right，尋找下一個符合的 result</span><br><span class="line">                mid +&#x3D; 1</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/06/pipenv-intro/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
