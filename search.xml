@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Same Tree</title>
+      <link href="/2023/02/10/same-tree/"/>
+      <url>/2023/02/10/same-tree/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/same-tree/description/">題目</a><br>思路：</p><ol><li>要比較所有相同位置的 node 的值是否一樣，可以把所有待比較的 node pair 丟到 stack 裡一一拿出來比較，全部比完都通過的話就是一樣的 tree</li><li>一個 pair 比較後會把下面的所有分支點繼續丟進 stack 等待比較，所以用 <code>while stack:</code> 只要有就繼續比，一直比到完<ul><li>此為廣先搜尋 (Breadth-First Search)</li></ul></li></ol><p>Python3 solution:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    stack &#x3D; [(p, q)]</span><br><span class="line">    while stack:</span><br><span class="line">        p, q &#x3D; stack.pop()</span><br><span class="line">        if p and q and p.val &#x3D;&#x3D; q.val:</span><br><span class="line">            stack.extend([</span><br><span class="line">                (p.left, q.left),</span><br><span class="line">                (p.right, q.right)</span><br><span class="line">            ])</span><br><span class="line">        elif p or q:  # 只有在 p, q 都是 None 的情況下才會通過，這代表這兩棵樹在那個位置都沒有葉子</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> depth-first search </tag>
+            
+            <tag> breadth-first search </tag>
+            
+            <tag> binary tree </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Merge Two Sorted Lists</title>
       <link href="/2023/02/09/merge-two-sorted-lists/"/>
       <url>/2023/02/09/merge-two-sorted-lists/</url>

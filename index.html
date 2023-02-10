@@ -134,6 +134,60 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 229 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/02/10/same-tree/">Same Tree</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/same-tree/description/">題目</a><br>思路：</p>
+<ol>
+<li>要比較所有相同位置的 node 的值是否一樣，可以把所有待比較的 node pair 丟到 stack 裡一一拿出來比較，全部比完都通過的話就是一樣的 tree</li>
+<li>一個 pair 比較後會把下面的所有分支點繼續丟進 stack 等待比較，所以用 <code>while stack:</code> 只要有就繼續比，一直比到完<ul>
+<li>此為廣先搜尋 (Breadth-First Search)</li>
+</ul>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    stack &#x3D; [(p, q)]</span><br><span class="line">    while stack:</span><br><span class="line">        p, q &#x3D; stack.pop()</span><br><span class="line">        if p and q and p.val &#x3D;&#x3D; q.val:</span><br><span class="line">            stack.extend([</span><br><span class="line">                (p.left, q.left),</span><br><span class="line">                (p.right, q.right)</span><br><span class="line">            ])</span><br><span class="line">        elif p or q:  # 只有在 p, q 都是 None 的情況下才會通過，這代表這兩棵樹在那個位置都沒有葉子</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
                 
                 <div class="level-item">
@@ -716,63 +770,25 @@
 
 
 
+
     
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Package-Management/">Package Management</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 520 個字)
-                </span>
-                
-                
-            </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">上一頁</a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">下一頁</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
             
-                <a class="has-link-black-ter" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
+            <li><a class="pagination-link is-current" href="/">1</a></li>
             
-        </h1>
-        <div class="content">
-            <ul>
-<li>Local 開發是跑在 Docker 的虛擬環境裡，所以 Pipenv 產生的虛擬環境只是用來裝套件產生 Pipfile.lock 而已</li>
-<li>用 pipenv 就不用自己寫 requirements.txt，不但可以自動安裝最新版的套件，而且可以很輕鬆的固定住對應 sub-packages 的版本</li>
-<li>想一次更新所有套件也很容易</li>
-<li>步驟：(以裝一個 package 為例)
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/06/pipenv-intro/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -818,7 +834,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            10
+                            11
                         </p>
                     </a>
                 </div>
@@ -842,7 +858,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            12
+                            16
                         </p>
                     </a>
                 </div>
@@ -894,7 +910,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -915,7 +931,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 10px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 10px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -927,6 +943,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/02/10/same-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Same Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time></div>
+                    <a href="/2023/02/10/same-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Same Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1004,25 +1039,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/12/05/3-sum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time></div>
-                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1040,7 +1056,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1117,6 +1133,27 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/binary-tree/">
+                        <span class="tag">binary tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/breadth-first-search/">
+                        <span class="tag">breadth-first search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/depth-first-search/">
+                        <span class="tag">depth-first search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/django/">
                         <span class="tag">django</span>
                         <span class="tag is-grey">1</span>
@@ -1175,6 +1212,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/sorting/">
                         <span class="tag">sorting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tree/">
+                        <span class="tag">tree</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1210,6 +1254,25 @@
         
         <article class="media">
             
+            <a href="/2023/02/10/same-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Same Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time></div>
+                    <a href="/2023/02/10/same-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Same Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/02/09/merge-two-sorted-lists/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Sorted Lists">
@@ -1284,25 +1347,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/12/05/3-sum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="3Sum">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time></div>
-                    <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1320,7 +1364,7 @@
                     <span class="level-item">二月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1397,6 +1441,27 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/binary-tree/">
+                        <span class="tag">binary tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/breadth-first-search/">
+                        <span class="tag">breadth-first search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/depth-first-search/">
+                        <span class="tag">depth-first search</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/django/">
                         <span class="tag">django</span>
                         <span class="tag is-grey">1</span>
@@ -1455,6 +1520,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/sorting/">
                         <span class="tag">sorting</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/tree/">
+                        <span class="tag">tree</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
