@@ -7,16 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: django - James&#39; Blog</title>
+<title>Balanced Binary Tree - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/tags/django/index.html">
+    <meta name="description" content="題目 做法一思路：  依照 height-balanced 的定義，需要符合每個node 的左右子樹高度差都不大於 1 假設有個 function height 可以回傳 node 的 height 先不實作內容   使用這個 height 完成 isBalanced 實作 height 的內容  Python3 solution: 12345678910111213141516171819# D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Balanced Binary Tree">
+<meta property="og:url" content="https://james687.github.io/2023/03/15/balanced-binary-tree/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="題目 做法一思路：  依照 height-balanced 的定義，需要符合每個node 的左右子樹高度差都不大於 1 假設有個 function height 可以回傳 node 的 height 先不實作內容   使用這個 height 完成 isBalanced 實作 height 的內容  Python3 solution: 12345678910111213141516171819# D">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
+<meta property="article:published_time" content="2023-03-15T04:12:23.000Z">
+<meta property="article:modified_time" content="2023-03-15T04:12:10.019Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="tree">
+<meta property="article:tag" content="depth-first search">
+<meta property="article:tag" content="binary tree">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -85,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="Balanced Binary Tree" height="28">
             
             </a>
         </div>
@@ -126,35 +133,24 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">django</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
+                <time class="level-item has-text-grey" datetime="2023-03-15T04:12:23.000Z">2023-03-15</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Package-Management/">Package Management</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 520 個字)
+                    4 分鐘 閱讀文 (大約 605 個字)
                 </span>
                 
                 
@@ -163,25 +159,70 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
+                Balanced Binary Tree
             
         </h1>
         <div class="content">
-            <ul>
-<li>Local 開發是跑在 Docker 的虛擬環境裡，所以 Pipenv 產生的虛擬環境只是用來裝套件產生 Pipfile.lock 而已</li>
-<li>用 pipenv 就不用自己寫 requirements.txt，不但可以自動安裝最新版的套件，而且可以很輕鬆的固定住對應 sub-packages 的版本</li>
-<li>想一次更新所有套件也很容易</li>
-<li>步驟：(以裝一個 package 為例)
+            <p><a href="https://leetcode.com/problems/balanced-binary-tree/description/">題目</a></p>
+<h3 id="做法一"><a href="#做法一" class="headerlink" title="做法一"></a>做法一</h3><p>思路：</p>
+<ol>
+<li>依照 height-balanced 的定義，需要符合<strong>每個</strong>node 的左右子樹高度差都不大於 1</li>
+<li>假設有個 function <code>height</code> 可以回傳 node 的 height<ul>
+<li>先不實作內容</li>
+</ul>
+</li>
+<li>使用這個 <code>height</code> 完成 <code>isBalanced</code></li>
+<li>實作 <code>height</code> 的內容</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def isBalanced(self, root: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    def height(node):</span><br><span class="line">        if not node:  # 終止條件</span><br><span class="line">            return 0</span><br><span class="line">        lh &#x3D; height(node.left)</span><br><span class="line">        rh &#x3D; height(node.right)</span><br><span class="line">        return max(lh, rh) + 1</span><br><span class="line">        </span><br><span class="line">    if not root:  # 終止條件</span><br><span class="line">        return True</span><br><span class="line">    lh &#x3D; height(root.left)</span><br><span class="line">    rh &#x3D; height(root.right)</span><br><span class="line">    return abs(lh - rh) &lt;&#x3D; 1 and self.isBalanced(root.left) and self.isBalanced(root.right)  # 即使左右子樹高度差不大於一，子樹本身還是有可能是不平衡的，所以要再加上後面的 &#96;isBalanced&#96; 判斷</span><br></pre></td></tr></table></figure>
+<p>假設有 n 個 node, 樹的高度為 h</p>
+<ul>
+<li>時間複雜度：O(n^2)<ul>
+<li><code>isBalanced</code> 除了呼叫自己之外的複雜度為 O(n)<ul>
+<li>呼叫了 <code>n - 1</code> 次 <code>height</code></li>
+</ul>
+</li>
+<li>每個節點都呼叫了一次 <code>isBalanced</code></li>
+</ul>
+</li>
+<li>空間複雜度：O(h)<ul>
+<li>因為遞迴的呼叫有 DFS 的特性，會從子節點一直呼叫到最下面的葉子節點，所以需要把那些 function calls 放進 stack 裡，等到葉子節點的呼叫到了再一一拿出來執行。因此 stack 的大小需等於呼叫的次數，也就是由根節點走到葉子節點需經過幾個點，即這棵樹的高度<ul>
+<li>只需考慮一次遞迴呼叫所需空間，不需考慮全部遞迴呼叫 (譬如在 function 裡呼叫了自己兩次)，因為程式同時只會處理一個遞迴呼叫</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="做法二"><a href="#做法二" class="headerlink" title="做法二"></a>做法二</h3><p>思路：</p>
+<ol>
+<li>有沒有辦法優化上面做法的時間複雜度呢？因為上面在算高度的時候就已經會算出每個節點的左右子樹的高度了，此時就可以順便看看是否平衡，不用等到最後再遞迴呼叫 <code>isBalanced</code> 增加複雜度</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def isBalanced(self, root: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    self.balanced &#x3D; True</span><br><span class="line">    def height(node):</span><br><span class="line">        if not node:</span><br><span class="line">            return 0</span><br><span class="line">        lh &#x3D; height(node.left)</span><br><span class="line">        rh &#x3D; height(node.right)</span><br><span class="line">        if abs(lh - rh) &gt; 1:</span><br><span class="line">            self.balanced &#x3D; False</span><br><span class="line">        return max(lh, rh) + 1</span><br><span class="line">        </span><br><span class="line">    height(root)</span><br><span class="line">    return self.balanced</span><br></pre></td></tr></table></figure>
+<p>假設有 n 個 node, 樹的高度為 h</p>
+<ul>
+<li>時間複雜度：O(n)<ul>
+<li>每個節點都做過一次 <code>height</code></li>
+</ul>
+</li>
+<li>空間複雜度：O(h)<ul>
+<li>同 <code>做法一</code> 的分析</li>
+</ul>
+</li>
+</ul>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/06/pipenv-intro/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -191,9 +232,45 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2023/02/10/same-tree/">
+                <span class="level-item">Same Tree</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://james687.github.io/2023/03/15/balanced-binary-tree/';
+        this.page.identifier = '2023/03/15/balanced-binary-tree/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -982,7 +1059,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="Balanced Binary Tree" height="28">
                 
                 </a>
                 <p class="is-size-7">

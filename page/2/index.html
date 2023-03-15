@@ -134,6 +134,82 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-07T02:44:37.000Z">2020-02-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Database/">Database</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 162 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/07/postgresql-mysql-init-setup/">PostgreSQL/MySQL local docker 開發的初始 setup</a>
+            
+        </h1>
+        <div class="content">
+            <p>container run 起來之後：<br><strong>PostgreSQL:</strong></p>
+<ol>
+<li><code>docker exec -it {db-container-name} psql -U postgres</code><ul>
+<li>以預設 user <code>postgres</code> 連進 DB</li>
+</ul>
+</li>
+<li><code>create user {username} with password &#39;{password}&#39;;</code></li>
+<li><code>create database {database_name} with owner {username};</code></li>
+<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
+</ol>
+<ul>
+<li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li>
+</ul>
+<p><strong>MySQL: (以 5.7 為例)</strong></p>
+<ol>
+<li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li>
+<li>docker exec -it {db-container-name} mysql -p<ul>
+<li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li>
+</ul>
+</li>
+<li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul>
+<li>Use <code>localhost</code> due to working on the machine with MySQL.</li>
+</ul>
+</li>
+<li><code>create database {database_name};</code></li>
+<li>確認：<ul>
+<li><code>show databases;</code></li>
+<li><code>SELECT user FROM mysql.user;</code></li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
                 
                 <div class="level-item">
@@ -248,7 +324,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -324,7 +400,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -345,7 +421,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 10px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 10px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 10px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 10px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 15px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 15px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -357,6 +433,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/03/15/balanced-binary-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Balanced Binary Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-15T04:12:23.000Z">2023-03-15</time></div>
+                    <a href="/2023/03/15/balanced-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Balanced Binary Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -434,25 +529,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/12/08/search-insert-position/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time></div>
-                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -463,6 +539,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/02/">
@@ -549,7 +636,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -563,7 +650,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -633,7 +720,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -668,6 +755,25 @@
         
         <article class="media">
             
+            <a href="/2023/03/15/balanced-binary-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Balanced Binary Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-15T04:12:23.000Z">2023-03-15</time></div>
+                    <a href="/2023/03/15/balanced-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Balanced Binary Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/02/10/same-tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Same Tree">
@@ -742,25 +848,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2022/12/08/search-insert-position/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Search Insert Position">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time></div>
-                    <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -771,6 +858,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/02/">
@@ -857,7 +955,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -871,7 +969,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -941,7 +1039,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
