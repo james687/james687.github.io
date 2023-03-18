@@ -145,6 +145,91 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-18T08:08:15.000Z">2023-03-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 589 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/03/18/unique-paths/">Unique Paths</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/unique-paths/description/">題目</a><br>思路</p>
+<ol>
+<li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p>
+</li>
+<li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p>
+</li>
+<li><p>終止條件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">    return 0</span><br><span class="line">if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">    return 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>已經在終點上了，unique path count 卻是 1，一開始可能會覺得有點怪，不過從終點左邊那個點來想，就不會怪了：<ul>
+<li>左邊那個點的 unique path count = (它的下面那點的 path count) + (它右邊那點的 path count)<ul>
+<li>下面那點：path count 為 0</li>
+<li>右邊那點 (終點)：path count 必須是 1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>遞迴解法如下，但時間複雜度太大了</p>
+<ul>
+<li><p>看到兩個解法都說時間複雜度是 O(2^(m + n))，但<a href="https://leetcode.com/problems/unique-paths/solutions/1581998/c-python-5-simple-solutions-w-explanation-optimization-from-brute-force-to-dp-to-math/">一個</a>沒講為啥，<a href="https://leetcode.com/problems/unique-paths/solutions/182143/recursive-memoization-and-dynamic-programming-solutions/">一個</a>的解釋無法說服我，之後有空再來研究。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>因為同一個點可能會走到很多次，我們可以把結果存在二維陣列，避免重複計算，以減少時間複雜度</p>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    dp &#x3D; [[None] * n for i in range(m)]  # m * n 的二維陣列</span><br><span class="line"></span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        if dp[i][j]:</span><br><span class="line">            return dp[i][j]</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        dp[i][j] &#x3D; u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">        return dp[i][j]</span><br><span class="line"></span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度：O(m * n)<ul>
+<li>因為有記憶，每個點只會計算一次，共有 <code>m * n</code> 個點</li>
+</ul>
+</li>
+<li>空間複雜度：O(m * n)<ul>
+<li>維護 <code>dp</code> 所需空間。遞迴呼叫所需空間 <code>m</code> 和 <code>n</code> 可忽略</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time>
                 
                 <div class="level-item">
@@ -767,7 +852,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            13
+                            14
                         </p>
                     </a>
                 </div>
@@ -791,7 +876,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            16
+                            18
                         </p>
                     </a>
                 </div>
@@ -843,7 +928,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -864,7 +949,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 20px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 15px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 20px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 20px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 15px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 20px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 20px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -876,6 +961,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/03/18/unique-paths/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Unique Paths">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-18T08:08:15.000Z">2023-03-18</time></div>
+                    <a href="/2023/03/18/unique-paths/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Paths</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -953,25 +1057,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/02/09/remove-duplicates-from-sorted-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Remove Duplicates from Sorted List">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time></div>
-                    <a href="/2023/02/09/remove-duplicates-from-sorted-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Remove Duplicates from Sorted List</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -989,7 +1074,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1112,6 +1197,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dynamic-programming/">
+                        <span class="tag">dynamic programming</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/jwt/">
                         <span class="tag">jwt</span>
                         <span class="tag is-grey">1</span>
@@ -1150,6 +1242,13 @@
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/recursion/">
+                        <span class="tag">recursion</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1198,6 +1297,25 @@
         
         <article class="media">
             
+            <a href="/2023/03/18/unique-paths/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Unique Paths">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-18T08:08:15.000Z">2023-03-18</time></div>
+                    <a href="/2023/03/18/unique-paths/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Paths</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/16/merge-two-binary-trees/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Binary Trees">
@@ -1272,25 +1390,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/02/09/remove-duplicates-from-sorted-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Remove Duplicates from Sorted List">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time></div>
-                    <a href="/2023/02/09/remove-duplicates-from-sorted-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Remove Duplicates from Sorted List</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1308,7 +1407,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1431,6 +1530,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/dynamic-programming/">
+                        <span class="tag">dynamic programming</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/jwt/">
                         <span class="tag">jwt</span>
                         <span class="tag is-grey">1</span>
@@ -1469,6 +1575,13 @@
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/recursion/">
+                        <span class="tag">recursion</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
