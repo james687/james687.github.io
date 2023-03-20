@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 205 個字)
+                    2 分鐘 閱讀文 (大約 231 個字)
                 </span>
                 
                 
@@ -170,14 +170,15 @@
             <p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p>
 <ol>
 <li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li>
-<li>假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol>
+<li>Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol>
 <li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li>
 <li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
 </ol>
 <ul>
-<li>所以</li>
+<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個</li>
 </ul>
 </li>
+<li>Base case (終止條件)：<code>i &lt; 0</code></li>
 </ol>
 <p>Python3 solution:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
@@ -309,7 +310,7 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="https://www.gravatar.com/avatar/578d2dc9f1716395f89731b14b16b579?s=128" alt="James Ho">
+                        <img class="" src="https://www.gravatar.com/avatar/3516533944cc5a08dc12ce65fd9a0cfd?s=128" alt="James Ho">
                     </figure>
                     
                     <p class="is-size-4 is-block">
