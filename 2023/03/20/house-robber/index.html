@@ -7,16 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2022 - James&#39; Blog</title>
+<title>House Robber - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/archives/2022/index.html">
+    <meta name="description" content="題目思路  可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 inner_rob(i)。在位置 i, 可選擇搶或不搶： 不搶：最大收穫跟前一個點一樣，為 inner_rob(i - 1) 搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money nums[i] 再加上前前個點的最大收穫 inner_rob(i -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="House Robber">
+<meta property="og:url" content="https://james687.github.io/2023/03/20/house-robber/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="題目思路  可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 inner_rob(i)。在位置 i, 可選擇搶或不搶： 不搶：最大收穫跟前一個點一樣，為 inner_rob(i - 1) 搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money nums[i] 再加上前前個點的最大收穫 inner_rob(i -">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
+<meta property="article:published_time" content="2023-03-20T07:08:15.000Z">
+<meta property="article:modified_time" content="2023-03-20T07:17:23.917Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="dynamic programming">
+<meta property="article:tag" content="recursion">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -85,7 +91,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="House Robber" height="28">
             
             </a>
         </div>
@@ -127,76 +133,116 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2022
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
-                        <a href="/2022/12/08/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
-                        <a href="/2022/12/05/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time>
-                        <a href="/2022/07/25/why-dict-o1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 205 個字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                House Robber
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p>
+<ol>
+<li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li>
+<li>假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol>
+<li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li>
+<li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
+</ol>
+<ul>
+<li>所以</li>
+</ul>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>時間複雜度：O(n)<ul>
+<li>因為有記憶，每個點只會計算一次，共有 n 個點</li>
+</ul>
+</li>
+<li>空間複雜度：O(n)</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/dynamic-programming/" rel="tag">dynamic programming</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2023/03/18/unique-paths/">
+                <span class="level-item">Unique Paths</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://james687.github.io/2023/03/20/house-robber/';
+        this.page.identifier = '2023/03/20/house-robber/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -1013,7 +1059,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="House Robber" height="28">
                 
                 </a>
                 <p class="is-size-7">
