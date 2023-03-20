@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-03-20T08:35:31.443Z</updated>
+  <updated>2023-03-20T15:25:12.613Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://james687.github.io/2023/03/20/house-robber/"/>
     <id>https://james687.github.io/2023/03/20/house-robber/</id>
     <published>2023-03-20T07:08:15.000Z</published>
-    <updated>2023-03-20T08:35:31.443Z</updated>
+    <updated>2023-03-20T15:25:12.613Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p><ol><li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li><li>Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol><li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li><li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li></ol><ul><li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個</li></ul></li><li>Base case (終止條件)：<code>i &lt; 0</code></li></ol><p>Python3 solution:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure><ul><li>時間複雜度：O(n)<ul><li>因為有記憶，每個點只會計算一次，共有 n 個點</li></ul></li><li>空間複雜度：O(n)</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p><ol><li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li><li>Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol><li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li><li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li></ol><ul><li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個</li></ul></li><li>Base case (終止條件)：<code>i &lt; 0</code></li><li>因為這個遞迴解的時間複雜度最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> cache 起來，避免重複計算<ul><li>關於遞迴的時間複雜度計算，可參考[article to write]</li></ul></li></ol><p>Python3 solution:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure><ul><li>時間複雜度：O(n)<ul><li>因為有記憶，每個點只會計算一次，共有 n 個點</li></ul></li><li>空間複雜度：O(n)<ul><li>cache 需要的空間為 n，遞迴的最大深度也是 n</li></ul></li></ul><p>以上，如果不用 <code>@cache</code> 的話：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    memo &#x3D; [None] * len(nums)</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        if memo[i] is not None:</span><br><span class="line">            return memo[i]</span><br><span class="line">        memo[i] &#x3D; max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">        return memo[i]</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -432,9 +432,9 @@
       <category term="Database" scheme="https://james687.github.io/categories/Database/"/>
     
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
       <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
+    
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
@@ -463,11 +463,11 @@
       <category term="Package Management" scheme="https://james687.github.io/categories/Package-Management/"/>
     
     
+      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+    
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
     
       <category term="pipenv" scheme="https://james687.github.io/tags/pipenv/"/>
-    
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
     
       <category term="django" scheme="https://james687.github.io/tags/django/"/>
     
