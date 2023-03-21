@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 558 個字)
+                    4 分鐘 閱讀文 (大約 559 個字)
                 </span>
                 
                 
@@ -183,7 +183,7 @@
 <ol>
 <li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li>
 <li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul>
-<li>怎麼不用畫圖，用看的就得出深度？<ul>
+<li>要怎麼不用畫圖，用看的就得出深度？<ul>
 <li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol>
 <li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li>
 <li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li>
