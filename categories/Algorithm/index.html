@@ -145,7 +145,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time>
+                <time class="level-item has-text-grey" datetime="2023-03-21T08:55:19.000Z">2023-03-21</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 161 個字)
+                    4 分鐘 閱讀文 (大約 558 個字)
                 </span>
                 
                 
@@ -176,11 +176,32 @@
 </li>
 <li>時間複雜度為 <code>O(x^h)</code></li>
 </ol>
-<h3 id="詳細解"><a href="#詳細解" class="headerlink" title="詳細解"></a>詳細解</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p>
+<ul>
+<li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立</li>
+</ul>
+<h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li>
-<li></li>
+<li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul>
+<li>怎麼不用畫圖，用看的就得出深度？<ul>
+<li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol>
+<li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li>
+<li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li>
+<li>所以需要走 <code>m + n</code> 次才會結束</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>u_paths</code> 合併遞迴結果的運算只需要一次加法，可以把時間消耗記做 <code>1</code>，也就是每個節點的時間消耗都是 <code>1</code></li>
+<li>所有節點的時間消耗總合就是這個函式的時間複雜度。第一層有 <code>1 (= 2^0)</code> 個節點，第二層有 <code>2 (= 2^1)</code> 個節點，第三層有 <code>4 (= 2^2)</code> 個節點，以此類推，假設此樹深度為 <code>h</code>，所有節點的時間消耗和為 <code>2^0 + 2^1 + 2^2 + ... + 2^h</code>，依據等比級數和的公式得出結果為 <code>2^(h + 1) - 1</code><ul>
+<li>這邊的算法是假設這是一個滿二元樹來算，但其實這並不是一個滿二元樹 (像第四層就只有 <code>7</code> 個節點)，所以遞迴樹法並不嚴謹，只是一個估算，真要嚴謹分析的話可以再用 Substitution Method 或 Master Theorem 來驗證</li>
+<li>由第二點，深度 <code>h = m + n</code></li>
+</ul>
+</li>
+<li>所以時間複雜度為 <code>O(2^(h + 1)) = O(2 * 2^h) = O(2^h) = O(2^(m + n))</code></li>
 </ol>
 
         </div>
@@ -416,7 +437,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T08:55:19.000Z">2023-03-21</time></div>
                     <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
@@ -749,7 +770,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T08:55:19.000Z">2023-03-21</time></div>
                     <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
