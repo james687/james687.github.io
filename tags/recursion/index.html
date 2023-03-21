@@ -144,6 +144,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 156 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/03/21/recursion-time-complexity/">遞迴的時間複雜度算法</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="快速解"><a href="#快速解" class="headerlink" title="快速解"></a>快速解</h3><ol>
+<li>看這個遞迴函式呼叫自己幾次，假設呼叫了 <code>x</code> 次</li>
+<li>看看那些遞迴呼叫的深度，假設你取了一個深度 <code>h</code><ul>
+<li>可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度</li>
+</ul>
+</li>
+<li>時間複雜度為 <code>O(x^h)</code></li>
+</ol>
+<h3 id="詳細解"><a href="#詳細解" class="headerlink" title="詳細解"></a>詳細解</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time>
                 
                 <div class="level-item">
@@ -531,7 +589,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            15
+                            16
                         </p>
                     </a>
                 </div>
@@ -607,7 +665,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -640,6 +698,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/03/21/recursion-time-complexity/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="遞迴的時間複雜度算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time></div>
+                    <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -717,25 +794,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/02/10/same-tree/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Same Tree">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time></div>
-                    <a href="/2023/02/10/same-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Same Tree</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -753,7 +811,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -927,7 +985,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -976,6 +1034,25 @@
         
         <article class="media">
             
+            <a href="/2023/03/21/recursion-time-complexity/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="遞迴的時間複雜度算法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T03:08:15.000Z">2023-03-21</time></div>
+                    <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/20/house-robber/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber">
@@ -1050,25 +1127,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/02/10/same-tree/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Same Tree">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time></div>
-                    <a href="/2023/02/10/same-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Same Tree</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1086,7 +1144,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1260,7 +1318,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 

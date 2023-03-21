@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-03-20T15:25:12.613Z</updated>
+  <updated>2023-03-21T04:28:55.056Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>遞迴的時間複雜度算法</title>
+    <link href="https://james687.github.io/2023/03/21/recursion-time-complexity/"/>
+    <id>https://james687.github.io/2023/03/21/recursion-time-complexity/</id>
+    <published>2023-03-21T03:08:15.000Z</published>
+    <updated>2023-03-21T04:28:55.056Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="快速解"><a href="#快速解" class="headerlink" title="快速解"></a>快速解</h3><ol><li>看這個遞迴函式呼叫自己幾次，假設呼叫了 <code>x</code> 次</li><li>看看那些遞迴呼叫的深度，假設你取了一個深度 <code>h</code><ul><li>可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度</li></ul></li><li>時間複雜度為 <code>O(x^h)</code></li></ol><h3 id="詳細解"><a href="#詳細解" class="headerlink" title="詳細解"></a>詳細解</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure><ol><li>遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;快速解&quot;&gt;&lt;a href=&quot;#快速解&quot; class=&quot;headerlink&quot; title=&quot;快速解&quot;&gt;&lt;/a&gt;快速解&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;看這個遞迴函式呼叫自己幾次，假設呼叫了 &lt;code&gt;x&lt;/code&gt; 次&lt;/li&gt;
+&lt;li&gt;看看那些遞迴呼叫的深度，假設
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+    
+  </entry>
   
   <entry>
     <title>House Robber</title>
