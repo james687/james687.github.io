@@ -134,6 +134,56 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 141 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/03/23/binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p>
+<ol>
+<li>Inorder Traversal: 左子節點 -&gt; 根節點 -&gt; 右子節點</li>
+<li>可拆解為最小單位動作，即第一點，故使用遞迴</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        values &#x3D; self.inorderTraversal(root.left)  # 先取得左子節點所有的 inorder-traversal values</span><br><span class="line">        values.append(root.val)</span><br><span class="line">        values.extend(self.inorderTraversal(root.right))  # 最後加上右子節點的所有 inorder-traversal values</span><br><span class="line">        </span><br><span class="line">        return values</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time>
                 
                 <div class="level-item">
@@ -835,66 +885,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 485 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2023/02/03/add-two-numbers/">Add Two Numbers</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://leetcode.com/problems/add-two-numbers/description/">題目</a><br>思路：</p>
-<ol>
-<li>既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。</li>
-<li>迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作</li>
-<li>迴圈內算出的當下位數的答案 <code>digit_sum % 10</code> 的 node 為何是指定給 <code>curr.next</code> 而非 <code>curr</code>?<ul>
-<li>因為迴圈結束前 <code>curr</code> 必須指向下一個 node，也就是 <code>curr.next</code>，以下分兩種情況解釋：<ul>
-<li>答案放在 <code>curr</code> 身上：必須創造一個空的 node 來當 <code>curr.next</code>，而假如這次的迴圈已經是最後一次了，此 linked list 的尾巴就會多一個空的 node</li>
-<li>答案放在 <code>curr.next</code> 身上：迴圈結束前 <code>curr</code> 指向 <code>curr.next</code> 繼續下一次的操作，假如此次已是最後一次迴圈，也不會多出空的 node 在 linked list 末端，只會在開頭多出一個沒用到的 dummy_head 而已，因此最後回傳答案時是回傳 <code>dummy_head.next</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>Python3 solution</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    carry &#x3D; 0  # 位數相加後除以 10 得到的商</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 用 dummy_head 保留最前面的指標，到時候才有辦法回傳答案</span><br><span class="line">    curr &#x3D; dummy_head        # 不能只用 &#96;curr &#x3D; ListNode()&#96;，因為 &#96;curr&#96; 所指的 node 必須一直變</span><br><span class="line">    while l1 or l2 or carry:  # 可以繼續加的條件</span><br><span class="line">        v1 &#x3D; l1 and l1.val or 0</span><br><span class="line">        v2 &#x3D; l2 and l2.val or 0</span><br><span class="line">        digit_sum &#x3D; v1 + v2 + carry</span><br><span class="line">        carry &#x3D; digit_sum &#x2F;&#x2F; 10</span><br><span class="line">        curr.next &#x3D; ListNode(digit_sum % 10)</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">        l1 &#x3D; l1 and l1.next</span><br><span class="line">        l2 &#x3D; l2 and l2.next</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -959,7 +949,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            17
+                            18
                         </p>
                     </a>
                 </div>
@@ -1035,7 +1025,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -1056,7 +1046,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 16.67px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 13.33px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 16.67px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 16.67px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 17.5px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 12.5px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 17.5px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 15px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -1068,6 +1058,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1145,25 +1154,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/16/merge-two-binary-trees/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Binary Trees">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time></div>
-                    <a href="/2023/03/16/merge-two-binary-trees/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Binary Trees</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1181,7 +1171,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1271,7 +1261,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1285,7 +1275,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1355,7 +1345,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1369,7 +1359,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1404,6 +1394,25 @@
         
         <article class="media">
             
+            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/23/house-robber-ii/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber II">
@@ -1478,25 +1487,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/16/merge-two-binary-trees/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Binary Trees">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time></div>
-                    <a href="/2023/03/16/merge-two-binary-trees/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Binary Trees</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1514,7 +1504,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -1604,7 +1594,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1618,7 +1608,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1688,7 +1678,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1702,7 +1692,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

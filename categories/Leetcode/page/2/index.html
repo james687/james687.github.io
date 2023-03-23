@@ -145,6 +145,90 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 629 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2022/12/08/search-insert-position/">Search Insert Position</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p>
+<ol>
+<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]</p>
+</li>
+<li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p>
+<ul>
+<li>此時會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？判斷依據為在迴圈裡變更完 left or right 之後，<strong>不能造成無窮迴圈</strong></li>
+<li>但此時還沒寫迴圈內容，所以可以先直觀的設定一個，譬如 <code>&lt;</code>，等寫完迴圈內容再來驗證是否適合</li>
+</ul>
+</li>
+<li><p>迴圈寫完後，回來 check while condition，看看 while 把 left &amp; right 收斂到最後幾個的時候，經過以下的操作會不會有無窮迴圈</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. left &#x3D; mid + 1</span><br><span class="line">2. right &#x3D; mid</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>剩最後三個：此時 mid 會是中間那個，上面兩種操作都有助於收斂範圍</p>
+</li>
+<li><p>剩最後兩個：此時 mid == left，上面兩種操作一樣可以收斂範圍</p>
+</li>
+<li><p>剩最後一個：此時 left == mid == right，以目前的 while 條件設定，會因為不符而跳出，所以跳出迴圈後的情況就是這個</p>
+<ul>
+<li>如果 while 條件為 <code>left &lt;= right</code>，則 <code>right = mid</code> 這個操作會造成無窮迴圈，因此不能設定為 <code>&lt;=</code></li>
+</ul>
+<p>=&gt; 確認不會造成無窮迴圈，所以此 while 條件設定是正確的</p>
+</li>
+</ol>
+</li>
+<li><p>Post processing: 跳出 while 後的情況為 <code>left == right</code>，此時再跟 target 比，決定答案為何</p>
+<ul>
+<li>為何跳出 while 後的情況不會是 <code>left &gt; right</code>?<ul>
+<li>要讓 <code>left &gt; right</code>，必須執行到 <code>left = mid + 1</code>，而且此時 <code>left</code> 和 <code>right</code> 都必須等於 <code>mid</code>，而如果已經是這個情況，就不會再進到迴圈裡，而是已經跳出了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def searchInsert(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">    left, right &#x3D; 0, len(nums) - 1  # 設定左右兩個指標作為可能答案範圍：[left, right]</span><br><span class="line">    while left &lt; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2  # Python3 不會有 integer overflow 的問題，所以可以直接 (left + right)，然後用 &#96;&#x2F;&#x2F;&#96; 無條件捨去，避免小數</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        if nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1  # 此時最小的可能答案為 &#96;mid + 1&#96;</span><br><span class="line">        else:</span><br><span class="line">            right &#x3D; mid  # 此時最大的可能答案為 &#96;mid&#96;</span><br><span class="line">    return left + 1 if nums[left] &lt; target else left</span><br></pre></td></tr></table></figure>
+
+<p>更詳細解說可參考<a href="https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/">此篇文章</a></p>
+<p>類似題：<a href="https://leetcode.com/problems/first-bad-version/">First Bad Version</a><br>延伸題：<a href="https://leetcode.com/problems/find-peak-element/description/">Find Peak Element</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
                 
                 <div class="level-item">
@@ -254,7 +338,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            17
+                            18
                         </p>
                     </a>
                 </div>
@@ -330,7 +414,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Package-Management/">
@@ -351,7 +435,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 16.67px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 13.33px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 16.67px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 16.67px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 17.5px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 12.5px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 17.5px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 15px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -363,6 +447,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -440,25 +543,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/16/merge-two-binary-trees/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Binary Trees">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time></div>
-                    <a href="/2023/03/16/merge-two-binary-trees/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Binary Trees</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -476,7 +560,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -566,7 +650,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -580,7 +664,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -650,7 +734,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -664,7 +748,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -699,6 +783,25 @@
         
         <article class="media">
             
+            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/23/house-robber-ii/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber II">
@@ -773,25 +876,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/16/merge-two-binary-trees/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Merge Two Binary Trees">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time></div>
-                    <a href="/2023/03/16/merge-two-binary-trees/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Binary Trees</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -809,7 +893,7 @@
                     <span class="level-item">三月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -899,7 +983,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -913,7 +997,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -983,7 +1067,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -997,7 +1081,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

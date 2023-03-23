@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Binary Tree Inorder Traversal</title>
+      <link href="/2023/03/23/binary-tree-inorder-traversal/"/>
+      <url>/2023/03/23/binary-tree-inorder-traversal/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p><ol><li>Inorder Traversal: 左子節點 -&gt; 根節點 -&gt; 右子節點</li><li>可拆解為最小單位動作，即第一點，故使用遞迴</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        values &#x3D; self.inorderTraversal(root.left)  # 先取得左子節點所有的 inorder-traversal values</span><br><span class="line">        values.append(root.val)</span><br><span class="line">        values.extend(self.inorderTraversal(root.right))  # 最後加上右子節點的所有 inorder-traversal values</span><br><span class="line">        </span><br><span class="line">        return values</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> binary tree </tag>
+            
+            <tag> depth-first search </tag>
+            
+            <tag> recursion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>House Robber II</title>
       <link href="/2023/03/23/house-robber-ii/"/>
       <url>/2023/03/23/house-robber-ii/</url>
@@ -20,9 +51,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> recursion </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -72,9 +103,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> recursion </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -99,9 +130,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> recursion </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -126,13 +157,13 @@
       
         <tags>
             
-            <tag> recursion </tag>
-            
             <tag> tree </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> depth-first search </tag>
             
-            <tag> binary tree </tag>
+            <tag> recursion </tag>
             
             <tag> breadth-first search </tag>
             
@@ -159,13 +190,13 @@
       
         <tags>
             
-            <tag> recursion </tag>
-            
             <tag> tree </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> depth-first search </tag>
             
-            <tag> binary tree </tag>
+            <tag> recursion </tag>
             
         </tags>
       
@@ -192,9 +223,9 @@
             
             <tag> tree </tag>
             
-            <tag> depth-first search </tag>
-            
             <tag> binary tree </tag>
+            
+            <tag> depth-first search </tag>
             
             <tag> breadth-first search </tag>
             

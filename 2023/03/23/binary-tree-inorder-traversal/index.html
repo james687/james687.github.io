@@ -7,16 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分類: Package Management - James&#39; Blog</title>
+<title>Binary Tree Inorder Traversal - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://james687.github.io/categories/Package-Management/index.html">
+    <meta name="description" content="題目思路  Inorder Traversal: 左子節點 -&gt; 根節點 -&gt; 右子節點 可拆解為最小單位動作，即第一點，故使用遞迴  12345678910111213141516171819# Definition for a binary tree node.# class TreeNode:#     def __init__(self, val&#x3D;0, left&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Tree Inorder Traversal">
+<meta property="og:url" content="https://james687.github.io/2023/03/23/binary-tree-inorder-traversal/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="題目思路  Inorder Traversal: 左子節點 -&gt; 根節點 -&gt; 右子節點 可拆解為最小單位動作，即第一點，故使用遞迴  12345678910111213141516171819# Definition for a binary tree node.# class TreeNode:#     def __init__(self, val&#x3D;0, left&amp;#x">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
+<meta property="article:published_time" content="2023-03-23T08:51:55.000Z">
+<meta property="article:modified_time" content="2023-03-23T08:51:16.146Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="tree">
+<meta property="article:tag" content="binary tree">
+<meta property="article:tag" content="depth-first search">
+<meta property="article:tag" content="recursion">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -85,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="Binary Tree Inorder Traversal" height="28">
             
             </a>
         </div>
@@ -126,36 +134,24 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分類</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Package Management</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-06T10:35:33.000Z">2020-02-06</time>
+                <time class="level-item has-text-grey" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Package-Management/">Package Management</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 520 個字)
+                    1 分鐘 閱讀文 (大約 141 個字)
                 </span>
                 
                 
@@ -164,25 +160,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/02/06/pipenv-intro/">用 pipenv 管理 requirements 搭配 docker-compose local 開發</a>
+                Binary Tree Inorder Traversal
             
         </h1>
         <div class="content">
-            <ul>
-<li>Local 開發是跑在 Docker 的虛擬環境裡，所以 Pipenv 產生的虛擬環境只是用來裝套件產生 Pipfile.lock 而已</li>
-<li>用 pipenv 就不用自己寫 requirements.txt，不但可以自動安裝最新版的套件，而且可以很輕鬆的固定住對應 sub-packages 的版本</li>
-<li>想一次更新所有套件也很容易</li>
-<li>步驟：(以裝一個 package 為例)
+            <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p>
+<ol>
+<li>Inorder Traversal: 左子節點 -&gt; 根節點 -&gt; 右子節點</li>
+<li>可拆解為最小單位動作，即第一點，故使用遞迴</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        values &#x3D; self.inorderTraversal(root.left)  # 先取得左子節點所有的 inorder-traversal values</span><br><span class="line">        values.append(root.val)</span><br><span class="line">        values.extend(self.inorderTraversal(root.right))  # 最後加上右子節點的所有 inorder-traversal values</span><br><span class="line">        </span><br><span class="line">        return values</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/02/06/pipenv-intro/#more">繼續閱讀</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -192,9 +190,45 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2023/03/23/house-robber-ii/">
+                <span class="level-item">House Robber II</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://james687.github.io/2023/03/23/binary-tree-inorder-traversal/';
+        this.page.identifier = '2023/03/23/binary-tree-inorder-traversal/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -1011,7 +1045,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="Binary Tree Inorder Traversal" height="28">
                 
                 </a>
                 <p class="is-size-7">
