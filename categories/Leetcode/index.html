@@ -145,7 +145,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-21T13:08:15.000Z">2023-03-21</time>
+                <time class="level-item has-text-grey" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    幾秒 閱讀文 (大約 71 個字)
+                    5 分鐘 閱讀文 (大約 691 個字)
                 </span>
                 
                 
@@ -164,16 +164,48 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2023/03/21/house-robber-ii/">House Robber II</a>
+                <a class="has-link-black-ter" href="/2023/03/23/house-robber-ii/">House Robber II</a>
             
         </h1>
         <div class="content">
             <p><a href="https://leetcode.com/problems/house-robber-ii/">題目</a><br>思路</p>
 <ol>
-<li><p>Python3 solution:</p>
+<li>跟 <a href="https://leetcode.com/problems/house-robber">House Robber</a> 很像，只差在房子的排列變成頭尾相連，有沒有辦法把這題拆解，變成能用上第一版 House Robber 的解題方法？譬如把環形變回直排？</li>
+<li>變成環形之後多出來的限制讓我們可以把這題分成以下三種情況：<ol>
+<li>搶第一個、不搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但只考慮到倒數第二個</strong></li>
+<li>不搶第一個、搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但從第二個開始考慮</strong></li>
+<li>第一個和最後一個都不搶：可與前兩種情況合併</li>
+</ol>
+<ul>
+<li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案</li>
+</ul>
+</li>
+<li>因為現在需多考慮起始 index，我們把<a href="https://james687.github.io/2023/03/20/house-robber">第一版解法</a>的遞迴函式改為多傳入起始 index，並同樣用 <code>@cache</code> 避免同樣的 <code>inner_rob(i, j)</code> 重複計算<ul>
+<li>Base case 寫法：<ol>
+<li>考慮一開始 <code>j</code> 比 <code>i</code> 大的情況，一路因為 <code>inner_rob(i, j - 1)</code>, <code>inner_rob(i, j - 2)</code> 而減少的情況：<ol>
+<li><code>j == i + 2</code> 時：下兩個遞迴節點為 <code>inner_rob(i, i + 1)</code>, <code>inner_rob(i, i)</code></li>
+<li><code>j == i + 1</code> 時： 下兩個遞迴節點為 <code>inner_rob(i, i)</code>, <code>inner_rob(i, i - 1)</code></li>
+</ol>
+<ul>
+<li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code>，寫完後將 <code>inner_rob(i, j)</code> 代入 <code>j == i + 1</code> 驗算看看是否正確</li>
+</ul>
+</li>
+<li>考慮一開始 <code>j == i</code> 的情況，代入驗算看看是否正確</li>
+<li>考慮一開始 <code>j &lt; i</code> 的情況，也就是 <code>len(nums) == 1</code> 時：<ul>
+<li>此時得出的答案為 <code>0</code>，是錯的，所以 base case 需多考慮這種情況，加入 <code>len(nums) == 1</code> 時的判斷處理</li>
+</ul>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 從 index i 搶到 j 所獲的總金額&quot;&quot;&quot;</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">        </span><br><span class="line">        return max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>取錢比較多的情況即為答案：<code>return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</code></li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if j &#x3D;&#x3D; i:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        return max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
+
+<p>如果不用 <code>@cache</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    l &#x3D; len(nums)</span><br><span class="line">    memo &#x3D; [[None] * l for _ in range(l)]</span><br><span class="line"></span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if i &#x3D;&#x3D; j:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        if memo[i][j] is not None:</span><br><span class="line">            return memo[i][j]</span><br><span class="line">        memo[i][j] &#x3D; max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        return memo[i][j]</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -205,7 +237,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 364 個字)
+                    3 分鐘 閱讀文 (大約 387 個字)
                 </span>
                 
                 
@@ -230,10 +262,10 @@
 </ul>
 </li>
 <li>Base case (終止條件)：<code>i &lt; 0</code></li>
-<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> cache 起來，避免重複計算</li>
+<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
 </ol>
 <p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index 0 搶到 i 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>時間複雜度：O(n)<ul>
 <li>因為有記憶，每個點只會計算一次，共有 n 個點</li>
@@ -1054,7 +1086,7 @@
         
         <article class="media">
             
-            <a href="/2023/03/21/house-robber-ii/" class="media-left">
+            <a href="/2023/03/23/house-robber-ii/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber II">
                 </p>
@@ -1062,8 +1094,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T13:08:15.000Z">2023-03-21</time></div>
-                    <a href="/2023/03/21/house-robber-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/house-robber-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1387,7 +1419,7 @@
         
         <article class="media">
             
-            <a href="/2023/03/21/house-robber-ii/" class="media-left">
+            <a href="/2023/03/23/house-robber-ii/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber II">
                 </p>
@@ -1395,8 +1427,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T13:08:15.000Z">2023-03-21</time></div>
-                    <a href="/2023/03/21/house-robber-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber II</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time></div>
+                    <a href="/2023/03/23/house-robber-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
