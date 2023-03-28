@@ -10,19 +10,21 @@
 <title>Binary Tree Level Order Traversal - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路  這是廣先搜尋 (BFS)，因為遞迴一定是 DFS，所以需用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點    123456789101112131415161718def levelOrder(self, root: Optional[TreeNo">
+    <meta name="description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點    123456789101112131415161718def levelOrder(self, root: Optional[TreeNode]) -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binary Tree Level Order Traversal">
 <meta property="og:url" content="https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路  這是廣先搜尋 (BFS)，因為遞迴一定是 DFS，所以需用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點    123456789101112131415161718def levelOrder(self, root: Optional[TreeNo">
+<meta property="og:description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點    123456789101112131415161718def levelOrder(self, root: Optional[TreeNode]) -">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2023-03-28T09:25:25.000Z">
-<meta property="article:modified_time" content="2023-03-28T09:33:49.040Z">
+<meta property="article:published_time" content="2023-03-28T11:25:25.000Z">
+<meta property="article:modified_time" content="2023-03-28T12:09:53.872Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="tree">
+<meta property="article:tag" content="depth-first search">
 <meta property="article:tag" content="binary tree">
+<meta property="article:tag" content="recursion">
 <meta property="article:tag" content="breadth-first search">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
@@ -140,7 +142,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-28T09:25:25.000Z">2023-03-28</time>
+                <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -150,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 150 個字)
+                    2 分鐘 閱讀文 (大約 291 個字)
                 </span>
                 
                 
@@ -165,20 +167,32 @@
         <div class="content">
             <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p>
 <ol>
-<li>這是廣先搜尋 (BFS)，因為遞迴一定是 DFS，所以需用 iterative 的做法來解</li>
+<li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li>
 <li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul>
 <li>stack 也是 list of list, 裡面的每個 list 都是一層節點</li>
 </ul>
 </li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    stack, values &#x3D; [[root]], []</span><br><span class="line">    while stack:</span><br><span class="line">        level_vals &#x3D; []</span><br><span class="line">        level_nodes &#x3D; []</span><br><span class="line">        nodes &#x3D; stack.pop()</span><br><span class="line">        for node in nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            if node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            if node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        if level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    return values</span><br></pre></td></tr></table></figure>
+
+<h3 id="但假如用遞迴的話怎麼解？"><a href="#但假如用遞迴的話怎麼解？" class="headerlink" title="但假如用遞迴的話怎麼解？"></a>但假如用遞迴的話怎麼解？</h3><ol>
+<li><p>Recursive case: 把當下這個節點的 value 放到對應 level index 的 list 中</p>
+<ul>
+<li><p>如果沒有對應的 level index 就加一個空 list 進去 (<code>level_ind</code> 會從 0 開始依序傳入，不會有跳號的情況)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    level &#x3D; res[level_ind]</span><br><span class="line">except IndexError:</span><br><span class="line">    level &#x3D; []</span><br><span class="line">    res.append(level)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    def put_value(node, level_ind, res):</span><br><span class="line">        # Base case</span><br><span class="line">        if not node:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        # Recursive case</span><br><span class="line">        try:</span><br><span class="line">            level &#x3D; res[level_ind]</span><br><span class="line">        except IndexError:</span><br><span class="line">            level &#x3D; []</span><br><span class="line">            res.append(level)</span><br><span class="line">        level.append(node.val)</span><br><span class="line">        put_value(node.left, level_ind + 1, res)</span><br><span class="line">        put_value(node.right, level_ind + 1, res)</span><br><span class="line"></span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res &#x3D; []</span><br><span class="line">    put_value(root, 0, res)</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/breadth-first-search/" rel="tag">breadth-first search</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
+                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/breadth-first-search/" rel="tag">breadth-first search</a>, <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
                 </div>
             </div>
         </div>
@@ -373,7 +387,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 16px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 17.5px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 15px;">breadth-first search</a> <a href="/tags/depth-first-search/" style="font-size: 17.5px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 15px;">dynamic programming</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -396,7 +410,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-28T09:25:25.000Z">2023-03-28</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time></div>
                     <a href="/2023/03/28/binary-tree-level-order-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Level Order Traversal</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -602,7 +616,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -672,7 +686,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -729,7 +743,7 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-28T09:25:25.000Z">2023-03-28</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time></div>
                     <a href="/2023/03/28/binary-tree-level-order-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Level Order Traversal</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -935,7 +949,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1005,7 +1019,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
