@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Binary Tree Level Order Traversal</title>
+      <link href="/2023/03/28/binary-tree-level-order-traversal/"/>
+      <url>/2023/03/28/binary-tree-level-order-traversal/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p><ol><li>這是廣先搜尋 (BFS)，因為遞迴一定是 DFS，所以需用 iterative 的做法來解</li><li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul><li>stack 也是 list of list, 裡面的每個 list 都是一層節點</li></ul></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    stack, values &#x3D; [[root]], []</span><br><span class="line">    while stack:</span><br><span class="line">        level_vals &#x3D; []</span><br><span class="line">        level_nodes &#x3D; []</span><br><span class="line">        nodes &#x3D; stack.pop()</span><br><span class="line">        for node in nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            if node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            if node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        if level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    return values</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> binary tree </tag>
+            
+            <tag> breadth-first search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Binary Tree Inorder Traversal</title>
       <link href="/2023/03/23/binary-tree-inorder-traversal/"/>
       <url>/2023/03/23/binary-tree-inorder-traversal/</url>
