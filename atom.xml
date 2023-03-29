@@ -614,4 +614,26 @@
     
   </entry>
   
+  <entry>
+    <title>Web Server 與 Application Server 的差別</title>
+    <link href="https://james687.github.io/2014/06/07/difference-between-web-and-application-server/"/>
+    <id>https://james687.github.io/2014/06/07/difference-between-web-and-application-server/</id>
+    <published>2014-06-07T09:34:24.000Z</published>
+    <updated>2023-03-29T09:55:39.752Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/web-architecture.png" alt=""><br>圖片來源: <a href="https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf">https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf</a></p><p>看到 AWS 關於 web application 的 architecture 這張圖之後，不太懂為何 server 要分為兩層，於是就google 了一下，找到一篇不錯的<a href="http://www.javaworld.com/article/2077354/learn-java/app-server-web-server-what-s-the-difference.html">文章</a>。<a id="more"></a>這邊配合AWS的圖做個簡短的summary:</p><ul><li>Application Server: 專門用來處理 business logic 的，較常見的用法是接受 web server 的 request，執行完 business logic (過程中視需要去 access DB tier)之後把 result 回給 web server</li><li>Web Server: 專門只處理 HTTP request 與 response，當收到 HTTP request 之後，需要 business logic 的部分就從 application server 取，最後把 result 轉為 HTTP response</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/web-architecture.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;圖片來源: &lt;a href=&quot;https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf&quot;&gt;https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;看到 AWS 關於 web application 的 architecture 這張圖之後，不太懂為何 server 要分為兩層，於是就google 了一下，找到一篇不錯的&lt;a href=&quot;http://www.javaworld.com/article/2077354/learn-java/app-server-web-server-what-s-the-difference.html&quot;&gt;文章&lt;/a&gt;。
+    
+    </summary>
+    
+    
+      <category term="System Design" scheme="https://james687.github.io/categories/System-Design/"/>
+    
+    
+  </entry>
+  
 </feed>
