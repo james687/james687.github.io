@@ -432,7 +432,7 @@
       
       <categories>
           
-          <category> Authentication </category>
+          <category> Development Note </category>
           
       </categories>
       
@@ -451,7 +451,7 @@
       
       <categories>
           
-          <category> Authentication </category>
+          <category> Development Note </category>
           
       </categories>
       
@@ -459,6 +459,8 @@
         <tags>
             
             <tag> jwt </tag>
+            
+            <tag> authentication </tag>
             
         </tags>
       
@@ -476,7 +478,7 @@
       
       <categories>
           
-          <category> Database </category>
+          <category> Development Note </category>
           
       </categories>
       
@@ -484,6 +486,8 @@
         <tags>
             
             <tag> docker </tag>
+            
+            <tag> database </tag>
             
             <tag> postgresql </tag>
             
