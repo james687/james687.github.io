@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2014-10-28T10:14:51.000Z">
-<meta property="article:modified_time" content="2023-03-29T10:24:53.276Z">
+<meta property="article:modified_time" content="2023-03-29T10:25:10.493Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="android">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 400 個字)
+                    3 分鐘 閱讀文 (大約 401 個字)
                 </span>
                 
                 
@@ -162,7 +162,7 @@
         </h1>
         <div class="content">
             <p><a href="http://square.github.io/retrofit/">Retrofit</a> 和 <a href="http://square.github.io/dagger/">Dagger</a> 都是 Square 出的 library，網路上已經有很多相關介紹了，因為 Retrofit 的 REST API Interface 的實作建議採用 Singleton 的方式，所以搭配 Dagger 來管理是個蠻好的 paradigm</p>
-<p>今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 detail 的說明可以參考上面兩個連結~</p>
+<p>今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 detail 的說明可以參考上面兩個連結~<a id="more"></a></p>
 <figure class="highlight java"><figcaption><span>DaggerModule.java - 提供 injection 的 module，在這裡提供 API Service 的 instance</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span>(</span><br><span class="line">    injects = &#123;</span><br><span class="line">        ExampleActivity<span class="class">.<span class="keyword">class</span></span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">DaggerModule</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> APIService <span class="title">provideAPIService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestAdapter.Builder()</span><br><span class="line">            .setEndpoint(Constants.API_SERVICE_ENDPOINT)</span><br><span class="line">            .build()</span><br><span class="line">            .create(APIService<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面的 <code>APIService</code> 就是我們 REST API 的 interface</p>
