@@ -7,22 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>House Robber - James&#39; Blog</title>
+<title>Android 連續掃描多個 QR code 的實作 - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路  可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解 Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 inner_rob(i)。在位置 i, 可選擇搶或不搶： 不搶：最大收穫跟前一個點一樣，為 inner_rob(i - 1) 搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money nums[i] 再加上前前個點的最大收">
+    <meta name="description" content="使用 GitHub 上 LivotovLabs&#x2F;zxscanlib 的 v0.9.0 版，目前上面有更新的版本，不過我那時候用的時候最新的就到這版 假如直接使用這個 library ，手機在掃到 QR code 的時候會震動，然後離開掃描的相機畫面回到前一個畫面，另外，它開相機的時候會把畫面變成橫的(landscape)。所以要達到我的要求的話就需要改一下裡面的 code，這邊分享一下把這個 li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="House Robber">
-<meta property="og:url" content="https://james687.github.io/2023/03/20/house-robber/index.html">
+<meta property="og:title" content="Android 連續掃描多個 QR code 的實作">
+<meta property="og:url" content="https://james687.github.io/2014/11/04/android-multi-qr-code/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路  可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解 Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 inner_rob(i)。在位置 i, 可選擇搶或不搶： 不搶：最大收穫跟前一個點一樣，為 inner_rob(i - 1) 搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money nums[i] 再加上前前個點的最大收">
+<meta property="og:description" content="使用 GitHub 上 LivotovLabs&#x2F;zxscanlib 的 v0.9.0 版，目前上面有更新的版本，不過我那時候用的時候最新的就到這版 假如直接使用這個 library ，手機在掃到 QR code 的時候會震動，然後離開掃描的相機畫面回到前一個畫面，另外，它開相機的時候會把畫面變成橫的(landscape)。所以要達到我的要求的話就需要改一下裡面的 code，這邊分享一下把這個 li">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2023-03-20T07:08:15.000Z">
-<meta property="article:modified_time" content="2023-03-29T08:55:47.152Z">
+<meta property="article:published_time" content="2014-11-04T10:26:00.000Z">
+<meta property="article:modified_time" content="2023-03-29T10:35:12.709Z">
 <meta property="article:author" content="James Ho">
-<meta property="article:tag" content="recursion">
-<meta property="article:tag" content="dynamic programming">
+<meta property="article:tag" content="android">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -91,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="House Robber" height="28">
+                <img src="/images/logo.svg" alt="Android 連續掃描多個 QR code 的實作" height="28">
             
             </a>
         </div>
@@ -139,17 +138,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time>
+                <time class="level-item has-text-grey" datetime="2014-11-04T10:26:00.000Z">2014-11-04</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 388 個字)
+                    6 分鐘 閱讀文 (大約 833 個字)
                 </span>
                 
                 
@@ -158,45 +157,36 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                House Robber
+                Android 連續掃描多個 QR code 的實作
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p>
-<ol>
-<li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li>
-<li>Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol>
-<li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li>
-<li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
-</ol>
-<ul>
-<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個<a id="more"></a></li>
-</ul>
-</li>
-<li>Base case (終止條件)：<code>i &lt; 0</code></li>
-<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index 0 搶到 i 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>時間複雜度：O(n)<ul>
-<li>因為有記憶，每個點只會計算一次，共有 n 個點</li>
-</ul>
-</li>
-<li>空間複雜度：O(n)<ul>
-<li>cache 需要的空間為 n，遞迴的最大深度也是 n</li>
-</ul>
-</li>
-</ul>
-<p>以上，如果不用 <code>@cache</code> 的話：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    memo &#x3D; [None] * len(nums)</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        if memo[i] is not None:</span><br><span class="line">            return memo[i]</span><br><span class="line">        memo[i] &#x3D; max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">        return memo[i]</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
+            <p>使用 GitHub 上 <a href="https://github.com/LivotovLabs/zxscanlib">LivotovLabs/zxscanlib</a> 的 <a href="https://github.com/LivotovLabs/zxscanlib/tree/v0.9.0">v0.9.0</a> 版，目前上面有更新的版本，不過我那時候用的時候最新的就到這版</p>
+<p>假如直接使用這個 library ，手機在掃到 QR code 的時候會震動，然後離開掃描的相機畫面回到前一個畫面，另外，它開相機的時候會把畫面變成橫的(landscape)。所以要達到我的要求的話就需要改一下裡面的 code，這邊分享一下把這個 library 應用到可以連續掃描多個 QR code 的經驗 (使用eclipse)，可以搭配該 project 的 GitHub 頁面說明一起看<a id="more"></a></p>
+<h4 id="目標：可以連續掃描多個-QR-code，當掃到目標-QR-code-的時候跳回原畫面，並使用取得的資料做下一步應用"><a href="#目標：可以連續掃描多個-QR-code，當掃到目標-QR-code-的時候跳回原畫面，並使用取得的資料做下一步應用" class="headerlink" title="目標：可以連續掃描多個 QR code，當掃到目標 QR code 的時候跳回原畫面，並使用取得的資料做下一步應用"></a>目標：可以連續掃描多個 QR code，當掃到目標 QR code 的時候跳回原畫面，並使用取得的資料做下一步應用</h4><p><strong>Dependency Issue</strong><br>把 project clone 下來之後，照著 GitHub 頁面上的說明，將它當作一個 library project 使用，此時假如原本的 project 有用到 android-support-v4.jar，就會產生衝突(因為此 library project 也有用)，我的解決方式是把原本 project 的 android-support-v4.jar 從 libs 裡刪掉</p>
+<p><strong>此 library 的運作模式</strong><br>在想要掃 QR code 的時候使用 <code>ZXScanHelper.scan()</code> 方法，此時 <code>DecodeHandler.handleMessage()</code> 會不斷地被呼叫，decode成功了之後會呼叫 <code>CaptureActivity.handleDecode()</code>，可以在這邊對 decode 之後的結果做篩選，最後可以在我們自己 override 的 <code>onActivityResult()</code> 裡取得解碼後的結果</p>
+<p><strong>解決問題：掃描時相機畫面會變成橫的</strong><br>第一步：刪掉強制轉為 landscape 的 code</p>
+<figure class="highlight java"><figcaption><span>CaptureActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle icicle)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(icicle);</span><br><span class="line">    <span class="comment">// 註解(或刪)掉下面這段就不會強迫在掃QR code時用landscape了</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        if (android.os.Build.VERSION.SDK_INT &lt; 8 || ZXScanHelper.isBlockCameraRotation())</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Window window = getWindow();</span><br><span class="line">    window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);</span><br><span class="line">    setContentView(ZXScanHelper.getCustomScanLayout() &gt; <span class="number">0</span> ? ZXScanHelper.getCustomScanLayout() : R.layout.capture);</span><br><span class="line"></span><br><span class="line">    hasSurface = <span class="keyword">false</span>;</span><br><span class="line">    inactivityTimer = <span class="keyword">new</span> InactivityTimer(<span class="keyword">this</span>);</span><br><span class="line">    beepManager = <span class="keyword">new</span> BeepManager(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ZXScanHelper.getUserCallback() != <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ZXScanHelper.getUserCallback().onScannerActivityCreated(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二步：設定 camera 的 orientation，不然在 CaptureActivity 為 portrait 的情況下 camera 會是 landscape</p>
+<figure class="highlight java"><figcaption><span>CameraManager.java - 加上 forceSetCameraOrientation()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Opens the camera driver and initializes the hardware parameters.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> holder The surface object which the camera will draw preview frames into.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException Indicates the camera driver failed to open.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">openDriver</span><span class="params">(SurfaceHolder holder)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...省略</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        configManager.setDesiredCameraParameters(theCamera);</span><br><span class="line">        forceSetCameraOrientation(); <span class="comment">// 把相機畫面的 orientation 設為跟 CaptureActivity 一樣</span></span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (RuntimeException re)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...省略</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>小提醒：GitHub上的說明在 android:configChanges 少了 screenSize，記得加上 (target API level &gt;= 13的話要加，所以應該幾乎都需要加吧)</p>
+<figure class="highlight"><figcaption><span>AndroidManifest.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">"com.google.zxing.client.android.CaptureActivity"</span></span><br><span class="line">                       android:clearTaskOnLaunch=<span class="string">"true"</span></span><br><span class="line">                       android:stateNotNeeded=<span class="string">"true"</span></span><br><span class="line">                       android:configChanges=<span class="string">"orientation|keyboardHidden|screenSize"</span></span><br><span class="line">                       android:theme=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span></span><br><span class="line">                       android:windowSoftInputMode=<span class="string">"stateAlwaysHidden"</span>&gt;</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解決問題：改為可以連續掃描多個 QR code</strong><br>第一步：設定 <code>ZXUserCallback</code>，實作 <code>onCodeRead()</code> 方法<br>如 GitHub 頁面所說，呼叫 <code>ZXScanHelper.scan()</code> 之前先呼叫<code>ZXScanHelper.setUserCallback(ZXUserCallback cb)</code>，把過濾邏輯寫在 <code>onCodeRead()</code> 裡</p>
+<p>第二步：在 <code>CaptureActivity.handleDecode()</code> 裡增加判斷邏輯，掃到不合格的 QR code 之後要 <code>callrestartPreviewAfterDelay(long delayMS)</code> 重新掃描</p>
+<figure class="highlight java"><figcaption><span>CaptureActivity.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A valid barcode has been found, so give an indication of success and show the results.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> rawResult The contents of the barcode.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> barcode   A greyscale bitmap of the camera data which was decoded.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDecode</span><span class="params">(Result rawResult, Bitmap barcode)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...省略</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> accept = rawResult != <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (accept &amp;&amp; ZXScanHelper.getUserCallback() != <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        accept = ZXScanHelper.getUserCallback().onCodeRead(rawResult.getText());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (accept)</span><br><span class="line">    &#123;</span><br><span class="line">        handleDecodeExternally(rawResult, barcode);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 掃到不符合條件的 QR code</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// do something you want, ex: show a toast</span></span><br><span class="line"></span><br><span class="line">        restartPreviewAfterDelay(<span class="number">300L</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這樣就大功告成囉！</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/dynamic-programming/" rel="tag">dynamic programming</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>
+                    <a class="has-link-grey -link" href="/tags/android/" rel="tag">android</a>
                 </div>
             </div>
         </div>
@@ -214,16 +204,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2023/03/21/recursion-time-complexity/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/06/pipenv-intro/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">遞迴的時間複雜度算法</span>
+                <span class="level-item">用 pipenv 管理 requirements 搭配 docker-compose local 開發</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2023/03/18/unique-paths/">
-                <span class="level-item">Unique Paths</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2014/10/28/use-retrofit-with-dagger/">
+                <span class="level-item">Use Retrofit with Dagger - simple example</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -239,8 +229,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://james687.github.io/2023/03/20/house-robber/';
-        this.page.identifier = '2023/03/20/house-robber/';
+        this.page.url = 'https://james687.github.io/2014/11/04/android-multi-qr-code/';
+        this.page.identifier = '2014/11/04/android-multi-qr-code/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -1168,7 +1158,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="House Robber" height="28">
+                    <img src="/images/logo.svg" alt="Android 連續掃描多個 QR code 的實作" height="28">
                 
                 </a>
                 <p class="is-size-7">
