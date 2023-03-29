@@ -527,6 +527,25 @@
     
     
     <entry>
+      <title>趨勢科技的 agile tour_by Joy Chen 心得分享 - Agile Tour Taipei 2014</title>
+      <link href="/2014/11/12/agile-tour-thoughts/"/>
+      <url>/2014/11/12/agile-tour-thoughts/</url>
+      
+        <content type="html"><![CDATA[<p><a href="http://www.slideshare.net/AgileCommunity/agile-tour-agile-v3">Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅</a><br>上禮拜參加 Agile Tour Taipei 2014，第一場 talk 的 Joy 分享趨勢科技實行 Agile 的經驗，上面是她的 slides</p><p><strong>Agile 的優點與適用情境</strong></p><p>下面是第 9 張 slide，以追蹤導彈和固定火炮來比喻 Agile Mentality 和 Plan Driven 的差別<br>我覺得這個比喻很好，一張圖就可以讓大家清楚的看到 Agile 的優點：隨著目標(專案需求)的改變而在每一次的 iteration調整方向，重新瞄準目標，最後才能準確地擊中目標<br>相對來講假如是 Plan Driven(固定火炮) 的話，只要目標一動就無法命中目標了。</p><p><img src="/images/agile-mentality.png" alt=""><br>上面講 agile mentality 適合用在 moving target，但其實如同 Joy 的下一張 slide 所提，適合 Agile Principles 的情境還有很多，其中我覺得 Moving Target 和 Continuous Improvement 是對我來講最有感覺的</p><p>Moving Target:</p><ul><li>Uncertain situation: 假如是新創公司面對一個不確定的市場，就必須要快速取得市場反饋，快速修正</li><li>Brand new knowledge: 面對新的領域、新的知識，一定有很多未知、不確定的事情，此時一樣需要快速的反省與修正</li><li>As early as possible needs: 每個 iteration 結束都會有一個可以 ship 的成品，所以如果需要及早的有實際的成品的話也很適合</li></ul><p>Continuous Improvement: </p><ul><li>Continuously improve a certain capability, practice or skill: 因為每個 iteration 結束都會做回顧，所以可以快速地檢視需要改進的地方，並且快速修正</li></ul><p><strong>Lessons Learned</strong></p><p>Joy 也分享了趨勢在推行 agile 的時候學到的教訓</p><p>牛肉在哪裡？</p><ul><li>因為向上司報告專案成果時沒有事先準備資料來說明實行 agile 之後改善的地方，上司沒有看到牛肉，所以也不會覺得改用 agile 的方式開發之後有甚麼好</li><li>解法：在進行agile的時候就要把專案進度相關數據記錄下來，在進度報告時明確點出改善之處</li></ul><p>我們不幹了！</p><ul><li>一開始實施新的方法，一定會有一段磨合期，假如沒有事先把這段時間算入時程，就會導致必須要不斷加班趕進度的狀況，Joy 有分享一個例子是他們有一個 project 的 team 在 project 完成之後大概流失了一半的人</li><li>解法：實施新方法的時候，一定要把磨合的時間也算進去</li></ul><p>送不出去的價值！</p><ul><li>當只有開發團隊實施 agile，其他團隊沒有配合，會導致每個iteration的成品無法進入下個階段</li><li>解法：必須要所有團隊一起採用 agile 才能真正發揮 agile 的成效，至於詳細的實作方法他們也還在嘗試中</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Project Management </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Android 連續掃描多個 QR code 的實作</title>
       <link href="/2014/11/04/android-multi-qr-code/"/>
       <url>/2014/11/04/android-multi-qr-code/</url>
