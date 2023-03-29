@@ -10,16 +10,16 @@
 <title>Binary Tree Inorder Traversal - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路  Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹 可拆解為最小單位動作，即第一點，故使用遞迴  12345678910111213141516171819# Definition for a binary tree node.# class TreeNode:#     def __init__(self, val&#x3D;0">
+    <meta name="description" content="題目思路  Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹 可拆解為最小單位動作，即第一點，故使用遞迴">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binary Tree Inorder Traversal">
 <meta property="og:url" content="https://james687.github.io/2023/03/23/binary-tree-inorder-traversal/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路  Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹 可拆解為最小單位動作，即第一點，故使用遞迴  12345678910111213141516171819# Definition for a binary tree node.# class TreeNode:#     def __init__(self, val&#x3D;0">
+<meta property="og:description" content="題目思路  Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹 可拆解為最小單位動作，即第一點，故使用遞迴">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-03-23T08:51:55.000Z">
-<meta property="article:modified_time" content="2023-03-23T11:15:46.526Z">
+<meta property="article:modified_time" content="2023-03-29T08:54:54.952Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="tree">
 <meta property="article:tag" content="depth-first search">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 544 個字)
+                    4 分鐘 閱讀文 (大約 545 個字)
                 </span>
                 
                 
@@ -167,7 +167,9 @@
             <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p>
 <ol>
 <li>Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹</li>
-<li>可拆解為最小單位動作，即第一點，故使用遞迴</li>
+<li>可拆解為最小單位動作，即第一點，故使用遞迴<a id="more"></a>
+
+</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        values &#x3D; self.inorderTraversal(root.left)  # 先取得左子節點所有的 inorder-traversal values</span><br><span class="line">        values.append(root.val)</span><br><span class="line">        values.extend(self.inorderTraversal(root.right))  # 最後加上右子節點的所有 inorder-traversal values</span><br><span class="line">        </span><br><span class="line">        return values</span><br></pre></td></tr></table></figure>
 

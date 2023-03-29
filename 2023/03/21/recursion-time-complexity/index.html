@@ -10,16 +10,16 @@
 <title>遞迴的時間複雜度算法 - James&#39; Blog</title>
 
 
-    <meta name="description" content="快速解 看這個遞迴函式呼叫自己幾次，假設呼叫了 x 次 看看那些遞迴呼叫的深度，假設你取了一個深度 h 可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度   時間複雜度為 O(x^h)   至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立  詳細解 (遞迴樹)以 Unique Paths 的遞迴解為例： 12345678def uniquePaths(self">
+    <meta name="description" content="快速解 看這個遞迴函式呼叫自己幾次，假設呼叫了 x 次 看看那些遞迴呼叫的深度，假設你取了一個深度 h 可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度   時間複雜度為 O(x^h)   至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遞迴的時間複雜度算法">
 <meta property="og:url" content="https://james687.github.io/2023/03/21/recursion-time-complexity/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="快速解 看這個遞迴函式呼叫自己幾次，假設呼叫了 x 次 看看那些遞迴呼叫的深度，假設你取了一個深度 h 可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度   時間複雜度為 O(x^h)   至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立  詳細解 (遞迴樹)以 Unique Paths 的遞迴解為例： 12345678def uniquePaths(self">
+<meta property="og:description" content="快速解 看這個遞迴函式呼叫自己幾次，假設呼叫了 x 次 看看那些遞迴呼叫的深度，假設你取了一個深度 h 可以取最大、最小或平均深度，分別會對應到最壞、最好、或平均時間複雜度   時間複雜度為 O(x^h)   至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-03-21T08:55:19.000Z">
-<meta property="article:modified_time" content="2023-03-21T08:56:15.369Z">
+<meta property="article:modified_time" content="2023-03-29T08:59:51.513Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="recursion">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 559 個字)
+                    4 分鐘 閱讀文 (大約 560 個字)
                 </span>
                 
                 
@@ -170,7 +170,9 @@
 <li>時間複雜度為 <code>O(x^h)</code></li>
 </ol>
 <ul>
-<li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立</li>
+<li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立<a id="more"></a>
+
+</li>
 </ul>
 <h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>

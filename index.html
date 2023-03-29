@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 291 個字)
+                    2 分鐘 閱讀文 (大約 292 個字)
                 </span>
                 
                 
@@ -161,22 +161,17 @@
 <ol>
 <li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li>
 <li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul>
-<li>stack 也是 list of list, 裡面的每個 list 都是一層節點</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    stack, values &#x3D; [[root]], []</span><br><span class="line">    while stack:</span><br><span class="line">        level_vals &#x3D; []</span><br><span class="line">        level_nodes &#x3D; []</span><br><span class="line">        nodes &#x3D; stack.pop()</span><br><span class="line">        for node in nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            if node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            if node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        if level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    return values</span><br></pre></td></tr></table></figure>
-
-<h3 id="但假如用遞迴的話怎麼解？"><a href="#但假如用遞迴的話怎麼解？" class="headerlink" title="但假如用遞迴的話怎麼解？"></a>但假如用遞迴的話怎麼解？</h3><p>Recursive case: 把當下這個節點的 value 放到對應 level index 的 list 中</p>
-<ul>
-<li><p>如果沒有對應的 level index 就加一個空 list 進去 (<code>level_ind</code> 會從 0 開始依序傳入，不會有跳號的情況)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    level &#x3D; res[level_ind]</span><br><span class="line">except IndexError:</span><br><span class="line">    level &#x3D; []</span><br><span class="line">    res.append(level)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    def put_value(node, level_ind, res):</span><br><span class="line">        # Base case</span><br><span class="line">        if not node:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        # Recursive case</span><br><span class="line">        try:</span><br><span class="line">            level &#x3D; res[level_ind]</span><br><span class="line">        except IndexError:</span><br><span class="line">            level &#x3D; []</span><br><span class="line">            res.append(level)</span><br><span class="line">        level.append(node.val)</span><br><span class="line">        put_value(node.left, level_ind + 1, res)</span><br><span class="line">        put_value(node.right, level_ind + 1, res)</span><br><span class="line"></span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res &#x3D; []</span><br><span class="line">    put_value(root, 0, res)</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<li>stack 也是 list of list, 裡面的每個 list 都是一層節點
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/28/binary-tree-level-order-traversal/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -206,7 +201,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 544 個字)
+                    4 分鐘 閱讀文 (大約 545 個字)
                 </span>
                 
                 
@@ -222,28 +217,17 @@
             <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p>
 <ol>
 <li>Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹</li>
-<li>可拆解為最小單位動作，即第一點，故使用遞迴</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        values &#x3D; self.inorderTraversal(root.left)  # 先取得左子節點所有的 inorder-traversal values</span><br><span class="line">        values.append(root.val)</span><br><span class="line">        values.extend(self.inorderTraversal(root.right))  # 最後加上右子節點的所有 inorder-traversal values</span><br><span class="line">        </span><br><span class="line">        return values</span><br></pre></td></tr></table></figure>
-
-<h3 id="這個題目使用遞迴是相對直觀的，以下改用-iterative-的方式來解："><a href="#這個題目使用遞迴是相對直觀的，以下改用-iterative-的方式來解：" class="headerlink" title="這個題目使用遞迴是相對直觀的，以下改用 iterative 的方式來解："></a>這個題目使用遞迴是相對直觀的，以下改用 iterative 的方式來解：</h3><p>思路：使用一個 list 當 stack 來放 nodes，只要<strong>按照順序</strong>放入，再從裡面依序把 node <code>pop()</code> 出來取 value，stack 為空的時候代表已處理完所有的 nodes =&gt; 回傳答案。以下列出主要分解動作：</p>
-<ol>
-<li><p>把 root 和 root 所有的左節點由上到下依序放入 stack，放完後 stack 裡自然會包含左節點跟中間的節點</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while root:</span><br><span class="line">    stack.append(root)</span><br><span class="line">    root &#x3D; root.left</span><br></pre></td></tr></table></figure></li>
-<li><p>把 node <code>pop()</code> 出來取 value，此時最先被 pop 出來的會是最下面的左節點。可以先參照接下來的程式碼，當 node 為葉子節點時，不會有 <code>node.right</code>，所以下一個迴圈會繼續 pop 出中間的節點</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node &#x3D; stack.pop()</span><br><span class="line">values.append(node.val)</span><br></pre></td></tr></table></figure></li>
-<li><p>左、中節點處理完後，處理右節點：把右節點當成新的 root，重複前兩步驟</p>
-<ol>
-<li><code>root = node.right</code></li>
-<li>上面一行連同前兩步驟的程式碼 (如下)，用 <code>while True:</code> 包起來</li>
-</ol>
-</li>
-<li><p>寫終止條件：在 <code>node = stack.pop()</code> 之前判斷 stack 是否還有，如為空代表所有的節點已被遍歷完，故回傳答案 <code>values</code></p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">class Solution:</span><br><span class="line">    def inorderTraversal(self, root: Optional[TreeNode]) -&gt; List[int]:</span><br><span class="line">        &quot;&quot;&quot;@return node values with inorder-traversal order&quot;&quot;&quot;</span><br><span class="line">        if not root:</span><br><span class="line">            return []</span><br><span class="line">        stack, values &#x3D; [], []</span><br><span class="line">        while True:</span><br><span class="line">            while root:</span><br><span class="line">                stack.append(root)</span><br><span class="line">                root &#x3D; root.left</span><br><span class="line">            if not stack:</span><br><span class="line">                return values</span><br><span class="line">            node &#x3D; stack.pop()</span><br><span class="line">            values.append(node.val)</span><br><span class="line">            root &#x3D; node.right</span><br></pre></td></tr></table></figure>
+<li>可拆解為最小單位動作，即第一點，故使用遞迴
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/23/binary-tree-inorder-traversal/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -273,7 +257,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分鐘 閱讀文 (大約 691 個字)
+                    5 分鐘 閱讀文 (大約 692 個字)
                 </span>
                 
                 
@@ -295,37 +279,17 @@
 <li>第一個和最後一個都不搶：可與前兩種情況合併</li>
 </ol>
 <ul>
-<li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案</li>
-</ul>
-</li>
-<li>因為現在需多考慮起始 index，我們把<a href="https://james687.github.io/2023/03/20/house-robber">第一版解法</a>的遞迴函式改為多傳入起始 index，並同樣用 <code>@cache</code> 避免同樣的 <code>inner_rob(i, j)</code> 重複計算<ul>
-<li>Base case 寫法：<ol>
-<li>考慮一開始 <code>j</code> 比 <code>i</code> 大的情況，一路因為 <code>inner_rob(i, j - 1)</code>, <code>inner_rob(i, j - 2)</code> 而減少的情況：<ol>
-<li><code>j == i + 2</code> 時：下兩個遞迴節點為 <code>inner_rob(i, i + 1)</code>, <code>inner_rob(i, i)</code></li>
-<li><code>j == i + 1</code> 時： 下兩個遞迴節點為 <code>inner_rob(i, i)</code>, <code>inner_rob(i, i - 1)</code></li>
-</ol>
-<ul>
-<li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code>，寫完後將 <code>inner_rob(i, j)</code> 代入 <code>j == i + 1</code> 驗算看看是否正確</li>
-</ul>
-</li>
-<li>考慮一開始 <code>j == i</code> 的情況，代入驗算看看是否正確</li>
-<li>考慮一開始 <code>j &lt; i</code> 的情況，也就是 <code>len(nums) == 1</code> 時：<ul>
-<li>此時得出的答案為 <code>0</code>，是錯的，所以 base case 需多考慮這種情況，加入 <code>len(nums) == 1</code> 時的判斷處理</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>取錢比較多的情況即為答案：<code>return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</code></li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if j &#x3D;&#x3D; i:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        return max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
-
-<p>如果不用 <code>@cache</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    l &#x3D; len(nums)</span><br><span class="line">    memo &#x3D; [[None] * l for _ in range(l)]</span><br><span class="line"></span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if i &#x3D;&#x3D; j:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        if memo[i][j] is not None:</span><br><span class="line">            return memo[i][j]</span><br><span class="line">        memo[i][j] &#x3D; max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        return memo[i][j]</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
+<li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/23/house-robber-ii/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -355,7 +319,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 559 個字)
+                    4 分鐘 閱讀文 (大約 560 個字)
                 </span>
                 
                 
@@ -377,35 +341,17 @@
 <li>時間複雜度為 <code>O(x^h)</code></li>
 </ol>
 <ul>
-<li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立</li>
-</ul>
-<h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li>
-<li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul>
-<li>要怎麼不用畫圖，用看的就得出深度？<ul>
-<li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol>
-<li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li>
-<li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li>
-<li>所以需要走 <code>m + n</code> 次才會結束</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>u_paths</code> 合併遞迴結果的運算只需要一次加法，可以把時間消耗記做 <code>1</code>，也就是每個節點的時間消耗都是 <code>1</code></li>
-<li>所有節點的時間消耗總合就是這個函式的時間複雜度。第一層有 <code>1 (= 2^0)</code> 個節點，第二層有 <code>2 (= 2^1)</code> 個節點，第三層有 <code>4 (= 2^2)</code> 個節點，以此類推，假設此樹深度為 <code>h</code>，所有節點的時間消耗和為 <code>2^0 + 2^1 + 2^2 + ... + 2^h</code>，依據等比級數和的公式得出結果為 <code>2^(h + 1) - 1</code><ul>
-<li>這邊的算法是假設這是一個滿二元樹來算，但其實這並不是一個滿二元樹 (像第四層就只有 <code>7</code> 個節點)，所以遞迴樹法並不嚴謹，只是一個估算，真要嚴謹分析的話可以再用 Substitution Method 或 Master Theorem 來驗證</li>
-<li>由第二點，深度 <code>h = m + n</code></li>
-</ul>
-</li>
-<li>所以時間複雜度為 <code>O(2^(h + 1)) = O(2 * 2^h) = O(2^h) = O(2^(m + n))</code></li>
-</ol>
-
+<li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/21/recursion-time-complexity/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -435,7 +381,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 387 個字)
+                    3 分鐘 閱讀文 (大約 388 個字)
                 </span>
                 
                 
@@ -456,28 +402,17 @@
 <li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
 </ol>
 <ul>
-<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個</li>
-</ul>
-</li>
-<li>Base case (終止條件)：<code>i &lt; 0</code></li>
-<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index 0 搶到 i 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>時間複雜度：O(n)<ul>
-<li>因為有記憶，每個點只會計算一次，共有 n 個點</li>
-</ul>
-</li>
-<li>空間複雜度：O(n)<ul>
-<li>cache 需要的空間為 n，遞迴的最大深度也是 n</li>
-</ul>
-</li>
-</ul>
-<p>以上，如果不用 <code>@cache</code> 的話：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    memo &#x3D; [None] * len(nums)</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        if memo[i] is not None:</span><br><span class="line">            return memo[i]</span><br><span class="line">        memo[i] &#x3D; max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">        return memo[i]</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
+<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/20/house-robber/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -507,7 +442,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 547 個字)
+                    4 分鐘 閱讀文 (大約 548 個字)
                 </span>
                 
                 
@@ -525,45 +460,16 @@
 <li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p>
 </li>
 <li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p>
-</li>
-<li><p>終止條件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">    return 0</span><br><span class="line">if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">    return 1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>已經在終點上了，unique path count 卻是 1，一開始可能會覺得有點怪，不過從終點左邊那個點來想，就不會怪了：<ul>
-<li>左邊那個點的 unique path count = (它的下面那點的 path count) + (它右邊那點的 path count)<ul>
-<li>下面那點：path count 為 0</li>
-<li>右邊那點 (終點)：path count 必須是 1</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>遞迴解法如下，但時間複雜度 O(2^(m + n)) 太大了 (計算參考<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">這篇</a>)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure></li>
-<li><p>因為同一個點可能會走到很多次，我們可以把結果存在二維陣列，避免重複計算，以減少時間複雜度</p>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    dp &#x3D; [[None] * n for i in range(m)]  # m * n 的二維陣列</span><br><span class="line"></span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        if dp[i][j]:</span><br><span class="line">            return dp[i][j]</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        dp[i][j] &#x3D; u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">        return dp[i][j]</span><br><span class="line"></span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>時間複雜度：O(m * n)<ul>
-<li>因為有記憶，每個點只會計算一次，共有 <code>m * n</code> 個點</li>
-</ul>
-</li>
-<li>空間複雜度：O(m * n)<ul>
-<li>維護 <code>dp</code> 所需空間。遞迴呼叫所需空間 <code>m</code> 和 <code>n</code> 可忽略</li>
-</ul>
-</li>
-</ul>
-<p>類似題：</p>
-<ul>
-<li><a href="https://leetcode.com/problems/fibonacci-number">Fibonacci Number</a></li>
-<li><a href="https://leetcode.com/problems/unique-paths-ii">Unique Paths II</a></li>
-</ul>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/18/unique-paths/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -593,7 +499,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 501 個字)
+                    3 分鐘 閱讀文 (大約 502 個字)
                 </span>
                 
                 
@@ -614,46 +520,17 @@
 </ul>
 </li>
 <li><p>假設 <code>mergeTrees</code> 已完成，實作此最小可重複動作</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root1.val +&#x3D; root2.val</span><br><span class="line">root1.left &#x3D; self.mergeTrees(root1.left, root2.left)</span><br><span class="line">root1.right &#x3D; self.mergeTrees(root1.right, root2.right)</span><br><span class="line">return root1</span><br></pre></td></tr></table></figure></li>
-<li><p>寫出遞迴的終止條件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not root1 or not root2:</span><br><span class="line">    return root1 or root2</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -&gt; Optional[TreeNode]:</span><br><span class="line">    if not root1 or not root2:</span><br><span class="line">        return root1 or root2</span><br><span class="line">    root1.val +&#x3D; root2.val</span><br><span class="line">    root1.left &#x3D; self.mergeTrees(root1.left, root2.left)</span><br><span class="line">    root1.right &#x3D; self.mergeTrees(root1.right, root2.right)</span><br><span class="line">    return root1</span><br></pre></td></tr></table></figure>
-<p>假設兩棵樹有較少節點的那顆有 n 個節點</p>
-<ul>
-<li>時間複雜度：O(n)</li>
-<li>空間複雜度：n 個節點那棵樹的深度<ul>
-<li>最差情況是 O(n), 平均為 O(log n)</li>
-</ul>
-</li>
-</ul>
-<h3 id="做法二：iterative-BFS"><a href="#做法二：iterative-BFS" class="headerlink" title="做法二：iterative - BFS"></a>做法二：iterative - BFS</h3><ol>
-<li>準備一個 stack 來放待 merge 的 node pairs</li>
-<li>一次從裡面拿一個 pair 出來 merge, 同時也把該 merge 的子節點 pair 丟進去。一直做到 stack 裡面沒東西為止</li>
-<li>因為這邊是 merge 到 root1, 故最後回傳 root1<ul>
-<li>注意不要回傳到 <code>p</code>, 而是應該回傳當初的根節點 root1</li>
-</ul>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -&gt; Optional[TreeNode]:</span><br><span class="line">    if not root1 or not root2:</span><br><span class="line">        return root1 or root2</span><br><span class="line">    stack &#x3D; [(root1, root2)]</span><br><span class="line">    while stack:</span><br><span class="line">        p, q &#x3D; stack.pop()  # 使用暫時的變數 p, q 來操作節點 merge</span><br><span class="line">        p.val +&#x3D; q.val</span><br><span class="line">        if not p.left and q.left:</span><br><span class="line">            p.left &#x3D; q.left</span><br><span class="line">        elif p.left and q.left:</span><br><span class="line">            stack.append((p.left, q.left))</span><br><span class="line">        if not p.right and q.right:</span><br><span class="line">            p.right &#x3D; q.right</span><br><span class="line">        elif p.right and q.right:</span><br><span class="line">            stack.append((p.right, q.right))</span><br><span class="line">    return root1</span><br></pre></td></tr></table></figure>
-<p>假設兩棵樹有較少節點的那顆有 n 個節點</p>
-<ul>
-<li>時間複雜度：O(n)<ul>
-<li>stack 裡會有 n 個 pairs, 所以會做 n 次</li>
-</ul>
-</li>
-<li>空間複雜度：O(n)<ul>
-<li>需要大小為 n 的 stack</li>
-</ul>
-</li>
-</ul>
-
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root1.val +&#x3D; root2.val</span><br><span class="line">root1.left &#x3D; self.mergeTrees(root1.left, root2.left)</span><br><span class="line">root1.right &#x3D; self.mergeTrees(root1.right, root2.right)</span><br><span class="line">return root1</span><br></pre></td></tr></table></figure>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/16/merge-two-binary-trees/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -683,7 +560,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 624 個字)
+                    4 分鐘 閱讀文 (大約 625 個字)
                 </span>
                 
                 
@@ -704,50 +581,17 @@
 <li>先不實作內容</li>
 </ul>
 </li>
-<li>使用這個 <code>height</code> 完成 <code>isBalanced</code></li>
-<li>實作 <code>height</code> 的內容</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def isBalanced(self, root: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    def height(node):</span><br><span class="line">        if not node:  # 終止條件</span><br><span class="line">            return 0</span><br><span class="line">        lh &#x3D; height(node.left)</span><br><span class="line">        rh &#x3D; height(node.right)</span><br><span class="line">        return max(lh, rh) + 1</span><br><span class="line">        </span><br><span class="line">    if not root:  # 終止條件</span><br><span class="line">        return True</span><br><span class="line">    lh &#x3D; height(root.left)</span><br><span class="line">    rh &#x3D; height(root.right)</span><br><span class="line">    </span><br><span class="line">    # 即使左右子樹高度差不大於一，子樹本身還是有可能是不平衡的，所以要再加上後面的 &#96;isBalanced&#96; 判斷</span><br><span class="line">    return abs(lh - rh) &lt;&#x3D; 1 and self.isBalanced(root.left) and self.isBalanced(root.right)</span><br></pre></td></tr></table></figure>
-<p>假設有 n 個 node, 樹的高度為 h</p>
-<ul>
-<li>時間複雜度：O(n^2)<ul>
-<li><code>isBalanced</code> 除了呼叫自己之外的複雜度為 O(n)<ul>
-<li>呼叫了 <code>n - 1</code> 次 <code>height</code></li>
-</ul>
-</li>
-<li>每個節點都呼叫了一次 <code>isBalanced</code></li>
-</ul>
-</li>
-<li>空間複雜度：O(h)<ul>
-<li>因為遞迴的呼叫有 DFS 的特性，會從子節點一直呼叫到最下面的葉子節點，所以需要把那些 function calls 放進 stack 裡，等到葉子節點的呼叫到了再一一拿出來執行。因此 stack 的大小需等於呼叫的次數，也就是由根節點走到葉子節點需經過幾個點，即這棵樹的高度<ul>
-<li>只需考慮一次遞迴呼叫所需空間，不需考慮全部遞迴呼叫 (譬如在 function 裡呼叫了自己兩次)，因為程式同時只會處理一個遞迴呼叫</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="做法二"><a href="#做法二" class="headerlink" title="做法二"></a>做法二</h3><p>思路：</p>
-<ol>
-<li>有沒有辦法優化上面做法的時間複雜度呢？因為上面在算高度的時候就已經會算出每個節點的左右子樹的高度了，此時就可以順便看看是否平衡，不用等到最後再遞迴呼叫 <code>isBalanced</code> 增加複雜度</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def isBalanced(self, root: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    self.balanced &#x3D; True</span><br><span class="line">    def height(node):</span><br><span class="line">        if not node:</span><br><span class="line">            return 0</span><br><span class="line">        lh &#x3D; height(node.left)</span><br><span class="line">        rh &#x3D; height(node.right)</span><br><span class="line">        if abs(lh - rh) &gt; 1:</span><br><span class="line">            self.balanced &#x3D; False</span><br><span class="line">        return max(lh, rh) + 1</span><br><span class="line">        </span><br><span class="line">    height(root)</span><br><span class="line">    return self.balanced</span><br></pre></td></tr></table></figure>
-<p>假設有 n 個 node, 樹的高度為 h</p>
-<ul>
-<li>時間複雜度：O(n)<ul>
-<li>每個節點都做過一次 <code>height</code></li>
-</ul>
-</li>
-<li>空間複雜度：O(h)<ul>
-<li>同 <code>做法一</code> 的分析</li>
-</ul>
-</li>
-</ul>
-<p>類似題：<a href="https://leetcode.com/problems/symmetric-tree/description/">Symmetric Tree</a> 用 recursive 方法來解</p>
-
+<li>使用這個 <code>height</code> 完成 <code>isBalanced</code>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/15/balanced-binary-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -777,7 +621,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 315 個字)
+                    2 分鐘 閱讀文 (大約 316 個字)
                 </span>
                 
                 
@@ -794,24 +638,17 @@
 <ol>
 <li>要比較所有相同位置的 node 的值是否一樣，可以把所有待比較的 node pair 丟到 stack 裡一一拿出來比較，全部比完都通過的話就是一樣的 tree</li>
 <li>一個 pair 比較後會把下面的所有分支點繼續丟進 stack 等待比較，所以用 <code>while stack:</code> 只要有就繼續比，一直比到完<ul>
-<li>此為廣先搜尋 (Breadth-First Search)</li>
-</ul>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val&#x3D;0, left&#x3D;None, right&#x3D;None):</span><br><span class="line">#         self.val &#x3D; val</span><br><span class="line">#         self.left &#x3D; left</span><br><span class="line">#         self.right &#x3D; right</span><br><span class="line">def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">    stack &#x3D; [(p, q)]</span><br><span class="line">    while stack:</span><br><span class="line">        p, q &#x3D; stack.pop()</span><br><span class="line">        if p and q and p.val &#x3D;&#x3D; q.val:</span><br><span class="line">            stack.extend([</span><br><span class="line">                (p.left, q.left),</span><br><span class="line">                (p.right, q.right)</span><br><span class="line">            ])</span><br><span class="line">        elif p or q:  # 只有在 p, q 都是 None 的情況下才會通過，這代表這兩棵樹在那個位置都沒有葉子</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
-<p>假設 p 有 n 個節點，寬度 w1，q 有 m 個節點，寬度 w2</p>
-<ul>
-<li>時間複雜度：O(max(m, n))</li>
-<li>空間複雜度：O(max(w1, w2))<ul>
-<li>因為是 BFS, <code>stack</code> 需儲存當前層次上的節點，故跟寬度成正比</li>
-</ul>
-</li>
-</ul>
-<p>類似題：<a href="https://leetcode.com/problems/symmetric-tree/description/">Symmetric Tree</a> 用 iterative 方法來解</p>
-
+<li>此為廣先搜尋 (Breadth-First Search)
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/02/10/same-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -841,7 +678,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 263 個字)
+                    2 分鐘 閱讀文 (大約 264 個字)
                 </span>
                 
                 
@@ -861,17 +698,17 @@
 <li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p>
 </li>
 <li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if l1.val &gt; l2.val:</span><br><span class="line">    curr.next &#x3D; l2</span><br><span class="line">    l2 &#x3D; l2.next</span><br><span class="line">else:</span><br><span class="line">    curr.next &#x3D; l1</span><br><span class="line">    l1 &#x3D; l1.next</span><br></pre></td></tr></table></figure></li>
-<li><p>post processing: 跳出迴圈後的情形是 <code>l1</code>, <code>l2</code> 其中有一個是 <code>None</code> 或兩個都是 <code>None</code>，此時就把目標 linked list 接上那個不是 <code>None</code> 的即可</p>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -&gt; Optional[ListNode]:</span><br><span class="line">    dummy_head &#x3D; ListNode()  # 需有一個 dummy_head 可以在最後回傳答案時使用</span><br><span class="line">    curr &#x3D; dummy_head  # 也要有個 curr 可以在每次迴圈中跟著移動</span><br><span class="line">    while l1 and l2:</span><br><span class="line">        if l1.val &gt; l2.val:</span><br><span class="line">            curr.next &#x3D; l2</span><br><span class="line">            l2 &#x3D; l2.next</span><br><span class="line">        else:</span><br><span class="line">            curr.next &#x3D; l1</span><br><span class="line">            l1 &#x3D; l1.next</span><br><span class="line">        curr &#x3D; curr.next</span><br><span class="line">    curr.next &#x3D; l1 or l2  # post processing</span><br><span class="line">    return dummy_head.next</span><br></pre></td></tr></table></figure>
-
-<p>P.S. 有些思路跟 <a href="https://james687.github.io/2023/02/03/add-two-numbers/">Add Two Numbers</a> 重複，這篇就不多寫了</p>
-
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if l1.val &gt; l2.val:</span><br><span class="line">    curr.next &#x3D; l2</span><br><span class="line">    l2 &#x3D; l2.next</span><br><span class="line">else:</span><br><span class="line">    curr.next &#x3D; l1</span><br><span class="line">    l1 &#x3D; l1.next</span><br></pre></td></tr></table></figure>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/02/09/merge-two-sorted-lists/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

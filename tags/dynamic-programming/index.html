@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分鐘 閱讀文 (大約 691 個字)
+                    5 分鐘 閱讀文 (大約 692 個字)
                 </span>
                 
                 
@@ -176,37 +176,17 @@
 <li>第一個和最後一個都不搶：可與前兩種情況合併</li>
 </ol>
 <ul>
-<li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案</li>
-</ul>
-</li>
-<li>因為現在需多考慮起始 index，我們把<a href="https://james687.github.io/2023/03/20/house-robber">第一版解法</a>的遞迴函式改為多傳入起始 index，並同樣用 <code>@cache</code> 避免同樣的 <code>inner_rob(i, j)</code> 重複計算<ul>
-<li>Base case 寫法：<ol>
-<li>考慮一開始 <code>j</code> 比 <code>i</code> 大的情況，一路因為 <code>inner_rob(i, j - 1)</code>, <code>inner_rob(i, j - 2)</code> 而減少的情況：<ol>
-<li><code>j == i + 2</code> 時：下兩個遞迴節點為 <code>inner_rob(i, i + 1)</code>, <code>inner_rob(i, i)</code></li>
-<li><code>j == i + 1</code> 時： 下兩個遞迴節點為 <code>inner_rob(i, i)</code>, <code>inner_rob(i, i - 1)</code></li>
-</ol>
-<ul>
-<li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code>，寫完後將 <code>inner_rob(i, j)</code> 代入 <code>j == i + 1</code> 驗算看看是否正確</li>
-</ul>
-</li>
-<li>考慮一開始 <code>j == i</code> 的情況，代入驗算看看是否正確</li>
-<li>考慮一開始 <code>j &lt; i</code> 的情況，也就是 <code>len(nums) == 1</code> 時：<ul>
-<li>此時得出的答案為 <code>0</code>，是錯的，所以 base case 需多考慮這種情況，加入 <code>len(nums) == 1</code> 時的判斷處理</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>取錢比較多的情況即為答案：<code>return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</code></li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        # Base case</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if j &#x3D;&#x3D; i:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        # Recursive case</span><br><span class="line">        return max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
-
-<p>如果不用 <code>@cache</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    l &#x3D; len(nums)</span><br><span class="line">    memo &#x3D; [[None] * l for _ in range(l)]</span><br><span class="line"></span><br><span class="line">    def inner_rob(i, j):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index i 搶到 j 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if len(nums) &#x3D;&#x3D; 1:</span><br><span class="line">            return nums[0]</span><br><span class="line">        if i &#x3D;&#x3D; j:</span><br><span class="line">            return nums[j]</span><br><span class="line">        if j &lt; i:</span><br><span class="line">            return 0</span><br><span class="line">            </span><br><span class="line">        if memo[i][j] is not None:</span><br><span class="line">            return memo[i][j]</span><br><span class="line">        memo[i][j] &#x3D; max(inner_rob(i, j - 1), nums[j] + inner_rob(i, j - 2))</span><br><span class="line">        return memo[i][j]</span><br><span class="line">        </span><br><span class="line">    return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</span><br></pre></td></tr></table></figure>
+<li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/23/house-robber-ii/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -236,7 +216,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 387 個字)
+                    3 分鐘 閱讀文 (大約 388 個字)
                 </span>
                 
                 
@@ -257,28 +237,17 @@
 <li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
 </ol>
 <ul>
-<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個</li>
-</ul>
-</li>
-<li>Base case (終止條件)：<code>i &lt; 0</code></li>
-<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    @cache</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        &quot;&quot;&quot;@return 由 index 0 搶到 i 可得的最大收穫&quot;&quot;&quot;</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        return max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>時間複雜度：O(n)<ul>
-<li>因為有記憶，每個點只會計算一次，共有 n 個點</li>
-</ul>
-</li>
-<li>空間複雜度：O(n)<ul>
-<li>cache 需要的空間為 n，遞迴的最大深度也是 n</li>
-</ul>
-</li>
-</ul>
-<p>以上，如果不用 <code>@cache</code> 的話：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line">    memo &#x3D; [None] * len(nums)</span><br><span class="line">    def inner_rob(i):</span><br><span class="line">        if i &lt; 0:</span><br><span class="line">            return 0</span><br><span class="line">        if memo[i] is not None:</span><br><span class="line">            return memo[i]</span><br><span class="line">        memo[i] &#x3D; max(inner_rob(i - 1), nums[i] + inner_rob(i - 2))</span><br><span class="line">        return memo[i]</span><br><span class="line">    return inner_rob(len(nums) - 1)</span><br></pre></td></tr></table></figure>
+<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/20/house-robber/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -308,7 +277,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 547 個字)
+                    4 分鐘 閱讀文 (大約 548 個字)
                 </span>
                 
                 
@@ -326,45 +295,16 @@
 <li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p>
 </li>
 <li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p>
-</li>
-<li><p>終止條件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">    return 0</span><br><span class="line">if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">    return 1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>已經在終點上了，unique path count 卻是 1，一開始可能會覺得有點怪，不過從終點左邊那個點來想，就不會怪了：<ul>
-<li>左邊那個點的 unique path count = (它的下面那點的 path count) + (它右邊那點的 path count)<ul>
-<li>下面那點：path count 為 0</li>
-<li>右邊那點 (終點)：path count 必須是 1</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>遞迴解法如下，但時間複雜度 O(2^(m + n)) 太大了 (計算參考<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">這篇</a>)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        return u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure></li>
-<li><p>因為同一個點可能會走到很多次，我們可以把結果存在二維陣列，避免重複計算，以減少時間複雜度</p>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def uniquePaths(self, m: int, n: int) -&gt; int:</span><br><span class="line">    dp &#x3D; [[None] * n for i in range(m)]  # m * n 的二維陣列</span><br><span class="line"></span><br><span class="line">    def u_paths(i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i, j 為從 0 開始的坐標</span><br><span class="line">        @return 由 (i, j) 走到終點的 unique path count</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # 終止條件</span><br><span class="line">        if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">            return 0</span><br><span class="line">        if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">            return 1</span><br><span class="line"></span><br><span class="line">        if dp[i][j]:</span><br><span class="line">            return dp[i][j]</span><br><span class="line"></span><br><span class="line">        # 最小可重複動作</span><br><span class="line">        dp[i][j] &#x3D; u_paths(i + 1, j) + u_paths(i, j + 1)</span><br><span class="line">        return dp[i][j]</span><br><span class="line"></span><br><span class="line">    return u_paths(0, 0)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>時間複雜度：O(m * n)<ul>
-<li>因為有記憶，每個點只會計算一次，共有 <code>m * n</code> 個點</li>
-</ul>
-</li>
-<li>空間複雜度：O(m * n)<ul>
-<li>維護 <code>dp</code> 所需空間。遞迴呼叫所需空間 <code>m</code> 和 <code>n</code> 可忽略</li>
-</ul>
-</li>
-</ul>
-<p>類似題：</p>
-<ul>
-<li><a href="https://leetcode.com/problems/fibonacci-number">Fibonacci Number</a></li>
-<li><a href="https://leetcode.com/problems/unique-paths-ii">Unique Paths II</a></li>
-</ul>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/03/18/unique-paths/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

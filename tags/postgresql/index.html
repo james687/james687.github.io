@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分鐘 閱讀文 (大約 162 個字)
+                    1 分鐘 閱讀文 (大約 163 個字)
                 </span>
                 
                 
@@ -174,33 +174,17 @@
 </ul>
 </li>
 <li><code>create user {username} with password &#39;{password}&#39;;</code></li>
-<li><code>create database {database_name} with owner {username};</code></li>
-<li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li>
-</ol>
-<ul>
-<li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li>
-</ul>
-<p><strong>MySQL: (以 5.7 為例)</strong></p>
-<ol>
-<li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li>
-<li>docker exec -it {db-container-name} mysql -p<ul>
-<li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li>
-</ul>
-</li>
-<li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul>
-<li>Use <code>localhost</code> due to working on the machine with MySQL.</li>
-</ul>
-</li>
-<li><code>create database {database_name};</code></li>
-<li>確認：<ul>
-<li><code>show databases;</code></li>
-<li><code>SELECT user FROM mysql.user;</code></li>
-</ul>
-</li>
-</ol>
-
+<li><code>create database {database_name} with owner {username};</code>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/02/07/postgresql-mysql-init-setup/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

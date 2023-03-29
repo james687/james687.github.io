@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-03-18T08:08:15.000Z">
-<meta property="article:modified_time" content="2023-03-21T09:05:11.684Z">
+<meta property="article:modified_time" content="2023-03-29T08:56:11.369Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="recursion">
 <meta property="article:tag" content="dynamic programming">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 547 個字)
+                    4 分鐘 閱讀文 (大約 548 個字)
                 </span>
                 
                 
@@ -167,7 +167,7 @@
 <li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p>
 </li>
 <li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p>
-</li>
+<a id="more"></a></li>
 <li><p>終止條件</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if i &gt;&#x3D; m or j &gt;&#x3D; n:</span><br><span class="line">    return 0</span><br><span class="line">if i &#x3D;&#x3D; m - 1 and j &#x3D;&#x3D; n - 1:</span><br><span class="line">    return 1</span><br></pre></td></tr></table></figure>
 <ul>

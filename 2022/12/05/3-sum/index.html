@@ -10,16 +10,16 @@
 <title>3Sum - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路：  用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result 先把 nums 排序，如此移動 mid, right 指標時就有個依據  Python3 solution 1234567891011121314151617181920212223242526def threeSum(self, nums):    result &#x3D; []    n">
+    <meta name="description" content="題目思路：  用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result 先把 nums 排序，如此移動 mid, right 指標時就有個依據  Python3 solution">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3Sum">
 <meta property="og:url" content="https://james687.github.io/2022/12/05/3-sum/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路：  用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result 先把 nums 排序，如此移動 mid, right 指標時就有個依據  Python3 solution 1234567891011121314151617181920212223242526def threeSum(self, nums):    result &#x3D; []    n">
+<meta property="og:description" content="題目思路：  用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result 先把 nums 排序，如此移動 mid, right 指標時就有個依據  Python3 solution">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2022-12-05T08:51:05.000Z">
-<meta property="article:modified_time" content="2023-02-09T05:09:46.472Z">
+<meta property="article:modified_time" content="2023-03-29T08:58:54.184Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="array">
 <meta property="article:tag" content="two pointers">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 281 個字)
+                    2 分鐘 閱讀文 (大約 282 個字)
                 </span>
                 
                 
@@ -169,6 +169,8 @@
 <li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li>
 </ul>
 <p>Python3 solution</p>
+<a id="more"></a>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def threeSum(self, nums):</span><br><span class="line">    result &#x3D; []</span><br><span class="line">    nums.sort()</span><br><span class="line">    for left in range(len(nums) - 2):  # 右邊須留兩個空位給另兩個指標</span><br><span class="line">        if left &gt; 0 and nums[left] &#x3D;&#x3D; nums[left - 1]:  # 排除重複的 result，left 必須 &gt; 0 才會有前一個</span><br><span class="line">            continue                                   # - 假如 nums[left] 是一樣的，最後找到的 result 也會是一樣的，所以要排除掉</span><br><span class="line">        mid &#x3D; left + 1</span><br><span class="line">        right &#x3D; len(nums) - 1</span><br><span class="line">        while mid &lt; right:  # 設定有效範圍，在此範圍內尋找符合的 mid, right</span><br><span class="line">            t_sum &#x3D; nums[left] + nums[mid] + nums[right]</span><br><span class="line">            if t_sum &lt; 0:</span><br><span class="line">                mid +&#x3D; 1  # 此時必須讓 t_sum 變大，所以將 mid 往右移</span><br><span class="line">            elif t_sum &gt; 0:</span><br><span class="line">                right -&#x3D; 1  # 此時必須讓 t_sum 變小，所以將 right 往左移</span><br><span class="line">            else:</span><br><span class="line">                result.append([nums[left], nums[mid], nums[right]])</span><br><span class="line">                while mid &lt; right and nums[mid] &#x3D;&#x3D; nums[mid + 1]:  # 跳過 mid 重複的部分</span><br><span class="line">                    mid +&#x3D; 1</span><br><span class="line">                while mid &lt; right and nums[right] &#x3D;&#x3D; nums[right - 1]:  # 跳過 right 重複的部分</span><br><span class="line">                    right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">                # 正常的移動 mid, right，尋找下一個符合的 result</span><br><span class="line">                mid +&#x3D; 1</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">                </span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
 
         </div>
