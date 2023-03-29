@@ -7,25 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Binary Tree Level Order Traversal - James&#39; Blog</title>
+<title>Use Retrofit with Dagger - simple example - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點">
+    <meta name="description" content="Retrofit 和 Dagger 都是 Square 出的 library，網路上已經有很多相關介紹了，因為 Retrofit 的 REST API Interface 的實作建議採用 Singleton 的方式，所以搭配 Dagger 來管理是個蠻好的 paradigm 今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 de">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binary Tree Level Order Traversal">
-<meta property="og:url" content="https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/index.html">
+<meta property="og:title" content="Use Retrofit with Dagger - simple example">
+<meta property="og:url" content="https://james687.github.io/2014/10/28/use-retrofit-with-dagger/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點">
+<meta property="og:description" content="Retrofit 和 Dagger 都是 Square 出的 library，網路上已經有很多相關介紹了，因為 Retrofit 的 REST API Interface 的實作建議採用 Singleton 的方式，所以搭配 Dagger 來管理是個蠻好的 paradigm 今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 de">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2023-03-28T11:25:25.000Z">
-<meta property="article:modified_time" content="2023-03-29T08:54:16.814Z">
+<meta property="article:published_time" content="2014-10-28T10:14:51.000Z">
+<meta property="article:modified_time" content="2023-03-29T10:21:27.911Z">
 <meta property="article:author" content="James Ho">
-<meta property="article:tag" content="tree">
-<meta property="article:tag" content="depth-first search">
-<meta property="article:tag" content="binary tree">
-<meta property="article:tag" content="recursion">
-<meta property="article:tag" content="breadth-first search">
+<meta property="article:tag" content="android">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -94,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Binary Tree Level Order Traversal" height="28">
+                <img src="/images/logo.svg" alt="Use Retrofit with Dagger - simple example" height="28">
             
             </a>
         </div>
@@ -142,17 +138,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
+                <time class="level-item has-text-grey" datetime="2014-10-28T10:14:51.000Z">2014-10-28</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 292 個字)
+                    2 分鐘 閱讀文 (大約 373 個字)
                 </span>
                 
                 
@@ -161,37 +157,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Binary Tree Level Order Traversal
+                Use Retrofit with Dagger - simple example
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p>
-<ol>
-<li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li>
-<li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul>
-<li>stack 也是 list of list, 裡面的每個 list 都是一層節點<a id="more"></a>
+            <p><a href="http://square.github.io/retrofit/">Retrofit</a> 和 <a href="http://square.github.io/dagger/">Dagger</a> 都是 Square 出的 library，網路上已經有很多相關介紹了，因為 Retrofit 的 REST API Interface 的實作建議採用 Singleton 的方式，所以搭配 Dagger 來管理是個蠻好的 paradigm</p>
+<p>今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 detail 的說明可以參考上面兩個連結~</p>
+<p>DaggerModule.java - 提供 injection 的 module，在這裡提供 API Service 的 instance</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span>(</span><br><span class="line">    injects = &#123;</span><br><span class="line">        ExampleActivity<span class="class">.<span class="keyword">class</span></span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">DaggerModule</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> APIService <span class="title">provideAPIService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestAdapter.Builder()</span><br><span class="line">            .setEndpoint(Constants.API_SERVICE_ENDPOINT)</span><br><span class="line">            .build()</span><br><span class="line">            .create(APIService<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    stack, values &#x3D; [[root]], []</span><br><span class="line">    while stack:</span><br><span class="line">        level_vals &#x3D; []</span><br><span class="line">        level_nodes &#x3D; []</span><br><span class="line">        nodes &#x3D; stack.pop()</span><br><span class="line">        for node in nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            if node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            if node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        if level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    return values</span><br></pre></td></tr></table></figure>
+<p>上面的 <code>APIService</code> 就是我們 REST API 的 interface</p>
+<p>可以把所有的 modules 加在這邊，如此 Dagger 在 compile 時就可以幫我們檢查所有的 modules 裡有沒有錯誤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span>(</span><br><span class="line">    includes = &#123;</span><br><span class="line">        DaggerModule<span class="class">.<span class="keyword">class</span></span></span><br><span class="line"><span class="class">    &#125;</span></span><br><span class="line"><span class="class">)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">WrapperModule</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="但假如用遞迴的話怎麼解？"><a href="#但假如用遞迴的話怎麼解？" class="headerlink" title="但假如用遞迴的話怎麼解？"></a>但假如用遞迴的話怎麼解？</h3><p>Recursive case: 把當下這個節點的 value 放到對應 level index 的 list 中</p>
-<ul>
-<li><p>如果沒有對應的 level index 就加一個空 list 進去 (<code>level_ind</code> 會從 0 開始依序傳入，不會有跳號的情況)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    level &#x3D; res[level_ind]</span><br><span class="line">except IndexError:</span><br><span class="line">    level &#x3D; []</span><br><span class="line">    res.append(level)</span><br></pre></td></tr></table></figure>
+<p>ExampleApplication.java - 自己寫一支 custom 的 Application，維護 ObjectGraph，inject 的動作由它執行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ObjectGraph objectGraph;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        objectGraph = ObjectGraph.create(<span class="keyword">new</span> DaggerModule());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * inject all injectable fields in this &lt;tt&gt;obj&lt;/tt&gt;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inject</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        objectGraph.inject(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> activity</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> instance of ExampleApplication which this activity belongs to</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExampleApplication <span class="title">from</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (ExampleApplication) activity.getApplication();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    def put_value(node, level_ind, res):</span><br><span class="line">        # Base case</span><br><span class="line">        if not node:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        # Recursive case</span><br><span class="line">        try:</span><br><span class="line">            level &#x3D; res[level_ind]</span><br><span class="line">        except IndexError:</span><br><span class="line">            level &#x3D; []</span><br><span class="line">            res.append(level)</span><br><span class="line">        level.append(node.val)</span><br><span class="line">        put_value(node.left, level_ind + 1, res)</span><br><span class="line">        put_value(node.right, level_ind + 1, res)</span><br><span class="line"></span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res &#x3D; []</span><br><span class="line">    put_value(root, 0, res)</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<p>記得在 <code>AndroidManifest.xml</code> 的 <code>&lt;application&gt;</code> tag 加上 <code>android:name</code> 屬性，指定 custom Application 的 class</p>
+<figure class="highlight java"><figcaption><span>BaseActivity.java - 之後我們寫的 Activity 只要繼承它，擁有 ＠inject 的屬性就會自動被注入</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        ExampleApplication.from(<span class="keyword">this</span>).inject(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/breadth-first-search/" rel="tag">breadth-first search</a>, <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
+                    <a class="has-link-grey -link" href="/tags/android/" rel="tag">android</a>
                 </div>
             </div>
         </div>
@@ -208,10 +198,17 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/06/pipenv-intro/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">用 pipenv 管理 requirements 搭配 docker-compose local 開發</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2023/03/23/binary-tree-inorder-traversal/">
-                <span class="level-item">Binary Tree Inorder Traversal</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2014/06/07/difference-between-web-and-application-server/">
+                <span class="level-item">Web Server 與 Application Server 的差別</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -227,8 +224,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/';
-        this.page.identifier = '2023/03/28/binary-tree-level-order-traversal/';
+        this.page.url = 'https://james687.github.io/2014/10/28/use-retrofit-with-dagger/';
+        this.page.identifier = '2014/10/28/use-retrofit-with-dagger/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -1134,7 +1131,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Binary Tree Level Order Traversal" height="28">
+                    <img src="/images/logo.svg" alt="Use Retrofit with Dagger - simple example" height="28">
                 
                 </a>
                 <p class="is-size-7">

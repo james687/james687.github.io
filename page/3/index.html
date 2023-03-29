@@ -7,25 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Binary Tree Level Order Traversal - James&#39; Blog</title>
+<title>James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Binary Tree Level Order Traversal">
-<meta property="og:url" content="https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="James&#39; Blog">
+<meta property="og:url" content="https://james687.github.io/page/3/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路  一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解 一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理 stack 也是 list of list, 裡面的每個 list 都是一層節點">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
-<meta property="article:published_time" content="2023-03-28T11:25:25.000Z">
-<meta property="article:modified_time" content="2023-03-29T08:54:16.814Z">
 <meta property="article:author" content="James Ho">
-<meta property="article:tag" content="tree">
-<meta property="article:tag" content="depth-first search">
-<meta property="article:tag" content="binary tree">
-<meta property="article:tag" content="recursion">
-<meta property="article:tag" content="breadth-first search">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://james687.github.io/images/og_image.png">
 
@@ -94,7 +85,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Binary Tree Level Order Traversal" height="28">
+                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
             
             </a>
         </div>
@@ -136,23 +127,24 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
+                <time class="level-item has-text-grey" datetime="2014-06-07T09:34:24.000Z">2014-06-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 292 個字)
+                    1 分鐘 閱讀文 (大約 183 個字)
                 </span>
                 
                 
@@ -161,43 +153,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Binary Tree Level Order Traversal
+                <a class="has-link-black-ter" href="/2014/06/07/difference-between-web-and-application-server/">Web Server 與 Application Server 的差別</a>
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p>
-<ol>
-<li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li>
-<li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul>
-<li>stack 也是 list of list, 裡面的每個 list 都是一層節點<a id="more"></a>
-
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    stack, values &#x3D; [[root]], []</span><br><span class="line">    while stack:</span><br><span class="line">        level_vals &#x3D; []</span><br><span class="line">        level_nodes &#x3D; []</span><br><span class="line">        nodes &#x3D; stack.pop()</span><br><span class="line">        for node in nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            if node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            if node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        if level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    return values</span><br></pre></td></tr></table></figure>
-
-<h3 id="但假如用遞迴的話怎麼解？"><a href="#但假如用遞迴的話怎麼解？" class="headerlink" title="但假如用遞迴的話怎麼解？"></a>但假如用遞迴的話怎麼解？</h3><p>Recursive case: 把當下這個節點的 value 放到對應 level index 的 list 中</p>
-<ul>
-<li><p>如果沒有對應的 level index 就加一個空 list 進去 (<code>level_ind</code> 會從 0 開始依序傳入，不會有跳號的情況)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    level &#x3D; res[level_ind]</span><br><span class="line">except IndexError:</span><br><span class="line">    level &#x3D; []</span><br><span class="line">    res.append(level)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def levelOrder(self, root: Optional[TreeNode]) -&gt; List[List[int]]:</span><br><span class="line">    def put_value(node, level_ind, res):</span><br><span class="line">        # Base case</span><br><span class="line">        if not node:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        # Recursive case</span><br><span class="line">        try:</span><br><span class="line">            level &#x3D; res[level_ind]</span><br><span class="line">        except IndexError:</span><br><span class="line">            level &#x3D; []</span><br><span class="line">            res.append(level)</span><br><span class="line">        level.append(node.val)</span><br><span class="line">        put_value(node.left, level_ind + 1, res)</span><br><span class="line">        put_value(node.right, level_ind + 1, res)</span><br><span class="line"></span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res &#x3D; []</span><br><span class="line">    put_value(root, 0, res)</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+            <p><img src="/images/web-architecture.png" alt=""><br>圖片來源: <a href="https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf">https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf</a></p>
+<p>看到 AWS 關於 web application 的 architecture 這張圖之後，不太懂為何 server 要分為兩層，於是就google 了一下，找到一篇不錯的<a href="http://www.javaworld.com/article/2077354/learn-java/app-server-web-server-what-s-the-difference.html">文章</a>。
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/binary-tree/" rel="tag">binary tree</a>, <a class="has-link-grey -link" href="/tags/breadth-first-search/" rel="tag">breadth-first search</a>, <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
+                <a class="button is-size-7 is-light" href="/2014/06/07/difference-between-web-and-application-server/#more">繼續閱讀</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -205,44 +178,29 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2023/03/23/binary-tree-inorder-traversal/">
-                <span class="level-item">Binary Tree Inorder Traversal</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">評論</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/';
-        this.page.identifier = '2023/03/28/binary-tree-level-order-traversal/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
 
-<div id="disqus_thread">
     
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">上一頁</a>
+        </div>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/page/4/">下一頁</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
 </div>
 </div>
                 
@@ -1134,7 +1092,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Binary Tree Level Order Traversal" height="28">
+                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
