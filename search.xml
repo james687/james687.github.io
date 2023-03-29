@@ -22,9 +22,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -55,9 +55,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -192,9 +192,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -225,9 +225,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -256,9 +256,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> breadth-first search </tag>
             
@@ -505,12 +505,14 @@
       
       <categories>
           
-          <category> Package Management </category>
+          <category> Development Note </category>
           
       </categories>
       
       
         <tags>
+            
+            <tag> package management </tag>
             
             <tag> python </tag>
             
