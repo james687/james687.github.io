@@ -134,6 +134,151 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-03-25T11:19:34.000Z">2018-03-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Book-Digest/">Book Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 758 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/03/25/effective-python-note/">Effective Python Note</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>This article is composed of some notes from book <a href="https://effectivepython.com/">Effective Python</a>.</p>
+</blockquote>
+<h3 id="Scope-Resolution"><a href="#Scope-Resolution" class="headerlink" title="Scope Resolution"></a>Scope Resolution</h3><p>Python’s scope resolution follows the order below:</p>
+<ol>
+<li>current function</li>
+<li>enclosing scopes: like a outer function enclosing the current function</li>
+<li>global scope</li>
+<li>build-in scope</li>
+</ol>
+<figure class="highlight python"><figcaption><span>Sample code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">global_var = <span class="string">'global value'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    enclosing_var = <span class="string">'enclosing value'</span></span><br><span class="line">    enclosing_var_2 = <span class="string">'enclosing value 2'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        local_var = <span class="string">'local value'</span></span><br><span class="line">        print(<span class="string">'local_var:'</span>, local_var)</span><br><span class="line">        print(<span class="string">'enclosing_var:'</span>, enclosing_var)</span><br><span class="line">        enclosing_var_2 = <span class="string">'changed enclosing value 2'</span>  <span class="comment"># a new variable definition</span></span><br><span class="line"></span><br><span class="line">    inner()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'glocal_var:'</span>, global_var)</span><br><span class="line">    print(<span class="string">'enclosing_var_2:'</span>, enclosing_var_2)</span><br><span class="line"></span><br><span class="line">outer()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">local_var: local value</span><br><span class="line">enclosing_var: enclosing value</span><br><span class="line">glocal_var: <span class="keyword">global</span> value</span><br><span class="line">enclosing_var_2: enclosing value <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>Note that the assignment of <code>enclosing_var_2</code> in function <code>inner</code> is actually a new variable definition, because <code>enclosing_var_2</code> is not in the current scope. It’s designed to prevent local variables polluting its outer scopes. So we can see value of <code>enclosing_var_2</code> doesn’t change.</p>
+<h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><p>It’s a function using <code>yield</code> instead of <code>return</code>.</p>
+<p>Return an iterator when it gets called.</p>
+<p>Every call of <code>next</code> with that iterator will result in code execution to the next <code>yield</code> and the iterator will return what’s passed to the <code>yield</code>.</p>
+<figure class="highlight python"><figcaption><span>simple_generator.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">it = gen()</span><br><span class="line"></span><br><span class="line">print(next(it))</span><br><span class="line">print(next(it))</span><br><span class="line">print(next(it))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>Whenever you want to use a function to compose a list, you can consider using a generator instead, which is a cleaner way.</p>
+<figure class="highlight python"><figcaption><span>generator_simple_use_case.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_results</span><span class="params">(num)</span>:</span></span><br><span class="line">    results = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        results.append(i * <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">results_gen</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        <span class="keyword">yield</span> i * <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'Results from create_results:'</span>, create_results(<span class="number">3</span>))</span><br><span class="line">print(<span class="string">'Results from results_gen:'</span>, list(results_gen(<span class="number">3</span>)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Results <span class="keyword">from</span> create_results: [<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">Results <span class="keyword">from</span> results_gen: [<span class="number">0</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>A pitfall</strong></p>
+<p>If an iterator is used up (a StopIteration exception has been thrown), you will get no results for iterating it again. And there will be no exceptions.</p>
+<figure class="highlight python"><figcaption><span>generator_pitfall.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">results_gen</span><span class="params">(number)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(number):</span><br><span class="line">        <span class="keyword">yield</span> i * <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(numbers)</span>:</span></span><br><span class="line">    total = sum(numbers)  <span class="comment"># `sum` will use up iterator `numbers`</span></span><br><span class="line">    result = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> numbers:  <span class="comment"># no things to iterate in `numbers`</span></span><br><span class="line">        percent = value / total * <span class="number">100</span></span><br><span class="line">        result.append(percent)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">it = results_gen(<span class="number">3</span>)</span><br><span class="line">percentages = normalize(it)</span><br><span class="line">print(<span class="string">'percentages:'</span>, percentages)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">percentages: []</span><br></pre></td></tr></table></figure>
+
+<p><strong>Solutions</strong></p>
+<ol>
+<li>Copy content of the iterator to a list and use the list afterward.</li>
+<li>Pass a lambda instead of <code>numbers</code> which returns a new generator on every call.</li>
+<li>Implement iterator protocol. That is, implement <code>__iter__</code> as a generator.</li>
+</ol>
+<figure class="highlight python"><figcaption><span>generator_pitfall_sol_3.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResultsContainer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        self.number = number</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.number):</span><br><span class="line">            <span class="keyword">yield</span> i * <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">results_container = ResultsContainer(<span class="number">3</span>)</span><br><span class="line">percentages = normalize(results_container)</span><br><span class="line">print(<span class="string">'percentages:'</span>, percentages)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">percentages: [<span class="number">0.0</span>, <span class="number">33.33333333333333</span>, <span class="number">66.66666666666666</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Each traversal of the <code>results_container</code> object will cause it to return a new iterator (calling <code>__iter__</code> every time), so there won’t be this issue.</p>
+<h3 id="single-asterisk-used-in-function-definition-and-function-call"><a href="#single-asterisk-used-in-function-definition-and-function-call" class="headerlink" title="single asterisk used in function definition and function call"></a>single asterisk used in function definition and function call</h3><p><strong><code>*numbers</code> is called optional positional arguments.</strong> It indicates that this function can take zero or more than one positional arguments starting from that position.</p>
+<p>It should be put after all positional arguments in a function definition.</p>
+<p>It will pack those arguments into one tuple to use in the function.</p>
+<p><strong><code>*</code> before <code>nums</code> will unpack any iterable <code>nums</code></strong> so that <code>print_numbers(0, 5, *nums)</code> will be <code>print_numbers(0, 5, 1, 2, 3)</code></p>
+<figure class="highlight python"><figcaption><span>single_asterisk_with_function.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_numbers</span><span class="params">(first_num, *numbers)</span>:</span></span><br><span class="line">    print(<span class="string">'first_num:'</span>, first_num)</span><br><span class="line">    print(<span class="string">'numbers:'</span>, numbers)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">print_numbers(<span class="number">0</span>, <span class="number">5</span>, *nums)</span><br><span class="line">print_numbers(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">first_num: <span class="number">0</span></span><br><span class="line">numbers: (<span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">first_num: <span class="number">6</span></span><br><span class="line">numbers: ()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-call-special-method-to-turn-class-instances-into-functions"><a href="#Use-call-special-method-to-turn-class-instances-into-functions" class="headerlink" title="Use __call__ special method to turn class instances into functions"></a>Use <code>__call__</code> special method to turn class instances into functions</h3><p>If we define <code>__call__</code> in our class, we can turn the class instances into functions. Each call on the instance will invoke calling of its <code>__call__</code> .</p>
+<p>So, when there is a need for a function to preserve some state, you can consider using a class with <code>__call__</code> method. It’s more readable than a stateful closure.</p>
+<figure class="highlight python"><figcaption><span>callable_class_example.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MissingCounter</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Provide default color count and record how many missing colors when adding increments.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.added = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        self.added += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">missing_counter = MissingCounter()</span><br><span class="line">init_dict = &#123;</span><br><span class="line">    <span class="string">'green'</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="string">'blue'</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">color_count_map = defaultdict(missing_counter, init_dict)</span><br><span class="line"></span><br><span class="line">increments = [</span><br><span class="line">    (<span class="string">'red'</span>, <span class="number">5</span>),</span><br><span class="line">    (<span class="string">'blue'</span>, <span class="number">17</span>),</span><br><span class="line">    (<span class="string">'orange'</span>, <span class="number">9</span>)</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> color, amount <span class="keyword">in</span> increments:</span><br><span class="line">    color_count_map[color] += amount</span><br><span class="line"></span><br><span class="line">print(<span class="string">'missing_counter is callable:'</span>, callable(missing_counter))</span><br><span class="line">print(<span class="string">'Missing colors added count:'</span>, missing_counter.added)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">missing_counter <span class="keyword">is</span> callable: <span class="literal">True</span></span><br><span class="line">Missing colors added count: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2014-11-12T10:39:44.000Z">2014-11-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Project-Management/">Project Management</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 753 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2014/11/12/agile-tour-thoughts/">趨勢科技的 agile tour_by Joy Chen 心得分享 - Agile Tour Taipei 2014</a>
+            
+        </h1>
+        <div class="content">
+            <div class="oembed-outer oembed-slideshare"><div class="oembed-inner"><iframe src="https://www.slideshare.net/slideshow/embed_code/key/Iq0aYY2n5UlR9i" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/AgileCommunity/agile-tour-agile-v3" title="Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅" target="_blank">Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅</a> </strong> from <strong><a href="https://www.slideshare.net/AgileCommunity" target="_blank">AgileCommunity</a></strong> </div>
+
+</div></div>
+
+<p>上禮拜參加 Agile Tour Taipei 2014，第一場 talk 的 Joy 分享趨勢科技實行 Agile 的經驗，上面是她的 slides</p>
+<p><strong>Agile 的優點與適用情境</strong></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2014/11/12/agile-tour-thoughts/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2014-11-04T10:26:00.000Z">2014-11-04</time>
                 
                 <div class="level-item">
@@ -409,7 +554,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            24
+                            26
                         </p>
                     </a>
                 </div>
@@ -421,7 +566,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -459,6 +604,14 @@
         <a class="level is-marginless" href="/categories/Algorithm/">
             <span class="level-start">
                 <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Book-Digest/">
+            <span class="level-start">
+                <span class="level-item">Book Digest</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">2</span>
@@ -506,7 +659,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 12.5px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 17.5px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 15px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 17.5px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 15px;">dynamic programming</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -692,6 +845,17 @@
         </li>
         
         <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2014/11/">
                 <span class="level-start">
                     <span class="level-item">十一月 2014</span>
@@ -866,7 +1030,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1093,6 +1257,17 @@
         </li>
         
         <li>
+            <a class="level is-marginless" href="/archives/2018/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2014/11/">
                 <span class="level-start">
                     <span class="level-item">十一月 2014</span>
@@ -1267,7 +1442,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

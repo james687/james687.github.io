@@ -41,9 +41,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -75,9 +75,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -236,9 +236,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -275,9 +275,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -308,9 +308,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
     
@@ -608,9 +608,9 @@
       <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
     
     
-      <category term="package management" scheme="https://james687.github.io/tags/package-management/"/>
-    
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
+    
+      <category term="package management" scheme="https://james687.github.io/tags/package-management/"/>
     
       <category term="pipenv" scheme="https://james687.github.io/tags/pipenv/"/>
     
@@ -621,28 +621,30 @@
   </entry>
   
   <entry>
-    <title>趨勢科技的 agile tour_by Joy Chen 心得分享 - Agile Tour Taipei 2014</title>
-    <link href="https://james687.github.io/2014/11/12/agile-tour-thoughts/"/>
-    <id>https://james687.github.io/2014/11/12/agile-tour-thoughts/</id>
-    <published>2014-11-12T10:39:44.000Z</published>
-    <updated>2023-03-29T12:37:57.926Z</updated>
+    <title>Effective Python Note 2</title>
+    <link href="https://james687.github.io/2018/03/25/effective-python-note-2/"/>
+    <id>https://james687.github.io/2018/03/25/effective-python-note-2/</id>
+    <published>2018-03-25T13:19:34.000Z</published>
+    <updated>2023-03-30T05:50:10.837Z</updated>
     
-    <content type="html"><![CDATA[<div class="oembed-outer oembed-slideshare"><div class="oembed-inner"><iframe src="https://www.slideshare.net/slideshow/embed_code/key/Iq0aYY2n5UlR9i" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/AgileCommunity/agile-tour-agile-v3" title="Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅" target="_blank">Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅</a> </strong> from <strong><a href="https://www.slideshare.net/AgileCommunity" target="_blank">AgileCommunity</a></strong> </div></div></div><p>上禮拜參加 Agile Tour Taipei 2014，第一場 talk 的 Joy 分享趨勢科技實行 Agile 的經驗，上面是她的 slides</p><p><strong>Agile 的優點與適用情境</strong></p><a id="more"></a><p>下面是第 9 張 slide，以追蹤導彈和固定火炮來比喻 Agile Mentality 和 Plan Driven 的差別<br>我覺得這個比喻很好，一張圖就可以讓大家清楚的看到 Agile 的優點：隨著目標(專案需求)的改變而在每一次的 iteration調整方向，重新瞄準目標，最後才能準確地擊中目標<br>相對來講假如是 Plan Driven(固定火炮) 的話，只要目標一動就無法命中目標了。</p><p><img src="/images/agile-mentality.png" alt=""><br>上面講 agile mentality 適合用在 moving target，但其實如同 Joy 的下一張 slide 所提，適合 Agile Principles 的情境還有很多，其中我覺得 Moving Target 和 Continuous Improvement 是對我來講最有感覺的</p><p>Moving Target:</p><ul><li>Uncertain situation: 假如是新創公司面對一個不確定的市場，就必須要快速取得市場反饋，快速修正</li><li>Brand new knowledge: 面對新的領域、新的知識，一定有很多未知、不確定的事情，此時一樣需要快速的反省與修正</li><li>As early as possible needs: 每個 iteration 結束都會有一個可以 ship 的成品，所以如果需要及早的有實際的成品的話也很適合</li></ul><p>Continuous Improvement: </p><ul><li>Continuously improve a certain capability, practice or skill: 因為每個 iteration 結束都會做回顧，所以可以快速地檢視需要改進的地方，並且快速修正</li></ul><p><strong>Lessons Learned</strong></p><p>Joy 也分享了趨勢在推行 agile 的時候學到的教訓</p><p>牛肉在哪裡？</p><ul><li>因為向上司報告專案成果時沒有事先準備資料來說明實行 agile 之後改善的地方，上司沒有看到牛肉，所以也不會覺得改用 agile 的方式開發之後有甚麼好</li><li>解法：在進行agile的時候就要把專案進度相關數據記錄下來，在進度報告時明確點出改善之處</li></ul><p>我們不幹了！</p><ul><li>一開始實施新的方法，一定會有一段磨合期，假如沒有事先把這段時間算入時程，就會導致必須要不斷加班趕進度的狀況，Joy 有分享一個例子是他們有一個 project 的 team 在 project 完成之後大概流失了一半的人</li><li>解法：實施新方法的時候，一定要把磨合的時間也算進去</li></ul><p>送不出去的價值！</p><ul><li>當只有開發團隊實施 agile，其他團隊沒有配合，會導致每個iteration的成品無法進入下個階段</li><li>解法：必須要所有團隊一起採用 agile 才能真正發揮 agile 的成效，至於詳細的實作方法他們也還在嘗試中</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>This article is composed of some notes from book <a href="https://effectivepython.com/">Effective Python</a>.</p></blockquote><h3 id="Use-property-to-define-special-behavior-when-attributes-are-accessed-set-on-your-objects-if-necessary"><a href="#Use-property-to-define-special-behavior-when-attributes-are-accessed-set-on-your-objects-if-necessary" class="headerlink" title="Use @property to define special behavior when attributes are accessed/set on your objects, if necessary"></a>Use @property to define special behavior when attributes are accessed/set on your objects, if necessary</h3><p>Another use case is to only specify getter to make that attribute read-only.</p><figure class="highlight python"><figcaption><span>property_decorator_example.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Movie</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        self._rating = <span class="number">0</span></span><br><span class="line">        self._reviewer_count = <span class="number">0</span>  <span class="comment"># read-only attribute</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rating</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Getter for _rating"""</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self._rating</span><br><span class="line"></span><br><span class="line"><span class="meta">    @rating.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rating</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="string">"""Setter for _rating"""</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Rating must be an integer!'</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= value &lt;= <span class="number">10</span>):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Rating must between 0 ~ 10!'</span>)</span><br><span class="line">        self._rating = value</span><br><span class="line">        self._reviewer_count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reviewer_count</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._reviewer_count</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">movie = Movie()</span><br><span class="line">print(<span class="string">'Before rating:'</span>, movie.rating)</span><br><span class="line">movie.rating = <span class="number">8</span></span><br><span class="line">print(<span class="string">'After rating:'</span>, movie.rating)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    movie.rating = <span class="number">11</span></span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(str(e))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Reviewer count:'</span>, movie.reviewer_count)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    movie.reviewer_count = <span class="number">5</span></span><br><span class="line"><span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:</span><br><span class="line">    print(str(e))</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Before rating: <span class="number">0</span></span><br><span class="line">After rating: <span class="number">8</span></span><br><span class="line">Rating must between <span class="number">0</span> ~ <span class="number">10</span>!</span><br><span class="line">Reviewer count: <span class="number">1</span></span><br><span class="line">can<span class="string">'t set attribute</span></span><br></pre></td></tr></table></figure><h3 id="Use-descriptors-for-reusable-property-methods"><a href="#Use-descriptors-for-reusable-property-methods" class="headerlink" title="Use descriptors for reusable @property methods"></a>Use descriptors for reusable @property methods</h3><p>If you want to reuse the logic in <code>@property</code> methods, you have to use a <strong>descriptor</strong>. The <strong>descriptor protocol</strong> defines how attribute access is interpreted by the language.</p><p><strong>Descriptor:</strong> an object attribute with “binding behavior”, one whose attribute access has been overridden by methods in the descriptor protocol</p><p><strong>Descriptor Protocol:</strong><br><code>descriptor.__get__(self, obj, type=None) -&gt; value</code><br><code>descriptor.__set__(self, obj, value) -&gt; None</code><br><code>descriptor.__delete__(self, obj) -&gt; None</code></p><figure class="highlight python"><figcaption><span>descriptor_example.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> weakref <span class="keyword">import</span> WeakKeyDictionary</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grade</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._instance_value_map = WeakKeyDictionary()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="keyword">return</span> self._instance_value_map.get(instance, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= value &lt;= <span class="number">100</span>):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Grade must be between 0 and 100'</span>)</span><br><span class="line">        self._instance_value_map[instance] = value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Exam</span>:</span></span><br><span class="line">    <span class="comment"># Descriptors only works with class attributes</span></span><br><span class="line">    math_grade = Grade()</span><br><span class="line">    writing_grade = Grade()</span><br><span class="line">    science_grade = Grade()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">first_exam = Exam()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    first_exam.writing_grade = <span class="number">120</span></span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(str(e))</span><br><span class="line">first_exam.writing_grade = <span class="number">82</span></span><br><span class="line">second_exam = Exam()</span><br><span class="line">second_exam.writing_grade = <span class="number">75</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'First writing grade:'</span>, first_exam.writing_grade)</span><br><span class="line">print(<span class="string">'Second writing grade:'</span>, second_exam.writing_grade)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Grade must be between <span class="number">0</span> <span class="keyword">and</span> <span class="number">100</span></span><br><span class="line">First writing grade: <span class="number">82</span></span><br><span class="line">Second writing grade: <span class="number">75</span></span><br></pre></td></tr></table></figure><p><strong>Under the hood</strong><br>When you assign a property as in line 28, it will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__set__(first_exam, 120)</code><br>When you retrieve a property as in line 35, <code>first_exam.writing_grade</code> will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__get__(first_exam, Exam)</code></p>]]></content>
     
     <summary type="html">
     
-      &lt;div class=&quot;oembed-outer oembed-slideshare&quot;&gt;&lt;div class=&quot;oembed-inner&quot;&gt;&lt;iframe src=&quot;https://www.slideshare.net/slideshow/embed_code/key/Iq0aYY2n5UlR9i&quot; width=&quot;427&quot; height=&quot;356&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; style=&quot;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&quot; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&quot;margin-bottom:5px&quot;&gt; &lt;strong&gt; &lt;a href=&quot;https://www.slideshare.net/AgileCommunity/agile-tour-agile-v3&quot; title=&quot;Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅&quot; target=&quot;_blank&quot;&gt;Agile Tour Taipei 2014 - 趨勢科技的 agile 之旅&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;https://www.slideshare.net/AgileCommunity&quot; target=&quot;_blank&quot;&gt;AgileCommunity&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;
-
-&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;上禮拜參加 Agile Tour Taipei 2014，第一場 talk 的 Joy 分享趨勢科技實行 Agile 的經驗，上面是她的 slides&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Agile 的優點與適用情境&lt;/strong&gt;&lt;/p&gt;
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;This article is composed of some notes from book &lt;a href=&quot;https://effectivepython.com/&quot;&gt;Effective Python&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquo
+      
     
     </summary>
     
     
-      <category term="Project Management" scheme="https://james687.github.io/categories/Project-Management/"/>
+      <category term="Book Digest" scheme="https://james687.github.io/categories/Book-Digest/"/>
     
+    
+      <category term="python" scheme="https://james687.github.io/tags/python/"/>
     
   </entry>
   
