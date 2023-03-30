@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Effective Python Note 2 - James&#39; Blog</title>
+<title>\&#34;Effective Python\&#34; Note 2 - James&#39; Blog</title>
 
 
     <meta name="description" content="This article is composed of some notes from book Effective Python.  Use @property to define special behavior when attributes are accessed&#x2F;set on your objects, if necessaryAnother use case is to only">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Effective Python Note 2">
+<meta property="og:title" content="\&quot;Effective Python\&quot; Note 2">
 <meta property="og:url" content="https://james687.github.io/2018/03/25/effective-python-note-2/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:description" content="This article is composed of some notes from book Effective Python.  Use @property to define special behavior when attributes are accessed&#x2F;set on your objects, if necessaryAnother use case is to only">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2018-03-25T13:19:34.000Z">
-<meta property="article:modified_time" content="2023-03-30T05:50:10.837Z">
+<meta property="article:modified_time" content="2023-03-30T05:53:56.284Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Effective Python Note 2" height="28">
+                <img src="/images/logo.svg" alt="\&#34;Effective Python\&#34; Note 2" height="28">
             
             </a>
         </div>
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 422 個字)
+                    4 分鐘 閱讀文 (大約 547 個字)
                 </span>
                 
                 
@@ -157,7 +157,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Effective Python Note 2
+                \&#34;Effective Python\&#34; Note 2
             
         </h1>
         <div class="content">
@@ -172,7 +172,11 @@
 <p><strong>Descriptor Protocol:</strong><br><code>descriptor.__get__(self, obj, type=None) -&gt; value</code><br><code>descriptor.__set__(self, obj, value) -&gt; None</code><br><code>descriptor.__delete__(self, obj) -&gt; None</code></p>
 <figure class="highlight python"><figcaption><span>descriptor_example.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> weakref <span class="keyword">import</span> WeakKeyDictionary</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grade</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._instance_value_map = WeakKeyDictionary()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="keyword">return</span> self._instance_value_map.get(instance, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= value &lt;= <span class="number">100</span>):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'Grade must be between 0 and 100'</span>)</span><br><span class="line">        self._instance_value_map[instance] = value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Exam</span>:</span></span><br><span class="line">    <span class="comment"># Descriptors only works with class attributes</span></span><br><span class="line">    math_grade = Grade()</span><br><span class="line">    writing_grade = Grade()</span><br><span class="line">    science_grade = Grade()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">first_exam = Exam()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    first_exam.writing_grade = <span class="number">120</span></span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">    print(str(e))</span><br><span class="line">first_exam.writing_grade = <span class="number">82</span></span><br><span class="line">second_exam = Exam()</span><br><span class="line">second_exam.writing_grade = <span class="number">75</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'First writing grade:'</span>, first_exam.writing_grade)</span><br><span class="line">print(<span class="string">'Second writing grade:'</span>, second_exam.writing_grade)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Grade must be between <span class="number">0</span> <span class="keyword">and</span> <span class="number">100</span></span><br><span class="line">First writing grade: <span class="number">82</span></span><br><span class="line">Second writing grade: <span class="number">75</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>Under the hood</strong><br>When you assign a property as in line 28, it will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__set__(first_exam, 120)</code><br>When you retrieve a property as in line 35, <code>first_exam.writing_grade</code> will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__get__(first_exam, Exam)</code></p>
+<p><strong>Under the hood</strong></p>
+<p>When you assign a property as in line 28, it will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__set__(first_exam, 120)</code><br>When you retrieve a property as in line 35, <code>first_exam.writing_grade</code> will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__get__(first_exam, Exam)</code></p>
+<p>What drives this behavior is the <code>__getattribute__</code> method of object. In short, when an Exam instance doesn’t have an attribute named <code>writing_grade</code>, Python will fall back to the Exam class’s attribute instead. If this class attribute is an object that has <code>__get__</code> and <code>__set__</code> methods, Python will assume you want to follow the descriptor protocol.</p>
+<p><em>Note: Descriptor protocol only works with class attributes, so don’t use it with instance attributes. It’s reasonable to keep object behavior in the class definition. Otherwise, the mere act of assigning a descriptor to an instance attribute would change the object behavior. (<a href="https://stackoverflow.com/questions/12599972/descriptors-as-instance-attributes-in-python">more discussion on StackOverflow</a>)</em></p>
+<p><strong>Why using <code>_instance_value_map</code>?</strong></p>
 
         </div>
         
@@ -207,7 +211,7 @@
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2018/03/25/effective-python-note/">
-                <span class="level-item">\&#34;Effective Python\&#34; Note</span>
+                <span class="level-item">Effective Python Note</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1222,7 +1226,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Effective Python Note 2" height="28">
+                    <img src="/images/logo.svg" alt="\&#34;Effective Python\&#34; Note 2" height="28">
                 
                 </a>
                 <p class="is-size-7">
