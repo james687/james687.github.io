@@ -265,7 +265,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 547 個字)
+                    4 分鐘 閱讀文 (大約 590 個字)
                 </span>
                 
                 
@@ -293,7 +293,8 @@
 <p>When you assign a property as in line 28, it will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__set__(first_exam, 120)</code><br>When you retrieve a property as in line 35, <code>first_exam.writing_grade</code> will be interpreted as: <code>Exam.__dict__[&#39;writing_grade&#39;].__get__(first_exam, Exam)</code></p>
 <p>What drives this behavior is the <code>__getattribute__</code> method of object. In short, when an Exam instance doesn’t have an attribute named <code>writing_grade</code>, Python will fall back to the Exam class’s attribute instead. If this class attribute is an object that has <code>__get__</code> and <code>__set__</code> methods, Python will assume you want to follow the descriptor protocol.</p>
 <p><em>Note: Descriptor protocol only works with class attributes, so don’t use it with instance attributes. It’s reasonable to keep object behavior in the class definition. Otherwise, the mere act of assigning a descriptor to an instance attribute would change the object behavior. (<a href="https://stackoverflow.com/questions/12599972/descriptors-as-instance-attributes-in-python">more discussion on StackOverflow</a>)</em></p>
-<p><strong>Why using <code>_instance_value_map</code>?</strong></p>
+<p><strong>Why using <code>_instance_value_map</code>?</strong><br>A single <code>Grade</code> instance is shared across all <code>Exam</code> instances for the class attribute <code>writing_grade</code>, so we need the <code>Grade</code> class to keep track of its value for each unique <code>Exam</code> instance.</p>
+<p><strong>Why using <code>WeakKeyDictionary</code> instead of just <code>{}</code>?</strong><br>Use <code>{}</code> will leak memory.</p>
 
         </div>
         
@@ -342,7 +343,7 @@
             <blockquote>
 <p>This article is composed of some notes from book <a href="https://effectivepython.com/">Effective Python</a>.</p>
 </blockquote>
-<h3 id="Scope-Resolution"><a href="#Scope-Resolution" class="headerlink" title="Scope Resolution"></a>Scope Resolution</h3><p>Python’s scope resolution follows the order below:</p>
+<h2 id="Scope-Resolution"><a href="#Scope-Resolution" class="headerlink" title="Scope Resolution"></a>Scope Resolution</h2><p>Python’s scope resolution follows the order below:</p>
 <ol>
 <li>current function</li>
 <li>enclosing scopes: like a outer function enclosing the current function</li>
