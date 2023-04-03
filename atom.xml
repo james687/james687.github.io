@@ -493,9 +493,9 @@
     <link href="https://james687.github.io/2021/01/14/add-ssh-steps/"/>
     <id>https://james687.github.io/2021/01/14/add-ssh-steps/</id>
     <published>2021-01-14T08:31:44.000Z</published>
-    <updated>2023-03-29T12:48:43.125Z</updated>
+    <updated>2023-04-03T10:27:41.027Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><p><code>ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;</code></p><ul><li>預設路徑假如已有相同檔案，記得指定新的<strong>完整</strong>路徑</li><li>如檔名不用預設的，下面 <code>id_ed25519</code> 自行替換成自己的檔名</li></ul></li><li><p><code>vi ~/.ssh/config</code></p><ul><li><p>舉例：加上如下</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host GitHub</span><br><span class="line"> HostName github.com</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line"> IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li></ul></li><li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p></li><li><p><code>pbcopy &lt; ~/.ssh/id_ed25519.pub</code></p></li><li><p>貼到所使用的服務網站的相對應設定頁面</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p><code>ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;</code></p><ul><li>預設路徑假如已有相同檔案，記得指定新的<strong>完整</strong>路徑</li><li>如檔名不用預設的，下面 <code>id_ed25519</code> 自行替換成自己的檔名</li></ul></li><li><p><code>vi ~/.ssh/config</code></p><ul><li><p>舉例：加上如下</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host GitHub</span><br><span class="line"> HostName github.com</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line"> IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li></ul></li><li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p><ul><li>register your private key with <code>ssh-agent</code></li></ul></li><li><p><code>pbcopy &lt; ~/.ssh/id_ed25519.pub</code></p></li><li><p>貼到所使用的服務網站的相對應設定頁面</p></li></ol>]]></content>
     
     <summary type="html">
     
