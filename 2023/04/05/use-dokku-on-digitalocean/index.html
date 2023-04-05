@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-04-05T07:37:28.000Z">
-<meta property="article:modified_time" content="2023-04-05T08:15:50.844Z">
+<meta property="article:modified_time" content="2023-04-05T10:20:02.280Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="heroku">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 418 個字)
+                    3 分鐘 閱讀文 (大約 446 個字)
                 </span>
                 
                 
@@ -180,14 +180,27 @@
 <li><code>dokku domains:set-global {domain}</code></li>
 <li><code>dokku domains:set {dokku_app_name} {subdomain.domain}</code></li>
 <li>設定 domain 的 A record, CNAME<ul>
-<li>A record 指向 droplet IP</li>
-<li>CNAME host 寫 subdomain, value 指向 domain</li>
+<li>A record: <ul>
+<li>Host: <code>@</code></li>
+<li>Value: droplet IP</li>
+</ul>
+</li>
+<li>CNAME<ul>
+<li>Host: subdomain</li>
+<li>Value: <code>{domain}.</code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 <ul>
 <li>看起來這個方法應該可以讓我們在同一個 droplet 裡，用不同的 subdomains 跑多個不同的 web apps。只要分別設定多個 CNAME 和對應的 dokku app domain 就好<ul>
 <li>流程：{subdomain_a.domain} 的 request 依循 IP 到了該 droplet 的 nginx，nginx 再將 request 導到 subdomain_a 對應的 dokku app</li>
+</ul>
+</li>
+<li>如果單純只想讓 <code>{dokku_app_name}.{domain}</code> 指到 dokku app，也可以只設定 A record:<ul>
+<li>Host: <code>dokku_app_name</code></li>
+<li>Value: droplet IP</li>
 </ul>
 </li>
 </ul>
