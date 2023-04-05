@@ -134,6 +134,66 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 265 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/02/09/merge-two-sorted-lists/">Merge Two Sorted Lists</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">題目</a><br>思路：</p>
+<ol>
+<li><p>因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來</p>
+</li>
+<li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p>
+</li>
+<li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> l1.val &gt; l2.val:</span><br><span class="line">    curr.next = l2</span><br><span class="line">    l2 = l2.next</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    curr.next = l1</span><br><span class="line">    l1 = l1.next</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/02/09/merge-two-sorted-lists/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time>
                 
                 <div class="level-item">
@@ -658,62 +718,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-03-25T13:19:34.000Z">2018-03-25</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Book-Digest/">Book Digest</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分鐘 閱讀文 (大約 957 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/03/25/effective-python-note-2/">Effective Python Note 2</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>This article is composed of some notes from book <a href="https://effectivepython.com/">Effective Python</a>.</p>
-</blockquote>
-<h2 id="Use-property-to-define-special-behavior-when-attributes-are-accessed-set-on-your-objects-if-necessary"><a href="#Use-property-to-define-special-behavior-when-attributes-are-accessed-set-on-your-objects-if-necessary" class="headerlink" title="Use @property to define special behavior when attributes are accessed/set on your objects, if necessary"></a>Use @property to define special behavior when attributes are accessed/set on your objects, if necessary</h2><p>Another use case is to only specify getter to make that attribute read-only.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/03/25/effective-python-note-2/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -780,7 +784,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            27
                         </p>
                     </a>
                 </div>
@@ -804,7 +808,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            23
+                            26
                         </p>
                     </a>
                 </div>
@@ -848,7 +852,7 @@
                 <span class="level-item">Development Note</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Leetcode/">
@@ -885,7 +889,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -897,6 +901,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
+                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -974,25 +997,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/20/house-robber/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time></div>
-                    <a href="/2023/03/20/house-robber/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1003,6 +1007,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/03/">
@@ -1193,7 +1208,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dokku/">
+                        <span class="tag">dokku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1201,6 +1223,13 @@
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/heroku/">
+                        <span class="tag">heroku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1228,6 +1257,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/paas/">
+                        <span class="tag">paas</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1312,6 +1348,25 @@
         
         <article class="media">
             
+            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
+                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/28/binary-tree-level-order-traversal/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Level Order Traversal">
@@ -1386,25 +1441,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/20/house-robber/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time></div>
-                    <a href="/2023/03/20/house-robber/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1415,6 +1451,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/03/">
@@ -1605,7 +1652,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dokku/">
+                        <span class="tag">dokku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1613,6 +1667,13 @@
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/heroku/">
+                        <span class="tag">heroku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1640,6 +1701,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/paas/">
+                        <span class="tag">paas</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

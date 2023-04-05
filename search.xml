@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>使用 Dokku 將 Web App 部署在 DigitalOcean</title>
+      <link href="/2023/04/05/use-dokku-on-digitalocean/"/>
+      <url>/2023/04/05/use-dokku-on-digitalocean/</url>
+      
+        <content type="html"><![CDATA[<p>因為 Heroku 現在要收費了，原本放在上面<a href="https://github.com/james687/Tweetme">用免費方案的 project</a> 就需要找新的方法。於是找到了 <a href="https://github.com/dokku/dokku">Dokku</a>，他的 GitHub page 介紹如下：</p><blockquote><p>Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.</p></blockquote><p>的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：</p><blockquote><p>A docker-powered PaaS that helps you build and manage the lifecycle of applications</p></blockquote><p>這邊使用 DigitalOcean 的 droplet，因為他有兩個月 200 美金的試用 credits，假如只是短期測試專案的話也夠了，不然也可以兩個月換一個新帳號 😅</p><p>這邊稍微筆記一下把 Heroku 專案搬過來的過程：</p><ul><li>在 DigitalOcean 創一個 droplet, 在上面照著<a href="https://dokku.com/docs/getting-started/installation/">文件</a>的步驟做，droplet OS 需選擇 dokku 支援的版本</li><li>使用 subdomain 的步驟：<ol><li><code>dokku domains:set-global {domain}</code></li><li><code>dokku domains:set {dokku_app_name} {subdomain.domain}</code></li><li>設定 domain 的 A record, CNAME<ul><li>A record 指向 droplet IP</li><li>CNAME host 寫 subdomain, value 指向 domain</li></ul></li></ol><ul><li>看起來這個方法應該可以讓我們在同一個 droplet 裡，用不同的 subdomains 跑多個不同的 web apps。只要分別設定多個 CNAME 和對應的 dokku app domain 就好<ul><li>流程：{subdomain_a.domain} 的 request 依循 IP 到了該 droplet 的 nginx，nginx 再將 request 導到 subdomain_a 對應的 dokku app</li></ul></li></ul></li><li><code>dokku config:set {dokku_app_name} KEY=value</code> 可設定需要的環境變數</li><li>可以用 runtime.txt 指定 python 執行的版本</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Development Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> heroku </tag>
+            
+            <tag> dokku </tag>
+            
+            <tag> paas </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Binary Tree Level Order Traversal</title>
       <link href="/2023/03/28/binary-tree-level-order-traversal/"/>
       <url>/2023/03/28/binary-tree-level-order-traversal/</url>
@@ -22,9 +53,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -55,9 +86,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -192,9 +223,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -225,9 +256,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -256,9 +287,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> breadth-first search </tag>
             

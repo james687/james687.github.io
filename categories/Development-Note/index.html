@@ -145,6 +145,82 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 417 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/04/05/use-dokku-on-digitalocean/">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+            
+        </h1>
+        <div class="content">
+            <p>因為 Heroku 現在要收費了，原本放在上面<a href="https://github.com/james687/Tweetme">用免費方案的 project</a> 就需要找新的方法。於是找到了 <a href="https://github.com/dokku/dokku">Dokku</a>，他的 GitHub page 介紹如下：</p>
+<blockquote>
+<p>Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.</p>
+</blockquote>
+<p>的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：</p>
+<blockquote>
+<p>A docker-powered PaaS that helps you build and manage the lifecycle of applications</p>
+</blockquote>
+<p>這邊使用 DigitalOcean 的 droplet，因為他有兩個月 200 美金的試用 credits，假如只是短期測試專案的話也夠了，不然也可以兩個月換一個新帳號 😅</p>
+<p>這邊稍微筆記一下把 Heroku 專案搬過來的過程：</p>
+<ul>
+<li>在 DigitalOcean 創一個 droplet, 在上面照著<a href="https://dokku.com/docs/getting-started/installation/">文件</a>的步驟做，droplet OS 需選擇 dokku 支援的版本</li>
+<li>使用 subdomain 的步驟：<ol>
+<li><code>dokku domains:set-global {domain}</code></li>
+<li><code>dokku domains:set {dokku_app_name} {subdomain.domain}</code></li>
+<li>設定 domain 的 A record, CNAME<ul>
+<li>A record 指向 droplet IP</li>
+<li>CNAME host 寫 subdomain, value 指向 domain</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>看起來這個方法應該可以讓我們在同一個 droplet 裡，用不同的 subdomains 跑多個不同的 web apps。只要分別設定多個 CNAME 和對應的 dokku app domain 就好<ul>
+<li>流程：{subdomain_a.domain} 的 request 依循 IP 到了該 droplet 的 nginx，nginx 再將 request 導到 subdomain_a 對應的 dokku app</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>dokku config:set {dokku_app_name} KEY=value</code> 可設定需要的環境變數</li>
+<li>可以用 runtime.txt 指定 python 執行的版本</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time>
                 
                 <div class="level-item">
@@ -588,7 +664,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            27
                         </p>
                     </a>
                 </div>
@@ -612,7 +688,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            23
+                            26
                         </p>
                     </a>
                 </div>
@@ -656,7 +732,7 @@
                 <span class="level-item">Development Note</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Leetcode/">
@@ -693,7 +769,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -705,6 +781,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
+                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -782,25 +877,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/20/house-robber/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time></div>
-                    <a href="/2023/03/20/house-robber/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -811,6 +887,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/03/">
@@ -1001,7 +1088,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dokku/">
+                        <span class="tag">dokku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1009,6 +1103,13 @@
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/heroku/">
+                        <span class="tag">heroku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1036,6 +1137,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/paas/">
+                        <span class="tag">paas</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1120,6 +1228,25 @@
         
         <article class="media">
             
+            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
+                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/03/28/binary-tree-level-order-traversal/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Level Order Traversal">
@@ -1194,25 +1321,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/20/house-robber/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="House Robber">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time></div>
-                    <a href="/2023/03/20/house-robber/" class="title has-link-black-ter is-size-6 has-text-weight-normal">House Robber</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1223,6 +1331,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/03/">
@@ -1413,7 +1532,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/docker/">
                         <span class="tag">docker</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dokku/">
+                        <span class="tag">dokku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1421,6 +1547,13 @@
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/heroku/">
+                        <span class="tag">heroku</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1448,6 +1581,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/mysql/">
                         <span class="tag">mysql</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/paas/">
+                        <span class="tag">paas</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
