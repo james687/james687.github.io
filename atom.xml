@@ -5,9 +5,9 @@
   <subtitle>程式隨筆</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://james687.github.io/"/>
+  <link href="https://blog.jamesho.website/"/>
   <updated>2023-04-12T08:35:08.740Z</updated>
-  <id>https://james687.github.io/</id>
+  <id>https://blog.jamesho.website/</id>
   
   <author>
     <name>James Ho</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Isomorphic Strings</title>
-    <link href="https://james687.github.io/2023/04/12/isomorphic-strings/"/>
-    <id>https://james687.github.io/2023/04/12/isomorphic-strings/</id>
+    <link href="https://blog.jamesho.website/2023/04/12/isomorphic-strings/"/>
+    <id>https://blog.jamesho.website/2023/04/12/isomorphic-strings/</id>
     <published>2023-04-12T08:29:09.000Z</published>
     <updated>2023-04-12T08:35:08.740Z</updated>
     
@@ -36,19 +36,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="hash table" scheme="https://james687.github.io/tags/hash-table/"/>
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
-      <category term="string" scheme="https://james687.github.io/tags/string/"/>
+      <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
     
   </entry>
   
   <entry>
     <title>Binary Number with Alternating Bits</title>
-    <link href="https://james687.github.io/2023/04/12/binary-number-with-alternating-bits/"/>
-    <id>https://james687.github.io/2023/04/12/binary-number-with-alternating-bits/</id>
+    <link href="https://blog.jamesho.website/2023/04/12/binary-number-with-alternating-bits/"/>
+    <id>https://blog.jamesho.website/2023/04/12/binary-number-with-alternating-bits/</id>
     <published>2023-04-12T05:26:05.000Z</published>
     <updated>2023-04-12T05:35:29.233Z</updated>
     
@@ -66,17 +66,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="bit manipulation" scheme="https://james687.github.io/tags/bit-manipulation/"/>
+      <category term="bit manipulation" scheme="https://blog.jamesho.website/tags/bit-manipulation/"/>
     
   </entry>
   
   <entry>
     <title>Single Number</title>
-    <link href="https://james687.github.io/2023/04/12/single-number/"/>
-    <id>https://james687.github.io/2023/04/12/single-number/</id>
+    <link href="https://blog.jamesho.website/2023/04/12/single-number/"/>
+    <id>https://blog.jamesho.website/2023/04/12/single-number/</id>
     <published>2023-04-12T04:10:25.000Z</published>
     <updated>2023-04-12T04:32:34.486Z</updated>
     
@@ -94,19 +94,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="array" scheme="https://james687.github.io/tags/array/"/>
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
     
-      <category term="bit manipulation" scheme="https://james687.github.io/tags/bit-manipulation/"/>
+      <category term="bit manipulation" scheme="https://blog.jamesho.website/tags/bit-manipulation/"/>
     
   </entry>
   
   <entry>
     <title>Validate Binary Search Tree</title>
-    <link href="https://james687.github.io/2023/04/12/validate-binary-search-tree/"/>
-    <id>https://james687.github.io/2023/04/12/validate-binary-search-tree/</id>
+    <link href="https://blog.jamesho.website/2023/04/12/validate-binary-search-tree/"/>
+    <id>https://blog.jamesho.website/2023/04/12/validate-binary-search-tree/</id>
     <published>2023-04-12T01:11:56.000Z</published>
     <updated>2023-04-12T03:12:38.007Z</updated>
     
@@ -124,25 +124,25 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="binary search tree" scheme="https://james687.github.io/tags/binary-search-tree/"/>
+      <category term="binary search tree" scheme="https://blog.jamesho.website/tags/binary-search-tree/"/>
     
   </entry>
   
   <entry>
     <title>使用 Dokku 將 Web App 部署在 DigitalOcean</title>
-    <link href="https://james687.github.io/2023/04/05/use-dokku-on-digitalocean/"/>
-    <id>https://james687.github.io/2023/04/05/use-dokku-on-digitalocean/</id>
+    <link href="https://blog.jamesho.website/2023/04/05/use-dokku-on-digitalocean/"/>
+    <id>https://blog.jamesho.website/2023/04/05/use-dokku-on-digitalocean/</id>
     <published>2023-04-05T07:37:28.000Z</published>
     <updated>2023-04-05T10:20:02.280Z</updated>
     
@@ -159,23 +159,23 @@
     </summary>
     
     
-      <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
+      <category term="Development Note" scheme="https://blog.jamesho.website/categories/Development-Note/"/>
     
     
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
+      <category term="docker" scheme="https://blog.jamesho.website/tags/docker/"/>
     
-      <category term="heroku" scheme="https://james687.github.io/tags/heroku/"/>
+      <category term="heroku" scheme="https://blog.jamesho.website/tags/heroku/"/>
     
-      <category term="dokku" scheme="https://james687.github.io/tags/dokku/"/>
+      <category term="dokku" scheme="https://blog.jamesho.website/tags/dokku/"/>
     
-      <category term="paas" scheme="https://james687.github.io/tags/paas/"/>
+      <category term="paas" scheme="https://blog.jamesho.website/tags/paas/"/>
     
   </entry>
   
   <entry>
     <title>Binary Tree Level Order Traversal</title>
-    <link href="https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/"/>
-    <id>https://james687.github.io/2023/03/28/binary-tree-level-order-traversal/</id>
+    <link href="https://blog.jamesho.website/2023/03/28/binary-tree-level-order-traversal/"/>
+    <id>https://blog.jamesho.website/2023/03/28/binary-tree-level-order-traversal/</id>
     <published>2023-03-28T11:25:25.000Z</published>
     <updated>2023-03-30T04:45:41.803Z</updated>
     
@@ -192,25 +192,25 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
+      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
   </entry>
   
   <entry>
     <title>Binary Tree Inorder Traversal</title>
-    <link href="https://james687.github.io/2023/03/23/binary-tree-inorder-traversal/"/>
-    <id>https://james687.github.io/2023/03/23/binary-tree-inorder-traversal/</id>
+    <link href="https://blog.jamesho.website/2023/03/23/binary-tree-inorder-traversal/"/>
+    <id>https://blog.jamesho.website/2023/03/23/binary-tree-inorder-traversal/</id>
     <published>2023-03-23T08:51:55.000Z</published>
     <updated>2023-03-30T04:47:05.770Z</updated>
     
@@ -226,23 +226,23 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
   </entry>
   
   <entry>
     <title>House Robber II</title>
-    <link href="https://james687.github.io/2023/03/23/house-robber-ii/"/>
-    <id>https://james687.github.io/2023/03/23/house-robber-ii/</id>
+    <link href="https://blog.jamesho.website/2023/03/23/house-robber-ii/"/>
+    <id>https://blog.jamesho.website/2023/03/23/house-robber-ii/</id>
     <published>2023-03-23T05:37:15.000Z</published>
     <updated>2023-03-30T04:47:22.940Z</updated>
     
@@ -260,19 +260,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="dynamic programming" scheme="https://james687.github.io/tags/dynamic-programming/"/>
+      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
     
   </entry>
   
   <entry>
     <title>遞迴的時間複雜度算法</title>
-    <link href="https://james687.github.io/2023/03/21/recursion-time-complexity/"/>
-    <id>https://james687.github.io/2023/03/21/recursion-time-complexity/</id>
+    <link href="https://blog.jamesho.website/2023/03/21/recursion-time-complexity/"/>
+    <id>https://blog.jamesho.website/2023/03/21/recursion-time-complexity/</id>
     <published>2023-03-21T08:55:19.000Z</published>
     <updated>2023-04-12T03:05:32.571Z</updated>
     
@@ -291,17 +291,17 @@
     </summary>
     
     
-      <category term="Algorithm" scheme="https://james687.github.io/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="https://blog.jamesho.website/categories/Algorithm/"/>
     
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
   </entry>
   
   <entry>
     <title>House Robber</title>
-    <link href="https://james687.github.io/2023/03/20/house-robber/"/>
-    <id>https://james687.github.io/2023/03/20/house-robber/</id>
+    <link href="https://blog.jamesho.website/2023/03/20/house-robber/"/>
+    <id>https://blog.jamesho.website/2023/03/20/house-robber/</id>
     <published>2023-03-20T07:08:15.000Z</published>
     <updated>2023-03-30T04:47:34.521Z</updated>
     
@@ -322,19 +322,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="dynamic programming" scheme="https://james687.github.io/tags/dynamic-programming/"/>
+      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
     
   </entry>
   
   <entry>
     <title>Unique Paths</title>
-    <link href="https://james687.github.io/2023/03/18/unique-paths/"/>
-    <id>https://james687.github.io/2023/03/18/unique-paths/</id>
+    <link href="https://blog.jamesho.website/2023/03/18/unique-paths/"/>
+    <id>https://blog.jamesho.website/2023/03/18/unique-paths/</id>
     <published>2023-03-18T08:08:15.000Z</published>
     <updated>2023-03-30T04:49:45.044Z</updated>
     
@@ -351,19 +351,19 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="dynamic programming" scheme="https://james687.github.io/tags/dynamic-programming/"/>
+      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
     
   </entry>
   
   <entry>
     <title>Merge Two Binary Trees</title>
-    <link href="https://james687.github.io/2023/03/16/merge-two-binary-trees/"/>
-    <id>https://james687.github.io/2023/03/16/merge-two-binary-trees/</id>
+    <link href="https://blog.jamesho.website/2023/03/16/merge-two-binary-trees/"/>
+    <id>https://blog.jamesho.website/2023/03/16/merge-two-binary-trees/</id>
     <published>2023-03-16T03:27:23.000Z</published>
     <updated>2023-03-30T04:48:03.303Z</updated>
     
@@ -384,25 +384,25 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
-      <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
+      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
   </entry>
   
   <entry>
     <title>Balanced Binary Tree</title>
-    <link href="https://james687.github.io/2023/03/15/balanced-binary-tree/"/>
-    <id>https://james687.github.io/2023/03/15/balanced-binary-tree/</id>
+    <link href="https://blog.jamesho.website/2023/03/15/balanced-binary-tree/"/>
+    <id>https://blog.jamesho.website/2023/03/15/balanced-binary-tree/</id>
     <published>2023-03-15T04:12:23.000Z</published>
     <updated>2023-03-30T04:46:34.670Z</updated>
     
@@ -423,23 +423,23 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
   </entry>
   
   <entry>
     <title>Same Tree</title>
-    <link href="https://james687.github.io/2023/02/10/same-tree/"/>
-    <id>https://james687.github.io/2023/02/10/same-tree/</id>
+    <link href="https://blog.jamesho.website/2023/02/10/same-tree/"/>
+    <id>https://blog.jamesho.website/2023/02/10/same-tree/</id>
     <published>2023-02-10T10:27:23.000Z</published>
     <updated>2023-03-30T04:49:07.119Z</updated>
     
@@ -456,23 +456,23 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
+      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
-      <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
+      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
   </entry>
   
   <entry>
     <title>Merge Two Sorted Lists</title>
-    <link href="https://james687.github.io/2023/02/09/merge-two-sorted-lists/"/>
-    <id>https://james687.github.io/2023/02/09/merge-two-sorted-lists/</id>
+    <link href="https://blog.jamesho.website/2023/02/09/merge-two-sorted-lists/"/>
+    <id>https://blog.jamesho.website/2023/02/09/merge-two-sorted-lists/</id>
     <published>2023-02-09T10:27:23.000Z</published>
     <updated>2023-03-30T04:48:20.721Z</updated>
     
@@ -492,17 +492,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="linked list" scheme="https://james687.github.io/tags/linked-list/"/>
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
   </entry>
   
   <entry>
     <title>Remove Duplicates from Sorted List</title>
-    <link href="https://james687.github.io/2023/02/09/remove-duplicates-from-sorted-list/"/>
-    <id>https://james687.github.io/2023/02/09/remove-duplicates-from-sorted-list/</id>
+    <link href="https://blog.jamesho.website/2023/02/09/remove-duplicates-from-sorted-list/"/>
+    <id>https://blog.jamesho.website/2023/02/09/remove-duplicates-from-sorted-list/</id>
     <published>2023-02-09T03:47:23.000Z</published>
     <updated>2023-03-30T04:48:56.471Z</updated>
     
@@ -522,17 +522,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="linked list" scheme="https://james687.github.io/tags/linked-list/"/>
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
   </entry>
   
   <entry>
     <title>Add Two Numbers</title>
-    <link href="https://james687.github.io/2023/02/03/add-two-numbers/"/>
-    <id>https://james687.github.io/2023/02/03/add-two-numbers/</id>
+    <link href="https://blog.jamesho.website/2023/02/03/add-two-numbers/"/>
+    <id>https://blog.jamesho.website/2023/02/03/add-two-numbers/</id>
     <published>2023-02-03T07:54:07.000Z</published>
     <updated>2023-03-30T04:46:17.784Z</updated>
     
@@ -548,17 +548,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="linked list" scheme="https://james687.github.io/tags/linked-list/"/>
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
   </entry>
   
   <entry>
     <title>Search Insert Position</title>
-    <link href="https://james687.github.io/2022/12/08/search-insert-position/"/>
-    <id>https://james687.github.io/2022/12/08/search-insert-position/</id>
+    <link href="https://blog.jamesho.website/2022/12/08/search-insert-position/"/>
+    <id>https://blog.jamesho.website/2022/12/08/search-insert-position/</id>
     <published>2022-12-08T05:21:23.000Z</published>
     <updated>2023-03-30T04:49:20.269Z</updated>
     
@@ -578,17 +578,17 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="binary search" scheme="https://james687.github.io/tags/binary-search/"/>
+      <category term="binary search" scheme="https://blog.jamesho.website/tags/binary-search/"/>
     
   </entry>
   
   <entry>
     <title>3Sum</title>
-    <link href="https://james687.github.io/2022/12/05/3-sum/"/>
-    <id>https://james687.github.io/2022/12/05/3-sum/</id>
+    <link href="https://blog.jamesho.website/2022/12/05/3-sum/"/>
+    <id>https://blog.jamesho.website/2022/12/05/3-sum/</id>
     <published>2022-12-05T08:51:05.000Z</published>
     <updated>2023-03-30T04:46:03.928Z</updated>
     
@@ -606,21 +606,21 @@
     </summary>
     
     
-      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="array" scheme="https://james687.github.io/tags/array/"/>
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
     
-      <category term="two pointers" scheme="https://james687.github.io/tags/two-pointers/"/>
+      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
     
-      <category term="sorting" scheme="https://james687.github.io/tags/sorting/"/>
+      <category term="sorting" scheme="https://blog.jamesho.website/tags/sorting/"/>
     
   </entry>
   
   <entry>
     <title>為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</title>
-    <link href="https://james687.github.io/2022/07/25/why-dict-o1/"/>
-    <id>https://james687.github.io/2022/07/25/why-dict-o1/</id>
+    <link href="https://blog.jamesho.website/2022/07/25/why-dict-o1/"/>
+    <id>https://blog.jamesho.website/2022/07/25/why-dict-o1/</id>
     <published>2022-07-25T08:55:03.000Z</published>
     <updated>2023-03-29T09:00:45.167Z</updated>
     
@@ -634,10 +634,10 @@
     </summary>
     
     
-      <category term="Algorithm" scheme="https://james687.github.io/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="https://blog.jamesho.website/categories/Algorithm/"/>
     
     
-      <category term="python" scheme="https://james687.github.io/tags/python/"/>
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
   </entry>
   
