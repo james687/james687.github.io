@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-04-12T05:35:29.233Z</updated>
+  <updated>2023-04-12T08:35:08.740Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Isomorphic Strings</title>
+    <link href="https://james687.github.io/2023/04/12/isomorphic-strings/"/>
+    <id>https://james687.github.io/2023/04/12/isomorphic-strings/</id>
+    <published>2023-04-12T08:29:09.000Z</published>
+    <updated>2023-04-12T08:35:08.740Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure><p>測出錯誤的 input:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"badc"</span></span><br><span class="line">t = <span class="string">"baba"</span></span><br></pre></td></tr></table></figure><p>錯誤點在於沒有檢查這個條件：<code>No two characters may map to the same character</code><br>檢討如下：</p><ul><li></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">not</span> <span class="keyword">in</span> mapping:</span><br><span class="line">            <span class="keyword">if</span> t[i] <span class="keyword">in</span> mapping.values():</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            mapping[s[i]] = t[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> mapping[s[i]] != t[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/isomorphic-strings/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這題看似不難，但第一次的做法錯了，第一次的程式碼如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="hash table" scheme="https://james687.github.io/tags/hash-table/"/>
+    
+      <category term="string" scheme="https://james687.github.io/tags/string/"/>
+    
+  </entry>
   
   <entry>
     <title>Binary Number with Alternating Bits</title>
@@ -609,34 +638,6 @@
     
     
       <category term="python" scheme="https://james687.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 Mac 加入 ssh key 的步驟</title>
-    <link href="https://james687.github.io/2021/01/14/add-ssh-steps/"/>
-    <id>https://james687.github.io/2021/01/14/add-ssh-steps/</id>
-    <published>2021-01-14T08:31:44.000Z</published>
-    <updated>2023-04-03T10:27:41.027Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li><p><code>ssh-keygen -t ed25519 -C &quot;{你的 email}&quot;</code></p><ul><li>預設路徑假如已有相同檔案，記得指定新的<strong>完整</strong>路徑</li><li>如檔名不用預設的，下面 <code>id_ed25519</code> 自行替換成自己的檔名</li></ul></li><li><p><code>vi ~/.ssh/config</code></p><ul><li><p>舉例：加上如下</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host GitHub</span><br><span class="line"> HostName github.com</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;id_ed25519</span><br><span class="line"> IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li></ul></li><li><p><code>ssh-add -K ~/.ssh/id_ed25519</code></p><ul><li>register your private key with <code>ssh-agent</code></li></ul></li><li><p><code>pbcopy &lt; ~/.ssh/id_ed25519.pub</code></p></li><li><p>貼到所使用的服務網站的相對應設定頁面</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;ssh-keygen -t ed25519 -C &amp;quot;{你的 email}&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;預設路徑假如已有相同檔案，記得指定新的&lt;strong&gt;完整&lt;/strong&gt;路徑&lt;/li&gt;
-&lt;li&gt;如檔名不
-      
-    
-    </summary>
-    
-    
-      <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
-    
     
   </entry>
   
