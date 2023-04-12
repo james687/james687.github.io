@@ -163,11 +163,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2023/04/12/isomorphic-strings/">Isomorphic Strings</a>
+                <a class="has-link-black-ter" href="/isomorphic-strings/">Isomorphic Strings</a>
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True<br>Python 3 wrong solution:</p>
+            <p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True</p>
+<p>Python 3 wrong solution:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure>
         </div>
         
@@ -175,7 +176,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2023/04/12/isomorphic-strings/#more">繼續閱讀</a>
+                <a class="button is-size-7 is-light" href="/isomorphic-strings/#more">繼續閱讀</a>
                 </div>
             </div>
         </div>
@@ -356,7 +357,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/isomorphic-strings/" class="media-left">
+            <a href="/isomorphic-strings/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Isomorphic Strings">
                 </p>
@@ -365,7 +366,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T08:29:09.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/isomorphic-strings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Isomorphic Strings</a>
+                    <a href="/isomorphic-strings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Isomorphic Strings</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -375,7 +376,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/binary-number-with-alternating-bits/" class="media-left">
+            <a href="/binary-number-with-alternating-bits/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Number with Alternating Bits">
                 </p>
@@ -384,7 +385,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
+                    <a href="/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -394,7 +395,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/single-number/" class="media-left">
+            <a href="/single-number/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Single Number">
                 </p>
@@ -403,7 +404,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T04:10:25.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/single-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Single Number</a>
+                    <a href="/single-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Single Number</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -413,7 +414,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/validate-binary-search-tree/" class="media-left">
+            <a href="/validate-binary-search-tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Validate Binary Search Tree">
                 </p>
@@ -422,7 +423,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
+                    <a href="/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -432,7 +433,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+            <a href="/use-dokku-on-digitalocean/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
                 </p>
@@ -441,7 +442,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
-                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <a href="/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
                     </p>
@@ -828,7 +829,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/isomorphic-strings/" class="media-left">
+            <a href="/isomorphic-strings/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Isomorphic Strings">
                 </p>
@@ -837,7 +838,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T08:29:09.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/isomorphic-strings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Isomorphic Strings</a>
+                    <a href="/isomorphic-strings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Isomorphic Strings</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -847,7 +848,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/binary-number-with-alternating-bits/" class="media-left">
+            <a href="/binary-number-with-alternating-bits/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Number with Alternating Bits">
                 </p>
@@ -856,7 +857,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
+                    <a href="/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -866,7 +867,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/single-number/" class="media-left">
+            <a href="/single-number/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Single Number">
                 </p>
@@ -875,7 +876,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T04:10:25.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/single-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Single Number</a>
+                    <a href="/single-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Single Number</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -885,7 +886,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/12/validate-binary-search-tree/" class="media-left">
+            <a href="/validate-binary-search-tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Validate Binary Search Tree">
                 </p>
@@ -894,7 +895,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time></div>
-                    <a href="/2023/04/12/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
+                    <a href="/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -904,7 +905,7 @@
         
         <article class="media">
             
-            <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
+            <a href="/use-dokku-on-digitalocean/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
                 </p>
@@ -913,7 +914,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time></div>
-                    <a href="/2023/04/05/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+                    <a href="/use-dokku-on-digitalocean/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
                     </p>

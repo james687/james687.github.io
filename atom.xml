@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-12T10:12:04.914Z</updated>
+  <updated>2023-04-12T10:25:24.812Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -18,16 +18,17 @@
   
   <entry>
     <title>Isomorphic Strings</title>
-    <link href="https://blog.jamesho.website/2023/04/12/isomorphic-strings/"/>
-    <id>https://blog.jamesho.website/2023/04/12/isomorphic-strings/</id>
+    <link href="https://blog.jamesho.website/isomorphic-strings/"/>
+    <id>https://blog.jamesho.website/isomorphic-strings/</id>
     <published>2023-04-12T08:29:09.000Z</published>
-    <updated>2023-04-12T10:12:04.914Z</updated>
+    <updated>2023-04-12T10:25:24.812Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True<br>Python 3 wrong solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure><a id="more"></a><p>測出錯誤的 input:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"badc"</span></span><br><span class="line">t = <span class="string">"baba"</span></span><br></pre></td></tr></table></figure><p>錯誤點在於沒有檢查這個條件：<code>No two characters may map to the same character</code><br>檢討如下：</p><ul><li>寫完要 run 之前應該最後 check 一次是否有滿足題目提到的所有條件</li><li>以這題來說，比較好的做法是一個個 check 每個 character<ul><li>這樣只需跑一次 for-loop，不需要再跑第二次組一個新字串</li><li>每個 character 都 check 就不會漏掉上面那個條件</li></ul></li></ul><h3 id="修正解法如下"><a href="#修正解法如下" class="headerlink" title="修正解法如下"></a>修正解法如下</h3><p>Python 3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">not</span> <span class="keyword">in</span> mapping:</span><br><span class="line">            <span class="keyword">if</span> t[i] <span class="keyword">in</span> mapping.values():  <span class="comment"># 一個 t 字母同時對應到兩個 s 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            mapping[s[i]] = t[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> mapping[s[i]] != t[i]:  <span class="comment"># 一個 s 字母同時對應到兩個 t 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True</p><p>Python 3 wrong solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure><a id="more"></a><p>測出錯誤的 input:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"badc"</span></span><br><span class="line">t = <span class="string">"baba"</span></span><br></pre></td></tr></table></figure><p>錯誤點在於沒有檢查這個條件：<code>No two characters may map to the same character</code></p><p>檢討如下：</p><ul><li>寫完要 run 之前應該最後 check 一次是否有滿足題目提到的所有條件</li><li>以這題來說，比較好的做法是一個個 check 每個 character<ul><li>這樣只需跑一次 for-loop，不需要再跑第二次組一個新字串</li><li>每個 character 都 check 就不會漏掉上面那個條件</li></ul></li></ul><h3 id="修正解法如下"><a href="#修正解法如下" class="headerlink" title="修正解法如下"></a>修正解法如下</h3><p>Python 3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">not</span> <span class="keyword">in</span> mapping:</span><br><span class="line">            <span class="keyword">if</span> t[i] <span class="keyword">in</span> mapping.values():  <span class="comment"># 一個 t 字母同時對應到兩個 s 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            mapping[s[i]] = t[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> mapping[s[i]] != t[i]:  <span class="comment"># 一個 s 字母同時對應到兩個 t 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/isomorphic-strings/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 &lt;code&gt;t2&lt;/code&gt;，假如跟 &lt;code&gt;t&lt;/code&gt; 相同就 return True&lt;br&gt;Python 3 wrong solution:&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/isomorphic-strings/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 &lt;code&gt;t2&lt;/code&gt;，假如跟 &lt;code&gt;t&lt;/code&gt; 相同就 return True&lt;/p&gt;
+&lt;p&gt;Python 3 wrong solution:&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;isIsomorphic&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self, s: str, t: str)&lt;/span&gt; -&amp;gt; bool:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    d = &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; range(len(s)):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        d[s[i]] = t[i]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    t2 = &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; c &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; s:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        t2 += d[c]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; t == t2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
@@ -44,8 +45,8 @@
   
   <entry>
     <title>Binary Number with Alternating Bits</title>
-    <link href="https://blog.jamesho.website/2023/04/12/binary-number-with-alternating-bits/"/>
-    <id>https://blog.jamesho.website/2023/04/12/binary-number-with-alternating-bits/</id>
+    <link href="https://blog.jamesho.website/binary-number-with-alternating-bits/"/>
+    <id>https://blog.jamesho.website/binary-number-with-alternating-bits/</id>
     <published>2023-04-12T05:26:05.000Z</published>
     <updated>2023-04-12T05:35:29.233Z</updated>
     
@@ -72,8 +73,8 @@
   
   <entry>
     <title>Single Number</title>
-    <link href="https://blog.jamesho.website/2023/04/12/single-number/"/>
-    <id>https://blog.jamesho.website/2023/04/12/single-number/</id>
+    <link href="https://blog.jamesho.website/single-number/"/>
+    <id>https://blog.jamesho.website/single-number/</id>
     <published>2023-04-12T04:10:25.000Z</published>
     <updated>2023-04-12T04:32:34.486Z</updated>
     
@@ -102,8 +103,8 @@
   
   <entry>
     <title>Validate Binary Search Tree</title>
-    <link href="https://blog.jamesho.website/2023/04/12/validate-binary-search-tree/"/>
-    <id>https://blog.jamesho.website/2023/04/12/validate-binary-search-tree/</id>
+    <link href="https://blog.jamesho.website/validate-binary-search-tree/"/>
+    <id>https://blog.jamesho.website/validate-binary-search-tree/</id>
     <published>2023-04-12T01:11:56.000Z</published>
     <updated>2023-04-12T03:12:38.007Z</updated>
     
@@ -138,8 +139,8 @@
   
   <entry>
     <title>使用 Dokku 將 Web App 部署在 DigitalOcean</title>
-    <link href="https://blog.jamesho.website/2023/04/05/use-dokku-on-digitalocean/"/>
-    <id>https://blog.jamesho.website/2023/04/05/use-dokku-on-digitalocean/</id>
+    <link href="https://blog.jamesho.website/use-dokku-on-digitalocean/"/>
+    <id>https://blog.jamesho.website/use-dokku-on-digitalocean/</id>
     <published>2023-04-05T07:37:28.000Z</published>
     <updated>2023-04-05T10:20:02.280Z</updated>
     
@@ -171,8 +172,8 @@
   
   <entry>
     <title>Binary Tree Level Order Traversal</title>
-    <link href="https://blog.jamesho.website/2023/03/28/binary-tree-level-order-traversal/"/>
-    <id>https://blog.jamesho.website/2023/03/28/binary-tree-level-order-traversal/</id>
+    <link href="https://blog.jamesho.website/binary-tree-level-order-traversal/"/>
+    <id>https://blog.jamesho.website/binary-tree-level-order-traversal/</id>
     <published>2023-03-28T11:25:25.000Z</published>
     <updated>2023-03-30T04:45:41.803Z</updated>
     
@@ -206,8 +207,8 @@
   
   <entry>
     <title>Binary Tree Inorder Traversal</title>
-    <link href="https://blog.jamesho.website/2023/03/23/binary-tree-inorder-traversal/"/>
-    <id>https://blog.jamesho.website/2023/03/23/binary-tree-inorder-traversal/</id>
+    <link href="https://blog.jamesho.website/binary-tree-inorder-traversal/"/>
+    <id>https://blog.jamesho.website/binary-tree-inorder-traversal/</id>
     <published>2023-03-23T08:51:55.000Z</published>
     <updated>2023-03-30T04:47:05.770Z</updated>
     
@@ -238,8 +239,8 @@
   
   <entry>
     <title>House Robber II</title>
-    <link href="https://blog.jamesho.website/2023/03/23/house-robber-ii/"/>
-    <id>https://blog.jamesho.website/2023/03/23/house-robber-ii/</id>
+    <link href="https://blog.jamesho.website/house-robber-ii/"/>
+    <id>https://blog.jamesho.website/house-robber-ii/</id>
     <published>2023-03-23T05:37:15.000Z</published>
     <updated>2023-03-30T04:47:22.940Z</updated>
     
@@ -268,8 +269,8 @@
   
   <entry>
     <title>遞迴的時間複雜度算法</title>
-    <link href="https://blog.jamesho.website/2023/03/21/recursion-time-complexity/"/>
-    <id>https://blog.jamesho.website/2023/03/21/recursion-time-complexity/</id>
+    <link href="https://blog.jamesho.website/recursion-time-complexity/"/>
+    <id>https://blog.jamesho.website/recursion-time-complexity/</id>
     <published>2023-03-21T08:55:19.000Z</published>
     <updated>2023-04-12T03:05:32.571Z</updated>
     
@@ -297,8 +298,8 @@
   
   <entry>
     <title>House Robber</title>
-    <link href="https://blog.jamesho.website/2023/03/20/house-robber/"/>
-    <id>https://blog.jamesho.website/2023/03/20/house-robber/</id>
+    <link href="https://blog.jamesho.website/house-robber/"/>
+    <id>https://blog.jamesho.website/house-robber/</id>
     <published>2023-03-20T07:08:15.000Z</published>
     <updated>2023-03-30T04:47:34.521Z</updated>
     
@@ -330,8 +331,8 @@
   
   <entry>
     <title>Unique Paths</title>
-    <link href="https://blog.jamesho.website/2023/03/18/unique-paths/"/>
-    <id>https://blog.jamesho.website/2023/03/18/unique-paths/</id>
+    <link href="https://blog.jamesho.website/unique-paths/"/>
+    <id>https://blog.jamesho.website/unique-paths/</id>
     <published>2023-03-18T08:08:15.000Z</published>
     <updated>2023-03-30T04:49:45.044Z</updated>
     
@@ -359,8 +360,8 @@
   
   <entry>
     <title>Merge Two Binary Trees</title>
-    <link href="https://blog.jamesho.website/2023/03/16/merge-two-binary-trees/"/>
-    <id>https://blog.jamesho.website/2023/03/16/merge-two-binary-trees/</id>
+    <link href="https://blog.jamesho.website/merge-two-binary-trees/"/>
+    <id>https://blog.jamesho.website/merge-two-binary-trees/</id>
     <published>2023-03-16T03:27:23.000Z</published>
     <updated>2023-03-30T04:48:03.303Z</updated>
     
@@ -398,8 +399,8 @@
   
   <entry>
     <title>Balanced Binary Tree</title>
-    <link href="https://blog.jamesho.website/2023/03/15/balanced-binary-tree/"/>
-    <id>https://blog.jamesho.website/2023/03/15/balanced-binary-tree/</id>
+    <link href="https://blog.jamesho.website/balanced-binary-tree/"/>
+    <id>https://blog.jamesho.website/balanced-binary-tree/</id>
     <published>2023-03-15T04:12:23.000Z</published>
     <updated>2023-03-30T04:46:34.670Z</updated>
     
@@ -435,8 +436,8 @@
   
   <entry>
     <title>Same Tree</title>
-    <link href="https://blog.jamesho.website/2023/02/10/same-tree/"/>
-    <id>https://blog.jamesho.website/2023/02/10/same-tree/</id>
+    <link href="https://blog.jamesho.website/same-tree/"/>
+    <id>https://blog.jamesho.website/same-tree/</id>
     <published>2023-02-10T10:27:23.000Z</published>
     <updated>2023-03-30T04:49:07.119Z</updated>
     
@@ -468,8 +469,8 @@
   
   <entry>
     <title>Merge Two Sorted Lists</title>
-    <link href="https://blog.jamesho.website/2023/02/09/merge-two-sorted-lists/"/>
-    <id>https://blog.jamesho.website/2023/02/09/merge-two-sorted-lists/</id>
+    <link href="https://blog.jamesho.website/merge-two-sorted-lists/"/>
+    <id>https://blog.jamesho.website/merge-two-sorted-lists/</id>
     <published>2023-02-09T10:27:23.000Z</published>
     <updated>2023-03-30T04:48:20.721Z</updated>
     
@@ -498,8 +499,8 @@
   
   <entry>
     <title>Remove Duplicates from Sorted List</title>
-    <link href="https://blog.jamesho.website/2023/02/09/remove-duplicates-from-sorted-list/"/>
-    <id>https://blog.jamesho.website/2023/02/09/remove-duplicates-from-sorted-list/</id>
+    <link href="https://blog.jamesho.website/remove-duplicates-from-sorted-list/"/>
+    <id>https://blog.jamesho.website/remove-duplicates-from-sorted-list/</id>
     <published>2023-02-09T03:47:23.000Z</published>
     <updated>2023-03-30T04:48:56.471Z</updated>
     
@@ -528,8 +529,8 @@
   
   <entry>
     <title>Add Two Numbers</title>
-    <link href="https://blog.jamesho.website/2023/02/03/add-two-numbers/"/>
-    <id>https://blog.jamesho.website/2023/02/03/add-two-numbers/</id>
+    <link href="https://blog.jamesho.website/add-two-numbers/"/>
+    <id>https://blog.jamesho.website/add-two-numbers/</id>
     <published>2023-02-03T07:54:07.000Z</published>
     <updated>2023-03-30T04:46:17.784Z</updated>
     
@@ -554,8 +555,8 @@
   
   <entry>
     <title>Search Insert Position</title>
-    <link href="https://blog.jamesho.website/2022/12/08/search-insert-position/"/>
-    <id>https://blog.jamesho.website/2022/12/08/search-insert-position/</id>
+    <link href="https://blog.jamesho.website/search-insert-position/"/>
+    <id>https://blog.jamesho.website/search-insert-position/</id>
     <published>2022-12-08T05:21:23.000Z</published>
     <updated>2023-03-30T04:49:20.269Z</updated>
     
@@ -584,8 +585,8 @@
   
   <entry>
     <title>3Sum</title>
-    <link href="https://blog.jamesho.website/2022/12/05/3-sum/"/>
-    <id>https://blog.jamesho.website/2022/12/05/3-sum/</id>
+    <link href="https://blog.jamesho.website/3-sum/"/>
+    <id>https://blog.jamesho.website/3-sum/</id>
     <published>2022-12-05T08:51:05.000Z</published>
     <updated>2023-03-30T04:46:03.928Z</updated>
     
@@ -616,8 +617,8 @@
   
   <entry>
     <title>為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</title>
-    <link href="https://blog.jamesho.website/2022/07/25/why-dict-o1/"/>
-    <id>https://blog.jamesho.website/2022/07/25/why-dict-o1/</id>
+    <link href="https://blog.jamesho.website/why-dict-o1/"/>
+    <id>https://blog.jamesho.website/why-dict-o1/</id>
     <published>2022-07-25T08:55:03.000Z</published>
     <updated>2023-03-29T09:00:45.167Z</updated>
     
