@@ -144,6 +144,57 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 113 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/04/12/binary-number-with-alternating-bits/">Binary Number with Alternating Bits</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/binary-number-with-alternating-bits/">題目</a></p>
+<ol>
+<li>先想到的是有沒有辦法透過 bitwise operation 來判斷，發現無法</li>
+<li>看相鄰位置有沒有一樣的，最直覺就是用字串來判斷 =&gt; 可以利用 Python 的 built-in function <code>bin</code> 來把數字轉為 binary 字串</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hasAlternatingBits</span><span class="params">(self, n: int)</span> -&gt; bool:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    b_str = bin(n)[<span class="number">2</span>:]  <span class="comment"># 去掉前面的 '0b'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(b_str) - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> b_str[i] == b_str[i + <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-04-12T04:10:25.000Z">2023-04-12</time>
                 
                 <div class="level-item">
@@ -236,7 +287,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            29
+                            30
                         </p>
                     </a>
                 </div>
@@ -312,7 +363,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Project-Management/">
@@ -341,7 +392,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 12px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 10px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 12px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 12px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -353,6 +404,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/04/12/binary-number-with-alternating-bits/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Number with Alternating Bits">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time></div>
+                    <a href="/2023/04/12/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -430,25 +500,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
-                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -466,7 +517,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -639,7 +690,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/bit-manipulation/">
                         <span class="tag">bit manipulation</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -814,6 +865,25 @@
         
         <article class="media">
             
+            <a href="/2023/04/12/binary-number-with-alternating-bits/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Number with Alternating Bits">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time></div>
+                    <a href="/2023/04/12/binary-number-with-alternating-bits/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Number with Alternating Bits</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/04/12/single-number/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Single Number">
@@ -888,25 +958,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/23/binary-tree-inorder-traversal/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Binary Tree Inorder Traversal">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time></div>
-                    <a href="/2023/03/23/binary-tree-inorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Binary Tree Inorder Traversal</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -924,7 +975,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1097,7 +1148,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/bit-manipulation/">
                         <span class="tag">bit manipulation</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

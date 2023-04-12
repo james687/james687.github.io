@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-04-12T04:32:34.486Z</updated>
+  <updated>2023-04-12T05:34:18.829Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Binary Number with Alternating Bits</title>
+    <link href="https://james687.github.io/2023/04/12/binary-number-with-alternating-bits/"/>
+    <id>https://james687.github.io/2023/04/12/binary-number-with-alternating-bits/</id>
+    <published>2023-04-12T05:26:05.000Z</published>
+    <updated>2023-04-12T05:34:18.829Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/binary-number-with-alternating-bits/">題目</a></p><ol><li>先想到的是有沒有辦法透過 bitwise operation 來判斷，發現無法</li><li>看相鄰位置有沒有一樣的，最直覺就是用字串來判斷 =&gt; 可以利用 Python 的 built-in function <code>bin</code> 來把數字轉為 binary 字串</li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hasAlternatingBits</span><span class="params">(self, n: int)</span> -&gt; bool:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    b_str = bin(n)[<span class="number">2</span>:]  <span class="comment"># 去掉前面的 '0b'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(b_str) - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> b_str[i] == b_str[i + <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/binary-number-with-alternating-bits/&quot;&gt;題目&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先想到的是有沒有辦法透過 bitwise operation 來判斷，發現無法&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="bit manipulation" scheme="https://james687.github.io/tags/bit-manipulation/"/>
+    
+  </entry>
   
   <entry>
     <title>Single Number</title>
@@ -609,39 +637,6 @@
     
       <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>簡單統整 JWT 相對於傳統 Session 驗證的好處</title>
-    <link href="https://james687.github.io/2021/01/14/jwt-digest/"/>
-    <id>https://james687.github.io/2021/01/14/jwt-digest/</id>
-    <published>2021-01-14T05:11:05.000Z</published>
-    <updated>2023-03-29T12:50:15.769Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>Server 不用存 Session</li><li>只有在 Client 拿新 JWT 時才需要跟 DB 溝通<ul><li>Clent 拿的時機：JWT 到期或第一次拿</li><li>為何不需跟 DB 溝通？<ul><li>因為 JWT 裡已有所需資訊</li><li>但假如業務需求需要另外取敏感資訊的話還是需要碰 DB</li></ul></li></ul></li><li><a href="https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E7%AD%86%E8%A8%98-%E9%80%8F%E9%81%8E-jwt-%E5%AF%A6%E4%BD%9C%E9%A9%97%E8%AD%89%E6%A9%9F%E5%88%B6-2e64d72594f8">參考</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;Server 不用存 Session&lt;/li&gt;
-&lt;li&gt;只有在 Client 拿新 JWT 時才需要跟 DB 溝通&lt;ul&gt;
-&lt;li&gt;Clent 拿的時機：JWT 到期或第一次拿&lt;/li&gt;
-&lt;li&gt;為何不需跟 DB 溝通？&lt;ul&gt;
-&lt;li&gt;因為 JWT 裡已有所需
-      
-    
-    </summary>
-    
-    
-      <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
-    
-    
-      <category term="jwt" scheme="https://james687.github.io/tags/jwt/"/>
-    
-      <category term="authentication" scheme="https://james687.github.io/tags/authentication/"/>
     
   </entry>
   
