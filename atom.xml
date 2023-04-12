@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-04-12T08:35:08.740Z</updated>
+  <updated>2023-04-12T10:01:35.382Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="https://james687.github.io/2023/04/12/isomorphic-strings/"/>
     <id>https://james687.github.io/2023/04/12/isomorphic-strings/</id>
     <published>2023-04-12T08:29:09.000Z</published>
-    <updated>2023-04-12T08:35:08.740Z</updated>
+    <updated>2023-04-12T10:01:35.382Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure><p>測出錯誤的 input:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">"badc"</span></span><br><span class="line">t = <span class="string">"baba"</span></span><br></pre></td></tr></table></figure><p>錯誤點在於沒有檢查這個條件：<code>No two characters may map to the same character</code><br>檢討如下：</p><ul><li></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">not</span> <span class="keyword">in</span> mapping:</span><br><span class="line">            <span class="keyword">if</span> t[i] <span class="keyword">in</span> mapping.values():</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            mapping[s[i]] = t[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> mapping[s[i]] != t[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True<br>Python 3 wrong solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br><span class="line">```&lt;!-- more --&gt;</span><br><span class="line">測出錯誤的 input:</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">s = <span class="string">"badc"</span></span><br><span class="line">t = <span class="string">"baba"</span></span><br></pre></td></tr></table></figure><p>錯誤點在於沒有檢查這個條件：<code>No two characters may map to the same character</code><br>檢討如下：</p><ul><li>寫完要 run 之前應該最後 check 一次是否有滿足題目提到的所有條件</li><li>以這題來說，比較好的做法是一個個 check 每個 character<ul><li>這樣只需跑一次 for-loop，不需要再跑第二次組一個新字串</li><li>每個 character 都 check 就不會漏掉上面那個條件</li></ul></li></ul><h3 id="修正解法如下"><a href="#修正解法如下" class="headerlink" title="修正解法如下"></a>修正解法如下</h3><p>Python 3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">not</span> <span class="keyword">in</span> mapping:</span><br><span class="line">            <span class="keyword">if</span> t[i] <span class="keyword">in</span> mapping.values():  <span class="comment"># 一個 t 字母同時對應到兩個 s 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            mapping[s[i]] = t[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> mapping[s[i]] != t[i]:  <span class="comment"># 一個 s 字母同時對應到兩個 t 字母</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/isomorphic-strings/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這題看似不難，但第一次的做法錯了，第一次的程式碼如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;t
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/isomorphic-strings/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 &lt;code&gt;t2&lt;/code&gt;，假如跟 
       
     
     </summary>
@@ -129,9 +128,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -197,9 +196,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -231,9 +230,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -389,9 +388,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -428,9 +427,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -461,9 +460,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
     
       <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
     
