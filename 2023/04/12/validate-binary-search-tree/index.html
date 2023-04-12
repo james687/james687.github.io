@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://james687.github.io/images/og_image.png">
 <meta property="article:published_time" content="2023-04-12T01:11:56.000Z">
-<meta property="article:modified_time" content="2023-04-12T01:48:02.163Z">
+<meta property="article:modified_time" content="2023-04-12T03:00:59.449Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="tree">
 <meta property="article:tag" content="binary tree">
@@ -152,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 447 個字)
+                    4 分鐘 閱讀文 (大約 542 個字)
                 </span>
                 
                 
@@ -174,7 +174,17 @@
 Python3 solution:</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">node_valid</span><span class="params">(node, floor=float<span class="params">(<span class="string">'-inf'</span>)</span>, ceiling=float<span class="params">(<span class="string">'inf'</span>)</span>)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        v = node.val</span><br><span class="line">        <span class="keyword">if</span> v &lt;= floor <span class="keyword">or</span> v &gt;= ceiling:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.left, floor, v):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.right, v, ceiling):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> node_valid(root)</span><br></pre></td></tr></table></figure>
-
+<p>假設樹有 n 個 node</p>
+<ul>
+<li>時間複雜度：O(n)<ul>
+<li>因為每個點都會做一次，而每次的複雜度為 O(1)</li>
+<li><a name="time-complexity-example"></a>另一個算法可參考<a href="/recursion-time-complexity">這邊</a>的快速解：<ul>
+<li><code>node_valid</code> 的遞迴深度為這棵樹的深度，在樹為平衡的情況下，深度為 log2 n，所以複雜度為 O(2^(log2 n)) = O(n)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="接下來嘗試用迭代解"><a href="#接下來嘗試用迭代解" class="headerlink" title="接下來嘗試用迭代解"></a>接下來嘗試用迭代解</h3><ol>
 <li>可以用跟遞迴類似的思路，只是改成把要處理的 nodes 都放到 stack 裡，然後每次迴圈都從裡面拿一個出來做，一直做到 stack 為空。迴圈裡的內容就是 recursive case</li>
 <li>因為 floor 和 ceiling 必須一直傳下去，所以跟 node 一起包成 tuple 放入 stack</li>
