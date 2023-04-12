@@ -8,7 +8,7 @@
       <link href="/2023/04/12/validate-binary-search-tree/"/>
       <url>/2023/04/12/validate-binary-search-tree/</url>
       
-        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/validate-binary-search-tree/">題目</a><br>思路</p><ol><li>樹的問題用遞迴來解相對上比較直覺，所以先試試遞迴解</li><li>拆解到最小單位來找 recursive case: 隨機取樹中一個點，判斷它是否 valid</li><li>大部分情況下會有上限和下限。以左邊的點為例，上限就是父節點的值，下限就是它所在的右子樹的父節點的值，所以這個值必須由上到下一層層傳遞下來。反之，右邊的點的話，就變成上限必須一層層傳遞下來</li><li>因為上下限必須用傳遞的，所以寫一個 function <code>node_valid</code> 接受上下限的參數<a id="more"></a>Python3 solution:</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">node_valid</span><span class="params">(node, floor=float<span class="params">(<span class="string">'-inf'</span>)</span>, ceiling=float<span class="params">(<span class="string">'inf'</span>)</span>)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        v = node.val</span><br><span class="line">        <span class="keyword">if</span> v &lt;= floor <span class="keyword">or</span> v &gt;= ceiling:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.left, floor, v):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.right, v, ceiling):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> node_valid(root)</span><br></pre></td></tr></table></figure><p>假設樹有 n 個 node</p><ul><li>時間複雜度：O(n)<ul><li>因為每個點都會做一次，而每次的複雜度為 O(1)</li><li><a name="time-complexity-example"></a>另一個算法可參考<a href="/recursion-time-complexity">這邊</a>的快速解：<ul><li><code>node_valid</code> 的遞迴深度為這棵樹的深度，在樹為平衡的情況下，深度為 log2 n，所以複雜度為 O(2^(log2 n)) = O(n)</li></ul></li></ul></li></ul><h3 id="接下來嘗試用迭代解"><a href="#接下來嘗試用迭代解" class="headerlink" title="接下來嘗試用迭代解"></a>接下來嘗試用迭代解</h3><ol><li>可以用跟遞迴類似的思路，只是改成把要處理的 nodes 都放到 stack 裡，然後每次迴圈都從裡面拿一個出來做，一直做到 stack 為空。迴圈裡的內容就是 recursive case</li><li>因為 floor 和 ceiling 必須一直傳下去，所以跟 node 一起包成 tuple 放入 stack</li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    stack = [(root, float(<span class="string">'-inf'</span>), float(<span class="string">'inf'</span>))]  <span class="comment"># node, floor, ceiling</span></span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        node, floor, ceiling = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        v = node.val</span><br><span class="line">        <span class="keyword">if</span> v &lt;= floor <span class="keyword">or</span> v &gt;= ceiling:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        stack.extend([</span><br><span class="line">            (node.left, floor, v),</span><br><span class="line">            (node.right, v, ceiling)</span><br><span class="line">        ])</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/validate-binary-search-tree/">題目</a><br>思路</p><ol><li>樹的問題用遞迴來解相對上比較直覺，所以先試試遞迴解</li><li>拆解到最小單位來找 recursive case: 隨機取樹中一個點，判斷它是否 valid</li><li>大部分情況下會有上限和下限。以左邊的點為例，上限就是父節點的值，下限就是它所在的右子樹的父節點的值，所以這個值必須由上到下一層層傳遞下來。反之，右邊的點的話，就變成上限必須一層層傳遞下來</li><li>因為上下限必須用傳遞的，所以寫一個 function <code>node_valid</code> 接受上下限的參數<a id="more"></a>Python3 solution:</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">node_valid</span><span class="params">(node, floor=float<span class="params">(<span class="string">'-inf'</span>)</span>, ceiling=float<span class="params">(<span class="string">'inf'</span>)</span>)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        v = node.val</span><br><span class="line">        <span class="keyword">if</span> v &lt;= floor <span class="keyword">or</span> v &gt;= ceiling:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.left, floor, v):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node_valid(node.right, v, ceiling):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> node_valid(root)</span><br></pre></td></tr></table></figure><p>假設樹有 n 個 node</p><ul><li>時間複雜度：O(n)<ul><li>因為每個點都會做一次，而每次的複雜度為 O(1)</li><li><a name="time-complexity-example"></a>另一個算法可參考<a href="/2023/03/21/recursion-time-complexity">這邊</a>的快速解：<ul><li><code>node_valid</code> 的遞迴深度為這棵樹的深度，在樹為平衡的情況下，深度為 log2 n，所以複雜度為 O(2^(log2 n)) = O(n)</li></ul></li></ul></li></ul><h3 id="接下來嘗試用迭代解"><a href="#接下來嘗試用迭代解" class="headerlink" title="接下來嘗試用迭代解"></a>接下來嘗試用迭代解</h3><ol><li>可以用跟遞迴類似的思路，只是改成把要處理的 nodes 都放到 stack 裡，然後每次迴圈都從裡面拿一個出來做，一直做到 stack 為空。迴圈裡的內容就是 recursive case</li><li>因為 floor 和 ceiling 必須一直傳下去，所以跟 node 一起包成 tuple 放入 stack</li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    stack = [(root, float(<span class="string">'-inf'</span>), float(<span class="string">'inf'</span>))]  <span class="comment"># node, floor, ceiling</span></span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        node, floor, ceiling = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        v = node.val</span><br><span class="line">        <span class="keyword">if</span> v &lt;= floor <span class="keyword">or</span> v &gt;= ceiling:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        stack.extend([</span><br><span class="line">            (node.left, floor, v),</span><br><span class="line">            (node.right, v, ceiling)</span><br><span class="line">        ])</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -22,9 +22,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -86,9 +86,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -119,9 +119,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -163,7 +163,7 @@
       <link href="/2023/03/21/recursion-time-complexity/"/>
       <url>/2023/03/21/recursion-time-complexity/</url>
       
-        <content type="html"><![CDATA[<h3 id="快速解-適用於遞迴函式內呼叫自己-gt-1-次"><a href="#快速解-適用於遞迴函式內呼叫自己-gt-1-次" class="headerlink" title="快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)"></a>快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)</h3><ol><li>看這個遞迴函式呼叫自己幾次，假設呼叫了 <code>x</code> 次</li><li>看看那些遞迴呼叫的深度。假如函式內呼叫自己兩次，深度各為 m、n，此時這個遞迴函式的總深度 <code>h = m + n</code></li><li>時間複雜度為 <code>O(x^h)</code></li></ol><ul><li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立<a id="more"></a></li><li>例子：<a href="/validate-binary-search-tree#time-complexity-example">Validate Binary Search Tree</a></li></ul><h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure><ol><li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li><li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul><li>要怎麼不用畫圖，用看的就得出深度？<ul><li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol><li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li><li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li><li>所以需要走 <code>m + n</code> 次才會結束</li></ol></li></ul></li></ul></li><li><code>u_paths</code> 合併遞迴結果的運算只需要一次加法，可以把時間消耗記做 <code>1</code>，也就是每個節點的時間消耗都是 <code>1</code></li><li>所有節點的時間消耗總合就是這個函式的時間複雜度。第一層有 <code>1 (= 2^0)</code> 個節點，第二層有 <code>2 (= 2^1)</code> 個節點，第三層有 <code>4 (= 2^2)</code> 個節點，以此類推，假設此樹深度為 <code>h</code>，所有節點的時間消耗和為 <code>2^0 + 2^1 + 2^2 + ... + 2^h</code>，依據等比級數和的公式得出結果為 <code>2^(h + 1) - 1</code><ul><li>這邊的算法是假設這是一個滿二元樹來算，但其實這並不是一個滿二元樹 (像第四層就只有 <code>7</code> 個節點)，所以遞迴樹法並不嚴謹，只是一個估算，真要嚴謹分析的話可以再用 Substitution Method 或 Master Theorem 來驗證</li><li>由第二點，深度 <code>h = m + n</code></li></ul></li><li>所以時間複雜度為 <code>O(2^(h + 1)) = O(2 * 2^h) = O(2^h) = O(2^(m + n))</code></li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="快速解-適用於遞迴函式內呼叫自己-gt-1-次"><a href="#快速解-適用於遞迴函式內呼叫自己-gt-1-次" class="headerlink" title="快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)"></a>快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)</h3><ol><li>看這個遞迴函式呼叫自己幾次，假設呼叫了 <code>x</code> 次</li><li>看看那些遞迴呼叫的深度。假如函式內呼叫自己兩次，深度各為 m、n，此時這個遞迴函式的總深度 <code>h = m + n</code></li><li>時間複雜度為 <code>O(x^h)</code></li></ol><ul><li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立<a id="more"></a></li><li>例子：<a href="/2023/04/12/validate-binary-search-tree#time-complexity-example">Validate Binary Search Tree</a></li></ul><h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="https://james687.github.io/2023/03/18/unique-paths/">Unique Paths</a> 的遞迴解為例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure><ol><li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li><li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul><li>要怎麼不用畫圖，用看的就得出深度？<ul><li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol><li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li><li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li><li>所以需要走 <code>m + n</code> 次才會結束</li></ol></li></ul></li></ul></li><li><code>u_paths</code> 合併遞迴結果的運算只需要一次加法，可以把時間消耗記做 <code>1</code>，也就是每個節點的時間消耗都是 <code>1</code></li><li>所有節點的時間消耗總合就是這個函式的時間複雜度。第一層有 <code>1 (= 2^0)</code> 個節點，第二層有 <code>2 (= 2^1)</code> 個節點，第三層有 <code>4 (= 2^2)</code> 個節點，以此類推，假設此樹深度為 <code>h</code>，所有節點的時間消耗和為 <code>2^0 + 2^1 + 2^2 + ... + 2^h</code>，依據等比級數和的公式得出結果為 <code>2^(h + 1) - 1</code><ul><li>這邊的算法是假設這是一個滿二元樹來算，但其實這並不是一個滿二元樹 (像第四層就只有 <code>7</code> 個節點)，所以遞迴樹法並不嚴謹，只是一個估算，真要嚴謹分析的話可以再用 Substitution Method 或 Master Theorem 來驗證</li><li>由第二點，深度 <code>h = m + n</code></li></ul></li><li>所以時間複雜度為 <code>O(2^(h + 1)) = O(2 * 2^h) = O(2^h) = O(2^(m + n))</code></li></ol>]]></content>
       
       
       <categories>
@@ -256,9 +256,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -289,9 +289,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -320,9 +320,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> breadth-first search </tag>
             
@@ -549,11 +549,11 @@
       
         <tags>
             
+            <tag> docker </tag>
+            
             <tag> database </tag>
             
             <tag> postgresql </tag>
-            
-            <tag> docker </tag>
             
             <tag> mysql </tag>
             
@@ -582,11 +582,11 @@
             
             <tag> python </tag>
             
-            <tag> docker </tag>
-            
             <tag> package management </tag>
             
             <tag> pipenv </tag>
+            
+            <tag> docker </tag>
             
             <tag> django </tag>
             
