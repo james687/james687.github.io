@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://james687.github.io/"/>
-  <updated>2023-04-12T03:12:38.007Z</updated>
+  <updated>2023-04-12T04:28:27.486Z</updated>
   <id>https://james687.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Single Number</title>
+    <link href="https://james687.github.io/2023/04/12/single-number/"/>
+    <id>https://james687.github.io/2023/04/12/single-number/</id>
+    <published>2023-04-12T04:10:25.000Z</published>
+    <updated>2023-04-12T04:28:27.486Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/single-number/">題目</a><br>思路</p><ol><li>因為只能用常數的額外空間，且 array 裡的數字除了目標之外都會有<strong>兩</strong>個，所以朝 bitwise operation 的方向想</li><li>把 array 裡所有數字接連做 bitwise operation，假如有兩個一樣的數字，他們就會抵銷變為 0，即使不是連著做也一樣，所以最後的結果就是那個落單的數字<ul><li>可以想像所有數字都用二進位表示由上而下列在一起做計算，不管他們位置怎麼換結果都會一樣 (偶數個 <code>1</code> 會互相抵銷)</li></ul></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">    r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">        r ^= i</span><br><span class="line">    <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/single-number/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因為只能用常數的額外空間，且 array 裡的數字除了目標之外都會有&lt;strong&gt;兩&lt;/strong&gt;個，所以
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://james687.github.io/categories/Leetcode/"/>
+    
+    
+      <category term="array" scheme="https://james687.github.io/tags/array/"/>
+    
+      <category term="bit manipulation" scheme="https://james687.github.io/tags/bit-manipulation/"/>
+    
+  </entry>
   
   <entry>
     <title>Validate Binary Search Tree</title>
@@ -42,9 +72,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -110,9 +140,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -144,9 +174,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -302,9 +332,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -341,9 +371,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://james687.github.io/tags/recursion/"/>
     
@@ -374,9 +404,9 @@
     
       <category term="tree" scheme="https://james687.github.io/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://james687.github.io/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://james687.github.io/tags/binary-tree/"/>
     
       <category term="breadth-first search" scheme="https://james687.github.io/tags/breadth-first-search/"/>
     
@@ -612,42 +642,6 @@
       <category term="jwt" scheme="https://james687.github.io/tags/jwt/"/>
     
       <category term="authentication" scheme="https://james687.github.io/tags/authentication/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL/MySQL local docker 開發的初始 setup</title>
-    <link href="https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/"/>
-    <id>https://james687.github.io/2020/02/07/postgresql-mysql-init-setup/</id>
-    <published>2020-02-07T02:44:37.000Z</published>
-    <updated>2023-03-29T12:46:56.638Z</updated>
-    
-    <content type="html"><![CDATA[<p>container run 起來之後：<br><strong>PostgreSQL:</strong></p><ol><li><code>docker exec -it {db-container-name} psql -U postgres</code><ul><li>以預設 user <code>postgres</code> 連進 DB</li></ul></li><li><code>create user {username} with password &#39;{password}&#39;;</code></li><li><code>create database {database_name} with owner {username};</code><a id="more"></a></li><li>大功告成，可以用 <code>\l</code> 列出所有 database &amp; <code>\du</code> 列出所有 user 來確認</li></ol><ul><li>P.S. 假如一開始忘了指定 database owner 或想改變 owner: <code>alter database {database_name} owner to {owner_name};</code></li></ul><p><strong>MySQL: (以 5.7 為例)</strong></p><ol><li>環境變數須設置 <code>MYSQL_ROOT_PASSWORD</code></li><li>docker exec -it {db-container-name} mysql -p<ul><li>以預設 user <code>root</code> 連進去，輸入上面環境變數設置的密碼</li></ul></li><li><code>create user &#39;{username}&#39;@&#39;localhost&#39; identified by &#39;{password}&#39;;</code><ul><li>Use <code>localhost</code> due to working on the machine with MySQL.</li></ul></li><li><code>create database {database_name};</code></li><li>確認：<ul><li><code>show databases;</code></li><li><code>SELECT user FROM mysql.user;</code></li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;container run 起來之後：&lt;br&gt;&lt;strong&gt;PostgreSQL:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;docker exec -it {db-container-name} psql -U postgres&lt;/code&gt;&lt;ul&gt;
-&lt;li&gt;以預設 user &lt;code&gt;postgres&lt;/code&gt; 連進 DB&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;create user {username} with password &amp;#39;{password}&amp;#39;;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;create database {database_name} with owner {username};&lt;/code&gt;
-    
-    </summary>
-    
-    
-      <category term="Development Note" scheme="https://james687.github.io/categories/Development-Note/"/>
-    
-    
-      <category term="docker" scheme="https://james687.github.io/tags/docker/"/>
-    
-      <category term="database" scheme="https://james687.github.io/tags/database/"/>
-    
-      <category term="postgresql" scheme="https://james687.github.io/tags/postgresql/"/>
-    
-      <category term="mysql" scheme="https://james687.github.io/tags/mysql/"/>
     
   </entry>
   

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Single Number</title>
+      <link href="/2023/04/12/single-number/"/>
+      <url>/2023/04/12/single-number/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/single-number/">題目</a><br>思路</p><ol><li>因為只能用常數的額外空間，且 array 裡的數字除了目標之外都會有<strong>兩</strong>個，所以朝 bitwise operation 的方向想</li><li>把 array 裡所有數字接連做 bitwise operation，假如有兩個一樣的數字，他們就會抵銷變為 0，即使不是連著做也一樣，所以最後的結果就是那個落單的數字<ul><li>可以想像所有數字都用二進位表示由上而下列在一起做計算，不管他們位置怎麼換結果都會一樣 (偶數個 <code>1</code> 會互相抵銷)</li></ul></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">    r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">        r ^= i</span><br><span class="line">    <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> array </tag>
+            
+            <tag> bit manipulation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Validate Binary Search Tree</title>
       <link href="/2023/04/12/validate-binary-search-tree/"/>
       <url>/2023/04/12/validate-binary-search-tree/</url>
@@ -22,9 +49,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -86,9 +113,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -119,9 +146,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -256,9 +283,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -289,9 +316,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> recursion </tag>
             
@@ -320,9 +347,9 @@
             
             <tag> tree </tag>
             
-            <tag> binary tree </tag>
-            
             <tag> depth-first search </tag>
+            
+            <tag> binary tree </tag>
             
             <tag> breadth-first search </tag>
             
