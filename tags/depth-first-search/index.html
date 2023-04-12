@@ -144,6 +144,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 272 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2023/04/12/validate-binary-search-tree/">Validate Binary Search Tree</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/validate-binary-search-tree/">題目</a><br>思路</p>
+<ol>
+<li>樹的問題用遞迴來解相對上比較直覺，所以先試試遞迴解</li>
+<li>拆解到最小單位來找 recursive case: 隨機取樹中一個點，判斷它是否 valid</li>
+<li>大部分情況下會有上限和下限。以左邊的點為例，上限就是父節點的值，下限就是它所在的右子樹的父節點的值，所以這個值必須由上到下一層層傳遞下來。反之，右邊的點的話，就變成上限必須一層層傳遞下來</li>
+<li>因為上下限必須用傳遞的，所以寫一個 function <code>node_valid</code> 接受上下限的參數
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2023/04/12/validate-binary-search-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
                 
                 <div class="level-item">
@@ -474,7 +532,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            27
+                            28
                         </p>
                     </a>
                 </div>
@@ -498,7 +556,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            26
+                            27
                         </p>
                     </a>
                 </div>
@@ -550,7 +608,7 @@
                 <span class="level-item">Leetcode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Project-Management/">
@@ -579,7 +637,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 12px;">android</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 18px;">binary tree</a> <a href="/tags/breadth-first-search/" style="font-size: 14px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 14px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 14px;">dynamic programming</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14px;">linked list</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a>
     </div>
 </div>
     
@@ -591,6 +649,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2023/04/12/validate-binary-search-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Validate Binary Search Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time></div>
+                    <a href="/2023/04/12/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -668,25 +745,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/21/recursion-time-complexity/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="遞迴的時間複雜度算法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T08:55:19.000Z">2023-03-21</time></div>
-                    <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -704,7 +762,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -861,9 +919,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/binary-search-tree/">
+                        <span class="tag">binary search tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -884,7 +949,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -989,7 +1054,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1003,7 +1068,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1038,6 +1103,25 @@
         
         <article class="media">
             
+            <a href="/2023/04/12/validate-binary-search-tree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Validate Binary Search Tree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time></div>
+                    <a href="/2023/04/12/validate-binary-search-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Validate Binary Search Tree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2023/04/05/use-dokku-on-digitalocean/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="使用 Dokku 將 Web App 部署在 DigitalOcean">
@@ -1112,25 +1196,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2023/03/21/recursion-time-complexity/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="遞迴的時間複雜度算法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-03-21T08:55:19.000Z">2023-03-21</time></div>
-                    <a href="/2023/03/21/recursion-time-complexity/" class="title has-link-black-ter is-size-6 has-text-weight-normal">遞迴的時間複雜度算法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1148,7 +1213,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1305,9 +1370,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/binary-search-tree/">
+                        <span class="tag">binary search tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/binary-tree/">
                         <span class="tag">binary tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1328,7 +1400,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1433,7 +1505,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1447,7 +1519,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/tree/">
                         <span class="tag">tree</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
