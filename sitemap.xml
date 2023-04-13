@@ -350,14 +350,14 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
+    <loc>https://blog.jamesho.website/tags/depth-first-search/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/depth-first-search/</loc>
+    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -371,21 +371,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/breadth-first-search/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -399,14 +385,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/jwt/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/authentication/</loc>
+    <loc>https://blog.jamesho.website/tags/breadth-first-search/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -427,28 +406,21 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/database/</loc>
+    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
+    <loc>https://blog.jamesho.website/tags/jwt/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/docker/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/mysql/</loc>
+    <loc>https://blog.jamesho.website/tags/authentication/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -469,7 +441,35 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/docker/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/django/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/database/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/mysql/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -520,14 +520,14 @@
 
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Development-Note/</loc>
+    <loc>https://blog.jamesho.website/categories/Leetcode/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Leetcode/</loc>
+    <loc>https://blog.jamesho.website/categories/Development-Note/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -541,14 +541,14 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
+    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
+    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
