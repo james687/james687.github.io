@@ -8,7 +8,7 @@
       <link href="/linked-list-cycle-ii/"/>
       <url>/linked-list-cycle-ii/</url>
       
-        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？</p><ol><li>Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？</li><li>假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓兩個指標在 cycle 起點交會，如何做到？<ul><li>快指標走的速度是慢指標的兩倍</li></ul></li><li>想讓指標在 cycle 起點交會，首先必須知道各段距離之間的關聯，我們可以畫個圖，把 起點、cycle 起點、cycle 裡的交會點 先標示出來，利用我們目前已知的條件：<code>在 cycle 裡交會時，快指標走的距離是慢指標的兩倍</code> 來列出方程式，釐清各個距離之間的關係。下面這個影片把推導過程講得很清楚 <div class="oembed-outer oembed-youtube"><div class="oembed-inner"><iframe width="500" height="281" src="https://www.youtube.com/embed/wjYnzkAhcNk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python"></iframe></div></div></li><li></li></ol>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？</p><ol><li>Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？</li><li>假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓兩個指標在 cycle 起點交會，如何做到？<ul><li>快指標走的速度是慢指標的兩倍 <a id="more"></a></li></ul></li><li>想讓指標在 cycle 起點交會，首先必須知道各段距離之間的關聯，我們可以畫個圖，把 起點、cycle 起點、cycle 裡的交會點 先標示出來，利用我們目前已知的條件：<code>在 cycle 裡交會時，快指標走的距離是慢指標的兩倍</code> 來列出方程式，釐清各個距離之間的關係。下面這個影片從 <code>6:37</code> 開始把推導過程講得很清楚 <div class="oembed-outer oembed-youtube"><div class="oembed-inner"><iframe width="500" height="281" src="https://www.youtube.com/embed/wjYnzkAhcNk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python"></iframe></div></div><ul><li>不過影片講解的最後有個地方我覺得可以再多講一下，假如快指標走了超過</li></ul></li></ol>]]></content>
       
       
       <categories>
@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> linked list </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> linked list </tag>
             
         </tags>
       
@@ -124,9 +124,9 @@
       
         <tags>
             
-            <tag> bit manipulation </tag>
-            
             <tag> array </tag>
+            
+            <tag> bit manipulation </tag>
             
         </tags>
       

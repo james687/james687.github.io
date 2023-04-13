@@ -308,7 +308,42 @@
 
   
   <url>
+    <loc>https://blog.jamesho.website/tags/array/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/two-pointers/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/sorting/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/linked-list/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,7 +378,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
+    <loc>https://blog.jamesho.website/tags/python/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -357,28 +392,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/python/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/array/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/two-pointers/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/sorting/</loc>
+    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -393,20 +407,6 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/string/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -483,6 +483,13 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/java/</loc>
+    <lastmod>2023-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/heroku/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -498,13 +505,6 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/paas/</loc>
-    <lastmod>2023-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/java/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -534,7 +534,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
+    <loc>https://blog.jamesho.website/categories/Project-Management/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -548,7 +548,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Project-Management/</loc>
+    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
     <lastmod>2023-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
