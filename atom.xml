@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-13T01:29:57.734Z</updated>
+  <updated>2023-04-13T05:27:42.174Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linked List Cycle II</title>
+    <link href="https://blog.jamesho.website/linked-list-cycle-ii/"/>
+    <id>https://blog.jamesho.website/linked-list-cycle-ii/</id>
+    <published>2023-04-13T04:36:07.000Z</published>
+    <updated>2023-04-13T05:27:42.174Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？</p><ol><li>Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？</li><li>假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓兩個指標在 cycle 起點交會，如何做到？<ul><li>快指標走的速度是慢指標的兩倍</li></ul></li><li>想讓指標在 cycle 起點交會，首先必須知道各段距離之間的關聯，我們可以畫個圖，把 起點、cycle 起點、cycle 裡的交會點 先標示出來，利用我們目前已知的條件：<code>在 cycle 裡交會時，快指標走的距離是慢指標的兩倍</code> 來列出方程式，釐清各個距離之間的關係。下面這個影片把推導過程講得很清楚 <div class="oembed-outer oembed-youtube"><div class="oembed-inner"><iframe width="200" height="113" src="https://www.youtube.com/embed/wjYnzkAhcNk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python"></iframe></div></div></li><li></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/linked-list-cycle-ii/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
+    
+      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
+    
+  </entry>
   
   <entry>
     <title>Reverse Linked List</title>
@@ -154,9 +182,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -222,9 +250,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -256,9 +284,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -414,9 +442,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -453,9 +481,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -486,9 +514,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
@@ -607,38 +635,6 @@
     
     
       <category term="binary search" scheme="https://blog.jamesho.website/tags/binary-search/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3Sum</title>
-    <link href="https://blog.jamesho.website/3-sum/"/>
-    <id>https://blog.jamesho.website/3-sum/</id>
-    <published>2022-12-05T08:51:05.000Z</published>
-    <updated>2023-03-30T04:46:03.928Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/3sum/description/">題目</a><br>思路：</p><ul><li>用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result</li><li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li></ul><p>Python3 solution</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">    result = []</span><br><span class="line">    nums.sort()</span><br><span class="line">    <span class="keyword">for</span> left <span class="keyword">in</span> range(len(nums) - <span class="number">2</span>):  <span class="comment"># 右邊須留兩個空位給另兩個指標</span></span><br><span class="line">        <span class="keyword">if</span> left &gt; <span class="number">0</span> <span class="keyword">and</span> nums[left] == nums[left - <span class="number">1</span>]:  <span class="comment"># 排除重複的 result，left 必須 &gt; 0 才會有前一個</span></span><br><span class="line">            <span class="keyword">continue</span>                                   <span class="comment"># - 假如 nums[left] 是一樣的，最後找到的 result 也會是一樣的，所以要排除掉</span></span><br><span class="line">        mid = left + <span class="number">1</span></span><br><span class="line">        right = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> mid &lt; right:  <span class="comment"># 設定有效範圍，在此範圍內尋找符合的 mid, right</span></span><br><span class="line">            t_sum = nums[left] + nums[mid] + nums[right]</span><br><span class="line">            <span class="keyword">if</span> t_sum &lt; <span class="number">0</span>:</span><br><span class="line">                mid += <span class="number">1</span>  <span class="comment"># 此時必須讓 t_sum 變大，所以將 mid 往右移</span></span><br><span class="line">            <span class="keyword">elif</span> t_sum &gt; <span class="number">0</span>:</span><br><span class="line">                right -= <span class="number">1</span>  <span class="comment"># 此時必須讓 t_sum 變小，所以將 right 往左移</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result.append([nums[left], nums[mid], nums[right]])</span><br><span class="line">                <span class="keyword">while</span> mid &lt; right <span class="keyword">and</span> nums[mid] == nums[mid + <span class="number">1</span>]:  <span class="comment"># 跳過 mid 重複的部分</span></span><br><span class="line">                    mid += <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> mid &lt; right <span class="keyword">and</span> nums[right] == nums[right - <span class="number">1</span>]:  <span class="comment"># 跳過 right 重複的部分</span></span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 正常的移動 mid, right，尋找下一個符合的 result</span></span><br><span class="line">                mid += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/3sum/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result&lt;/li&gt;
-&lt;li&gt;先把 nums 排序，如此移動 mid, right 指標時就有個依據&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Python3 solution&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
-    
-      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
-    
-      <category term="sorting" scheme="https://blog.jamesho.website/tags/sorting/"/>
     
   </entry>
   

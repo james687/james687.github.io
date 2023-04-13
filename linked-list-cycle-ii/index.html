@@ -7,16 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2018 - James&#39; Blog</title>
+<title>Linked List Cycle II - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/archives/2018/index.html">
+    <meta name="description" content="題目如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？  Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？ 假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linked List Cycle II">
+<meta property="og:url" content="https://blog.jamesho.website/linked-list-cycle-ii/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="題目如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？  Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？ 假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
+<meta property="article:published_time" content="2023-04-13T04:36:07.000Z">
+<meta property="article:modified_time" content="2023-04-13T05:27:42.174Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="linked list">
+<meta property="article:tag" content="two pointers">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.jamesho.website/images/og_image.png">
 
@@ -85,7 +91,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="Linked List Cycle II" height="28">
             
             </a>
         </div>
@@ -127,57 +133,105 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-13T04:36:07.000Z">2023-04-13</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-03-25T13:19:34.000Z">2018-03-25</time>
-                        <a href="/effective-python-note-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Effective Python Note 2</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Book-Digest/">Book Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-03-25T11:19:34.000Z">2018-03-25</time>
-                        <a href="/effective-python-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Effective Python Note</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Book-Digest/">Book Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 312 個字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Linked List Cycle II
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>如果是第一次看到這個問題，怎樣的思路最有可能導向使用 Floyd’s Cycle Detection algorithm 來解呢？此演算法背後的原理又為何？</p>
+<ol>
+<li>Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？</li>
+<li>假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓兩個指標在 cycle 起點交會，如何做到？<ul>
+<li>快指標走的速度是慢指標的兩倍</li>
+</ul>
+</li>
+<li>想讓指標在 cycle 起點交會，首先必須知道各段距離之間的關聯，我們可以畫個圖，把 起點、cycle 起點、cycle 裡的交會點 先標示出來，利用我們目前已知的條件：<code>在 cycle 裡交會時，快指標走的距離是慢指標的兩倍</code> 來列出方程式，釐清各個距離之間的關係。下面這個影片把推導過程講得很清楚 <div class="oembed-outer oembed-youtube"><div class="oembed-inner"><iframe width="200" height="113" src="https://www.youtube.com/embed/wjYnzkAhcNk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python"></iframe></div></div></li>
+<li></li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/linked-list/" rel="tag">linked list</a>, <a class="has-link-grey -link" href="/tags/two-pointers/" rel="tag">two pointers</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/reverse-linked-list/">
+                <span class="level-item">Reverse Linked List</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.jamesho.website/linked-list-cycle-ii/';
+        this.page.identifier = 'linked-list-cycle-ii/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -1280,7 +1334,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="Linked List Cycle II" height="28">
                 
                 </a>
                 <p class="is-size-7">
