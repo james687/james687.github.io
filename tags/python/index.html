@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分鐘 閱讀文 (大約 1282 個字)
+                    9 分鐘 閱讀文 (大約 1283 個字)
                 </span>
                 
                 
@@ -163,26 +163,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/linked-list-cycle-ii/">Linked List Cycle II</a>
+                <a class="has-link-black-ter" href="/linked-list-cycle-ii/">142. Linked List Cycle II</a>
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>思路：最直覺的作法就是從頭開始沿著 next 一直走，然後用一個 set 來存放走過的 node，如果再次走到已走過的 node 就是 cycle 起點</p>
-<figure class="highlight python"><figcaption><span>Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detectCycle</span><span class="params">(self, head: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    visited = set()</span><br><span class="line">    curr = head</span><br><span class="line">    <span class="keyword">while</span> curr:</span><br><span class="line">        <span class="keyword">if</span> curr <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="keyword">return</span> curr</span><br><span class="line">        memo.add(curr)</span><br><span class="line">        curr = curr.next</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>平均時間複雜度：O(n)<ul>
-<li>因為 <code>in</code> 和 <code>add</code> 對於 <code>set</code> 來說都是 O(1)，所以 <code>while</code> 迴圈內每次執行的複雜度為 O(1)</li>
-</ul>
-</li>
-<li>平均空間複雜度：O(n)</li>
-</ul>
-<h3 id="如果想讓空間複雜度是-O-1-呢？"><a href="#如果想讓空間複雜度是-O-1-呢？" class="headerlink" title="如果想讓空間複雜度是 O(1) 呢？"></a>如果想讓空間複雜度是 O(1) 呢？</h3><p>此時必須使用 Floyd’s Cycle Detection algorithm，但假如之前沒看過這個演算法，怎樣的思路最有可能導向用它來解呢？此演算法背後的原理又為何？</p>
-<ol>
-<li><p>Linked list 最直覺的解題方式就是靠指標在裡面移動來解，而這題顯然無法靠單一指標做到。那雙指標做得到嗎？</p>
-</li>
-<li><p>假如用快慢雙指標同時從起點出發的話，他們會在 cycle 裡交會，而我們要知道 cycle 起點的唯一方法，就是想辦法讓兩個指標在 cycle 起點交會，如何做到？</p>
-<ul>
-<li>快指標走的速度是慢指標的兩倍
+            <p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">題目</a><br>思路：最直覺的作法就是從頭開始沿著 next 一直走，然後用一個 set 來存放走過的 node，如果再次走到已走過的 node 就是 cycle 起點
         </div>
         
         
@@ -600,14 +585,14 @@
             
             <a href="/linked-list-cycle-ii/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linked List Cycle II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="142. Linked List Cycle II">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-13T12:36:07.000Z">2023-04-13</time></div>
-                    <a href="/linked-list-cycle-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linked List Cycle II</a>
+                    <a href="/linked-list-cycle-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">142. Linked List Cycle II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
@@ -1072,14 +1057,14 @@
             
             <a href="/linked-list-cycle-ii/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linked List Cycle II">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="142. Linked List Cycle II">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-13T12:36:07.000Z">2023-04-13</time></div>
-                    <a href="/linked-list-cycle-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Linked List Cycle II</a>
+                    <a href="/linked-list-cycle-ii/" class="title has-link-black-ter is-size-6 has-text-weight-normal">142. Linked List Cycle II</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                     </p>
