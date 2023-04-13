@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-12T10:25:24.812Z</updated>
+  <updated>2023-04-13T01:29:57.734Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reverse Linked List</title>
+    <link href="https://blog.jamesho.website/reverse-linked-list/"/>
+    <id>https://blog.jamesho.website/reverse-linked-list/</id>
+    <published>2023-04-13T01:04:56.000Z</published>
+    <updated>2023-04-13T01:29:57.734Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/reverse-linked-list/">題目</a><br>思路</p><ol><li>因為是 linked list，我們可以使用 <code>curr</code> 當指標，沿著 linked list 的頭往後走，一邊改變 <code>curr.next</code> 的指向，而過程中必須對前一個和下一個都有所掌握，因為 <code>curr</code> 必須指向前一個，然後它本身必須換到下一個</li><li>所以我們會有三個變數：<code>previous</code>, <code>curr</code>, <code>next</code></li><li>當 <code>curr</code> 是 <code>head</code> 時，<code>previous</code> 會是 <code>None</code>，這兩個可以先設定好。目標是一直改變 <code>curr</code> 的指向，讓 <code>curr</code> 一直走到 linked list 盡頭，變成 <code>None</code> 為止，所以 <code>while</code> 條件就是 <code>當有 curr 的時候就做</code><a id="more"></a></li></ol><p>Python 3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    previous = <span class="literal">None</span></span><br><span class="line">    curr = head</span><br><span class="line">    <span class="keyword">while</span> curr:</span><br><span class="line">        next = curr.next</span><br><span class="line">        curr.next = previous</span><br><span class="line">        previous = curr</span><br><span class="line">        curr = next</span><br><span class="line">    <span class="keyword">return</span> previous</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/reverse-linked-list/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因為是 linked list，我們可以使用 &lt;code&gt;curr&lt;/code&gt; 當指標，沿著 linked list 的頭往後走，一邊改變 &lt;code&gt;curr.next&lt;/code&gt; 的指向，而過程中必須對前一個和下一個都有所掌握，因為 &lt;code&gt;curr&lt;/code&gt; 必須指向前一個，然後它本身必須換到下一個&lt;/li&gt;
+&lt;li&gt;所以我們會有三個變數：&lt;code&gt;previous&lt;/code&gt;, &lt;code&gt;curr&lt;/code&gt;, &lt;code&gt;next&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;當 &lt;code&gt;curr&lt;/code&gt; 是 &lt;code&gt;head&lt;/code&gt; 時，&lt;code&gt;previous&lt;/code&gt; 會是 &lt;code&gt;None&lt;/code&gt;，這兩個可以先設定好。目標是一直改變 &lt;code&gt;curr&lt;/code&gt; 的指向，讓 &lt;code&gt;curr&lt;/code&gt; 一直走到 linked list 盡頭，變成 &lt;code&gt;None&lt;/code&gt; 為止，所以 &lt;code&gt;while&lt;/code&gt; 條件就是 &lt;code&gt;當有 curr 的時候就做&lt;/code&gt;
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
+    
+  </entry>
   
   <entry>
     <title>Isomorphic Strings</title>
@@ -612,30 +639,6 @@
       <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
     
       <category term="sorting" scheme="https://blog.jamesho.website/tags/sorting/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</title>
-    <link href="https://blog.jamesho.website/why-dict-o1/"/>
-    <id>https://blog.jamesho.website/why-dict-o1/</id>
-    <published>2022-07-25T08:55:03.000Z</published>
-    <updated>2023-03-29T09:00:45.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>如果去 google，大部分查到的都會說因為 Python 會把 key 經過 hash function 運算，得到一個 dict 真正內部在使用的 key，從而找到對應的 value。而一個好的 hash function 它的運算所需時間是不會隨著 n 增加而變大的，所以 dict 的 get item operation 時間複雜度為 O(1) 。</p><p>不過我的疑惑是，經過 hash function 運算得到 key 之後，由這個 key 去找到 value 的時間複雜度是 O(1) 嗎？除非這個也是 O(1) 才能說整個 get item operation 是 O(1) 。</p><a id="more"></a><p>後來再多翻了一些說明，終於看到一兩個回答可以解釋這個疑惑。可以想像成今天我們有一個 array，我們只要知道 index 就可以知道要去哪裡找到對應的 value ( 因此是 O(1) )，經由 hash function 算出來的 key 就好像 array 的 index 一樣，只要看到這個 key 就知道要去哪裡找對應的 value，不會受 n 大小的影響，所以是 O(1)</p><p>另一個比較生活化的例子：hash function 算出來的 key，就好像你在圖書館要找書時用的索引，看到索引你就會知道書在哪一區、哪個櫃子裡，即使你需要照著圖書館的索引指示找一下才能找到，但這個過程所花的時間，跟圖書館有多少書沒有關係。</p><p>References:</p><ul><li><a href="https://qr.ae/pvMCpM">https://qr.ae/pvMCpM</a></li><li><a href="https://qr.ae/pvMCIv">https://qr.ae/pvMCIv</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;如果去 google，大部分查到的都會說因為 Python 會把 key 經過 hash function 運算，得到一個 dict 真正內部在使用的 key，從而找到對應的 value。而一個好的 hash function 它的運算所需時間是不會隨著 n 增加而變大的，所以 dict 的 get item operation 時間複雜度為 O(1) 。&lt;/p&gt;
-&lt;p&gt;不過我的疑惑是，經過 hash function 運算得到 key 之後，由這個 key 去找到 value 的時間複雜度是 O(1) 嗎？除非這個也是 O(1) 才能說整個 get item operation 是 O(1) 。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="https://blog.jamesho.website/categories/Algorithm/"/>
-    
-    
-      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
   </entry>
   

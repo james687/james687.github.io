@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Reverse Linked List</title>
+      <link href="/reverse-linked-list/"/>
+      <url>/reverse-linked-list/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/reverse-linked-list/">題目</a><br>思路</p><ol><li>因為是 linked list，我們可以使用 <code>curr</code> 當指標，沿著 linked list 的頭往後走，一邊改變 <code>curr.next</code> 的指向，而過程中必須對前一個和下一個都有所掌握，因為 <code>curr</code> 必須指向前一個，然後它本身必須換到下一個</li><li>所以我們會有三個變數：<code>previous</code>, <code>curr</code>, <code>next</code></li><li>當 <code>curr</code> 是 <code>head</code> 時，<code>previous</code> 會是 <code>None</code>，這兩個可以先設定好。目標是一直改變 <code>curr</code> 的指向，讓 <code>curr</code> 一直走到 linked list 盡頭，變成 <code>None</code> 為止，所以 <code>while</code> 條件就是 <code>當有 curr 的時候就做</code><a id="more"></a></li></ol><p>Python 3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    previous = <span class="literal">None</span></span><br><span class="line">    curr = head</span><br><span class="line">    <span class="keyword">while</span> curr:</span><br><span class="line">        next = curr.next</span><br><span class="line">        curr.next = previous</span><br><span class="line">        previous = curr</span><br><span class="line">        curr = next</span><br><span class="line">    <span class="keyword">return</span> previous</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linked list </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Isomorphic Strings</title>
       <link href="/isomorphic-strings/"/>
       <url>/isomorphic-strings/</url>
