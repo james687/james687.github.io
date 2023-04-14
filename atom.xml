@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-14T02:25:53.172Z</updated>
+  <updated>2023-04-14T09:08:49.138Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>121. Best Time to Buy and Sell Stock</title>
+    <link href="https://blog.jamesho.website/best-time-to-buy-and-sell-stock/"/>
+    <id>https://blog.jamesho.website/best-time-to-buy-and-sell-stock/</id>
+    <published>2023-04-14T09:02:18.000Z</published>
+    <updated>2023-04-14T09:08:49.138Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">題目</a><br>思路</p><ol><li>最直覺的想法是從頭開始 traverse array，針對每一個 price 都去算一次那個位置之後的所有可能利潤，不過這樣會是兩個巢狀 for-loop，時間複雜度是 O(n^2)，太大了</li><li>有沒有辦法只 traverse 一次 array 就好？</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最直覺的想法是從頭開始 traverse array，針對每一個 price
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>為什麼 Python 的 in 用在 set 是 O(1) 時間複雜度？</title>
@@ -597,32 +623,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 &lt;code&gt;while True:&lt;/code&gt;，等內容寫完再來改條件&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Add Two Numbers</title>
-    <link href="https://blog.jamesho.website/add-two-numbers/"/>
-    <id>https://blog.jamesho.website/add-two-numbers/</id>
-    <published>2023-02-03T07:54:07.000Z</published>
-    <updated>2023-03-30T04:46:17.784Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/add-two-numbers/description/">題目</a><br>思路：</p><ol><li>既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。</li><li>迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作<a id="more"></a></li><li>迴圈內算出的當下位數的答案 <code>digit_sum % 10</code> 的 node 為何是指定給 <code>curr.next</code> 而非 <code>curr</code>?<ul><li>因為迴圈結束前 <code>curr</code> 必須指向下一個 node，也就是 <code>curr.next</code>，以下分兩種情況解釋：<ul><li>答案放在 <code>curr</code> 身上：必須創造一個空的 node 來當 <code>curr.next</code>，而假如這次的迴圈已經是最後一次了，此 linked list 的尾巴就會多一個空的 node</li><li>答案放在 <code>curr.next</code> 身上：迴圈結束前 <code>curr</code> 指向 <code>curr.next</code> 繼續下一次的操作，假如此次已是最後一次迴圈，也不會多出空的 node 在 linked list 末端，只會在開頭多出一個沒用到的 dummy_head 而已，因此最後回傳答案時是回傳 <code>dummy_head.next</code></li></ul></li></ul></li></ol><p>Python3 solution</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1: Optional[ListNode], l2: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    carry = <span class="number">0</span>  <span class="comment"># 位數相加後除以 10 得到的商</span></span><br><span class="line">    dummy_head = ListNode()  <span class="comment"># 用 dummy_head 保留最前面的指標，到時候才有辦法回傳答案</span></span><br><span class="line">    curr = dummy_head        <span class="comment"># 不能只用 `curr = ListNode()`，因為 `curr` 所指的 node 必須一直變</span></span><br><span class="line">    <span class="keyword">while</span> l1 <span class="keyword">or</span> l2 <span class="keyword">or</span> carry:  <span class="comment"># 可以繼續加的條件</span></span><br><span class="line">        v1 = l1 <span class="keyword">and</span> l1.val <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">        v2 = l2 <span class="keyword">and</span> l2.val <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">        digit_sum = v1 + v2 + carry</span><br><span class="line">        carry = digit_sum // <span class="number">10</span></span><br><span class="line">        curr.next = ListNode(digit_sum % <span class="number">10</span>)</span><br><span class="line">        curr = curr.next</span><br><span class="line">        l1 = l1 <span class="keyword">and</span> l1.next</span><br><span class="line">        l2 = l2 <span class="keyword">and</span> l2.next</span><br><span class="line">    <span class="keyword">return</span> dummy_head.next</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/add-two-numbers/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。&lt;/li&gt;
-&lt;li&gt;迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作
     
     </summary>
     

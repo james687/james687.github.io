@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>121. Best Time to Buy and Sell Stock</title>
+      <link href="/best-time-to-buy-and-sell-stock/"/>
+      <url>/best-time-to-buy-and-sell-stock/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">題目</a><br>思路</p><ol><li>最直覺的想法是從頭開始 traverse array，針對每一個 price 都去算一次那個位置之後的所有可能利潤，不過這樣會是兩個巢狀 for-loop，時間複雜度是 O(n^2)，太大了</li><li>有沒有辦法只 traverse 一次 array 就好？</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>為什麼 Python 的 in 用在 set 是 O(1) 時間複雜度？</title>
       <link href="/why-python-set-o1/"/>
       <url>/why-python-set-o1/</url>
