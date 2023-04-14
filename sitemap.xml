@@ -345,13 +345,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/android/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -381,6 +374,13 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/recursion/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
