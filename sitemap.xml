@@ -326,13 +326,6 @@
 
   
   <url>
-    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/array/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -354,14 +347,21 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/tree/</loc>
+    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/tree/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -375,7 +375,21 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/recursion/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -396,14 +410,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
+    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -424,7 +431,14 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
+    <loc>https://blog.jamesho.website/tags/jwt/</loc>
+    <lastmod>2023-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/authentication/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -453,20 +467,6 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/django/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/jwt/</loc>
-    <lastmod>2023-04-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/authentication/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -559,14 +559,14 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
+    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
+    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
     <lastmod>2023-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
