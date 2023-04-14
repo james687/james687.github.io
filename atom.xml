@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-14T09:49:06.992Z</updated>
+  <updated>2023-04-14T11:41:08.679Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>409. Longest Palindrome</title>
+    <link href="https://blog.jamesho.website/longest-palindrome/"/>
+    <id>https://blog.jamesho.website/longest-palindrome/</id>
+    <published>2023-04-14T10:58:18.000Z</published>
+    <updated>2023-04-14T11:41:08.679Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/longest-palindrome/">題目</a><br>思路</p><ol><li>怎麼判斷一個 string 是否為 palindrome？<ul><li>(x) 做一個倒過來的 string 看看兩個是否相等<ul><li>需要 O(n) 時間複雜度，太長了，因為你必須對所有的字串組合做測試</li></ul></li><li>(o) Palindrome 一定是由偶數個數的字母組成，頂多再加上一組奇數個數的字母</li></ul></li><li>先用 dict 記錄每個 character 的個數，再利用計算完成的 dict 來算出答案<a id="more"></a></li></ol><p>想完之後覺得應該蠻簡單，結果寫完送出…… Wrong Answer!</p><figure class="highlight python"><figcaption><span>Wrong Answer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">    <span class="comment"># Build dict for characters.</span></span><br><span class="line">    d = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        d[c] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    max_odd = <span class="number">0</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> freq <span class="keyword">in</span> d.values():</span><br><span class="line">        <span class="keyword">if</span> freq % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += freq</span><br><span class="line">        <span class="keyword">elif</span> freq &gt; max_odd:</span><br><span class="line">            max_odd = freq</span><br><span class="line">    <span class="keyword">return</span> count + max_odd</span><br></pre></td></tr></table></figure><p>錯誤之處在於我除了把偶數個數的字母納入之外，只挑了一個出現最多次的奇數字母納入答案，忘了其實奇數個數的字母可以拆成偶數… 所以會少算到很多</p><p>但這樣做完之後，要記得假如裡面有奇數次的字母，最後的答案要再加一</p><figure class="highlight python"><figcaption><span>Python 3 solution：調整後的正確答案</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">    <span class="comment"># Build dict for character count.</span></span><br><span class="line">    d = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        d[c] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    odd_complement = <span class="literal">False</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> freq <span class="keyword">in</span> d.values():</span><br><span class="line">        <span class="keyword">if</span> freq % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += freq</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            odd_complement = <span class="literal">True</span></span><br><span class="line">            count += freq - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count + odd_complement</span><br></pre></td></tr></table></figure><p>最後提一下那個 <code>count + odd_complement</code>，Python 在遇到整數和布林值相加的時候，會把布林值轉為整數再相加 (True =&gt; 1, False =&gt; 0)，覺得是還不錯的 feature</p><ul><li>浮點數和布林值相加也類似，會把布林值作轉換後再相加 (True =&gt; 1.0, False =&gt; 0.0)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/longest-palindrome/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;怎麼判斷一個 string 是否為 palindrome？&lt;ul&gt;
+&lt;li&gt;(x) 做一個倒過來的 string 看看兩個是否相等&lt;ul&gt;
+&lt;li&gt;需要 O(n) 時間複雜度，太長了，因為你必須對所有的字串組合做測試&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(o) Palindrome 一定是由偶數個數的字母組成，頂多再加上一組奇數個數的字母&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;先用 dict 記錄每個 character 的個數，再利用計算完成的 dict 來算出答案
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+      <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
+    
+      <category term="greedy" scheme="https://blog.jamesho.website/tags/greedy/"/>
+    
+  </entry>
   
   <entry>
     <title>121. Best Time to Buy and Sell Stock</title>
@@ -594,36 +633,6 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;寫第一 part (如下) 後發現，while 條件需要 &lt;code&gt;l1 and l2&lt;/code&gt;&lt;/p&gt;
  &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; l1.val &amp;gt; l2.val:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    curr.next = l2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    l2 = l2.next&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    curr.next = l1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    l1 = l1.next&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Remove Duplicates from Sorted List</title>
-    <link href="https://blog.jamesho.website/remove-duplicates-from-sorted-list/"/>
-    <id>https://blog.jamesho.website/remove-duplicates-from-sorted-list/</id>
-    <published>2023-02-09T03:47:23.000Z</published>
-    <updated>2023-03-30T04:48:56.471Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p><ol><li><p>既然是 Linked List，我們可以宣告一個指標 <code>curr</code> 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p><ul><li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li></ul></li><li><p>設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</p><a id="more"></a></li><li><p>寫 while 內容</p><ol><li><p>假如 <code>curr.val</code> 跟下一個一樣，就把 next 接到下下個</p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> curr.val == curr.next.val:</span><br><span class="line">    curr.next = curr.next.next</span><br></pre></td></tr></table></figure></li><li><p>但假如下下個也一樣呢？=&gt; 把上面的 <code>if</code> 改成 <code>while</code>，讓最後 <code>curr.next</code> 所指的 val 一定是不一樣的</p></li><li><p>改成 while 之後，檢查條件會被重複執行。因為 <code>curr.next</code> 有可能會是 <code>None</code>，所以條件改為<br><code>while curr.val == (curr.next and curr.next.val):</code></p></li><li><p>離開 while 之後：<br><code>curr = curr.next  # 把指標移到下一個 node，以便下次的檢查</code></p></li></ol></li><li><p>回去修改 while 條件：什麼條件成立我們才能繼續檢查(執行 while 內容)？</p><ol><li>首先 <code>curr</code> 不能是 <code>None</code><ul><li><code>curr</code> 有可能是 <code>None</code>，因為我們一直把它指向下一個 Node，到了盡頭 <code>curr</code> 就會是 <code>None</code></li></ul></li><li>即使 <code>curr.next</code> 是 <code>None</code>，還是可以順利執行迴圈內容</li><li>結論：條件為 <code>while curr:</code></li></ol></li><li><p>離開 while 之後就大功告成，回傳答案 <code>head</code></p></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    curr = head  <span class="comment"># 等一下可以在 while 迴圈中移動的指標</span></span><br><span class="line">    <span class="keyword">while</span> curr:</span><br><span class="line">        <span class="keyword">while</span> curr.val == (curr.next <span class="keyword">and</span> curr.next.val):</span><br><span class="line">            curr.next = curr.next.next</span><br><span class="line">        curr = curr.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;既然是 Linked List，我們可以宣告一個指標 &lt;code&gt;curr&lt;/code&gt; 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不能直接用 &lt;code&gt;head&lt;/code&gt; 來移動，因為到時候回傳答案的時候需要回傳這個 &lt;code&gt;head&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 &lt;code&gt;while True:&lt;/code&gt;，等內容寫完再來改條件&lt;/p&gt;
     
     </summary>
     

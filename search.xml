@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>409. Longest Palindrome</title>
+      <link href="/longest-palindrome/"/>
+      <url>/longest-palindrome/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/longest-palindrome/">題目</a><br>思路</p><ol><li>怎麼判斷一個 string 是否為 palindrome？<ul><li>(x) 做一個倒過來的 string 看看兩個是否相等<ul><li>需要 O(n) 時間複雜度，太長了，因為你必須對所有的字串組合做測試</li></ul></li><li>(o) Palindrome 一定是由偶數個數的字母組成，頂多再加上一組奇數個數的字母</li></ul></li><li>先用 dict 記錄每個 character 的個數，再利用計算完成的 dict 來算出答案<a id="more"></a></li></ol><p>想完之後覺得應該蠻簡單，結果寫完送出…… Wrong Answer!</p><figure class="highlight python"><figcaption><span>Wrong Answer</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">    <span class="comment"># Build dict for characters.</span></span><br><span class="line">    d = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        d[c] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    max_odd = <span class="number">0</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> freq <span class="keyword">in</span> d.values():</span><br><span class="line">        <span class="keyword">if</span> freq % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += freq</span><br><span class="line">        <span class="keyword">elif</span> freq &gt; max_odd:</span><br><span class="line">            max_odd = freq</span><br><span class="line">    <span class="keyword">return</span> count + max_odd</span><br></pre></td></tr></table></figure><p>錯誤之處在於我除了把偶數個數的字母納入之外，只挑了一個出現最多次的奇數字母納入答案，忘了其實奇數個數的字母可以拆成偶數… 所以會少算到很多</p><p>但這樣做完之後，要記得假如裡面有奇數次的字母，最後的答案要再加一</p><figure class="highlight python"><figcaption><span>Python 3 solution：調整後的正確答案</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">    <span class="comment"># Build dict for character count.</span></span><br><span class="line">    d = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        d[c] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    odd_complement = <span class="literal">False</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> freq <span class="keyword">in</span> d.values():</span><br><span class="line">        <span class="keyword">if</span> freq % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            count += freq</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            odd_complement = <span class="literal">True</span></span><br><span class="line">            count += freq - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> count + odd_complement</span><br></pre></td></tr></table></figure><p>最後提一下那個 <code>count + odd_complement</code>，Python 在遇到整數和布林值相加的時候，會把布林值轉為整數再相加 (True =&gt; 1, False =&gt; 0)，覺得是還不錯的 feature</p><ul><li>浮點數和布林值相加也類似，會把布林值作轉換後再相加 (True =&gt; 1.0, False =&gt; 0.0)</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> hash table </tag>
+            
+            <tag> string </tag>
+            
+            <tag> greedy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>121. Best Time to Buy and Sell Stock</title>
       <link href="/best-time-to-buy-and-sell-stock/"/>
       <url>/best-time-to-buy-and-sell-stock/</url>
