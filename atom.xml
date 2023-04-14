@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-14T02:17:02.604Z</updated>
+  <updated>2023-04-14T02:24:52.870Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.jamesho.website/why-python-set-o1/"/>
     <id>https://blog.jamesho.website/why-python-set-o1/</id>
     <published>2023-04-14T01:40:15.000Z</published>
-    <updated>2023-04-14T02:17:02.604Z</updated>
+    <updated>2023-04-14T02:24:52.870Z</updated>
     
-    <content type="html"><![CDATA[<p>通常都會說 Python 的 set 內部是用 hash table 來實作，所以是 O(1)，但為什麼這樣就是 O(1)？</p><p>當要判斷某個元素是否在 set 裡面時，它的 <code>__hash__()</code> 會被用來得到 hash 值，可以把這個 hash 值視為 set 底層實作的 array 的 index，Python 接著會用這個 hash 值去那個 array 的對應位置找，然後發現 array 沒有這個位置，或是找到對應 value，而這個過程跟 set 裡的元素個數無關，所以是 O(1)</p><p>而這邊說的 O(1) 是平均時間複雜度，最壞情況時間複雜度是 O(n)，<a id="more"></a>它發生在元素的 hash 發生 collision 的時候。假如有兩個元素的 hash 發生 collision，他們就會被放在同一個 index，可以想像這個 index 的元素變成這兩個元素組成的 linked list，而最差的情況就是所有元素都發生 hash collision，等同於這個 set 變成一個 n 個元素的 linked list，所以判斷一個元素是否在裡面就需要 O(n) 時間複雜度了</p>]]></content>
+    <content type="html"><![CDATA[<p>通常都會說 Python 的 set 內部是用 hash table 來實作，所以是 O(1)，但為什麼這樣就是 O(1)？</p><p>當要判斷某個元素是否在 set 裡面時，它的 <code>__hash__()</code> 會被用來得到 hash 值，可以把這個 hash 值視為 set 底層實作的 array 的 index，Python 接著會用這個 hash 值去那個 array 的對應位置找，然後發現 array 沒有這個位置，或是找到對應 value，而這個過程跟 set 裡的元素個數無關，所以是 O(1)</p><p>而這邊說的 O(1) 是平均時間複雜度，最壞情況時間複雜度是 O(n)，<a id="more"></a>它發生在不同元素產生相同 hash 的時候，也就是 hash collision。假如有兩個元素的 hash 發生 collision，他們就會被放在同一個 index，可以想像這個 index 的元素變成這兩個元素組成的 linked list，而最差的情況就是所有元素都發生 hash collision，等同於這個 set 變成一個 n 個元素的 linked list，所以判斷一個元素是否在裡面就需要 O(n) 時間複雜度了</p><p><em>參考資料：</em><br><a href="https://qr.ae/prL6P0">Why do sets in Python have an algorithmic complexity of O(1)?</a></p>]]></content>
     
     <summary type="html">
     
