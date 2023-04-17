@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>[Python] list 用 `.extend()` 與 `+=` 的差別</title>
+      <link href="/diff-between-extend-and-plusequal/"/>
+      <url>/diff-between-extend-and-plusequal/</url>
+      
+        <content type="html"><![CDATA[<p>譬如有兩個 list <code>a</code> 和 <code>b</code>，使用 <code>a.extend(b)</code> 和 <code>a += b</code> 有什麼相同或不同？有沒有什麼 general 的 best practice for using one rather than the other?</p><p>其實在這個情境下，這兩個用法幾乎一樣。它們都會直接 in-place 的修改 <code>a</code>，把 <code>b</code> 裡面的元素加到 <code>a</code> 的後面</p><ul><li><code>+=</code> 會呼叫 list 的 <code>.__iadd__()</code> 來做 in-place 的修改<ul><li>所以在這個情境下，<code>b</code> 可以是任何 iterable，譬如 <code>[] += {}</code> 會得到 <code>[]</code></li><li>假如用 <code>+=</code> 的是 immutable 的 type，Python 發現沒有 <code>.__iadd__()</code>，接著就會呼叫它的 <code>.__add__()</code>，此情況下 <code>a += b</code> 等同於 <code>a = a + b</code></li></ul></li></ul><p>以下列出少數有差別的地方：<a id="more"></a></p><ul><li><code>+=</code> 不能用在 tuple 裡的 list，但 <code>.extend()</code> 可以<ul><li>雖然說 <code>+=</code> 所呼叫的 <code>.__iadd__()</code> 是 in-place 修改，做完後 <code>a</code> 的 reference 還是會一樣，但過程中還是會以某種方式動到 reference，只是最後會有個 reassign 給自己的動作<a href="#anno1">[註1]</a>，所以會有一樣的 reference</li></ul></li><li><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend/24261311#24261311"><code>+=</code> 不能用在 non-local variable，但 <code>.extend()</code> 可以</a></li><li><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend/37762884#37762884"><code>+=</code> 不能 chain function call, 但 <code>.extend()</code> 可以</a></li><li>兩者速度依不同情況稍有差異<ul><li>可參考<a href="#anno1">註1</a>這個 comment 下兩個接續的 comments: <a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754463_28119966">comment 1</a>, <a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754732_28119966">comment 2</a></li></ul></li></ul><p><strong>結論</strong><br>可以都用 <code>.extend()</code> 就好，consistency 也是一個重點。對於有差別的部分，一般情況下速度的差異可以忽略，其他的差別都是 <code>.extend()</code> 比較好，而且它在語意上的描述也也更貼切。</p><p><em>參考資料：</em></p><ul><li><p><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend">Concatenating two lists - difference between ‘+=’ and extend()</a></p></li><li><p><a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend">What is the difference between Python’s list methods append and extend?</a></p><ul><li><p><a name="anno1"></a><a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754266_28119966">註1</a>:</p><blockquote><p><code>l1 += l2</code> and <code>l1.extend(l2)</code> ultimately execute the same code (the <code>list_extend</code> function in <code>listobject.c</code>). The only differences are: 1. <code>+=</code> reassigns <code>l1</code> (to itself for <code>list</code>s, but the reassignment supports immutable types that aren’t the same object after), which makes it illegal if <code>l1</code> is actually an attribute of an immutable object; for example, <code>t = ([],)</code>, <code>t[0] += lst</code> would fail, while <code>t[0].extend(lst)</code> would work. 2. <code>l1 += l2</code> uses dedicated bytecodes, while <code>l1.extend(l2)</code> uses generalized method dispatch; this makes <code>+=</code> faster than <code>extend</code>.</p></blockquote></li></ul></li><li><p><a href="https://stackoverflow.com/questions/2347265/why-does-behave-unexpectedly-on-lists">Why does += behave unexpectedly on lists?</a></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Development Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>409. Longest Palindrome</title>
       <link href="/longest-palindrome/"/>
       <url>/longest-palindrome/</url>
@@ -765,11 +790,11 @@
       
         <tags>
             
+            <tag> docker </tag>
+            
             <tag> database </tag>
             
             <tag> postgresql </tag>
-            
-            <tag> docker </tag>
             
             <tag> mysql </tag>
             
@@ -798,11 +823,11 @@
             
             <tag> python </tag>
             
-            <tag> docker </tag>
-            
             <tag> package management </tag>
             
             <tag> pipenv </tag>
+            
+            <tag> docker </tag>
             
             <tag> django </tag>
             

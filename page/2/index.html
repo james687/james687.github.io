@@ -134,6 +134,63 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 446 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/use-dokku-on-digitalocean/">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
+            
+        </h1>
+        <div class="content">
+            <p>因為 Heroku 現在要收費了，原本放在上面<a href="https://github.com/james687/Tweetme">用免費方案的 project</a> 就需要找新的方法。於是找到了 <a href="https://github.com/dokku/dokku">Dokku</a>，他的 GitHub page 介紹如下：</p>
+<blockquote>
+<p>Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.</p>
+</blockquote>
+<p>的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/use-dokku-on-digitalocean/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
                 
                 <div class="level-item">
@@ -654,66 +711,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分鐘 閱讀文 (大約 265 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/merge-two-sorted-lists/">Merge Two Sorted Lists</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">題目</a><br>思路：</p>
-<ol>
-<li><p>因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來</p>
-</li>
-<li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p>
-</li>
-<li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> l1.val &gt; l2.val:</span><br><span class="line">    curr.next = l2</span><br><span class="line">    l2 = l2.next</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    curr.next = l1</span><br><span class="line">    l1 = l1.next</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/merge-two-sorted-lists/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -782,7 +779,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            36
+                            37
                         </p>
                     </a>
                 </div>
@@ -850,7 +847,7 @@
                 <span class="level-item">Development Note</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Leetcode/">
@@ -899,6 +896,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/diff-between-extend-and-plusequal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="[Python] list 用 `.extend()` 與 `+=` 的差別">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-17T07:19:11.000Z">2023-04-17</time></div>
+                    <a href="/diff-between-extend-and-plusequal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Python] list 用 `.extend()` 與 `+=` 的差別</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -976,25 +992,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/reverse-linked-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Reverse Linked List">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-13T01:04:56.000Z">2023-04-13</time></div>
-                    <a href="/reverse-linked-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reverse Linked List</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1012,7 +1009,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1318,7 +1315,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1381,6 +1378,25 @@
         
         <article class="media">
             
+            <a href="/diff-between-extend-and-plusequal/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="[Python] list 用 `.extend()` 與 `+=` 的差別">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-17T07:19:11.000Z">2023-04-17</time></div>
+                    <a href="/diff-between-extend-and-plusequal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[Python] list 用 `.extend()` 與 `+=` 的差別</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/longest-palindrome/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="409. Longest Palindrome">
@@ -1455,25 +1471,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/reverse-linked-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Reverse Linked List">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-13T01:04:56.000Z">2023-04-13</time></div>
-                    <a href="/reverse-linked-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Reverse Linked List</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1491,7 +1488,7 @@
                     <span class="level-item">四月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1797,7 +1794,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 

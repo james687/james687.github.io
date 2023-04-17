@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-14T11:41:08.679Z</updated>
+  <updated>2023-04-17T07:45:25.668Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Python] list 用 `.extend()` 與 `+=` 的差別</title>
+    <link href="https://blog.jamesho.website/diff-between-extend-and-plusequal/"/>
+    <id>https://blog.jamesho.website/diff-between-extend-and-plusequal/</id>
+    <published>2023-04-17T07:19:11.000Z</published>
+    <updated>2023-04-17T07:45:25.668Z</updated>
+    
+    <content type="html"><![CDATA[<p>譬如有兩個 list <code>a</code> 和 <code>b</code>，使用 <code>a.extend(b)</code> 和 <code>a += b</code> 有什麼相同或不同？有沒有什麼 general 的 best practice for using one rather than the other?</p><p>其實在這個情境下，這兩個用法幾乎一樣。它們都會直接 in-place 的修改 <code>a</code>，把 <code>b</code> 裡面的元素加到 <code>a</code> 的後面</p><ul><li><code>+=</code> 會呼叫 list 的 <code>.__iadd__()</code> 來做 in-place 的修改<ul><li>所以在這個情境下，<code>b</code> 可以是任何 iterable，譬如 <code>[] += {}</code> 會得到 <code>[]</code></li><li>假如用 <code>+=</code> 的是 immutable 的 type，Python 發現沒有 <code>.__iadd__()</code>，接著就會呼叫它的 <code>.__add__()</code>，此情況下 <code>a += b</code> 等同於 <code>a = a + b</code></li></ul></li></ul><p>以下列出少數有差別的地方：<a id="more"></a></p><ul><li><code>+=</code> 不能用在 tuple 裡的 list，但 <code>.extend()</code> 可以<ul><li>雖然說 <code>+=</code> 所呼叫的 <code>.__iadd__()</code> 是 in-place 修改，做完後 <code>a</code> 的 reference 還是會一樣，但過程中還是會以某種方式動到 reference，只是最後會有個 reassign 給自己的動作<a href="#anno1">[註1]</a>，所以會有一樣的 reference</li></ul></li><li><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend/24261311#24261311"><code>+=</code> 不能用在 non-local variable，但 <code>.extend()</code> 可以</a></li><li><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend/37762884#37762884"><code>+=</code> 不能 chain function call, 但 <code>.extend()</code> 可以</a></li><li>兩者速度依不同情況稍有差異<ul><li>可參考<a href="#anno1">註1</a>這個 comment 下兩個接續的 comments: <a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754463_28119966">comment 1</a>, <a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754732_28119966">comment 2</a></li></ul></li></ul><p><strong>結論</strong><br>可以都用 <code>.extend()</code> 就好，consistency 也是一個重點。對於有差別的部分，一般情況下速度的差異可以忽略，其他的差別都是 <code>.extend()</code> 比較好，而且它在語意上的描述也也更貼切。</p><p><em>參考資料：</em></p><ul><li><p><a href="https://stackoverflow.com/questions/3653298/concatenating-two-lists-difference-between-and-extend">Concatenating two lists - difference between ‘+=’ and extend()</a></p></li><li><p><a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend">What is the difference between Python’s list methods append and extend?</a></p><ul><li><p><a name="anno1"></a><a href="https://stackoverflow.com/questions/252703/what-is-the-difference-between-pythons-list-methods-append-and-extend#comment90754266_28119966">註1</a>:</p><blockquote><p><code>l1 += l2</code> and <code>l1.extend(l2)</code> ultimately execute the same code (the <code>list_extend</code> function in <code>listobject.c</code>). The only differences are: 1. <code>+=</code> reassigns <code>l1</code> (to itself for <code>list</code>s, but the reassignment supports immutable types that aren’t the same object after), which makes it illegal if <code>l1</code> is actually an attribute of an immutable object; for example, <code>t = ([],)</code>, <code>t[0] += lst</code> would fail, while <code>t[0].extend(lst)</code> would work. 2. <code>l1 += l2</code> uses dedicated bytecodes, while <code>l1.extend(l2)</code> uses generalized method dispatch; this makes <code>+=</code> faster than <code>extend</code>.</p></blockquote></li></ul></li><li><p><a href="https://stackoverflow.com/questions/2347265/why-does-behave-unexpectedly-on-lists">Why does += behave unexpectedly on lists?</a></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;譬如有兩個 list &lt;code&gt;a&lt;/code&gt; 和 &lt;code&gt;b&lt;/code&gt;，使用 &lt;code&gt;a.extend(b)&lt;/code&gt; 和 &lt;code&gt;a += b&lt;/code&gt; 有什麼相同或不同？有沒有什麼 general 的 best practice for using one rather than the other?&lt;/p&gt;
+&lt;p&gt;其實在這個情境下，這兩個用法幾乎一樣。它們都會直接 in-place 的修改 &lt;code&gt;a&lt;/code&gt;，把 &lt;code&gt;b&lt;/code&gt; 裡面的元素加到 &lt;code&gt;a&lt;/code&gt; 的後面&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;+=&lt;/code&gt; 會呼叫 list 的 &lt;code&gt;.__iadd__()&lt;/code&gt; 來做 in-place 的修改&lt;ul&gt;
+&lt;li&gt;所以在這個情境下，&lt;code&gt;b&lt;/code&gt; 可以是任何 iterable，譬如 &lt;code&gt;[] += {}&lt;/code&gt; 會得到 &lt;code&gt;[]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;假如用 &lt;code&gt;+=&lt;/code&gt; 的是 immutable 的 type，Python 發現沒有 &lt;code&gt;.__iadd__()&lt;/code&gt;，接著就會呼叫它的 &lt;code&gt;.__add__()&lt;/code&gt;，此情況下 &lt;code&gt;a += b&lt;/code&gt; 等同於 &lt;code&gt;a = a + b&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下列出少數有差別的地方：
+    
+    </summary>
+    
+    
+      <category term="Development Note" scheme="https://blog.jamesho.website/categories/Development-Note/"/>
+    
+    
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>409. Longest Palindrome</title>
@@ -611,36 +643,6 @@
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Merge Two Sorted Lists</title>
-    <link href="https://blog.jamesho.website/merge-two-sorted-lists/"/>
-    <id>https://blog.jamesho.website/merge-two-sorted-lists/</id>
-    <published>2023-02-09T10:27:23.000Z</published>
-    <updated>2023-03-30T04:48:20.721Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">題目</a><br>思路：</p><ol><li><p>因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來</p></li><li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p></li><li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> l1.val &gt; l2.val:</span><br><span class="line">    curr.next = l2</span><br><span class="line">    l2 = l2.next</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    curr.next = l1</span><br><span class="line">    l1 = l1.next</span><br></pre></td></tr></table></figure><a id="more"></a></li><li><p>post processing: 跳出迴圈後的情形是 <code>l1</code>, <code>l2</code> 其中有一個是 <code>None</code> 或兩個都是 <code>None</code>，此時就把目標 linked list 接上那個不是 <code>None</code> 的即可</p></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeTwoLists</span><span class="params">(self, l1: Optional[ListNode], l2: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    dummy_head = ListNode()  <span class="comment"># 需有一個 dummy_head 可以在最後回傳答案時使用</span></span><br><span class="line">    curr = dummy_head  <span class="comment"># 也要有個 curr 可以在每次迴圈中跟著移動</span></span><br><span class="line">    <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">        <span class="keyword">if</span> l1.val &gt; l2.val:</span><br><span class="line">            curr.next = l2</span><br><span class="line">            l2 = l2.next</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            curr.next = l1</span><br><span class="line">            l1 = l1.next</span><br><span class="line">        curr = curr.next</span><br><span class="line">    curr.next = l1 <span class="keyword">or</span> l2  <span class="comment"># post processing</span></span><br><span class="line">    <span class="keyword">return</span> dummy_head.next</span><br></pre></td></tr></table></figure><p>P.S. 有些思路跟 <a href="https://james687.github.io/2023/02/03/add-two-numbers/">Add Two Numbers</a> 重複，這篇就不多寫了</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/merge-two-sorted-lists/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;先設 &lt;code&gt;while True:&lt;/code&gt;，等寫迴圈內容時再來確定 while 可繼續執行的條件&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;寫第一 part (如下) 後發現，while 條件需要 &lt;code&gt;l1 and l2&lt;/code&gt;&lt;/p&gt;
- &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; l1.val &amp;gt; l2.val:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    curr.next = l2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    l2 = l2.next&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    curr.next = l1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    l1 = l1.next&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
   </entry>
   
