@@ -765,11 +765,11 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> database </tag>
             
             <tag> postgresql </tag>
+            
+            <tag> docker </tag>
             
             <tag> mysql </tag>
             
@@ -798,11 +798,11 @@
             
             <tag> python </tag>
             
+            <tag> docker </tag>
+            
             <tag> package management </tag>
             
             <tag> pipenv </tag>
-            
-            <tag> docker </tag>
             
             <tag> django </tag>
             
