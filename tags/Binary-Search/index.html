@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 631 個字)
+                    5 分鐘 閱讀文 (大約 742 個字)
                 </span>
                 
                 
@@ -169,12 +169,12 @@
         <div class="content">
             <p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p>
 <ol>
-<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]</p>
+<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]，目標是移動這兩個指標，縮小答案範圍，直到我們可以依此範圍找出答案為止</p>
 </li>
 <li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p>
 <ul>
-<li>此時會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？判斷依據為在迴圈裡變更完 left or right 之後，<strong>不能造成無窮迴圈</strong></li>
-<li>但此時還沒寫迴圈內容，所以可以先直觀的設定一個，譬如 <code>&lt;</code>，等寫完迴圈內容再來驗證是否適合
+<li>此時可能會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？承上，我們的目的是縮小範圍到可以找到答案為止，也就是說當縮小到滿意的範圍，我們就可以跳出迴圈。所以我們只需要用 <code>&lt;</code>，因為當 <code>left == right</code> 的時候就會跳出迴圈，而這範圍已經足以讓我們找到答案了<ul>
+<li>當然要用 <code>&lt;=</code> 也是可以解的出來，程式碼會稍有不同，這邊只是記錄我理解起來比較順的思路
         </div>
         
         
