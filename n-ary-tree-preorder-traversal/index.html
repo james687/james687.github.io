@@ -7,21 +7,24 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Remove Duplicates from Sorted List - James&#39; Blog</title>
+<title>589. N-ary Tree Preorder Traversal - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目思路：  既然是 Linked List，我們可以宣告一個指標 curr 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)  不能直接用 head 來移動，因為到時候回傳答案的時候需要回傳這個 head   設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 whil">
+    <meta name="description" content="題目思路  樹的問題會先從遞迴來想比較直觀，首先找出最小可重複動作來作為 recursive case 先假設我們可以用題目給的 method 直接當作遞迴的函式，也就是說我們遞迴函式的回傳，是 preorder 排序的 node values 最小可重複動作：對於我這個 node 來說，回傳 preordered values  Python 3 solution1234567def preor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Remove Duplicates from Sorted List">
-<meta property="og:url" content="https://blog.jamesho.website/remove-duplicates-from-sorted-list/index.html">
+<meta property="og:title" content="589. N-ary Tree Preorder Traversal">
+<meta property="og:url" content="https://blog.jamesho.website/n-ary-tree-preorder-traversal/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目思路：  既然是 Linked List，我們可以宣告一個指標 curr 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)  不能直接用 head 來移動，因為到時候回傳答案的時候需要回傳這個 head   設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 whil">
+<meta property="og:description" content="題目思路  樹的問題會先從遞迴來想比較直觀，首先找出最小可重複動作來作為 recursive case 先假設我們可以用題目給的 method 直接當作遞迴的函式，也就是說我們遞迴函式的回傳，是 preorder 排序的 node values 最小可重複動作：對於我這個 node 來說，回傳 preordered values  Python 3 solution1234567def preor">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
-<meta property="article:published_time" content="2023-02-09T03:47:23.000Z">
-<meta property="article:modified_time" content="2023-03-30T04:48:56.471Z">
+<meta property="article:published_time" content="2023-04-18T05:59:22.000Z">
+<meta property="article:modified_time" content="2023-04-18T06:41:45.493Z">
 <meta property="article:author" content="James Ho">
-<meta property="article:tag" content="linked list">
+<meta property="article:tag" content="tree">
+<meta property="article:tag" content="depth-first search">
+<meta property="article:tag" content="recursion">
+<meta property="article:tag" content="stack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.jamesho.website/images/og_image.png">
 
@@ -90,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Remove Duplicates from Sorted List" height="28">
+                <img src="/images/logo.svg" alt="589. N-ary Tree Preorder Traversal" height="28">
             
             </a>
         </div>
@@ -138,7 +141,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time>
+                <time class="level-item has-text-grey" datetime="2023-04-18T05:59:22.000Z">2023-04-18</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
@@ -148,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 466 個字)
+                    2 分鐘 閱讀文 (大約 285 個字)
                 </span>
                 
                 
@@ -157,53 +160,30 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Remove Duplicates from Sorted List
+                589. N-ary Tree Preorder Traversal
             
         </h1>
         <div class="content">
-            <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p>
+            <p><a href="https://leetcode.com/problems/n-ary-tree-preorder-traversal/">題目</a><br>思路</p>
 <ol>
-<li><p>既然是 Linked List，我們可以宣告一個指標 <code>curr</code> 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p>
-<ul>
-<li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li>
-</ul>
-</li>
-<li><p>設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</p>
-<a id="more"></a></li>
-<li><p>寫 while 內容</p>
-<ol>
-<li><p>假如 <code>curr.val</code> 跟下一個一樣，就把 next 接到下下個</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> curr.val == curr.next.val:</span><br><span class="line">    curr.next = curr.next.next</span><br></pre></td></tr></table></figure></li>
-<li><p>但假如下下個也一樣呢？=&gt; 把上面的 <code>if</code> 改成 <code>while</code>，讓最後 <code>curr.next</code> 所指的 val 一定是不一樣的</p>
-</li>
-<li><p>改成 while 之後，檢查條件會被重複執行。因為 <code>curr.next</code> 有可能會是 <code>None</code>，所以條件改為<br><code>while curr.val == (curr.next and curr.next.val):</code></p>
-</li>
-<li><p>離開 while 之後：<br><code>curr = curr.next  # 把指標移到下一個 node，以便下次的檢查</code></p>
-</li>
+<li>樹的問題會先從遞迴來想比較直觀，首先找出最小可重複動作來作為 recursive case</li>
+<li>先假設我們可以用題目給的 method 直接當作遞迴的函式，也就是說我們遞迴函式的回傳，是 preorder 排序的 node values</li>
+<li>最小可重複動作：對於我這個 node 來說，回傳 preordered values</li>
 </ol>
-</li>
-<li><p>回去修改 while 條件：什麼條件成立我們才能繼續檢查(執行 while 內容)？</p>
-<ol>
-<li>首先 <code>curr</code> 不能是 <code>None</code><ul>
-<li><code>curr</code> 有可能是 <code>None</code>，因為我們一直把它指向下一個 Node，到了盡頭 <code>curr</code> 就會是 <code>None</code></li>
-</ul>
-</li>
-<li>即使 <code>curr.next</code> 是 <code>None</code>，還是可以順利執行迴圈內容</li>
-<li>結論：條件為 <code>while curr:</code></li>
+<figure class="highlight python"><figcaption><span>Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorder</span><span class="params">(self, root: <span class="string">'Node'</span>)</span> -&gt; List[int]:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    result = [root.val]</span><br><span class="line">    <span class="keyword">for</span> child <span class="keyword">in</span> root.children <span class="keyword">or</span> []:</span><br><span class="line">        result.extend(self.preorder(child))</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="假如用迭代的方式來解呢？"><a href="#假如用迭代的方式來解呢？" class="headerlink" title="假如用迭代的方式來解呢？"></a>假如用迭代的方式來解呢？</h3><ol>
+<li>用 stack, 把要處理的放入，迴圈內每次都拿一個出來，做 <code>最小可重複動作</code>，做到 stack 沒東西為止</li>
+<li>注意在放入 <code>child</code> 的時候這邊是用 reverse order 來放，因為我到時候拿出來的時候想用 <code>.pop()</code>(O(1) 時間複雜度) 而不是 <code>.pop(0)</code>(O(n) 時間複雜度)</li>
 </ol>
-</li>
-<li><p>離開 while 之後就大功告成，回傳答案 <code>head</code></p>
-</li>
-</ol>
-<p>Python3 solution:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head: Optional[ListNode])</span> -&gt; Optional[ListNode]:</span></span><br><span class="line">    curr = head  <span class="comment"># 等一下可以在 while 迴圈中移動的指標</span></span><br><span class="line">    <span class="keyword">while</span> curr:</span><br><span class="line">        <span class="keyword">while</span> curr.val == (curr.next <span class="keyword">and</span> curr.next.val):</span><br><span class="line">            curr.next = curr.next.next</span><br><span class="line">        curr = curr.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>Python 3 iterative solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preorder</span><span class="params">(self, root: <span class="string">'Node'</span>)</span> -&gt; List[int]:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    stack = [root]</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        res.append(node.val)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node.children:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> child <span class="keyword">in</span> reversed(node.children):</span><br><span class="line">            stack.append(child)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/linked-list/" rel="tag">linked list</a>
+                    <a class="has-link-grey -link" href="/tags/depth-first-search/" rel="tag">depth-first search</a>, <a class="has-link-grey -link" href="/tags/recursion/" rel="tag">recursion</a>, <a class="has-link-grey -link" href="/tags/stack/" rel="tag">stack</a>, <a class="has-link-grey -link" href="/tags/tree/" rel="tag">tree</a>
                 </div>
             </div>
         </div>
@@ -220,17 +200,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/merge-two-sorted-lists/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Merge Two Sorted Lists</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/add-two-numbers/">
-                <span class="level-item">Add Two Numbers</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/diff-between-extend-and-plusequal/">
+                <span class="level-item">[Python] list 用 `.extend()` 與 `+=` 的差別</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -246,8 +219,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://blog.jamesho.website/remove-duplicates-from-sorted-list/';
-        this.page.identifier = 'remove-duplicates-from-sorted-list/';
+        this.page.url = 'https://blog.jamesho.website/n-ary-tree-preorder-traversal/';
+        this.page.identifier = 'n-ary-tree-preorder-traversal/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -1393,7 +1366,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Remove Duplicates from Sorted List" height="28">
+                    <img src="/images/logo.svg" alt="589. N-ary Tree Preorder Traversal" height="28">
                 
                 </a>
                 <p class="is-size-7">
