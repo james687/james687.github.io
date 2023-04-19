@@ -7,16 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整 - James&#39; Blog</title>
+<title>438. Find All Anagrams in a String - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/archives/page/3/index.html">
+    <meta name="description" content="題目思路：怎麼判斷兩個字串是不是 anagram?  可以把兩個字串都做排序，再看看是否相等，但這樣每次都要多花 O(n) 時間 可以計算每個字母出現的頻率，再看看兩個字串的計算結果是否相等。雖然單獨算也是要 O(n)，但假如搭配 sliding window 移動的時候一個個字母加入計算，就不會有額外的時間複雜度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="438. Find All Anagrams in a String">
+<meta property="og:url" content="https://blog.jamesho.website/find-all-anagrams-in-a-string/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="題目思路：怎麼判斷兩個字串是不是 anagram?  可以把兩個字串都做排序，再看看是否相等，但這樣每次都要多花 O(n) 時間 可以計算每個字母出現的頻率，再看看兩個字串的計算結果是否相等。雖然單獨算也是要 O(n)，但假如搭配 sliding window 移動的時候一個個字母加入計算，就不會有額外的時間複雜度">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
+<meta property="article:published_time" content="2023-04-19T15:42:40.000Z">
+<meta property="article:modified_time" content="2023-04-19T15:42:14.659Z">
 <meta property="article:author" content="James Ho">
+<meta property="article:tag" content="hash table">
+<meta property="article:tag" content="string">
+<meta property="article:tag" content="sliding window">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.jamesho.website/images/og_image.png">
 
@@ -85,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="438. Find All Anagrams in a String" height="28">
             
             </a>
         </div>
@@ -127,257 +134,101 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2023
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-19T15:42:40.000Z">2023-04-19</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time>
-                        <a href="/merge-two-binary-trees/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Binary Trees</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-03-15T04:12:23.000Z">2023-03-15</time>
-                        <a href="/balanced-binary-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Balanced Binary Tree</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time>
-                        <a href="/same-tree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Same Tree</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 363 個字)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
-                        <a href="/merge-two-sorted-lists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Merge Two Sorted Lists</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time>
-                        <a href="/remove-duplicates-from-sorted-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Remove Duplicates from Sorted List</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time>
-                        <a href="/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Add Two Numbers</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                438. Find All Anagrams in a String
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/">題目</a><br>思路：怎麼判斷兩個字串是不是 anagram?</p>
+<ul>
+<li>可以把兩個字串都做排序，再看看是否相等，但這樣每次都要多花 O(n) 時間</li>
+<li>可以計算每個字母出現的頻率，再看看兩個字串的計算結果是否相等。雖然單獨算也是要 O(n)，但假如搭配 sliding window 移動的時候一個個字母加入計算，就不會有額外的時間複雜度<a id="more"></a></li>
+</ul>
+<figure class="highlight python"><figcaption><span>Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findAnagrams</span><span class="params">(self, s: str, p: str)</span> -&gt; List[int]:</span></span><br><span class="line">    p_len = len(p)</span><br><span class="line">    <span class="keyword">if</span> p_len &gt; len(s):</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    target_freq = defaultdict(int)  <span class="comment"># Character frequency of possible anagram.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Character frequency of `p`.</span></span><br><span class="line">    p_freq = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> p:</span><br><span class="line">        p_freq[c] += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="comment"># 把超過 p 長度的部分扣掉，維持 window 寬 (想像 window 往右，這邊移掉左邊一格)</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= p_len:</span><br><span class="line">            target_freq[s[i - p_len]] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> target_freq[s[i - p_len]] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">del</span> target_freq[s[i - p_len]]  <span class="comment"># 個數減為 0 的話記得要把整個 key 拿掉，不然不可能會跟 `p_freq` 相等</span></span><br><span class="line"></span><br><span class="line">        target_freq[s[i]] += <span class="number">1</span>  <span class="comment"># Frequency 計算：加入當前字元 (`i` 是 sliding window 最右邊的 index)</span></span><br><span class="line">        <span class="keyword">if</span> target_freq == p_freq:</span><br><span class="line">            res.append(i - p_len + <span class="number">1</span>)  <span class="comment"># 加入 sliding window 起始點到答案中</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>P.S.<br>字母頻率計算也可以用 <code>collections.Counter</code>，跟 <code>defaultdict(int)</code> 使用方法一樣，範例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> collections</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = collections.Counter(<span class="string">'geeeg'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">'e'</span>: <span class="number">3</span>, <span class="string">'g'</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="string">'t'</span>] += <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">'e'</span>: <span class="number">3</span>, <span class="string">'g'</span>: <span class="number">2</span>, <span class="string">'t'</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/hash-table/" rel="tag">hash table</a>, <a class="has-link-grey -link" href="/tags/sliding-window/" rel="tag">sliding window</a>, <a class="has-link-grey -link" href="/tags/string/" rel="tag">string</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2022
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
-                        <a href="/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
-                        <a href="/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-07-25T08:55:03.000Z">2022-07-25</time>
-                        <a href="/why-dict-o1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">為什麼 Python dict 的 get item operation 時間複雜度為 O(1) ？</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2021
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2021-01-14T08:31:44.000Z">2021-01-14</time>
-                        <a href="/add-ssh-steps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在 Mac 加入 ssh key 的步驟</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
-    </div>
-</div>
 
-    
 
-    
+
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">上一頁</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/flood-fill/">
+                <span class="level-item">733. Flood Fill</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/4/">下一頁</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-            <li><a class="pagination-link is-current" href="/archives/page/3/">3</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/4/">4</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.jamesho.website/find-all-anagrams-in-a-string/';
+        this.page.identifier = 'find-all-anagrams-in-a-string/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
 </div>
 </div>
                 
@@ -1537,7 +1388,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="438. Find All Anagrams in a String" height="28">
                 
                 </a>
                 <p class="is-size-7">
