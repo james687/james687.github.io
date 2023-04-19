@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-18T06:41:45.493Z</updated>
+  <updated>2023-04-19T07:54:59.823Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>733. Flood Fill</title>
+    <link href="https://blog.jamesho.website/flood-fill/"/>
+    <id>https://blog.jamesho.website/flood-fill/</id>
+    <published>2023-04-19T07:27:31.000Z</published>
+    <updated>2023-04-19T07:54:59.823Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/flood-fill/">題目</a><br>紀錄一下一開始的思路，檢討錯誤，再整理<a href="#answer">最後的答案</a>。一開始的想法：</p><ol><li>這應該可以分解成最小可重複動作，用遞迴解看看</li><li>覺得可以用原本的 method 當遞迴函式，把 <code>image</code>, <code>color</code> 照樣傳入，<code>sr</code>, <code>sc</code> 為該點的座標</li><li>最小可重複動作：從當下這點擴散到周圍四個點<a id="more"></a></li></ol><figure class="highlight python"><figcaption><span>Wrong solution at first</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">floodFill</span><span class="params">(self, image: List[List[int]], sr: int, sc: int, color: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">    self_color = image[sr][sc]</span><br><span class="line">    m = len(image)</span><br><span class="line">    n = len(image[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Base case</span></span><br><span class="line">    <span class="keyword">if</span> sr &lt; <span class="number">0</span> <span class="keyword">or</span> sr &gt;= m <span class="keyword">or</span> sc &lt; <span class="number">0</span> <span class="keyword">or</span> sc &gt;= n <span class="keyword">or</span> color == self_color:</span><br><span class="line">        <span class="keyword">return</span> image</span><br><span class="line">    l_color = image[sr - <span class="number">1</span>][sc]</span><br><span class="line">    r_color = image[sr + <span class="number">1</span>][sc]</span><br><span class="line">    u_color = image[sr][sc + <span class="number">1</span>]</span><br><span class="line">    d_color = image[sr][sc - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> self_color <span class="keyword">not</span> <span class="keyword">in</span> (l_color, r_color, u_color, d_color):</span><br><span class="line">        image[sr][sc] = color</span><br><span class="line">        <span class="keyword">return</span> image</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Recursive case</span></span><br><span class="line">    <span class="keyword">if</span> l_color == self_color:</span><br><span class="line">        image[sr][sc] = color</span><br><span class="line">        self.floodFill(image, sr - <span class="number">1</span>, sc, color)</span><br><span class="line">    <span class="keyword">if</span> r_color == self_color:</span><br><span class="line">        image[sr][sc] = color</span><br><span class="line">        self.floodFill(image, sr + <span class="number">1</span>, sc, color)</span><br><span class="line">    <span class="keyword">if</span> u_color == self_color:</span><br><span class="line">        image[sr][sc] = color</span><br><span class="line">        self.floodFill(image, sr, sc + <span class="number">1</span>, color)</span><br><span class="line">    <span class="keyword">if</span> d_color == self_color:</span><br><span class="line">        image[sr][sc] = color</span><br><span class="line">        self.floodFill(image, sr, sc - <span class="number">1</span>, color)</span><br></pre></td></tr></table></figure><p>結果發生 index out of bound error (舉例，當 <code>sr == m - 1</code> 時，再用 <code>image[sr + 1]</code> 就會遇到)</p><p><strong>檢討：</strong></p><ul><li><p>會用到 <code>image[sr + 1]</code> 是為了要取到鄰近的顏色來判斷是不是應該去 flood，而那些判斷只是為了決定是否要執行遞迴呼叫 =&gt; <strong>判斷是否該執行遞迴呼叫應該直接在該遞迴函式的 base case 裡做判斷</strong></p><ul><li>不去取顏色自然就不會遇到這個錯誤</li><li>改成在 base case 的判斷 <code>我這個點的顏色是不是跟起點的顏色一樣</code></li></ul></li><li><p>中間這段沒必要，此情境已包含於那些遞迴呼叫裡</p>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> self_color <span class="keyword">not</span> <span class="keyword">in</span> (l_color, r_color, u_color, d_color):</span><br><span class="line">    image[sr][sc] = color</span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></table></figure></li><li><p>可以把題目的 <code>color</code> 參數名改為 <code>new_color</code>，增加可讀性</p></li><li><p>可以另外用一個 inner function 來當遞迴函式，因為實際會傳不一樣參數的只有座標，另兩個其實可以不用傳入，另外用一個 inner function 可以讓程式更簡潔易讀</p></li></ul><p><a name="answer"></a>根據上面的檢討，修改後的答案如下：</p><figure class="highlight python"><figcaption><span>Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">floodFill</span><span class="params">(self, image: List[List[int]], sr: int, sc: int, new_color: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">    ori_color = image[sr][sc]</span><br><span class="line">    m = len(image)</span><br><span class="line">    n = len(image[<span class="number">0</span>])</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flood</span><span class="params">(row, col)</span>:</span></span><br><span class="line">        <span class="comment"># Base case</span></span><br><span class="line">        <span class="keyword">if</span> row &lt; <span class="number">0</span> <span class="keyword">or</span> row &gt;= m <span class="keyword">or</span> col &lt; <span class="number">0</span> <span class="keyword">or</span> col &gt;= n:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">if</span> image[row][col] != ori_color <span class="keyword">or</span> image[row][col] == new_color:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        image[row][col] = new_color</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Recursive case</span></span><br><span class="line">        flood(row + <span class="number">1</span>, col)</span><br><span class="line">        flood(row - <span class="number">1</span>, col)</span><br><span class="line">        flood(row, col + <span class="number">1</span>)</span><br><span class="line">        flood(row, col - <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">    flood(sr, sc)</span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></table></figure><p>提一下 base case 裡這個判斷 <code>image[row][col] == new_color</code>，它主要是在看假如這個點已經 flood 過了，就直接 <code>return</code>，但還有一種情形：沒 flood 過，這個點本來就是 new_color。假如是這種情況，又再細分為以下兩個情形：</p><ul><li><code>ori_color != new_color</code>: 假如是這種情況，在前面的 <code>image[row][col] != ori_color</code> 就會滿足而 <code>return</code> 了</li><li><code>ori_color == new_color</code>: 此時也應該 <code>return</code>，因為假如是這樣，那本來整個 image 就不會因為 <code>floodFill</code> 而變</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/flood-fill/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;紀錄一下一開始的思路，檢討錯誤，再整理&lt;a href=&quot;#answer&quot;&gt;最後的答案&lt;/a&gt;。一開始的想法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;這應該可以分解成最小可重複動作，用遞迴解看看&lt;/li&gt;
+&lt;li&gt;覺得可以用原本的 method 當遞迴函式，把 &lt;code&gt;image&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt; 照樣傳入，&lt;code&gt;sr&lt;/code&gt;, &lt;code&gt;sc&lt;/code&gt; 為該點的座標&lt;/li&gt;
+&lt;li&gt;最小可重複動作：從當下這點擴散到周圍四個點
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
+    
+      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
+    
+      <category term="matrix" scheme="https://blog.jamesho.website/tags/matrix/"/>
+    
+  </entry>
   
   <entry>
     <title>589. N-ary Tree Preorder Traversal</title>
@@ -608,43 +641,6 @@
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Balanced Binary Tree</title>
-    <link href="https://blog.jamesho.website/balanced-binary-tree/"/>
-    <id>https://blog.jamesho.website/balanced-binary-tree/</id>
-    <published>2023-03-15T04:12:23.000Z</published>
-    <updated>2023-03-30T04:46:34.670Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/balanced-binary-tree/description/">題目</a></p><h3 id="做法一"><a href="#做法一" class="headerlink" title="做法一"></a>做法一</h3><p>思路：</p><ol><li>依照 height-balanced 的定義，需要符合<strong>每個</strong>node 的左右子樹高度差都不大於 1</li><li>假設有個 function <code>height</code> 可以回傳 node 的 height<ul><li>先不實作內容</li></ul></li><li>使用這個 <code>height</code> 完成 <code>isBalanced</code><a id="more"></a></li><li>實作 <code>height</code> 的內容</li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isBalanced</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:  <span class="comment"># 終止條件</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        lh = height(node.left)</span><br><span class="line">        rh = height(node.right)</span><br><span class="line">        <span class="keyword">return</span> max(lh, rh) + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:  <span class="comment"># 終止條件</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    lh = height(root.left)</span><br><span class="line">    rh = height(root.right)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 即使左右子樹高度差不大於一，子樹本身還是有可能是不平衡的，所以要再加上後面的 `isBalanced` 判斷</span></span><br><span class="line">    <span class="keyword">return</span> abs(lh - rh) &lt;= <span class="number">1</span> <span class="keyword">and</span> self.isBalanced(root.left) <span class="keyword">and</span> self.isBalanced(root.right)</span><br></pre></td></tr></table></figure><p>假設有 n 個 node, 樹的高度為 h</p><ul><li>時間複雜度：O(n^2)<ul><li><code>isBalanced</code> 除了呼叫自己之外的複雜度為 O(n)<ul><li>呼叫了 <code>n - 1</code> 次 <code>height</code></li></ul></li><li>每個節點都呼叫了一次 <code>isBalanced</code></li></ul></li><li>空間複雜度：O(h)<ul><li>因為遞迴的呼叫有 DFS 的特性，會從子節點一直呼叫到最下面的葉子節點，所以需要把那些 function calls 放進 stack 裡，等到葉子節點的呼叫到了再一一拿出來執行。因此 stack 的大小需等於呼叫的次數，也就是由根節點走到葉子節點需經過幾個點，即這棵樹的高度<ul><li>只需考慮一次遞迴呼叫所需空間，不需考慮全部遞迴呼叫 (譬如在 function 裡呼叫了自己兩次)，因為程式同時只會處理一個遞迴呼叫</li></ul></li></ul></li></ul><h3 id="做法二"><a href="#做法二" class="headerlink" title="做法二"></a>做法二</h3><p>思路：</p><ol><li>有沒有辦法優化上面做法的時間複雜度呢？因為上面在算高度的時候就已經會算出每個節點的左右子樹的高度了，此時就可以順便看看是否平衡，不用等到最後再遞迴呼叫 <code>isBalanced</code> 增加複雜度</li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isBalanced</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; bool:</span></span><br><span class="line">    self.balanced = <span class="literal">True</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        lh = height(node.left)</span><br><span class="line">        rh = height(node.right)</span><br><span class="line">        <span class="keyword">if</span> abs(lh - rh) &gt; <span class="number">1</span>:</span><br><span class="line">            self.balanced = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> max(lh, rh) + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    height(root)</span><br><span class="line">    <span class="keyword">return</span> self.balanced</span><br></pre></td></tr></table></figure><p>假設有 n 個 node, 樹的高度為 h</p><ul><li>時間複雜度：O(n)<ul><li>每個節點都做過一次 <code>height</code></li></ul></li><li>空間複雜度：O(h)<ul><li>同 <code>做法一</code> 的分析</li></ul></li></ul><p>類似題：<a href="https://leetcode.com/problems/symmetric-tree/description/">Symmetric Tree</a> 用 recursive 方法來解</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/balanced-binary-tree/description/&quot;&gt;題目&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;做法一&quot;&gt;&lt;a href=&quot;#做法一&quot; class=&quot;headerlink&quot; title=&quot;做法一&quot;&gt;&lt;/a&gt;做法一&lt;/h3&gt;&lt;p&gt;思路：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;依照 height-balanced 的定義，需要符合&lt;strong&gt;每個&lt;/strong&gt;node 的左右子樹高度差都不大於 1&lt;/li&gt;
-&lt;li&gt;假設有個 function &lt;code&gt;height&lt;/code&gt; 可以回傳 node 的 height&lt;ul&gt;
-&lt;li&gt;先不實作內容&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;使用這個 &lt;code&gt;height&lt;/code&gt; 完成 &lt;code&gt;isBalanced&lt;/code&gt;
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
-    
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
-      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
-    
-      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
   </entry>
   
