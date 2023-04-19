@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-04-19T15:42:40.000Z">
-<meta property="article:modified_time" content="2023-04-19T15:42:14.659Z">
+<meta property="article:modified_time" content="2023-04-19T15:51:40.661Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="hash table">
 <meta property="article:tag" content="string">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 363 個字)
+                    3 分鐘 閱讀文 (大約 375 個字)
                 </span>
                 
                 
@@ -171,6 +171,10 @@
 <figure class="highlight python"><figcaption><span>Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findAnagrams</span><span class="params">(self, s: str, p: str)</span> -&gt; List[int]:</span></span><br><span class="line">    p_len = len(p)</span><br><span class="line">    <span class="keyword">if</span> p_len &gt; len(s):</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    target_freq = defaultdict(int)  <span class="comment"># Character frequency of possible anagram.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Character frequency of `p`.</span></span><br><span class="line">    p_freq = defaultdict(int)</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> p:</span><br><span class="line">        p_freq[c] += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="comment"># 把超過 p 長度的部分扣掉，維持 window 寬 (想像 window 往右，這邊移掉左邊一格)</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= p_len:</span><br><span class="line">            target_freq[s[i - p_len]] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> target_freq[s[i - p_len]] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">del</span> target_freq[s[i - p_len]]  <span class="comment"># 個數減為 0 的話記得要把整個 key 拿掉，不然不可能會跟 `p_freq` 相等</span></span><br><span class="line"></span><br><span class="line">        target_freq[s[i]] += <span class="number">1</span>  <span class="comment"># Frequency 計算：加入當前字元 (`i` 是 sliding window 最右邊的 index)</span></span><br><span class="line">        <span class="keyword">if</span> target_freq == p_freq:</span><br><span class="line">            res.append(i - p_len + <span class="number">1</span>)  <span class="comment"># 加入 sliding window 起始點到答案中</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>P.S.<br>字母頻率計算也可以用 <code>collections.Counter</code>，跟 <code>defaultdict(int)</code> 使用方法一樣，範例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> collections</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = collections.Counter(<span class="string">'geeeg'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">'e'</span>: <span class="number">3</span>, <span class="string">'g'</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c[<span class="string">'t'</span>] += <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">'e'</span>: <span class="number">3</span>, <span class="string">'g'</span>: <span class="number">2</span>, <span class="string">'t'</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>collections.Counter</code> 建構子可以傳入任何 iterable</li>
+</ul>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
