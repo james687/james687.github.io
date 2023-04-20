@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>標籤: android - James&#39; Blog</title>
+<title>標籤: heap - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/tags/android/index.html">
+<meta property="og:url" content="https://blog.jamesho.website/tags/heap/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
@@ -131,7 +131,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">標籤</a></li>
-            <li class="is-active"><a href="#" aria-current="page">android</a></li>
+            <li class="is-active"><a href="#" aria-current="page">heap</a></li>
         </ul>
         </nav>
     </div>
@@ -144,17 +144,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2014-11-04T10:26:00.000Z">2014-11-04</time>
+                <time class="level-item has-text-grey" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                <a class="has-link-grey -link" href="/categories/Leetcode/">Leetcode</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分鐘 閱讀文 (大約 833 個字)
+                    2 分鐘 閱讀文 (大約 276 個字)
                 </span>
                 
                 
@@ -163,73 +163,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/android-multi-qr-code/">Android 連續掃描多個 QR code 的實作</a>
+                <a class="has-link-black-ter" href="/last-stone-weight/">1046. Last Stone Weight</a>
             
         </h1>
         <div class="content">
-            <p>使用 GitHub 上 <a href="https://github.com/LivotovLabs/zxscanlib">LivotovLabs/zxscanlib</a> 的 <a href="https://github.com/LivotovLabs/zxscanlib/tree/v0.9.0">v0.9.0</a> 版，目前上面有更新的版本，不過我那時候用的時候最新的就到這版</p>
-<p>假如直接使用這個 library ，手機在掃到 QR code 的時候會震動，然後離開掃描的相機畫面回到前一個畫面，另外，它開相機的時候會把畫面變成橫的(landscape)。所以要達到我的要求的話就需要改一下裡面的 code，這邊分享一下把這個 library 應用到可以連續掃描多個 QR code 的經驗 (使用eclipse)，可以搭配該 project 的 GitHub 頁面說明一起看
+            <p><a href="https://leetcode.com/problems/last-stone-weight/">題目</a><br>最直覺的作法就是先排序，取出最重的兩個撞擊後，把剩下的放回去，然後重複以上步驟：</p>
+<figure class="highlight python"><figcaption><span>Intuitive Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lastStoneWeight</span><span class="params">(self, stones: List[int])</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">while</span> len(stones) &gt; <span class="number">1</span>:</span><br><span class="line">        stones.sort()</span><br><span class="line">        s1 = stones.pop()</span><br><span class="line">        s2 = stones.pop()</span><br><span class="line">        <span class="keyword">if</span> s1 != s2:</span><br><span class="line">            stones.append(s1 - s2)</span><br><span class="line">    <span class="keyword">return</span> stones[<span class="number">0</span>] <span class="keyword">if</span> stones <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>但這樣的時間複雜度為 O(n^2 * log n)，太大了，有沒有其他方法？
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android-multi-qr-code/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2014-10-28T10:14:51.000Z">2014-10-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 401 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/use-retrofit-with-dagger/">Use Retrofit with Dagger - simple example</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="http://square.github.io/retrofit/">Retrofit</a> 和 <a href="http://square.github.io/dagger/">Dagger</a> 都是 Square 出的 library，網路上已經有很多相關介紹了，因為 Retrofit 的 REST API Interface 的實作建議採用 Singleton 的方式，所以搭配 Dagger 來管理是個蠻好的 paradigm</p>
-<p>今天在這邊分享一個簡單的整合 example，希望可以讓第一次用且想要整合這兩個 libraries 的人快速上手，更 detail 的說明可以參考上面兩個連結~
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/use-retrofit-with-dagger/#more">繼續閱讀</a>
+                <a class="button is-size-7 is-light" href="/last-stone-weight/#more">繼續閱讀</a>
                 </div>
             </div>
         </div>
