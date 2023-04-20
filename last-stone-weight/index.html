@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-04-20T09:14:40.000Z">
-<meta property="article:modified_time" content="2023-04-20T09:26:19.683Z">
+<meta property="article:modified_time" content="2023-04-20T11:06:24.578Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="array">
 <meta property="article:tag" content="heap">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 393 個字)
+                    3 分鐘 閱讀文 (大約 402 個字)
                 </span>
                 
                 
@@ -171,7 +171,7 @@
 <li>答案是 heap，而 Python 有 <code>heapq</code> 這個 implement heap 的 module 可用</li>
 </ol>
 <figure class="highlight python"><figcaption><span>Improved Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lastStoneWeight</span><span class="params">(self, stones: List[int])</span> -&gt; int:</span></span><br><span class="line">    stones = [-stone <span class="keyword">for</span> stone <span class="keyword">in</span> stones]  <span class="comment"># 將 stones 轉換為負數，使其成為最大堆（Max Heap）</span></span><br><span class="line">    heapq.heapify(stones)  <span class="comment"># In-place transform the list to min heap.</span></span><br><span class="line">    <span class="keyword">while</span> len(stones) &gt; <span class="number">1</span>:</span><br><span class="line">        s1 = heapq.heappop(stones)</span><br><span class="line">        s2 = heapq.heappop(stones)</span><br><span class="line">        <span class="keyword">if</span> s1 != s2:</span><br><span class="line">            heapq.heappush(stones, s1 - s2)  <span class="comment"># 第二個參數為小的減大的，因為要放負數進去</span></span><br><span class="line">    <span class="keyword">return</span> -stones[<span class="number">0</span>] <span class="keyword">if</span> stones <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p><strong>時間複雜度分析：</strong><br>迴圈內：因為 <code>heapq.heappop</code> 和 <code>heapq.heappush</code> 的時間複雜度為 O(log n)，所以迴圈內的複雜度為 O(log n)<br>迴圈條件：<code>len(stones)</code> 時間複雜度為 O(1)<br>迴圈執行次數：最差的情況為每次都 push 東西進去，也就是整體上每次都 pop 一個出來，會執行 <code>n - 1</code> 次<br>=&gt; 綜合以上，時間複雜度為 O(n log n)</p>
+<p><strong>時間複雜度分析：</strong><br>迴圈外：line 5, 6 都是 O(n)<br>迴圈內：因為 <code>heapq.heappop</code> 和 <code>heapq.heappush</code> 的時間複雜度為 O(log n)，所以迴圈內的複雜度為 O(log n)<br>迴圈條件：<code>len(stones)</code> 時間複雜度為 O(1)<br>迴圈執行次數：最差的情況為每次都 push 東西進去，也就是整體上每次都 pop 一個出來，會執行 <code>n - 1</code> 次<br>=&gt; 綜合以上，時間複雜度為 O(n log n)</p>
 
         </div>
         
