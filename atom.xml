@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-04-19T15:51:40.661Z</updated>
+  <updated>2023-04-20T05:24:51.296Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>844. Backspace String Compare</title>
+    <link href="https://blog.jamesho.website/backspace-string-compare/"/>
+    <id>https://blog.jamesho.website/backspace-string-compare/</id>
+    <published>2023-04-20T05:24:05.000Z</published>
+    <updated>2023-04-20T05:24:51.296Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/backspace-string-compare/">題目</a><br>這邊記錄自己答案的演變和檢討，有需要的也可以直接跳到<a href="/backspace-string-compare#final-answer">最後的 O(1) space complexity 解答</a></p><p>一開始的思路：用遞增的 index 同時 go through 這兩個字串，按照裡面的 backspace hint build 出兩個新的字串再來看看是否相等<a id="more"></a></p><figure class="highlight python"><figcaption><span>Python 3 solution at first</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backspaceCompare</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    new_t, new_s = <span class="string">''</span>, <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(max(len(s), len(t))):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            sc = s[i]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> sc == <span class="string">'#'</span> <span class="keyword">and</span> new_s:</span><br><span class="line">                new_s = new_s[:len(new_s) - <span class="number">1</span>]  <span class="comment"># Remove new_s's last character</span></span><br><span class="line">            <span class="keyword">elif</span> sc != <span class="string">'#'</span>:</span><br><span class="line">                new_s += sc</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            tc = t[i]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> tc == <span class="string">'#'</span> <span class="keyword">and</span> new_t:</span><br><span class="line">                new_t = new_t[:len(new_t) - <span class="number">1</span>]  <span class="comment"># Remove new_t's last character</span></span><br><span class="line">            <span class="keyword">elif</span> tc != <span class="string">'#'</span>:</span><br><span class="line">                new_t += tc</span><br><span class="line">    <span class="keyword">return</span> new_t == new_s</span><br></pre></td></tr></table></figure><p>缺點：每次遇到 <code>#</code> 就會有個 O(k) 的操作<br>改進：假如用 list 來放字元，<code>pop()</code> 只有 O(1)，再用 O(m) 的 <code>str.join</code> 合成最終的字串<br>(1 &lt;= <code>k</code> &lt; n, 1 &lt;= <code>m</code> &lt;= n, n 為字串長度)</p><figure class="highlight python"><figcaption><span>improved Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backspaceCompare</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(s)</span>:</span></span><br><span class="line">        arr = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> c != <span class="string">'#'</span>:</span><br><span class="line">                arr.append(c)</span><br><span class="line">            <span class="keyword">elif</span> arr:</span><br><span class="line">                arr.pop()</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(arr)</span><br><span class="line">    <span class="keyword">return</span> build(s) == build(t)</span><br></pre></td></tr></table></figure><p>時間和空間複雜度都是 O(n)<br><a name="#final-answer"></a></p><h3 id="題目的-Follow-up-Can-you-solve-it-in-O-n-time-and-O-1-space"><a href="#題目的-Follow-up-Can-you-solve-it-in-O-n-time-and-O-1-space" class="headerlink" title="題目的 Follow up: Can you solve it in O(n) time and O(1) space?"></a>題目的 Follow up: Can you solve it in O(n) time and O(1) space?</h3><p>思路</p><ol><li>不能用額外的 array 來儲存新的字串，那就只能使用 pointer 來 go through 字串，一個個字母依序比較</li><li>假如從頭開始 go through 有點困難，因為你不知道當前的字母會不會在之後被刪除，那從後往前可以嗎？</li><li>從後往前的話可以。因為只要遇到當前字母之前都沒有 <code>#</code>，該字母就一定會在最終字串裡，而我們一樣可以比較每個字母來判斷兩個字串最終是否相等，當遇到 <code>#</code> 時也可以很容易地跳過</li><li>必須要有一個 function for <code>s</code> 和 <code>t</code>，讓我們可以傳入字串和 index，告訴我們：<ul><li>從那個 index 開始往前的話，下一個合法字母是什麼</li><li>下一個 index 從哪邊開始</li></ul></li></ol><figure class="highlight python"><figcaption><span>Final Python 3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backspaceCompare</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_next_char</span><span class="params">(string: str, index: int)</span> -&gt; tuple:</span></span><br><span class="line">        <span class="string">"""Helper function to get the next valid character and the next index in the string"""</span></span><br><span class="line">        skip = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> index &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> string[index] == <span class="string">'#'</span>:</span><br><span class="line">                skip += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> skip &gt; <span class="number">0</span>:</span><br><span class="line">                skip -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> string[index], index - <span class="number">1</span></span><br><span class="line">            index -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    i = len(s) - <span class="number">1</span></span><br><span class="line">    j = len(t) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &gt;= <span class="number">0</span> <span class="keyword">or</span> j &gt;= <span class="number">0</span>:</span><br><span class="line">        char_s, i = get_next_char(s, i)</span><br><span class="line">        char_t, j = get_next_char(t, j)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> char_s != char_t:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/backspace-string-compare/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;這邊記錄自己答案的演變和檢討，有需要的也可以直接跳到&lt;a href=&quot;/backspace-string-compare#final-answer&quot;&gt;最後的 O(1) space complexity 解答&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一開始的思路：用遞增的 index 同時 go through 這兩個字串，按照裡面的 backspace hint build 出兩個新的字串再來看看是否相等
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
+    
+    
+      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
+    
+      <category term="stack" scheme="https://blog.jamesho.website/tags/stack/"/>
+    
+      <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
+    
+      <category term="simulation" scheme="https://blog.jamesho.website/tags/simulation/"/>
+    
+  </entry>
   
   <entry>
     <title>438. Find All Anagrams in a String</title>
@@ -38,9 +68,9 @@
       <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
       <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
       <category term="sliding window" scheme="https://blog.jamesho.website/tags/sliding-window/"/>
     
@@ -106,13 +136,13 @@
       <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
+      <category term="stack" scheme="https://blog.jamesho.website/tags/stack/"/>
+    
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="stack" scheme="https://blog.jamesho.website/tags/stack/"/>
     
   </entry>
   
@@ -177,11 +207,11 @@
       <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
+      <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
+    
       <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
-      <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
     
       <category term="greedy" scheme="https://blog.jamesho.website/tags/greedy/"/>
     
@@ -316,9 +346,9 @@
       <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
     
     
-      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
       <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
   </entry>
   
@@ -595,35 +625,6 @@
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;所以 &lt;code&gt;inner_rob(i)&lt;/code&gt; 為以上兩種情況取較大的那個
-    
-    </summary>
-    
-    
-      <category term="Leetcode" scheme="https://blog.jamesho.website/categories/Leetcode/"/>
-    
-    
-      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unique Paths</title>
-    <link href="https://blog.jamesho.website/unique-paths/"/>
-    <id>https://blog.jamesho.website/unique-paths/</id>
-    <published>2023-03-18T08:08:15.000Z</published>
-    <updated>2023-03-30T04:49:45.044Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/unique-paths/description/">題目</a><br>思路</p><ol><li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p></li><li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p><a id="more"></a></li><li><p>終止條件</p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure><ul><li>已經在終點上了，unique path count 卻是 1，一開始可能會覺得有點怪，不過從終點左邊那個點來想，就不會怪了：<ul><li>左邊那個點的 unique path count = (它的下面那點的 path count) + (它右邊那點的 path count)<ul><li>下面那點：path count 為 0</li><li>右邊那點 (終點)：path count 必須是 1</li></ul></li></ul></li></ul></li><li><p>遞迴解法如下，但時間複雜度 O(2^(m + n)) 太大了 (計算參考<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">這篇</a>)</p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        i, j 為從 0 開始的坐標</span></span><br><span class="line"><span class="string">        @return 由 (i, j) 走到終點的 unique path count</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 終止條件</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 最小可重複動作</span></span><br><span class="line">        <span class="keyword">return</span> u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></li><li><p>因為同一個點可能會走到很多次，我們可以把結果存在二維陣列，避免重複計算，以減少時間複雜度</p></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    dp = [[<span class="literal">None</span>] * n <span class="keyword">for</span> i <span class="keyword">in</span> range(m)]  <span class="comment"># m * n 的二維陣列</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        i, j 為從 0 開始的坐標</span></span><br><span class="line"><span class="string">        @return 由 (i, j) 走到終點的 unique path count</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 終止條件</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> dp[i][j]:</span><br><span class="line">            <span class="keyword">return</span> dp[i][j]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 最小可重複動作</span></span><br><span class="line">        dp[i][j] = u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> dp[i][j]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure><ul><li>時間複雜度：O(m * n)<ul><li>因為有記憶，每個點只會計算一次，共有 <code>m * n</code> 個點</li></ul></li><li>空間複雜度：O(m * n)<ul><li>維護 <code>dp</code> 所需空間。遞迴呼叫所需空間 <code>m</code> 和 <code>n</code> 可忽略</li></ul></li></ul><p>類似題：</p><ul><li><a href="https://leetcode.com/problems/fibonacci-number">Fibonacci Number</a></li><li><a href="https://leetcode.com/problems/unique-paths-ii">Unique Paths II</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/unique-paths/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最小可重複動作 &lt;code&gt;return u_paths(i + 1, j) + u_paths(i, j + 1)&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
