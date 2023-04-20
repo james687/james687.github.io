@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-03-18T08:08:15.000Z">
-<meta property="article:modified_time" content="2023-03-30T04:49:45.044Z">
+<meta property="article:modified_time" content="2023-04-20T16:39:20.151Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="recursion">
 <meta property="article:tag" content="dynamic programming">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 550 個字)
+                    4 分鐘 閱讀文 (大約 546 個字)
                 </span>
                 
                 
@@ -181,7 +181,7 @@
 </li>
 </ul>
 </li>
-<li><p>遞迴解法如下，但時間複雜度 O(2^(m + n)) 太大了 (計算參考<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">這篇</a>)</p>
+<li><p>遞迴解法如下，但時間複雜度 O(2^(m + n)) 太大了 (計算參考<a href="/recursion-time-complexity/">這篇</a>)</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        i, j 為從 0 開始的坐標</span></span><br><span class="line"><span class="string">        @return 由 (i, j) 走到終點的 unique path count</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 終止條件</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 最小可重複動作</span></span><br><span class="line">        <span class="keyword">return</span> u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure></li>
 <li><p>因為同一個點可能會走到很多次，我們可以把結果存在二維陣列，避免重複計算，以減少時間複雜度</p>
 </li>

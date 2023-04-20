@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.jamesho.website/unique-paths/</loc>
+    
+    <lastmod>2023-04-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/backspace-string-compare/</loc>
     
     <lastmod>2023-04-20</lastmod>
@@ -143,13 +150,6 @@
   
   <url>
     <loc>https://blog.jamesho.website/effective-python-note/</loc>
-    
-    <lastmod>2023-03-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/unique-paths/</loc>
     
     <lastmod>2023-03-30</lastmod>
     
@@ -318,6 +318,11 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
+    <lastmod>2023-04-20</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/stack/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
@@ -333,7 +338,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
@@ -358,17 +363,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
-    <lastmod>2023-04-20</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
-    <lastmod>2023-04-20</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/python/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
@@ -378,7 +373,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
+    <loc>https://blog.jamesho.website/tags/python/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
@@ -389,6 +384,16 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/sliding-window/</loc>
+    <lastmod>2023-04-20</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
+    <lastmod>2023-04-20</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/matrix/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
@@ -458,11 +463,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/binary-search-tree/</loc>
-    <lastmod>2023-04-20</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/heroku/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
@@ -478,7 +478,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/matrix/</loc>
+    <loc>https://blog.jamesho.website/tags/binary-search-tree/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
@@ -490,12 +490,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Project-Management/</loc>
+    <loc>https://blog.jamesho.website/categories/Development-Note/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Development-Note/</loc>
+    <loc>https://blog.jamesho.website/categories/Project-Management/</loc>
     <lastmod>2023-04-20</lastmod>
   </url>
   
