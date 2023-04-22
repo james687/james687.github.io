@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2022/12 - James&#39; Blog</title>
+<title>分類: LeetCode Digest - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/archives/2022/12/index.html">
+<meta property="og:url" content="https://blog.jamesho.website/categories/LeetCode-Digest/page/3/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
@@ -126,58 +126,390 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        十二月 2022
-        </h3>
-        <div class="timeline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分類</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">LeetCode Digest</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-10T10:27:23.000Z">2023-02-10</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
-                        <a href="/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
-                        <a href="/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 316 個字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/same-tree/">Same Tree</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/same-tree/description/">題目</a><br>思路：</p>
+<ol>
+<li>要比較所有相同位置的 node 的值是否一樣，可以把所有待比較的 node pair 丟到 stack 裡一一拿出來比較，全部比完都通過的話就是一樣的 tree</li>
+<li>一個 pair 比較後會把下面的所有分支點繼續丟進 stack 等待比較，所以用 <code>while stack:</code> 只要有就繼續比，一直比到完<ul>
+<li>此為廣先搜尋 (Breadth-First Search)
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/same-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
 
 
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-09T10:27:23.000Z">2023-02-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 265 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/merge-two-sorted-lists/">Merge Two Sorted Lists</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/merge-two-sorted-lists/description/">題目</a><br>思路：</p>
+<ol>
+<li><p>因為要做一個 linked list，可以用 while 在每次迴圈都接一個 node 出來</p>
+</li>
+<li><p>先設 <code>while True:</code>，等寫迴圈內容時再來確定 while 可繼續執行的條件</p>
+</li>
+<li><p>寫第一 part (如下) 後發現，while 條件需要 <code>l1 and l2</code></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> l1.val &gt; l2.val:</span><br><span class="line">    curr.next = l2</span><br><span class="line">    l2 = l2.next</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    curr.next = l1</span><br><span class="line">    l1 = l1.next</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/merge-two-sorted-lists/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-09T03:47:23.000Z">2023-02-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 466 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/remove-duplicates-from-sorted-list/">Remove Duplicates from Sorted List</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">題目</a><br>思路：</p>
+<ol>
+<li><p>既然是 Linked List，我們可以宣告一個指標 <code>curr</code> 指向第一個 node，用 while 迴圈一次檢查一個 node (檢查完將指標移到下一個 node)</p>
+<ul>
+<li>不能直接用 <code>head</code> 來移動，因為到時候回傳答案的時候需要回傳這個 <code>head</code></li>
+</ul>
+</li>
+<li><p>設定 while 可以繼續檢查的條件：有時要先寫 while 的內容，才會比較確定 while 條件應該怎麼寫，這時可以先寫 <code>while True:</code>，等內容寫完再來改條件</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/remove-duplicates-from-sorted-list/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-02-03T07:54:07.000Z">2023-02-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 486 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/add-two-numbers/">Add Two Numbers</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/add-two-numbers/description/">題目</a><br>思路：</p>
+<ol>
+<li>既然 Linked List 是由個位數開始，剛好可以用小學學的加法來從個位數開始相加。所以須設計一個迴圈來執行可重複執行的加法動作，一步步構建答案所需的 linked list，一次建立一個 node，直到完成。</li>
+<li>迴圈要可重複執行，需要有個指標，在迴圈內對該指標所指的 node 做操作，並在迴圈結束時讓指標指到下一個 node，讓下一次迴圈來操作
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/add-two-numbers/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 750 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/search-insert-position/">Search Insert Position</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p>
+<ol>
+<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]，目標是移動這兩個指標，縮小答案範圍，直到我們可以依此範圍找出答案為止</p>
+</li>
+<li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p>
+<ul>
+<li>此時可能會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？承上，我們的目的是縮小範圍到可以找到答案為止，也就是說當縮小到滿意的範圍，我們就可以跳出迴圈。所以我們只需要用 <code>&lt;</code>，因為當 <code>left == right</code> 的時候就會跳出迴圈，而這範圍已經足以讓我們找到答案了<ul>
+<li>當然要用 <code>&lt;=</code> 也是可以解的出來，程式碼會稍有不同，這邊只是記錄我理解起來比較順的思路
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/search-insert-position/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 282 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/3-sum/">3Sum</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/3sum/description/">題目</a><br>思路：</p>
+<ul>
+<li>用三個指標，iterate 最左邊那個，找出對應於每個 left 指標的所有 result</li>
+<li>先把 nums 排序，如此移動 mid, right 指標時就有個依據</li>
+</ul>
+<p>Python3 solution</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/3-sum/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LeetCode-Digest/page/2/">上一頁</a>
+        </div>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LeetCode-Digest/page/4/">下一頁</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LeetCode-Digest/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LeetCode-Digest/page/2/">2</a></li>
+            
+            <li><a class="pagination-link is-current" href="/categories/LeetCode-Digest/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 

@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2022/12 - James&#39; Blog</title>
+<title>分類: LeetCode Digest - James&#39; Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/archives/2022/12/index.html">
+<meta property="og:url" content="https://blog.jamesho.website/categories/LeetCode-Digest/page/2/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
@@ -126,58 +126,613 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        十二月 2022
-        </h3>
-        <div class="timeline">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分類</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">LeetCode Digest</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-12T05:26:05.000Z">2023-04-12</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-08T05:21:23.000Z">2022-12-08</time>
-                        <a href="/search-insert-position/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Search Insert Position</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2022-12-05T08:51:05.000Z">2022-12-05</time>
-                        <a href="/3-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3Sum</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 112 個字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/binary-number-with-alternating-bits/">Binary Number with Alternating Bits</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/binary-number-with-alternating-bits/">題目</a></p>
+<ol>
+<li>先想到的是有沒有辦法透過 bitwise operation 來判斷，發現無法</li>
+<li>看相鄰位置有沒有一樣的，最直覺就是用字串來判斷 =&gt; 可以利用 Python 的 built-in function <code>bin</code> 來把數字轉為 binary 字串</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hasAlternatingBits</span><span class="params">(self, n: int)</span> -&gt; bool:</span></span><br><span class="line">    b_str = bin(n)[<span class="number">2</span>:]  <span class="comment"># 去掉前面的 '0b'</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(b_str) - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> b_str[i] == b_str[i + <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-12T04:10:25.000Z">2023-04-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 177 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/single-number/">Single Number</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/single-number/">題目</a></p>
+<ol>
+<li>因為只能用常數的額外空間，且 array 裡的數字除了目標之外都會有<strong>兩</strong>個，所以朝 bitwise operation 的方向想</li>
+<li>把 array 裡所有數字接連做 bitwise operation，假如有兩個一樣的數字，他們就會抵銷變為 0，即使不是連著做也一樣，所以最後的結果就是那個落單的數字<ul>
+<li>可以想像所有數字都用二進位表示由上而下列在一起做計算，不管他們位置怎麼換結果都會一樣 (偶數個 <code>1</code> 會互相抵銷)</li>
+</ul>
+</li>
+</ol>
+<p>Python3 solution:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">    r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">        r ^= i</span><br><span class="line">    <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-12T01:11:56.000Z">2023-04-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 543 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/validate-binary-search-tree/">Validate Binary Search Tree</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/validate-binary-search-tree/">題目</a><br>思路</p>
+<ol>
+<li>樹的問題用遞迴來解相對上比較直覺，所以先試試遞迴解</li>
+<li>拆解到最小單位來找 recursive case: 隨機取樹中一個點，判斷它是否 valid</li>
+<li>大部分情況下會有上限和下限。以左邊的點為例，上限就是父節點的值，下限就是它所在的右子樹的父節點的值，所以這個值必須由上到下一層層傳遞下來。反之，右邊的點的話，就變成上限必須一層層傳遞下來</li>
+<li>因為上下限必須用傳遞的，所以寫一個 function <code>node_valid</code> 接受上下限的參數
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/validate-binary-search-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-28T11:25:25.000Z">2023-03-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 293 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/binary-tree-level-order-traversal/">Binary Tree Level Order Traversal</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p>
+<ol>
+<li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li>
+<li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul>
+<li>stack 也是 list of list, 裡面的每個 list 都是一層節點
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/binary-tree-level-order-traversal/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-23T08:51:55.000Z">2023-03-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 547 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">題目</a><br>思路</p>
+<ol>
+<li>Inorder Traversal: 對任意節點來說，順序為 左子樹 -&gt; 自己 -&gt; 右子樹</li>
+<li>可拆解為最小單位動作，即第一點，故使用遞迴
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/binary-tree-inorder-traversal/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分鐘 閱讀文 (大約 692 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/house-robber-ii/">House Robber II</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/house-robber-ii/">題目</a><br>思路</p>
+<ol>
+<li>跟 <a href="https://leetcode.com/problems/house-robber">House Robber</a> 很像，只差在房子的排列變成頭尾相連，有沒有辦法把這題拆解，變成能用上第一版 House Robber 的解題方法？譬如把環形變回直排？</li>
+<li>變成環形之後多出來的限制讓我們可以把這題分成以下三種情況：<ol>
+<li>搶第一個、不搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但只考慮到倒數第二個</strong></li>
+<li>不搶第一個、搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但從第二個開始考慮</strong>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/house-robber-ii/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-20T07:08:15.000Z">2023-03-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 388 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/house-robber/">House Robber</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/house-robber/">題目</a><br>思路</p>
+<ol>
+<li>可以把得出答案的過程拆解為最小可重複步驟，用遞迴來解</li>
+<li>Recursive case: 假設 index 為 i，由 index 0 搶到 i 可得的最大收穫為 <code>inner_rob(i)</code>。在位置 i, 可選擇搶或不搶：<ol>
+<li>不搶：最大收穫跟前一個點一樣，為 <code>inner_rob(i - 1)</code></li>
+<li>搶：代表前一個點一定是不搶，所以最大收穫為這個點的 money <code>nums[i]</code> 再加上前前個點的最大收穫 <code>inner_rob(i - 2)</code></li>
+</ol>
+<ul>
+<li>所以 <code>inner_rob(i)</code> 為以上兩種情況取較大的那個
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/house-robber/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-18T08:08:15.000Z">2023-03-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 564 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/unique-paths/">Unique Paths</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/unique-paths/description/">題目</a><br>思路</p>
+<ol>
+<li><p>每走一步都會是一個 unique path，到終點的路線是由每一步所組成的，所以可以用遞迴的方式來想，最小的可重複動作就是一步，點 (i, j) 到終點的 unique path count 就是 (i + 1, j) 和 (i, j + 1) 的 unique path count 的和</p>
+</li>
+<li><p>最小可重複動作 <code>return u_paths(i + 1, j) + u_paths(i, j + 1)</code></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/unique-paths/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-16T03:27:23.000Z">2023-03-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 504 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/merge-two-binary-trees/">Merge Two Binary Trees</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/merge-two-binary-trees/description/">題目</a></p>
+<h3 id="做法一：recursive-DFS"><a href="#做法一：recursive-DFS" class="headerlink" title="做法一：recursive - DFS"></a>做法一：recursive - DFS</h3><ol>
+<li><p>找出最小的可重複動作：merge 兩個 nodes</p>
+<ul>
+<li>題目給的 method 就可以用來做遞迴</li>
+</ul>
+</li>
+<li><p>假設 <code>mergeTrees</code> 已完成，實作此最小可重複動作</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root1.val += root2.val</span><br><span class="line">root1.left = self.mergeTrees(root1.left, root2.left)</span><br><span class="line">root1.right = self.mergeTrees(root1.right, root2.right)</span><br><span class="line"><span class="keyword">return</span> root1</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/merge-two-binary-trees/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-03-15T04:12:23.000Z">2023-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 625 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/balanced-binary-tree/">Balanced Binary Tree</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/balanced-binary-tree/description/">題目</a></p>
+<h3 id="做法一"><a href="#做法一" class="headerlink" title="做法一"></a>做法一</h3><p>思路：</p>
+<ol>
+<li>依照 height-balanced 的定義，需要符合<strong>每個</strong>node 的左右子樹高度差都不大於 1</li>
+<li>假設有個 function <code>height</code> 可以回傳 node 的 height<ul>
+<li>先不實作內容</li>
+</ul>
+</li>
+<li>使用這個 <code>height</code> 完成 <code>isBalanced</code>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/balanced-binary-tree/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LeetCode-Digest/">上一頁</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LeetCode-Digest/page/3/">下一頁</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LeetCode-Digest/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/categories/LeetCode-Digest/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LeetCode-Digest/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 
