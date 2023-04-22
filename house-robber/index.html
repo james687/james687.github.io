@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-03-20T07:08:15.000Z">
-<meta property="article:modified_time" content="2023-04-22T10:51:05.116Z">
+<meta property="article:modified_time" content="2023-04-22T11:05:46.441Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="recursion">
 <meta property="article:tag" content="dynamic programming">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分鐘 閱讀文 (大約 388 個字)
+                    3 分鐘 閱讀文 (大約 384 個字)
                 </span>
                 
                 
@@ -174,7 +174,7 @@
 </ul>
 </li>
 <li>Base case (終止條件)：<code>i &lt; 0</code></li>
-<li>因為這個<a href="https://james687.github.io/2023/03/21/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
+<li>因為這個<a href="/recursion-time-complexity/">遞迴解的時間複雜度</a>最差為 O(2^n)，必須降低，我們可以把計算過的 <code>inner_rob(i)</code> 使用 <code>@cache</code> 將 function 回傳 cache 起來，避免同樣的 <code>inner_rob(i)</code> 重複計算</li>
 </ol>
 <p>Python3 solution:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line"><span class="meta">    @cache</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_rob</span><span class="params">(i)</span>:</span></span><br><span class="line">        <span class="string">"""@return 由 index 0 搶到 i 可得的最大收穫"""</span></span><br><span class="line">        <span class="keyword">if</span> i &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> max(inner_rob(i - <span class="number">1</span>), nums[i] + inner_rob(i - <span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> inner_rob(len(nums) - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>

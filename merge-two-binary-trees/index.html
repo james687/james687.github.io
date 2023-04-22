@@ -10,16 +10,16 @@
 <title>Merge Two Binary Trees - James&#39; Blog</title>
 
 
-    <meta name="description" content="題目 做法一：recursive - DFS 找出最小的可重複動作：merge 兩個 nodes  題目給的 method 就可以用來做遞迴   假設 mergeTrees 已完成，實作此最小可重複動作  1234root1.val +&#x3D; root2.valroot1.left &#x3D; self.mergeTrees(root1.left, root2.left)root1.right &#x3D; self.">
+    <meta name="description" content="題目 做法一：recursive - DFS 找出最小的可重複動作：merge 兩個 nodes  題目給的 method 就可以用來做遞迴   假設 mergeTrees 已完成，實作此最小可重複動作   1234root1.val +&#x3D; root2.valroot1.left &#x3D; self.mergeTrees(root1.left, root2.left)root1.right &#x3D; self">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Merge Two Binary Trees">
 <meta property="og:url" content="https://blog.jamesho.website/merge-two-binary-trees/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
-<meta property="og:description" content="題目 做法一：recursive - DFS 找出最小的可重複動作：merge 兩個 nodes  題目給的 method 就可以用來做遞迴   假設 mergeTrees 已完成，實作此最小可重複動作  1234root1.val +&#x3D; root2.valroot1.left &#x3D; self.mergeTrees(root1.left, root2.left)root1.right &#x3D; self.">
+<meta property="og:description" content="題目 做法一：recursive - DFS 找出最小的可重複動作：merge 兩個 nodes  題目給的 method 就可以用來做遞迴   假設 mergeTrees 已完成，實作此最小可重複動作   1234root1.val +&#x3D; root2.valroot1.left &#x3D; self.mergeTrees(root1.left, root2.left)root1.right &#x3D; self">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-03-16T03:27:23.000Z">
-<meta property="article:modified_time" content="2023-04-22T10:51:06.592Z">
+<meta property="article:modified_time" content="2023-04-22T11:06:11.448Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="tree">
 <meta property="article:tag" content="depth-first search">
@@ -172,7 +172,7 @@
 <li>題目給的 method 就可以用來做遞迴</li>
 </ul>
 </li>
-<li><p>假設 <code>mergeTrees</code> 已完成，實作此最小可重複動作</p>
+<li><p>假設 <code>mergeTrees</code> 已完成，實作此最小可重複動作 </p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root1.val += root2.val</span><br><span class="line">root1.left = self.mergeTrees(root1.left, root2.left)</span><br><span class="line">root1.right = self.mergeTrees(root1.right, root2.right)</span><br><span class="line"><span class="keyword">return</span> root1</span><br></pre></td></tr></table></figure>
 <a id="more"></a></li>
 <li><p>寫出遞迴的終止條件</p>
