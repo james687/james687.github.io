@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.jamesho.website/agile-tour-thoughts/</loc>
+    
+    <lastmod>2023-04-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/remove-duplicates-from-sorted-list/</loc>
     
     <lastmod>2023-04-22</lastmod>
@@ -184,13 +191,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/agile-tour-thoughts/</loc>
-    
-    <lastmod>2023-04-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/recursion-time-complexity/</loc>
     
     <lastmod>2023-04-22</lastmod>
@@ -303,11 +303,6 @@
 
   
   <url>
-    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/array/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
@@ -319,6 +314,11 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/sorting/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/linked-list/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -358,12 +358,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -403,37 +403,17 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/greedy/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/jwt/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
   <url>
     <loc>https://blog.jamesho.website/tags/authentication/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/greedy/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/database/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/docker/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/mysql/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -448,12 +428,42 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/docker/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/django/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/database/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/mysql/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/java/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/binary-search/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/binary-search-tree/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -472,25 +482,10 @@
     <lastmod>2023-04-22</lastmod>
   </url>
   
-  <url>
-    <loc>https://blog.jamesho.website/tags/binary-search-tree/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/binary-search/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
 
   
   <url>
     <loc>https://blog.jamesho.website/categories/Project-Management/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/categories/LeetCode-Digest/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   

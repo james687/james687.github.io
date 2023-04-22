@@ -42,7 +42,6 @@ textarea {
   .column-right.is-sticky,
   .column-right-shadow.is-sticky {
     align-self: flex-start;
-    position: -webkit-sticky;
     position: sticky;
     top: 0.75rem;
   }
