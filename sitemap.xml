@@ -323,6 +323,11 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/tree/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
@@ -358,11 +363,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
@@ -378,12 +378,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/hash-table/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/sliding-window/</loc>
+    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -393,7 +388,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/dynamic-programming/</loc>
+    <loc>https://blog.jamesho.website/tags/hash-table/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/sliding-window/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -418,26 +418,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/database/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/docker/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/mysql/</loc>
-    <lastmod>2023-04-22</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/package-management/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
@@ -448,7 +428,27 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/docker/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/django/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/database/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/postgresql/</loc>
+    <lastmod>2023-04-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/mysql/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
@@ -500,12 +500,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
+    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
+    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
     <lastmod>2023-04-22</lastmod>
   </url>
   
