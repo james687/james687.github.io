@@ -323,7 +323,22 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <loc>https://blog.jamesho.website/tags/tree/</loc>
+    <lastmod>2023-04-29</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/depth-first-search/</loc>
+    <lastmod>2023-04-29</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
+    <lastmod>2023-04-29</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/recursion/</loc>
     <lastmod>2023-04-29</lastmod>
   </url>
   
@@ -343,22 +358,7 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/tree/</loc>
-    <lastmod>2023-04-29</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/depth-first-search/</loc>
-    <lastmod>2023-04-29</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/binary-tree/</loc>
-    <lastmod>2023-04-29</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/recursion/</loc>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
     <lastmod>2023-04-29</lastmod>
   </url>
   
