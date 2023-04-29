@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-03-23T08:51:55.000Z">
-<meta property="article:modified_time" content="2023-04-22T11:04:50.472Z">
+<meta property="article:modified_time" content="2023-04-29T06:16:47.061Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="tree">
 <meta property="article:tag" content="depth-first search">
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分鐘 閱讀文 (大約 547 個字)
+                    4 分鐘 閱讀文 (大約 545 個字)
                 </span>
                 
                 
@@ -182,7 +182,7 @@
 <li><p>左、中節點處理完後，處理右節點：把右節點當成新的 root，重複前兩步驟</p>
 <ol>
 <li><code>root = node.right</code></li>
-<li>上面一行連同前兩步驟的程式碼 (如下)，用 <code>while True:</code> 包起來</li>
+<li>上面一行連同前兩步驟的程式碼，用 <code>while True:</code> 包起來</li>
 </ol>
 </li>
 <li><p>寫終止條件：在 <code>node = stack.pop()</code> 之前判斷 stack 是否還有，如為空代表所有的節點已被遍歷完，故回傳答案 <code>values</code></p>
