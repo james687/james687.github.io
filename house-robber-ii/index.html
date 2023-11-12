@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-03-23T05:37:15.000Z">
-<meta property="article:modified_time" content="2023-04-22T11:05:27.554Z">
+<meta property="article:modified_time" content="2023-11-12T05:15:05.182Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="recursion">
 <meta property="article:tag" content="dynamic programming">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分鐘 閱讀文 (大約 688 個字)
+                    5 分鐘 閱讀文 (大約 687 個字)
                 </span>
                 
                 
@@ -181,13 +181,17 @@
 <li><code>j == i + 1</code> 時： 下兩個遞迴節點為 <code>inner_rob(i, i)</code>, <code>inner_rob(i, i - 1)</code></li>
 </ol>
 <ul>
-<li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code>，寫完後將 <code>inner_rob(i, j)</code> 代入 <code>j == i + 1</code> 驗算看看是否正確</li>
+<li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code></li>
 </ul>
 </li>
-<li>考慮一開始 <code>j == i</code> 的情況，代入驗算看看是否正確</li>
-<li>考慮一開始 <code>j &lt; i</code> 的情況，也就是 <code>len(nums) == 1</code> 時：<ul>
+<li>考慮 <code>nums</code> 數字最小的幾種情況，看看遞迴是否正常收斂 or 結果是否正確<ol>
+<li><code>len(nums) == 3</code>: <code>max(inner_job(0, 1), inner_job(1, 2))</code> -&gt; 正常收斂</li>
+<li><code>len(nums) == 2</code>: <code>max(inner_job(0, 0), inner_job(1, 1))</code> -&gt; 結果正確</li>
+<li><code>len(nums) == 1</code>: <code>max(inner_job(0, -1), inner_job(1, 0))</code><ul>
 <li>此時得出的答案為 <code>0</code>，是錯的，所以 base case 需多考慮這種情況，加入 <code>len(nums) == 1</code> 時的判斷處理</li>
 </ul>
+</li>
+</ol>
 </li>
 </ol>
 </li>

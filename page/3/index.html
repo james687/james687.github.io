@@ -384,7 +384,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 316 個字)
+                    2 分鐘 閱讀文 (大約 329 個字)
                 </span>
                 
                 
@@ -398,6 +398,9 @@
         </h1>
         <div class="content">
             <p><a href="https://leetcode.com/problems/same-tree/description/">題目</a><br>思路：</p>
+<ol>
+<li>先用以樹來說較直觀的遞迴解</li>
+</ol>
 <ol>
 <li>要比較所有相同位置的 node 的值是否一樣，可以把所有待比較的 node pair 丟到 stack 裡一一拿出來比較，全部比完都通過的話就是一樣的 tree</li>
 <li>一個 pair 比較後會把下面的所有分支點繼續丟進 stack 等待比較，所以用 <code>while stack:</code> 只要有就繼續比，一直比到完<ul>
