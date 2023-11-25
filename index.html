@@ -159,13 +159,10 @@
         <div class="content">
             <p><a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/">題目</a><br>思路：</p>
 <ul>
-<li><p>要找的點是<strong>可到達的點</strong>的距離在 threshold 裡的那些點，所以要找的是最短距離，因為只要最短距離可以在 threshold 內，那它就是可到達的點</p>
-</li>
-<li><p>用 Floyd-Warshall’s algorithm 找到所有點之間的最小距離</p>
-<ul>
-<li><p><code>k</code> 是 <code>i</code> 到 <code>j</code> 之間的任意點。比較 <code>i</code> -&gt; <code>j</code> 經過所有 <code>k</code> 的距離，最小的即為 <code>i</code> -&gt; <code>j</code> 的最短距離。</p>
-</li>
-<li><p>Question:<br>if the path is <code>i -&gt; 2 -&gt; 1 -&gt; j</code> and the iteration consider <code>k == 1</code> first. But the <code>dist[i][1]</code> not yet populated and still have value of <code>float(&#39;inf&#39;)</code>. It will have the actual value until <code>k == 2</code>.
+<li>要找的點是<strong>可到達的點</strong>的距離在 threshold 裡的那些點，所以要找的是最短距離，因為只要最短距離可以在 threshold 內，那它就是可到達的點</li>
+<li>用 Floyd-Warshall’s algorithm 找到所有點之間的最小距離<ul>
+<li><code>k</code> 是 <code>i</code> 到 <code>j</code> 之間的任意點。比較 <code>i</code> -&gt; <code>j</code> 經過所有 <code>k</code> 的距離，最小的即為 <code>i</code> -&gt; <code>j</code> 的最短距離。</li>
+<li>Question:<br>if the path is <code>i -&gt; 2 -&gt; 1 -&gt; j</code> and the iteration consider <code>k == 1</code> first. But the <code>dist[i][1]</code> not yet populated and still have value of <code>float(&#39;inf&#39;)</code>. It will have the actual value until <code>k == 2</code>.
         </div>
         
         
