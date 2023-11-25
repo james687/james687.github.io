@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-11-16T02:13:10.424Z</updated>
+  <updated>2023-11-25T07:19:56.963Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</title>
+    <link href="https://blog.jamesho.website/smallest-number-neighbors/"/>
+    <id>https://blog.jamesho.website/smallest-number-neighbors/</id>
+    <published>2023-11-25T06:36:07.000Z</published>
+    <updated>2023-11-25T07:19:56.963Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/">題目</a><br>思路：</p><ul><li><p>要找的點是<strong>可到達的點</strong>的距離在 threshold 裡的那些點，所以要找的是最短距離，因為只要最短距離可以在 threshold 內，那它就是可到達的點</p></li><li><p>用 Floyd-Warshall’s algorithm 找到所有點之間的最小距離</p><ul><li><p><code>k</code> 是 <code>i</code> 到 <code>j</code> 之間的任意點。比較 <code>i</code> -&gt; <code>j</code> 經過所有 <code>k</code> 的距離，最小的即為 <code>i</code> -&gt; <code>j</code> 的最短距離。</p></li><li><p>Question: if the path is <code>i -&gt; 2 -&gt; 1 -&gt; j</code> and the iteration consider <code>k == 1</code> first. But the <code>dist[i][1]</code> not yet populated and still have value of <code>float(&#39;inf&#39;)</code>. It will have the actual value until <code>k == 2</code>.</p><ul><li><p>Answer from ChatGPT: </p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">You&#39;ve identified a key aspect of the Floyd-Warshall algorithm&#39;s iterative process. The algorithm relies on the gradual building of shortest paths through each possible intermediate vertex, and the order of considering vertices (the k values) doesn&#39;t prevent it from eventually finding the shortest paths.</span><br><span class="line"></span><br><span class="line">In your example, even if k &#x3D;&#x3D; 1 is considered first and the direct path i -&gt; 1 or 1 -&gt; j isn&#39;t the shortest, the algorithm might not immediately find the shortest path i -&gt; 2 -&gt; 1 -&gt; j. However, when k &#x3D;&#x3D; 2 is later considered, the algorithm will then take into account paths through 2, updating the shortest path calculations accordingly.</span><br><span class="line"></span><br><span class="line">The crux of the Floyd-Warshall algorithm is that by the time all vertices have been iteratively considered as potential intermediate steps, it will have computed the shortest paths between all pairs of vertices, considering all possible intermediate vertices and paths.</span><br></pre></td></tr></table></figure></li></ul></li></ul></li><li><p>比較每個點在 threshold 內可達的點的個數，找出最小的＆有最大 number 的點</p></li></ul><figure class="highlight python"><figcaption><span>Python3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findTheCity</span><span class="params">(self, n: int, edges: List[List[int]], distanceThreshold: int)</span> -&gt; int:</span></span><br><span class="line">    dist = [[float(<span class="string">'inf'</span>)] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Init</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        dist[i][i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, j, w <span class="keyword">in</span> edges:</span><br><span class="line">        dist[i][j] = dist[j][i] = w</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Find the shortest distance.</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Find the smallest count.</span></span><br><span class="line">    min_count = float(<span class="string">'inf'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        count = sum(dist[i][j] &lt;= distanceThreshold <span class="keyword">for</span> j <span class="keyword">in</span> range(n))</span><br><span class="line">        <span class="keyword">if</span> count &lt;= min_count:</span><br><span class="line">            min_count = count</span><br><span class="line">            r = i</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure><ul><li>要注意一下 <code>dist[i][j] = dist[j][i] = w</code> 蠻容易漏掉中間那個 <code>dist[j][i]</code></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/&quot;&gt;題目&lt;/a&gt;&lt;b
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
+    
+    
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
+    
+      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
+    
+      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
+    
+      <category term="shortest path" scheme="https://blog.jamesho.website/tags/shortest-path/"/>
+    
+  </entry>
   
   <entry>
     <title>1046. Last Stone Weight</title>
@@ -236,9 +268,9 @@
     
       <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
     
-      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
       <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
       <category term="greedy" scheme="https://blog.jamesho.website/tags/greedy/"/>
     
@@ -319,9 +351,9 @@
     
       <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
-      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
       <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
   </entry>
   
@@ -463,9 +495,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -531,9 +563,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -565,9 +597,9 @@
     
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
-      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
-    
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
+    
+      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
@@ -600,38 +632,6 @@
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
       <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>遞迴的時間複雜度算法</title>
-    <link href="https://blog.jamesho.website/recursion-time-complexity/"/>
-    <id>https://blog.jamesho.website/recursion-time-complexity/</id>
-    <published>2023-03-21T08:55:19.000Z</published>
-    <updated>2023-04-22T09:53:01.531Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="快速解-適用於遞迴函式內呼叫自己-gt-1-次"><a href="#快速解-適用於遞迴函式內呼叫自己-gt-1-次" class="headerlink" title="快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)"></a>快速解 (適用於遞迴函式內呼叫自己 &gt; 1 次)</h3><ol><li>看這個遞迴函式呼叫自己幾次，假設呼叫了 <code>x</code> 次</li><li>看看這個函式的遞迴深度。也就是說這個函式的初始呼叫會需要經過幾次的呼叫自己才會再也沒有任何呼叫，每條路都停止在 base case (終止條件)<ul><li>舉例：可以先看看下面的詳細解，初始呼叫為 <code>u_paths(0, 0)</code>，此時 <code>u_paths(i + 1, j)</code> 需要呼叫 <code>m</code> 次才會停，<code>u_paths(i, j + 1)</code> 需要呼叫 <code>n</code> 次才會停，所以總共呼叫 <code>m + n</code> 次才會停，此時遞迴深度 <code>h = m + n</code></li></ul></li><li>承上例，此時時間複雜度為 <code>O(x^h)</code></li></ol><ul><li>至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立<a id="more"></a></li><li>例子：<a href="/validate-binary-search-tree#time-complexity-example">Validate Binary Search Tree</a></li></ul><h3 id="詳細解-遞迴樹"><a href="#詳細解-遞迴樹" class="headerlink" title="詳細解 (遞迴樹)"></a>詳細解 (遞迴樹)</h3><p>以 <a href="/unique-paths/">Unique Paths</a> 的遞迴解為例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m: int, n: int)</span> -&gt; int:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">u_paths</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= m <span class="keyword">or</span> j &gt;= n:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i == m - <span class="number">1</span> <span class="keyword">and</span> j == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> u_paths(i + <span class="number">1</span>, j) + u_paths(i, j + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> u_paths(<span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure><ol><li>假設 <code>m = 3, n = 2</code>，遞迴樹如下 <img src="/images/recursion-tree.png" alt=""></li><li>由圖可知，遞迴深度為 <code>5 (= m + n)</code><ul><li>要怎麼不用畫圖，用看的就得出深度？<ul><li>深度為根節點走到葉子節點的路徑長，我們可以看從 <code>u_paths(0, 0)</code> 開始，要走幾次才會結束：<ol><li><code>u_paths(i + 1, j)</code> 這邊只需要看 <code>i</code>，要走 <code>i + 1 = 1, 2, ..., m</code> 共 <code>m</code> 次</li><li>走完 <code>m</code> 次之後還有 <code>u_paths(i, j + 1)</code>，要接著再走 <code>j + 1 = 1, 2, ..., n</code> 共 <code>n</code> 次</li><li>所以需要走 <code>m + n</code> 次才會結束</li></ol></li></ul></li></ul></li><li><code>u_paths</code> 合併遞迴結果的運算只需要一次加法，可以把時間消耗記做 <code>1</code>，也就是每個節點的時間消耗都是 <code>1</code></li><li>所有節點的時間消耗總合就是這個函式的時間複雜度。第一層有 <code>1 (= 2^0)</code> 個節點，第二層有 <code>2 (= 2^1)</code> 個節點，第三層有 <code>4 (= 2^2)</code> 個節點，以此類推，假設此樹深度為 <code>h</code>，所有節點的時間消耗和為 <code>2^0 + 2^1 + 2^2 + ... + 2^h</code>，依據等比級數和的公式得出結果為 <code>2^(h + 1) - 1</code><ul><li>這邊的算法是假設這是一個滿二元樹來算，但其實這並不是一個滿二元樹 (像第四層就只有 <code>7</code> 個節點)，所以遞迴樹法並不嚴謹，只是一個估算，真要嚴謹分析的話可以再用 Substitution Method 或 Master Theorem 來驗證</li><li>由第二點，深度 <code>h = m + n</code></li></ul></li><li>所以時間複雜度為 <code>O(2^(h + 1)) = O(2 * 2^h) = O(2^h) = O(2^(m + n))</code></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;快速解-適用於遞迴函式內呼叫自己-gt-1-次&quot;&gt;&lt;a href=&quot;#快速解-適用於遞迴函式內呼叫自己-gt-1-次&quot; class=&quot;headerlink&quot; title=&quot;快速解 (適用於遞迴函式內呼叫自己 &amp;gt; 1 次)&quot;&gt;&lt;/a&gt;快速解 (適用於遞迴函式內呼叫自己 &amp;gt; 1 次)&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;看這個遞迴函式呼叫自己幾次，假設呼叫了 &lt;code&gt;x&lt;/code&gt; 次&lt;/li&gt;
-&lt;li&gt;看看這個函式的遞迴深度。也就是說這個函式的初始呼叫會需要經過幾次的呼叫自己才會再也沒有任何呼叫，每條路都停止在 base case (終止條件)&lt;ul&gt;
-&lt;li&gt;舉例：可以先看看下面的詳細解，初始呼叫為 &lt;code&gt;u_paths(0, 0)&lt;/code&gt;，此時 &lt;code&gt;u_paths(i + 1, j)&lt;/code&gt; 需要呼叫 &lt;code&gt;m&lt;/code&gt; 次才會停，&lt;code&gt;u_paths(i, j + 1)&lt;/code&gt; 需要呼叫 &lt;code&gt;n&lt;/code&gt; 次才會停，所以總共呼叫 &lt;code&gt;m + n&lt;/code&gt; 次才會停，此時遞迴深度 &lt;code&gt;h = m + n&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;承上例，此時時間複雜度為 &lt;code&gt;O(x^h)&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;至少目前套用在幾個比較單純的遞迴式都成立，不確定複雜的是不是也成立
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="https://blog.jamesho.website/categories/Algorithm/"/>
-    
-    
-      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
   </entry>
   

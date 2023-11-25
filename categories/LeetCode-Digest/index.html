@@ -145,6 +145,74 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-11-25T06:36:07.000Z">2023-11-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分鐘 閱讀文 (大約 476 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/smallest-number-neighbors/">1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/description/">題目</a><br>思路：</p>
+<ul>
+<li><p>要找的點是<strong>可到達的點</strong>的距離在 threshold 裡的那些點，所以要找的是最短距離，因為只要最短距離可以在 threshold 內，那它就是可到達的點</p>
+</li>
+<li><p>用 Floyd-Warshall’s algorithm 找到所有點之間的最小距離</p>
+<ul>
+<li><p><code>k</code> 是 <code>i</code> 到 <code>j</code> 之間的任意點。比較 <code>i</code> -&gt; <code>j</code> 經過所有 <code>k</code> 的距離，最小的即為 <code>i</code> -&gt; <code>j</code> 的最短距離。</p>
+</li>
+<li><p>Question: if the path is <code>i -&gt; 2 -&gt; 1 -&gt; j</code> and the iteration consider <code>k == 1</code> first. But the <code>dist[i][1]</code> not yet populated and still have value of <code>float(&#39;inf&#39;)</code>. It will have the actual value until <code>k == 2</code>.</p>
+<ul>
+<li><p>Answer from ChatGPT: </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">You&#39;ve identified a key aspect of the Floyd-Warshall algorithm&#39;s iterative process. The algorithm relies on the gradual building of shortest paths through each possible intermediate vertex, and the order of considering vertices (the k values) doesn&#39;t prevent it from eventually finding the shortest paths.</span><br><span class="line"></span><br><span class="line">In your example, even if k &#x3D;&#x3D; 1 is considered first and the direct path i -&gt; 1 or 1 -&gt; j isn&#39;t the shortest, the algorithm might not immediately find the shortest path i -&gt; 2 -&gt; 1 -&gt; j. However, when k &#x3D;&#x3D; 2 is later considered, the algorithm will then take into account paths through 2, updating the shortest path calculations accordingly.</span><br><span class="line"></span><br><span class="line">The crux of the Floyd-Warshall algorithm is that by the time all vertices have been iteratively considered as potential intermediate steps, it will have computed the shortest paths between all pairs of vertices, considering all possible intermediate vertices and paths.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比較每個點在 threshold 內可達的點的個數，找出最小的＆有最大 number 的點</p>
+</li>
+</ul>
+<figure class="highlight python"><figcaption><span>Python3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findTheCity</span><span class="params">(self, n: int, edges: List[List[int]], distanceThreshold: int)</span> -&gt; int:</span></span><br><span class="line">    dist = [[float(<span class="string">'inf'</span>)] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Init</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        dist[i][i] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, j, w <span class="keyword">in</span> edges:</span><br><span class="line">        dist[i][j] = dist[j][i] = w</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Find the shortest distance.</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Find the smallest count.</span></span><br><span class="line">    min_count = float(<span class="string">'inf'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        count = sum(dist[i][j] &lt;= distanceThreshold <span class="keyword">for</span> j <span class="keyword">in</span> range(n))</span><br><span class="line">        <span class="keyword">if</span> count &lt;= min_count:</span><br><span class="line">            min_count = count</span><br><span class="line">            r = i</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> r</span><br></pre></td></tr></table></figure>
+<ul>
+<li>要注意一下 <code>dist[i][j] = dist[j][i] = w</code> 蠻容易漏掉中間那個 <code>dist[j][i]</code></li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time>
                 
                 <div class="level-item">
@@ -649,61 +717,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-04-12T08:29:09.000Z">2023-04-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分鐘 閱讀文 (大約 303 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/isomorphic-strings/">Isomorphic Strings</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://leetcode.com/problems/isomorphic-strings/">題目</a><br>這題看似不難，但第一次的做法錯了，第一次的程式碼如下，想法是用 mapping 組一個新字串 <code>t2</code>，假如跟 <code>t</code> 相同就 return True</p>
-<p>Python 3 wrong solution:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isIsomorphic</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        d[s[i]] = t[i]</span><br><span class="line">    t2 = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        t2 += d[c]</span><br><span class="line">    <span class="keyword">return</span> t == t2</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/isomorphic-strings/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -770,7 +783,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -794,7 +807,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            36
+                            38
                         </p>
                     </a>
                 </div>
@@ -846,7 +859,7 @@
                 <span class="level-item">LeetCode Digest</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">26</span>
+                <span class="level-item tag">27</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Project-Management/">
@@ -875,7 +888,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 11.25px;">android</a> <a href="/tags/array/" style="font-size: 15px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 16.25px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 11.25px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 13.75px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18.75px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 12.5px;">dynamic programming</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 13.75px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 18.75px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/simulation/" style="font-size: 10px;">simulation</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/stack/" style="font-size: 11.25px;">stack</a> <a href="/tags/string/" style="font-size: 13.75px;">string</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 12.5px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 11.11px;">android</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 15.56px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 11.11px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 13.33px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 17.78px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.22px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 13.33px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 10px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 13.33px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14.44px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 18.89px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/shortest-path/" style="font-size: 10px;">shortest path</a> <a href="/tags/simulation/" style="font-size: 10px;">simulation</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/stack/" style="font-size: 11.11px;">stack</a> <a href="/tags/string/" style="font-size: 13.33px;">string</a> <a href="/tags/tree/" style="font-size: 16.67px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 12.22px;">two pointers</a>
     </div>
 </div>
     
@@ -887,6 +900,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/smallest-number-neighbors/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-25T06:36:07.000Z">2023-11-25</time></div>
+                    <a href="/smallest-number-neighbors/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -964,25 +996,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/n-ary-tree-preorder-traversal/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="589. N-ary Tree Preorder Traversal">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-18T05:59:22.000Z">2023-04-18</time></div>
-                    <a href="/n-ary-tree-preorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">589. N-ary Tree Preorder Traversal</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -993,6 +1006,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/04/">
@@ -1222,7 +1246,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/graph/">
+                        <span class="tag">graph</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1320,7 +1351,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1328,6 +1359,13 @@
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
                         <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shortest-path/">
+                        <span class="tag">shortest path</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1404,6 +1442,25 @@
         
         <article class="media">
             
+            <a href="/smallest-number-neighbors/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-25T06:36:07.000Z">2023-11-25</time></div>
+                    <a href="/smallest-number-neighbors/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/last-stone-weight/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="1046. Last Stone Weight">
@@ -1478,25 +1535,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/n-ary-tree-preorder-traversal/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="589. N-ary Tree Preorder Traversal">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-18T05:59:22.000Z">2023-04-18</time></div>
-                    <a href="/n-ary-tree-preorder-traversal/" class="title has-link-black-ter is-size-6 has-text-weight-normal">589. N-ary Tree Preorder Traversal</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1507,6 +1545,17 @@
             彙整
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/04/">
@@ -1736,7 +1785,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/dynamic-programming/">
                         <span class="tag">dynamic programming</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/graph/">
+                        <span class="tag">graph</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1834,7 +1890,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/python/">
                         <span class="tag">python</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1842,6 +1898,13 @@
                     <a class="tags has-addons" href="/tags/recursion/">
                         <span class="tag">recursion</span>
                         <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/shortest-path/">
+                        <span class="tag">shortest path</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
