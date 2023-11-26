@@ -337,11 +337,6 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/android/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/stack/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
@@ -353,6 +348,16 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/simulation/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/android/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
@@ -377,12 +382,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/bit-manipulation/</loc>
+    <loc>https://blog.jamesho.website/tags/breadth-first-search/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/breadth-first-search/</loc>
+    <loc>https://blog.jamesho.website/tags/python/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
@@ -393,11 +398,6 @@
   
   <url>
     <loc>https://blog.jamesho.website/tags/hash-table/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/python/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
@@ -437,32 +437,17 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/package-management/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/pipenv/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/docker/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.jamesho.website/tags/django/</loc>
-    <lastmod>2023-11-26</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.jamesho.website/tags/database/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
   <url>
     <loc>https://blog.jamesho.website/tags/postgresql/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/docker/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
@@ -477,12 +462,27 @@
   </url>
   
   <url>
+    <loc>https://blog.jamesho.website/tags/java/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.jamesho.website/tags/shortest-path/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/tags/java/</loc>
+    <loc>https://blog.jamesho.website/tags/package-management/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/pipenv/</loc>
+    <lastmod>2023-11-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.jamesho.website/tags/django/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
@@ -524,12 +524,12 @@
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
+    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.jamesho.website/categories/System-Design/</loc>
+    <loc>https://blog.jamesho.website/categories/Book-Digest/</loc>
     <lastmod>2023-11-26</lastmod>
   </url>
   

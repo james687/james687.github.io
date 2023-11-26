@@ -51,9 +51,9 @@
       
         <tags>
             
-            <tag> graph </tag>
-            
             <tag> python </tag>
+            
+            <tag> graph </tag>
             
             <tag> dynamic programming </tag>
             
@@ -260,9 +260,9 @@
             
             <tag> string </tag>
             
-            <tag> hash table </tag>
-            
             <tag> python </tag>
+            
+            <tag> hash table </tag>
             
             <tag> greedy </tag>
             
@@ -343,9 +343,9 @@
             
             <tag> linked list </tag>
             
-            <tag> hash table </tag>
-            
             <tag> python </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -1003,11 +1003,11 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> database </tag>
             
             <tag> postgresql </tag>
+            
+            <tag> docker </tag>
             
             <tag> mysql </tag>
             
@@ -1036,11 +1036,11 @@
             
             <tag> python </tag>
             
+            <tag> docker </tag>
+            
             <tag> package management </tag>
             
             <tag> pipenv </tag>
-            
-            <tag> docker </tag>
             
             <tag> django </tag>
             
