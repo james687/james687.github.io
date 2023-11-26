@@ -134,6 +134,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-14T01:40:15.000Z">2023-04-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Algorithm/">Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分鐘 閱讀文 (大約 321 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/why-python-set-o1/">為什麼 Python 的 in 用在 set 是 O(1) 時間複雜度？</a>
+            
+        </h1>
+        <div class="content">
+            <p>通常都會說 Python 的 set 內部是用 hash table 來實作，所以是 O(1)，但為什麼這樣就是 O(1)？</p>
+<p>當要判斷某個元素是否在 set 裡面時，它的 <code>__hash__()</code> 會被用來得到 hash 值，可以把這個 hash 值視為 set 底層實作的 array 的 index，Python 接著會用這個 hash 值去那個 array 的對應位置找，然後發現 array 沒有這個位置，或是找到對應 value，而這個過程跟 set 裡的元素個數無關，所以是 O(1)</p>
+<p>而這邊說的 O(1) 是平均時間複雜度，最壞情況時間複雜度是 O(n)，
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/why-python-set-o1/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-04-13T12:36:07.000Z">2023-04-13</time>
                 
                 <div class="level-item">
@@ -625,64 +680,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-03-23T05:37:15.000Z">2023-03-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分鐘 閱讀文 (大約 687 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/house-robber-ii/">House Robber II</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://leetcode.com/problems/house-robber-ii/">題目</a><br>思路</p>
-<ol>
-<li>跟 <a href="https://leetcode.com/problems/house-robber">House Robber</a> 很像，只差在房子的排列變成頭尾相連，有沒有辦法把這題拆解，變成能用上第一版 House Robber 的解題方法？譬如把環形變回直排？</li>
-<li>變成環形之後多出來的限制讓我們可以把這題分成以下三種情況：<ol>
-<li>搶第一個、不搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但只考慮到倒數第二個</strong></li>
-<li>不搶第一個、搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但從第二個開始考慮</strong>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/house-robber-ii/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -753,7 +750,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            43
+                            44
                         </p>
                     </a>
                 </div>
@@ -829,7 +826,7 @@
                 <span class="level-item">LeetCode Digest</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">27</span>
+                <span class="level-item tag">28</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Project-Management/">
@@ -858,7 +855,7 @@
         <h3 class="menu-label">
             標籤雲
         </h3>
-        <a href="/tags/android/" style="font-size: 11.11px;">android</a> <a href="/tags/array/" style="font-size: 14.44px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 15.56px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 11.11px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 13.33px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 17.78px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.22px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 13.33px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 10px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 13.33px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 14.44px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 18.89px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/shortest-path/" style="font-size: 10px;">shortest path</a> <a href="/tags/simulation/" style="font-size: 10px;">simulation</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/stack/" style="font-size: 11.11px;">stack</a> <a href="/tags/string/" style="font-size: 13.33px;">string</a> <a href="/tags/tree/" style="font-size: 16.67px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 12.22px;">two pointers</a>
+        <a href="/tags/android/" style="font-size: 11.25px;">android</a> <a href="/tags/array/" style="font-size: 15px;">array</a> <a href="/tags/authentication/" style="font-size: 10px;">authentication</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-search-tree/" style="font-size: 10px;">binary search tree</a> <a href="/tags/binary-tree/" style="font-size: 16.25px;">binary tree</a> <a href="/tags/bit-manipulation/" style="font-size: 11.25px;">bit manipulation</a> <a href="/tags/breadth-first-search/" style="font-size: 15px;">breadth-first search</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/depth-first-search/" style="font-size: 18.75px;">depth-first search</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/dokku/" style="font-size: 10px;">dokku</a> <a href="/tags/dynamic-programming/" style="font-size: 13.75px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 11.25px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 15px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/heroku/" style="font-size: 10px;">heroku</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/paas/" style="font-size: 10px;">paas</a> <a href="/tags/package-management/" style="font-size: 10px;">package management</a> <a href="/tags/pipenv/" style="font-size: 10px;">pipenv</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/python/" style="font-size: 18.75px;">python</a> <a href="/tags/recursion/" style="font-size: 20px;">recursion</a> <a href="/tags/shortest-path/" style="font-size: 10px;">shortest path</a> <a href="/tags/simulation/" style="font-size: 10px;">simulation</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sorting/" style="font-size: 10px;">sorting</a> <a href="/tags/stack/" style="font-size: 11.25px;">stack</a> <a href="/tags/string/" style="font-size: 13.75px;">string</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a> <a href="/tags/two-pointers/" style="font-size: 12.5px;">two pointers</a>
     </div>
 </div>
     
@@ -870,6 +867,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/clone-graph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="133. Clone Graph">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-25T13:27:23.000Z">2023-11-25</time></div>
+                    <a href="/clone-graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">133. Clone Graph</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -947,25 +963,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/flood-fill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="733. Flood Fill">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-19T07:27:31.000Z">2023-04-19</time></div>
-                    <a href="/flood-fill/" class="title has-link-black-ter is-size-6 has-text-weight-normal">733. Flood Fill</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -983,7 +980,7 @@
                     <span class="level-item">十一月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1174,7 +1171,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/breadth-first-search/">
                         <span class="tag">breadth-first search</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1188,7 +1185,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1223,7 +1220,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/graph/">
                         <span class="tag">graph</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1237,7 +1234,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hash-table/">
                         <span class="tag">hash table</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1412,6 +1409,25 @@
         
         <article class="media">
             
+            <a href="/clone-graph/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="133. Clone Graph">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-25T13:27:23.000Z">2023-11-25</time></div>
+                    <a href="/clone-graph/" class="title has-link-black-ter is-size-6 has-text-weight-normal">133. Clone Graph</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/smallest-number-neighbors/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance">
@@ -1486,25 +1502,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/flood-fill/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="733. Flood Fill">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-19T07:27:31.000Z">2023-04-19</time></div>
-                    <a href="/flood-fill/" class="title has-link-black-ter is-size-6 has-text-weight-normal">733. Flood Fill</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1522,7 +1519,7 @@
                     <span class="level-item">十一月 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1713,7 +1710,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/breadth-first-search/">
                         <span class="tag">breadth-first search</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -1727,7 +1724,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/depth-first-search/">
                         <span class="tag">depth-first search</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1762,7 +1759,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/graph/">
                         <span class="tag">graph</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1776,7 +1773,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/hash-table/">
                         <span class="tag">hash table</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 

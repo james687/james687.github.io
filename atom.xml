@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-11-25T08:00:56.699Z</updated>
+  <updated>2023-11-26T02:50:53.413Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>133. Clone Graph</title>
+    <link href="https://blog.jamesho.website/clone-graph/"/>
+    <id>https://blog.jamesho.website/clone-graph/</id>
+    <published>2023-11-25T13:27:23.000Z</published>
+    <updated>2023-11-26T02:50:53.413Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/clone-graph/description/">題目</a><br>思路：</p><ol><li>可以找到最小可重複動作嗎？<ul><li>題目的 method 要傳入 first node, 回傳它的 clone</li><li>最小可重複動作可設定為：給定一個 node, 回傳 its clone</li></ul></li><li>DFS: 先寫 recursive case</li><li>Base case: method 收到已 clone 過的 node<ul><li>Use a dict to record nodes been cloned.</li></ul></li><li>須注意傳入 cloneGraph 的 node 有可能是 None<a id="more"></a></li></ol><figure class="highlight python"><figcaption><span>Python3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># Definition for a Node.</span></span><br><span class="line"><span class="string">class Node:</span></span><br><span class="line"><span class="string">    def __init__(self, val = 0, neighbors = None):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.neighbors = neighbors if neighbors is not None else []</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> Optional</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node: Optional[<span class="string">'Node'</span>])</span> -&gt; Optional['Node']:</span></span><br><span class="line">        old_new_map = &#123;&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">clone_node</span><span class="params">(node)</span>:</span></span><br><span class="line">            <span class="comment"># Base case</span></span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">in</span> old_new_map:</span><br><span class="line">                <span class="keyword">return</span> old_new_map[node]</span><br><span class="line">        </span><br><span class="line">            <span class="comment"># Recursive case</span></span><br><span class="line">            clone = Node(node.val)</span><br><span class="line">            old_new_map[node] = clone</span><br><span class="line">            <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">                clone.neighbors.append(clone_node(neighbor))        </span><br><span class="line">            <span class="keyword">return</span> clone</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> node <span class="keyword">and</span> clone_node(node)</span><br></pre></td></tr></table></figure><h3 id="How-to-do-it-with-BFS"><a href="#How-to-do-it-with-BFS" class="headerlink" title="How to do it with BFS?"></a>How to do it with BFS?</h3><p>思路</p><ol><li>一開始的直覺想法是就照 DFS 的套路，只是改成 recursive case 在迴圈裡做，也就是說把要執行最小可重複動作的 node 放入 stack 讓他在之後的迴圈去做 recursive case<ul><li>上面的 recursive case: clone 自己，也 clone 自己的所有 neighbors 並加到我的 clone 的 neighbors</li></ul></li><li>發現問題：那些 neighbors 繼續丟進 stack 想重複一樣的動作時，發現會 clone 兩次，表示這個動作拆的不好</li><li>修改最小可重複動作：<strong>我先 clone 好自己，最小可重複動作改成 clone 我的 neighbors 並加入我 clone 的 neighbors</strong>，這樣就不會 clone 兩次了，所有加入 stack 的 node 都是已經 clone 過的</li><li>clone 前先檢查 base case：假如這個 neighbor 有在 <code>old_to_new</code> 裡，代表他已經有被 clone 過了，而且也有被加入過 stack，所以不用再 clone &amp; add to stack，但還是要把他的 clone add to neighbors，因為一個點可能同時是好幾個點的鄰居，所以當然有可能被加好幾次鄰居</li></ol><figure class="highlight python"><figcaption><span>Python3 solution</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node: Optional[<span class="string">'Node'</span>])</span> -&gt; Optional['Node']:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    stack = [node]</span><br><span class="line">    old_to_new = &#123;node: Node(node.val)&#125;</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        n = stack.pop()</span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> n.neighbors:</span><br><span class="line">            <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> old_to_new:</span><br><span class="line">                n_clone = Node(neighbor.val)</span><br><span class="line">                old_to_new[neighbor] = n_clone</span><br><span class="line">                stack.append(neighbor)</span><br><span class="line">            old_to_new[n].neighbors.append(old_to_new[neighbor])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> old_to_new[node]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/clone-graph/description/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以找到最小可重複動作嗎？&lt;ul&gt;
+&lt;li&gt;題目的 method 要傳入 first node, 回傳它的 clone&lt;/li&gt;
+&lt;li&gt;最小可重複動作可設定為：給定一個 node, 回傳 its clone&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DFS: 先寫 recursive case&lt;/li&gt;
+&lt;li&gt;Base case: method 收到已 clone 過的 node&lt;ul&gt;
+&lt;li&gt;Use a dict to record nodes been cloned.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;須注意傳入 cloneGraph 的 node 有可能是 None
+    
+    </summary>
+    
+    
+      <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
+    
+    
+      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
+    
+      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
+    
+      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+  </entry>
   
   <entry>
     <title>1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance</title>
@@ -40,11 +81,11 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
+      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
+    
       <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
       <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
-    
-      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
     
       <category term="shortest path" scheme="https://blog.jamesho.website/tags/shortest-path/"/>
     
@@ -270,9 +311,9 @@
     
       <category term="string" scheme="https://blog.jamesho.website/tags/string/"/>
     
-      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
-    
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
       <category term="greedy" scheme="https://blog.jamesho.website/tags/greedy/"/>
     
@@ -353,9 +394,9 @@
     
       <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
-      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
-    
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+      <category term="python" scheme="https://blog.jamesho.website/tags/python/"/>
     
   </entry>
   
@@ -604,36 +645,6 @@
       <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>House Robber II</title>
-    <link href="https://blog.jamesho.website/house-robber-ii/"/>
-    <id>https://blog.jamesho.website/house-robber-ii/</id>
-    <published>2023-03-23T05:37:15.000Z</published>
-    <updated>2023-11-12T07:04:28.533Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/house-robber-ii/">題目</a><br>思路</p><ol><li>跟 <a href="https://leetcode.com/problems/house-robber">House Robber</a> 很像，只差在房子的排列變成頭尾相連，有沒有辦法把這題拆解，變成能用上第一版 House Robber 的解題方法？譬如把環形變回直排？</li><li>變成環形之後多出來的限制讓我們可以把這題分成以下三種情況：<ol><li>搶第一個、不搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但只考慮到倒數第二個</strong></li><li>不搶第一個、搶最後一個：加入第三種情況，等同於可以<strong>視為直排，但從第二個開始考慮</strong><a id="more"></a></li><li>第一個和最後一個都不搶：可與前兩種情況合併</li></ol><ul><li>最後把以上三種情況合併為粗體的兩種情況，<strong>轉為第一版 House Robber 問題</strong>，接下來只需取兩種情況錢比較多的就是答案</li></ul></li><li>因為現在需多考慮起始 index，我們把<a href="/house-robber">第一版解法</a>的遞迴函式改為多傳入起始 index，並同樣用 <code>@cache</code> 避免同樣的 <code>inner_rob(i, j)</code> 重複計算<ul><li>Base case 寫法：<ol><li>考慮一開始 <code>j</code> 比 <code>i</code> 大的情況，一路因為 <code>inner_rob(i, j - 1)</code>, <code>inner_rob(i, j - 2)</code> 而減少的情況：<ol><li><code>j == i + 2</code> 時：下兩個遞迴節點為 <code>inner_rob(i, i + 1)</code>, <code>inner_rob(i, i)</code></li><li><code>j == i + 1</code> 時： 下兩個遞迴節點為 <code>inner_rob(i, i)</code>, <code>inner_rob(i, i - 1)</code></li></ol><ul><li>此時可以寫出 base case 的兩種情況 <code>j == i</code>, <code>j &lt; i</code></li></ul></li><li>考慮 <code>nums</code> 數字最小的幾種情況，看看遞迴是否正常收斂 or 結果是否正確<ol><li><code>len(nums) == 3</code>: <ul><li><code>max(inner_job(0, 1), inner_job(1, 2))</code> -&gt; 正常收斂</li></ul></li><li><code>len(nums) == 2</code>:<ul><li><code>max(inner_job(0, 0), inner_job(1, 1))</code> -&gt; 結果正確</li></ul></li><li><code>len(nums) == 1</code>:<ul><li><code>max(inner_job(0, -1), inner_job(1, 0))</code></li><li>此時得出的答案為 <code>0</code>，是錯的，所以 base case 需多考慮這種情況，加入 <code>len(nums) == 1</code> 時的判斷處理</li></ul></li></ol></li></ol></li></ul></li><li>取錢比較多的情況即為答案：<code>return max(inner_rob(0, len(nums) - 2), inner_rob(1, len(nums) - 1))</code></li></ol><p>Python3 solution:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line"><span class="meta">    @cache</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_rob</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="string">"""@return 由 index i 搶到 j 可得的最大收穫"""</span></span><br><span class="line">        <span class="comment"># Base case</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> j == i:</span><br><span class="line">            <span class="keyword">return</span> nums[j]</span><br><span class="line">        <span class="keyword">if</span> j &lt; i:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Recursive case</span></span><br><span class="line">        <span class="keyword">return</span> max(inner_rob(i, j - <span class="number">1</span>), nums[j] + inner_rob(i, j - <span class="number">2</span>))</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> max(inner_rob(<span class="number">0</span>, len(nums) - <span class="number">2</span>), inner_rob(<span class="number">1</span>, len(nums) - <span class="number">1</span>))</span><br></pre></td></tr></table></figure><p>如果不用 <code>@cache</code>:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">    l = len(nums)</span><br><span class="line">    memo = [[<span class="literal">None</span>] * l <span class="keyword">for</span> _ <span class="keyword">in</span> range(l)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner_rob</span><span class="params">(i, j)</span>:</span></span><br><span class="line">        <span class="string">"""@return 由 index i 搶到 j 可得的最大收穫"""</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> i == j:</span><br><span class="line">            <span class="keyword">return</span> nums[j]</span><br><span class="line">        <span class="keyword">if</span> j &lt; i:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> memo[i][j] <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> memo[i][j]</span><br><span class="line">        memo[i][j] = max(inner_rob(i, j - <span class="number">1</span>), nums[j] + inner_rob(i, j - <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">return</span> memo[i][j]</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> max(inner_rob(<span class="number">0</span>, len(nums) - <span class="number">2</span>), inner_rob(<span class="number">1</span>, len(nums) - <span class="number">1</span>))</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/house-robber-ii/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;跟 &lt;a href=&quot;https://leetcode.com/problems/house-robber&quot;&gt;House Robber&lt;/a&gt; 很像，只差在房子的排列變成頭尾相連，有沒有辦法把這題拆解，變成能用上第一版 House Robber 的解題方法？譬如把環形變回直排？&lt;/li&gt;
-&lt;li&gt;變成環形之後多出來的限制讓我們可以把這題分成以下三種情況：&lt;ol&gt;
-&lt;li&gt;搶第一個、不搶最後一個：加入第三種情況，等同於可以&lt;strong&gt;視為直排，但只考慮到倒數第二個&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;不搶第一個、搶最後一個：加入第三種情況，等同於可以&lt;strong&gt;視為直排，但從第二個開始考慮&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
-    
-    
-      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="dynamic programming" scheme="https://blog.jamesho.website/tags/dynamic-programming/"/>
     
   </entry>
   
