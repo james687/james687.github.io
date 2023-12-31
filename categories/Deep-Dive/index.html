@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分鐘 閱讀文 (大約 289 個字)
+                    2 分鐘 閱讀文 (大約 290 個字)
                 </span>
                 
                 
@@ -174,27 +174,17 @@
 <li>寫 redo log, 裡面記錄準備要做的改變，並記錄這個 transaction 的狀態為 <code>in progress</code></li>
 <li>把 redo log 紀錄的那些改變實際寫入 database files</li>
 <li>把 redo log 的 transaction 狀態改為 <code>committed</code></li>
-<li>回傳 OK</li>
-</ol>
-</li>
-<li>假如在 commit 前斷電，database server 重啟後，會執行以下 recovery process:<ol>
-<li>Redo: 從 checkpoint 以後的 redo log 開始去 reapply 剩下的 redo logs 的 changes<ul>
-<li>因為那些 uncommitted 的 redo logs 的 changes 很有可能已經有部分寫入到 database files(pages) 裡，所以會先檢查 pages 裡的 LSN (Log Sequence Number), 假如 page 裡的 LSN &gt;= redo log 的，代表該 redo log 的 change 已經寫入了，就不用再 apply (LSN 是有順序性的)</li>
-</ul>
-</li>
-<li>Undo: 把 reapply 的那些 redo logs 裡，transaction state 為 uncommitted 的進行 rollback operation</li>
-</ol>
-<ul>
-<li>Note: 為何不是單純 ignore 那些 uncommitted 的 redo logs 就好？<ul>
-<li>因為那些 redo logs 可能已經有 partially write to database files 了，所以為了確保 consistency, 必須要先 redo 再 undo</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
+<li>回傳 OK
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/database-redo-log/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
