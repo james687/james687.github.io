@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
 <meta property="article:published_time" content="2023-12-31T10:27:23.000Z">
-<meta property="article:modified_time" content="2023-12-31T15:21:50.829Z">
+<meta property="article:modified_time" content="2023-12-31T15:32:15.846Z">
 <meta property="article:author" content="James Ho">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary">
@@ -171,11 +171,11 @@
 </ol>
 </li>
 <li>假如在 commit 前斷電，database server 重啟後，會執行以下 recovery process:<ol>
-<li>Redo: 從 checkpoint 以後的 redo log 開始去 reapply 剩下的 redo logs 的 changes<ul>
+<li><strong>Redo:</strong> 從 checkpoint 以後的 redo log 開始去 reapply 剩下的 redo logs 的 changes<ul>
 <li>因為那些 uncommitted 的 redo logs 的 changes 很有可能已經有部分寫入到 database files(pages) 裡，所以會先檢查 pages 裡的 LSN (Log Sequence Number), 假如 page 裡的 LSN &gt;= redo log 的，代表該 redo log 的 change 已經寫入了，就不用再 apply (LSN 是有順序性的)</li>
 </ul>
 </li>
-<li>Undo: 把 reapply 的那些 redo logs 裡，transaction state 為 uncommitted 的進行 rollback operation</li>
+<li><strong>Undo:</strong> 把 reapply 的那些 redo logs 裡，transaction state 為 uncommitted 的進行 rollback operation</li>
 </ol>
 <ul>
 <li>Note: 為何不是單純 ignore 那些 uncommitted 的 redo logs 就好？<ul>

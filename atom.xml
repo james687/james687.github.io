@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-12-31T15:21:50.829Z</updated>
+  <updated>2023-12-31T15:32:15.846Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.jamesho.website/database-redo-log/"/>
     <id>https://blog.jamesho.website/database-redo-log/</id>
     <published>2023-12-31T10:27:23.000Z</published>
-    <updated>2023-12-31T15:21:50.829Z</updated>
+    <updated>2023-12-31T15:32:15.846Z</updated>
     
-    <content type="html"><![CDATA[<p>用 ChatGPT 查了下 redo log 是怎麼用在 database crash or power loss 後的 recovery 裡，這邊做個小筆記統整一下：</p><ul><li>進行交易時，會依序進行以下步驟：<ol><li>寫 redo log, 裡面記錄準備要做的改變，並記錄這個 transaction 的狀態為 <code>in progress</code></li><li>把 redo log 紀錄的那些改變實際寫入 database files</li><li>把 redo log 的 transaction 狀態改為 <code>committed</code></li><li>回傳 OK<a id="more"></a></li></ol></li><li>假如在 commit 前斷電，database server 重啟後，會執行以下 recovery process:<ol><li>Redo: 從 checkpoint 以後的 redo log 開始去 reapply 剩下的 redo logs 的 changes<ul><li>因為那些 uncommitted 的 redo logs 的 changes 很有可能已經有部分寫入到 database files(pages) 裡，所以會先檢查 pages 裡的 LSN (Log Sequence Number), 假如 page 裡的 LSN &gt;= redo log 的，代表該 redo log 的 change 已經寫入了，就不用再 apply (LSN 是有順序性的)</li></ul></li><li>Undo: 把 reapply 的那些 redo logs 裡，transaction state 為 uncommitted 的進行 rollback operation</li></ol><ul><li>Note: 為何不是單純 ignore 那些 uncommitted 的 redo logs 就好？<ul><li>因為那些 redo logs 可能已經有 partially write to database files 了，所以為了確保 consistency, 必須要先 redo 再 undo</li></ul></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>用 ChatGPT 查了下 redo log 是怎麼用在 database crash or power loss 後的 recovery 裡，這邊做個小筆記統整一下：</p><ul><li>進行交易時，會依序進行以下步驟：<ol><li>寫 redo log, 裡面記錄準備要做的改變，並記錄這個 transaction 的狀態為 <code>in progress</code></li><li>把 redo log 紀錄的那些改變實際寫入 database files</li><li>把 redo log 的 transaction 狀態改為 <code>committed</code></li><li>回傳 OK<a id="more"></a></li></ol></li><li>假如在 commit 前斷電，database server 重啟後，會執行以下 recovery process:<ol><li><strong>Redo:</strong> 從 checkpoint 以後的 redo log 開始去 reapply 剩下的 redo logs 的 changes<ul><li>因為那些 uncommitted 的 redo logs 的 changes 很有可能已經有部分寫入到 database files(pages) 裡，所以會先檢查 pages 裡的 LSN (Log Sequence Number), 假如 page 裡的 LSN &gt;= redo log 的，代表該 redo log 的 change 已經寫入了，就不用再 apply (LSN 是有順序性的)</li></ul></li><li><strong>Undo:</strong> 把 reapply 的那些 redo logs 裡，transaction state 為 uncommitted 的進行 rollback operation</li></ol><ul><li>Note: 為何不是單純 ignore 那些 uncommitted 的 redo logs 就好？<ul><li>因為那些 redo logs 可能已經有 partially write to database files 了，所以為了確保 consistency, 必須要先 redo 再 undo</li></ul></li></ul></li></ul>]]></content>
     
     <summary type="html">
     
@@ -78,9 +78,9 @@
     
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
-    
       <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
+    
+      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
@@ -230,11 +230,11 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
-    
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
+    
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
@@ -419,9 +419,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
-    
       <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
+    
+      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
@@ -535,9 +535,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
-    
       <category term="bit manipulation" scheme="https://blog.jamesho.website/tags/bit-manipulation/"/>
+    
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
     
   </entry>
   
