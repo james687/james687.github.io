@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2023-12-31T15:32:15.846Z</updated>
+  <updated>2024-01-01T14:12:46.128Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Digest of Consistent Hashing</title>
+    <link href="https://blog.jamesho.website/consistent-hashing/"/>
+    <id>https://blog.jamesho.website/consistent-hashing/</id>
+    <published>2024-01-01T13:27:23.000Z</published>
+    <updated>2024-01-01T14:12:46.128Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>這是分散式系統中很常用到的技巧，譬如你有個 redis cluster for caching, 就可以用 consistent hashing 來決定資料要放到哪個 redis instance, 優點是當增加或減少 redis node 時，可以最大化的減少資料的搬移</p><a id="more"></a><h3 id="實作細節"><a href="#實作細節" class="headerlink" title="實作細節"></a>實作細節</h3><p>會有個 hash function, redis node 的 identifier &amp; data’s key will be applied to that function。想像有個虛擬的環 ，假設 hash value 的範圍為 0 ~ 999，順時鐘遞增的分佈在環上。redis node 算出來的 hash value will be evenly distributed on the circle. 假設現在有三個 redis nodes A, B, C, hash value 分別為 100, 300, 700, 則 data 的 hash value 順時針走碰到的第一個 node 就是他放的位置。</p><p>這樣除了可以確保每份資料都放在同一個 node, 也能確保當新增或減少 redis node 時的資料搬移最少：</p><ul><li>假設現在新增了第四個 D node with hash value 500, 則只會影響 hash value 為 301 ~ 500 的資料 (要從 C 搬到 D)</li></ul><p><strong>Note:</strong> 餘數 (mod) function 不適合作為這邊的 hash function, 譬如上面的例子有三個 nodes, 你用 key % 3 來算 hash value, 當增加一台 node, 幾乎所有資料的 hash value 都會變，就會造成大規模的資料移動</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;簡介&quot;&gt;&lt;a href=&quot;#簡介&quot; class=&quot;headerlink&quot; title=&quot;簡介&quot;&gt;&lt;/a&gt;簡介&lt;/h3&gt;&lt;p&gt;這是分散式系統中很常用到的技巧，譬如你有個 redis cluster for caching, 就可以用 consistent hashing 來決定資料要放到哪個 redis instance, 優點是當增加或減少 redis node 時，可以最大化的減少資料的搬移&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="System Design" scheme="https://blog.jamesho.website/categories/System-Design/"/>
+    
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+  </entry>
   
   <entry>
     <title>Redo Logs in Database Systems</title>
@@ -78,9 +101,9 @@
     
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
-      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
-    
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
+    
+      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
@@ -230,11 +253,11 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
+      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
+    
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
@@ -419,9 +442,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
-    
       <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
+    
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
@@ -535,9 +558,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="bit manipulation" scheme="https://blog.jamesho.website/tags/bit-manipulation/"/>
-    
       <category term="array" scheme="https://blog.jamesho.website/tags/array/"/>
+    
+      <category term="bit manipulation" scheme="https://blog.jamesho.website/tags/bit-manipulation/"/>
     
   </entry>
   
@@ -607,41 +630,6 @@
       <category term="dokku" scheme="https://blog.jamesho.website/tags/dokku/"/>
     
       <category term="paas" scheme="https://blog.jamesho.website/tags/paas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Binary Tree Level Order Traversal</title>
-    <link href="https://blog.jamesho.website/binary-tree-level-order-traversal/"/>
-    <id>https://blog.jamesho.website/binary-tree-level-order-traversal/</id>
-    <published>2023-03-28T11:25:25.000Z</published>
-    <updated>2023-04-22T10:50:56.352Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">題目</a><br>思路</p><ol><li>一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解</li><li>一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理<ul><li>stack 也是 list of list, 裡面的每個 list 都是一層節點<a id="more"></a></li></ul></li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">levelOrder</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; List[List[int]]:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    stack, values = [[root]], []</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        level_vals = []</span><br><span class="line">        level_nodes = []</span><br><span class="line">        nodes = stack.pop()</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">            level_vals.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                level_nodes.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                level_nodes.append(node.right)</span><br><span class="line">        <span class="keyword">if</span> level_nodes:</span><br><span class="line">            stack.append(level_nodes)</span><br><span class="line">        values.append(level_vals)</span><br><span class="line">    <span class="keyword">return</span> values</span><br></pre></td></tr></table></figure><h3 id="但假如用遞迴的話怎麼解？"><a href="#但假如用遞迴的話怎麼解？" class="headerlink" title="但假如用遞迴的話怎麼解？"></a>但假如用遞迴的話怎麼解？</h3><p>Recursive case: 把當下這個節點的 value 放到對應 level index 的 list 中</p><ul><li><p>如果沒有對應的 level index 就加一個空 list 進去 (<code>level_ind</code> 會從 0 開始依序傳入，不會有跳號的情況)</p>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    level = res[level_ind]</span><br><span class="line"><span class="keyword">except</span> IndexError:</span><br><span class="line">    level = []</span><br><span class="line">    res.append(level)</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">levelOrder</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; List[List[int]]:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put_value</span><span class="params">(node, level_ind, res)</span>:</span></span><br><span class="line">        <span class="comment"># Base case</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Recursive case</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            level = res[level_ind]</span><br><span class="line">        <span class="keyword">except</span> IndexError:</span><br><span class="line">            level = []</span><br><span class="line">            res.append(level)</span><br><span class="line">        level.append(node.val)</span><br><span class="line">        put_value(node.left, level_ind + <span class="number">1</span>, res)</span><br><span class="line">        put_value(node.right, level_ind + <span class="number">1</span>, res)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    res = []</span><br><span class="line">    put_value(root, <span class="number">0</span>, res)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/binary-tree-level-order-traversal/&quot;&gt;題目&lt;/a&gt;&lt;br&gt;思路&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;一次一層很直覺想到廣先搜尋 (BFS)，所以用 iterative 的做法來解&lt;/li&gt;
-&lt;li&gt;一次迴圈處理一層，並把下一層節點放入 stack 繼續在下次迴圈處理&lt;ul&gt;
-&lt;li&gt;stack 也是 list of list, 裡面的每個 list 都是一層節點
-    
-    </summary>
-    
-    
-      <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
-    
-    
-      <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
-    
-      <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
-    
-      <category term="binary tree" scheme="https://blog.jamesho.website/tags/binary-tree/"/>
-    
-      <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
   </entry>
   

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Digest of Consistent Hashing</title>
+      <link href="/consistent-hashing/"/>
+      <url>/consistent-hashing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><p>這是分散式系統中很常用到的技巧，譬如你有個 redis cluster for caching, 就可以用 consistent hashing 來決定資料要放到哪個 redis instance, 優點是當增加或減少 redis node 時，可以最大化的減少資料的搬移</p><a id="more"></a><h3 id="實作細節"><a href="#實作細節" class="headerlink" title="實作細節"></a>實作細節</h3><p>會有個 hash function, redis node 的 identifier &amp; data’s key will be applied to that function。想像有個虛擬的環 ，假設 hash value 的範圍為 0 ~ 999，順時鐘遞增的分佈在環上。redis node 算出來的 hash value will be evenly distributed on the circle. 假設現在有三個 redis nodes A, B, C, hash value 分別為 100, 300, 700, 則 data 的 hash value 順時針走碰到的第一個 node 就是他放的位置。</p><p>這樣除了可以確保每份資料都放在同一個 node, 也能確保當新增或減少 redis node 時的資料搬移最少：</p><ul><li>假設現在新增了第四個 D node with hash value 500, 則只會影響 hash value 為 301 ~ 500 的資料 (要從 C 搬到 D)</li></ul><p><strong>Note:</strong> 餘數 (mod) function 不適合作為這邊的 hash function, 譬如上面的例子有三個 nodes, 你用 key % 3 來算 hash value, 當增加一台 node, 幾乎所有資料的 hash value 都會變，就會造成大規模的資料移動</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> System Design </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hash table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Redo Logs in Database Systems</title>
       <link href="/database-redo-log/"/>
       <url>/database-redo-log/</url>
@@ -47,9 +72,9 @@
             
             <tag> depth-first search </tag>
             
-            <tag> graph </tag>
-            
             <tag> breadth-first search </tag>
+            
+            <tag> graph </tag>
             
             <tag> hash table </tag>
             
@@ -194,11 +219,11 @@
       
         <tags>
             
+            <tag> array </tag>
+            
             <tag> depth-first search </tag>
             
             <tag> recursion </tag>
-            
-            <tag> array </tag>
             
             <tag> breadth-first search </tag>
             
@@ -364,9 +389,9 @@
       
         <tags>
             
-            <tag> linked list </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> linked list </tag>
             
             <tag> hash table </tag>
             
@@ -472,9 +497,9 @@
       
         <tags>
             
-            <tag> bit manipulation </tag>
-            
             <tag> array </tag>
+            
+            <tag> bit manipulation </tag>
             
         </tags>
       
@@ -928,9 +953,9 @@
       
         <tags>
             
-            <tag> two pointers </tag>
-            
             <tag> array </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> sorting </tag>
             
