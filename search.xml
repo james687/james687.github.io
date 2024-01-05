@@ -22,6 +22,8 @@
             
             <tag> hash table </tag>
             
+            <tag> distributed system </tag>
+            
         </tags>
       
     </entry>
@@ -252,13 +254,13 @@
       
         <tags>
             
-            <tag> stack </tag>
-            
             <tag> tree </tag>
             
             <tag> depth-first search </tag>
             
             <tag> recursion </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
