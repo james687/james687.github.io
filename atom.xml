@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2024-01-08T02:03:14.223Z</updated>
+  <updated>2024-01-08T12:48:55.556Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://blog.jamesho.website/idempotency-key/"/>
     <id>https://blog.jamesho.website/idempotency-key/</id>
     <published>2024-01-08T01:27:23.000Z</published>
-    <updated>2024-01-08T02:03:14.223Z</updated>
+    <updated>2024-01-08T12:48:55.556Z</updated>
     
-    <content type="html"><![CDATA[<p>首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。</p><p>Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 key, 並在 HTTP header 帶上這個 key, server 端會 maintain idempotency key 和 result 的對應，如果發現已經有了，就直接回傳結果不處理，如果沒有，代表還沒做過，就執行操作並把 key &amp; result 存起來。</p><p>Idempotency Key 也可以由 server 產生，不過必須要是這個操作是由 server 發起的。簡單來說，是由操作的發起者產生這個 key。</p>]]></content>
+    <content type="html"><![CDATA[<p>首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。</p><p>Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 key, 並在 HTTP header 帶上這個 key, server 端會 maintain idempotency key 和 result 的對應，如果發現已經有了，就直接回傳結果不處理，如果沒有，代表還沒做過，就執行操作並把 key &amp; result 存起來。</p><p>Idempotency Key 也可以由 server 產生，不過必須要是這個操作是由 server 發起的。簡單來說，是由操作的發起者產生這個 key。</p><p>參考：<a href="https://william-yeh.net/post/2020/03/idempotency-key-test/">Idempotency Key：原理與實測</a></p>]]></content>
     
     <summary type="html">
     
@@ -130,9 +130,9 @@
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
-      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
-    
       <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
+    
+      <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
   </entry>
   
@@ -469,9 +469,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
-    
       <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
+    
+      <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
