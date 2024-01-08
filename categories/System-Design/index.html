@@ -145,6 +145,54 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 216 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/idempotency-key/">Idempotency Key 簡介</a>
+            
+        </h1>
+        <div class="content">
+            <p>首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。</p>
+<p>Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 key, 並在 HTTP header 帶上這個 key, server 端會 maintain idempotency key 和 result 的對應，如果發現已經有了，就直接回傳結果不處理，如果沒有，代表還沒做過，就執行操作並把 key &amp; result 存起來。</p>
+<p>Idempotency Key 也可以由 server 產生，不過必須要是這個操作是由 server 發起的。簡單來說，是由操作的發起者產生這個 key。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2024-01-01T13:27:23.000Z">2024-01-01</time>
                 
                 <div class="level-item">
@@ -290,7 +338,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            46
+                            47
                         </p>
                     </a>
                 </div>
@@ -390,7 +438,7 @@
                 <span class="level-item">System Design</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -415,6 +463,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/idempotency-key/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idempotency Key 簡介">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time></div>
+                    <a href="/idempotency-key/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idempotency Key 簡介</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -492,25 +559,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/last-stone-weight/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1046. Last Stone Weight">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time></div>
-                    <a href="/last-stone-weight/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1046. Last Stone Weight</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -528,7 +576,7 @@
                     <span class="level-item">一月 2024</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -986,6 +1034,25 @@
         
         <article class="media">
             
+            <a href="/idempotency-key/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idempotency Key 簡介">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time></div>
+                    <a href="/idempotency-key/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idempotency Key 簡介</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/consistent-hashing/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Digest of Consistent Hashing">
@@ -1060,25 +1127,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/last-stone-weight/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1046. Last Stone Weight">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time></div>
-                    <a href="/last-stone-weight/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1046. Last Stone Weight</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1096,7 +1144,7 @@
                     <span class="level-item">一月 2024</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

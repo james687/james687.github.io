@@ -134,6 +134,68 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-17T07:19:11.000Z">2023-04-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分鐘 閱讀文 (大約 600 個字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/diff-between-extend-and-plusequal/">[Python] list 用 `.extend()` 與 `+=` 的差別</a>
+            
+        </h1>
+        <div class="content">
+            <p>譬如有兩個 list <code>a</code> 和 <code>b</code>，使用 <code>a.extend(b)</code> 和 <code>a += b</code> 有什麼相同或不同？有沒有什麼 general 的 best practice for using one rather than the other?</p>
+<p>其實在這個情境下，這兩個用法幾乎一樣。它們都會直接 in-place 的修改 <code>a</code>，把 <code>b</code> 裡面的元素加到 <code>a</code> 的後面</p>
+<ul>
+<li><code>+=</code> 會呼叫 list 的 <code>.__iadd__()</code> 來做 in-place 的修改<ul>
+<li>所以在這個情境下，<code>b</code> 可以是任何 iterable，譬如 <code>[] += {}</code> 會得到 <code>[]</code></li>
+<li>假如用 <code>+=</code> 的是 immutable 的 type，Python 發現沒有 <code>.__iadd__()</code>，接著就會呼叫它的 <code>.__add__()</code>，此情況下 <code>a += b</code> 等同於 <code>a = a + b</code></li>
+</ul>
+</li>
+</ul>
+<p>以下列出少數有差別的地方：
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/diff-between-extend-and-plusequal/#more">繼續閱讀</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2023-04-14T10:58:18.000Z">2023-04-14</time>
                 
                 <div class="level-item">
@@ -630,63 +692,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-04-05T07:37:28.000Z">2023-04-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Development-Note/">Development Note</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分鐘 閱讀文 (大約 463 個字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/use-dokku-on-digitalocean/">使用 Dokku 將 Web App 部署在 DigitalOcean</a>
-            
-        </h1>
-        <div class="content">
-            <p>因為 Heroku 現在要收費了，原本放在上面<a href="https://github.com/james687/Tweetme">用免費方案的 project</a> 就需要找新的方法。於是找到了 <a href="https://github.com/dokku/dokku">Dokku</a>，他的 GitHub page 介紹如下：</p>
-<blockquote>
-<p>Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.</p>
-</blockquote>
-<p>的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/use-dokku-on-digitalocean/#more">繼續閱讀</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -757,7 +762,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            46
+                            47
                         </p>
                     </a>
                 </div>
@@ -857,7 +862,7 @@
                 <span class="level-item">System Design</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -882,6 +887,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/idempotency-key/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idempotency Key 簡介">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time></div>
+                    <a href="/idempotency-key/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idempotency Key 簡介</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -959,25 +983,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/last-stone-weight/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1046. Last Stone Weight">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time></div>
-                    <a href="/last-stone-weight/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1046. Last Stone Weight</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -995,7 +1000,7 @@
                     <span class="level-item">一月 2024</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1453,6 +1458,25 @@
         
         <article class="media">
             
+            <a href="/idempotency-key/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Idempotency Key 簡介">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time></div>
+                    <a href="/idempotency-key/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idempotency Key 簡介</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/consistent-hashing/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Digest of Consistent Hashing">
@@ -1527,25 +1551,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/last-stone-weight/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="1046. Last Stone Weight">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-20T09:14:40.000Z">2023-04-20</time></div>
-                    <a href="/last-stone-weight/" class="title has-link-black-ter is-size-6 has-text-weight-normal">1046. Last Stone Weight</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/LeetCode-Digest/">LeetCode Digest</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1563,7 +1568,7 @@
                     <span class="level-item">一月 2024</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jamesho.website/"/>
-  <updated>2024-01-05T02:17:58.189Z</updated>
+  <updated>2024-01-08T02:03:14.223Z</updated>
   <id>https://blog.jamesho.website/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Idempotency Key 簡介</title>
+    <link href="https://blog.jamesho.website/idempotency-key/"/>
+    <id>https://blog.jamesho.website/idempotency-key/</id>
+    <published>2024-01-08T01:27:23.000Z</published>
+    <updated>2024-01-08T02:03:14.223Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。</p><p>Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 key, 並在 HTTP header 帶上這個 key, server 端會 maintain idempotency key 和 result 的對應，如果發現已經有了，就直接回傳結果不處理，如果沒有，代表還沒做過，就執行操作並把 key &amp; result 存起來。</p><p>Idempotency Key 也可以由 server 產生，不過必須要是這個操作是由 server 發起的。簡單來說，是由操作的發起者產生這個 key。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp;amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。&lt;/p&gt;
+&lt;p&gt;Idempotency Key 據說是 St
+      
+    
+    </summary>
+    
+    
+      <category term="System Design" scheme="https://blog.jamesho.website/categories/System-Design/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Digest of Consistent Hashing</title>
@@ -105,9 +130,9 @@
     
       <category term="breadth-first search" scheme="https://blog.jamesho.website/tags/breadth-first-search/"/>
     
-      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
-    
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
+    
+      <category term="graph" scheme="https://blog.jamesho.website/tags/graph/"/>
     
   </entry>
   
@@ -292,13 +317,13 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
+      <category term="stack" scheme="https://blog.jamesho.website/tags/stack/"/>
+    
       <category term="tree" scheme="https://blog.jamesho.website/tags/tree/"/>
     
       <category term="depth-first search" scheme="https://blog.jamesho.website/tags/depth-first-search/"/>
     
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
-    
-      <category term="stack" scheme="https://blog.jamesho.website/tags/stack/"/>
     
   </entry>
   
@@ -444,9 +469,9 @@
       <category term="LeetCode Digest" scheme="https://blog.jamesho.website/categories/LeetCode-Digest/"/>
     
     
-      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
-    
       <category term="linked list" scheme="https://blog.jamesho.website/tags/linked-list/"/>
+    
+      <category term="two pointers" scheme="https://blog.jamesho.website/tags/two-pointers/"/>
     
       <category term="hash table" scheme="https://blog.jamesho.website/tags/hash-table/"/>
     
@@ -599,39 +624,6 @@
       <category term="recursion" scheme="https://blog.jamesho.website/tags/recursion/"/>
     
       <category term="binary search tree" scheme="https://blog.jamesho.website/tags/binary-search-tree/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Dokku 將 Web App 部署在 DigitalOcean</title>
-    <link href="https://blog.jamesho.website/use-dokku-on-digitalocean/"/>
-    <id>https://blog.jamesho.website/use-dokku-on-digitalocean/</id>
-    <published>2023-04-05T07:37:28.000Z</published>
-    <updated>2023-07-04T16:11:24.479Z</updated>
-    
-    <content type="html"><![CDATA[<p>因為 Heroku 現在要收費了，原本放在上面<a href="https://github.com/james687/Tweetme">用免費方案的 project</a> 就需要找新的方法。於是找到了 <a href="https://github.com/dokku/dokku">Dokku</a>，他的 GitHub page 介紹如下：</p><blockquote><p>Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.</p></blockquote><p>的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：<a id="more"></a></p><blockquote><p>A docker-powered PaaS that helps you build and manage the lifecycle of applications</p></blockquote><p>這邊使用 DigitalOcean 的 droplet，因為他有兩個月 200 美金的試用 credits，假如只是短期測試專案的話也夠了，不然也可以兩個月換一個新帳號 😅</p><p>這邊稍微筆記一下把 Heroku 專案搬過來的過程：</p><ul><li>在 DigitalOcean 創一個 droplet, 在上面照著<a href="https://dokku.com/docs/getting-started/installation/">文件</a>的步驟做，droplet OS 需選擇 dokku 支援的版本</li><li><code>dokku apps:create {app_name}</code></li><li><code>sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git postgres</code></li><li>使用 subdomain 的步驟：<ol><li><code>dokku domains:set-global {domain}</code></li><li><code>dokku domains:set {dokku_app_name} {subdomain.domain}</code></li><li>設定 domain 的 A record, CNAME<ul><li>A record: <ul><li>Host: <code>@</code></li><li>Value: droplet IP</li></ul></li><li>CNAME<ul><li>Host: subdomain</li><li>Value: <code>{domain}.</code></li></ul></li></ul></li></ol><ul><li>看起來這個方法應該可以讓我們在同一個 droplet 裡，用不同的 subdomains 跑多個不同的 web apps。只要分別設定多個 CNAME 和對應的 dokku app domain 就好<ul><li>流程：{subdomain_a.domain} 的 request 依循 IP 到了該 droplet 的 nginx，nginx 再將 request 導到 subdomain_a 對應的 dokku app</li></ul></li><li>如果單純只想讓 <code>{dokku_app_name}.{domain}</code> 指到 dokku app，也可以只設定 A record:<ul><li>Host: <code>dokku_app_name</code></li><li>Value: droplet IP</li></ul></li></ul></li><li><code>dokku config:set {dokku_app_name} KEY=value</code> 可設定需要的環境變數</li><li>可以用 runtime.txt 指定 python 執行的版本</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;因為 Heroku 現在要收費了，原本放在上面&lt;a href=&quot;https://github.com/james687/Tweetme&quot;&gt;用免費方案的 project&lt;/a&gt; 就需要找新的方法。於是找到了 &lt;a href=&quot;https://github.com/dokku/dokku&quot;&gt;Dokku&lt;/a&gt;，他的 GitHub page 介紹如下：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Docker powered mini-Heroku. The smallest PaaS implementation you’ve ever seen.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;的確是很傳神，因為使用方法跟 Heroku 很像，基本上可以從 Heroku 無痛遷移，差別在你需要用自己的 VM &amp;amp; domain，配合 dokku 就可以在上面用 docker 管理你的 application，就像他的 about 寫的：
-    
-    </summary>
-    
-    
-      <category term="Development Note" scheme="https://blog.jamesho.website/categories/Development-Note/"/>
-    
-    
-      <category term="docker" scheme="https://blog.jamesho.website/tags/docker/"/>
-    
-      <category term="heroku" scheme="https://blog.jamesho.website/tags/heroku/"/>
-    
-      <category term="dokku" scheme="https://blog.jamesho.website/tags/dokku/"/>
-    
-      <category term="paas" scheme="https://blog.jamesho.website/tags/paas/"/>
     
   </entry>
   

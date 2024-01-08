@@ -7,15 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>彙整: 2024/1 - James&#39; Blog</title>
+<title>Idempotency Key 簡介 - James&#39; Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="James&#39; Blog">
-<meta property="og:url" content="https://blog.jamesho.website/archives/2024/01/index.html">
+    <meta name="description" content="首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。 Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 k">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Idempotency Key 簡介">
+<meta property="og:url" content="https://blog.jamesho.website/idempotency-key/index.html">
 <meta property="og:site_name" content="James&#39; Blog">
+<meta property="og:description" content="首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。 Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 k">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://blog.jamesho.website/images/og_image.png">
+<meta property="article:published_time" content="2024-01-08T01:27:23.000Z">
+<meta property="article:modified_time" content="2024-01-08T02:03:14.223Z">
 <meta property="article:author" content="James Ho">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.jamesho.website/images/og_image.png">
@@ -85,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                <img src="/images/logo.svg" alt="Idempotency Key 簡介" height="28">
             
             </a>
         </div>
@@ -127,57 +131,89 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        一月 2024
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2024-01-08T01:27:23.000Z">2024-01-08</time>
-                        <a href="/idempotency-key/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Idempotency Key 簡介</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2024-01-01T13:27:23.000Z">2024-01-01</time>
-                        <a href="/consistent-hashing/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Digest of Consistent Hashing</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/System-Design/">System Design</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分鐘 閱讀文 (大約 216 個字)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Idempotency Key 簡介
+            
+        </h1>
+        <div class="content">
+            <p>首先，idempotency 的意思就是一個動作做一次跟做很多次的結果是一樣的，譬如 HTTP POST &amp; PUT 的比較，PUT 是 idempotent 的，POST 不是，因為它每次都會產生新東西。</p>
+<p>Idempotency Key 據說是 Stripe 發明的詞，為了要讓一些操作可以避免重複執行，以 HTTP request 為例，會讓 client 產生一個 unique 的 key, 並在 HTTP header 帶上這個 key, server 端會 maintain idempotency key 和 result 的對應，如果發現已經有了，就直接回傳結果不處理，如果沒有，代表還沒做過，就執行操作並把 key &amp; result 存起來。</p>
+<p>Idempotency Key 也可以由 server 產生，不過必須要是這個操作是由 server 發起的。簡單來說，是由操作的發起者產生這個 key。</p>
+
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/consistent-hashing/">
+                <span class="level-item">Digest of Consistent Hashing</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">評論</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.jamesho.website/idempotency-key/';
+        this.page.identifier = 'idempotency-key/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'jameshoblog' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -1480,7 +1516,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="James&#39; Blog" height="28">
+                    <img src="/images/logo.svg" alt="Idempotency Key 簡介" height="28">
                 
                 </a>
                 <p class="is-size-7">
