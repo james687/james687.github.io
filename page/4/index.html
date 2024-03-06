@@ -320,7 +320,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分鐘 閱讀文 (大約 750 個字)
+                    4 分鐘 閱讀文 (大約 656 個字)
                 </span>
                 
                 
@@ -335,12 +335,11 @@
         <div class="content">
             <p><a href="https://leetcode.com/problems/search-insert-position/description">題目</a><br>思路：最直覺是直接 iterate nums，不過題目指定要 O(log n)，所以用 binary search 才能達到</p>
 <ol>
-<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]，目標是移動這兩個指標，縮小答案範圍，直到我們可以依此範圍找出答案為止</p>
+<li><p>設定左右兩個指標作為<strong>可能答案範圍</strong>：[left, right]，目標是移動這兩個指標，縮小答案範圍，直到我們找到答案或答案範圍縮到只剩 1 個為止</p>
 </li>
-<li><p><code>while left &lt; right</code>: 設定 binary search 可繼續執行的條件</p>
+<li><p><code>while left &lt; right</code>: binary search 什麼時候需要繼續下去？只要符合這個條件，就繼續 binary search</p>
 <ul>
-<li>此時可能會想，要用 <code>&lt;</code> or <code>&lt;=</code> 呢？承上，我們的目的是縮小範圍到可以找到答案為止，也就是說當縮小到滿意的範圍，我們就可以跳出迴圈。所以我們只需要用 <code>&lt;</code>，因為當 <code>left == right</code> 的時候就會跳出迴圈，而這範圍已經足以讓我們找到答案了<ul>
-<li>當然要用 <code>&lt;=</code> 也是可以解的出來，程式碼會稍有不同，這邊只是記錄我理解起來比較順的思路
+<li>因為目標是把答案範圍縮小到一個，此時兩個指標必須重合
         </div>
         
         
